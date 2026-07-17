@@ -752,7 +752,33 @@
   });
 
   /* ============================================================
-     12. Home: roadmap + progreso global
+     12. Analítica anónima (PostHog EU)
+     ------------------------------------------------------------
+     Sin cookies ni almacenamiento (persistence: memory) y sin
+     autocapture: solo páginas vistas y salida. Se carga únicamente
+     cuando el sitio se sirve por HTTP(S) — nunca en file://.
+     ============================================================ */
+
+  if (location.protocol === 'https:' || location.protocol === 'http:') {
+    const ph = document.createElement('script');
+    ph.src = 'https://eu-assets.i.posthog.com/static/array.js';
+    ph.async = true;
+    ph.onload = () => {
+      if (!window.posthog || !window.posthog.init) return;
+      window.posthog.init('phc_tqw4oVs8HxEhexbt5vyGiZatctpcv2LbsEvGZkCXtApS', {
+        api_host: 'https://eu.i.posthog.com',
+        ui_host: 'https://eu.posthog.com',
+        persistence: 'memory',
+        autocapture: false,
+        capture_pageview: true,
+        capture_pageleave: true,
+      });
+    };
+    document.head.appendChild(ph);
+  }
+
+  /* ============================================================
+     13. Home: roadmap + progreso global
      ============================================================ */
 
   const roadmapEl = document.getElementById('roadmap');

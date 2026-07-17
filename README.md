@@ -24,7 +24,8 @@ para documentar viajes. La idea que lo recorre todo: **entender antes que memori
 Incluye ~70 diagramas SVG (muchos animados), 4 demos interactivas, ejercicios de campo en
 cada capítulo, checklists persistentes, glosario de 136 términos enlazados, búsqueda
 instantánea (⌘K), notas personales, marcadores y progreso de lectura (todo en
-localStorage, nada sale de tu navegador).
+localStorage). La versión publicada usa analítica anónima sin cookies (PostHog,
+solo páginas vistas); en local no se carga nada externo.
 
 ## Ejecutar en local
 
