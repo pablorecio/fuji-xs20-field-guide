@@ -23,15 +23,31 @@
 
   /* ---------- Almacenamiento ---------- */
 
+  /* Feature-test de localStorage: si no está disponible (modo privado,
+     storage deshabilitado), degradamos a memoria de sesión y la UI de
+     notas avisa de que no hay persistencia en lugar de fingirla. */
+  const memStore = {};
+  const storageOK = (() => {
+    try {
+      localStorage.setItem('xs20:probe', '1');
+      localStorage.removeItem('xs20:probe');
+      return true;
+    } catch { return false; }
+  })();
+
   const store = {
+    ok: storageOK,
     get(key, fallback) {
       try {
-        const raw = localStorage.getItem('xs20:' + key);
-        return raw === null ? fallback : JSON.parse(raw);
+        const raw = storageOK ? localStorage.getItem('xs20:' + key) : (memStore[key] ?? null);
+        return raw === null || raw === undefined ? fallback : JSON.parse(raw);
       } catch { return fallback; }
     },
     set(key, value) {
-      try { localStorage.setItem('xs20:' + key, JSON.stringify(value)); } catch { /* modo privado */ }
+      const raw = JSON.stringify(value);
+      if (!storageOK) { memStore[key] = raw; return false; }
+      try { localStorage.setItem('xs20:' + key, raw); return true; }
+      catch { memStore[key] = raw; return false; }
     },
   };
 
@@ -174,12 +190,15 @@
   document.body.appendChild(progressbar);
   const progressFill = progressbar.firstElementChild;
 
+  const REDUCE_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const scrollBehavior = () => (REDUCE_MOTION.matches ? 'auto' : 'smooth');
+
   const toTop = document.createElement('button');
   toTop.type = 'button';
   toTop.className = 'to-top';
   toTop.title = 'Volver arriba (t)';
   toTop.innerHTML = ICONS.up;
-  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: scrollBehavior() }));
   document.body.appendChild(toTop);
 
   /* Color de la parte activa */
@@ -242,7 +261,9 @@
      3. TOC + scrollspy
      ============================================================ */
 
-  if (chapter && headings.length > 1 && window.matchMedia('(min-width: 1181px)').matches) {
+  /* La TOC se construye siempre y el CSS la oculta en pantallas estrechas,
+     para que aparezca al ensanchar la ventana sin recargar */
+  if (chapter && headings.length > 1) {
     const toc = document.createElement('aside');
     toc.className = 'toc';
     toc.setAttribute('aria-label', 'En esta página');
@@ -259,14 +280,23 @@
     const links = Array.from(toc.querySelectorAll('a'));
     const byId = Object.fromEntries(links.map(a => [a.getAttribute('href').slice(1), a]));
     let current = null;
+    const paintSpy = () => {
+      links.forEach(l => l.classList.remove('active'));
+      if (current && byId[current]) byId[current].classList.add('active');
+    };
     const spy = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) current = e.target.id; });
-      if (current && byId[current]) {
-        links.forEach(l => l.classList.remove('active'));
-        byId[current].classList.add('active');
-      }
+      /* Por encima del primer encabezado (hero) no hay sección activa */
+      if (headings[0].getBoundingClientRect().top > window.innerHeight * 0.25) current = null;
+      paintSpy();
     }, { rootMargin: '-15% 0px -75% 0px' });
     headings.forEach(h => spy.observe(h));
+    window.addEventListener('scroll', () => {
+      if (current && headings[0].getBoundingClientRect().top > window.innerHeight * 0.25) {
+        current = null;
+        paintSpy();
+      }
+    }, { passive: true });
   }
 
   /* ============================================================
@@ -390,11 +420,15 @@
      ============================================================ */
 
   let openPanel = null;
+  let panelOpener = null;
 
   function makePanel(id, title, icon, fillBody) {
     const panel = document.createElement('aside');
     panel.className = 'panel';
     panel.id = 'panel-' + id;
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-label', title);
+    panel.inert = true; /* cerrado: fuera del orden de tabulación */
     panel.innerHTML = `
       <div class="panel-head">${icon}<span>${title}</span>
         <button class="close-btn" type="button" aria-label="Cerrar">${ICONS.close}</button>
@@ -410,13 +444,20 @@
     const panel = document.getElementById('panel-' + id);
     if (!panel) return;
     const willOpen = force !== undefined ? force : !panel.classList.contains('open');
-    document.querySelectorAll('.panel.open').forEach(p => p.classList.remove('open'));
+    document.querySelectorAll('.panel.open').forEach(p => { p.classList.remove('open'); p.inert = true; });
     if (willOpen) {
+      panelOpener = document.activeElement;
       panel._fill(panel.querySelector('.panel-body'));
+      panel.classList.remove('open'); /* fuerza reflujo de la transición si ya estaba */
+      panel.inert = false;
       panel.classList.add('open');
       openPanel = id;
+      const target = panel.querySelector('textarea, a, input, button:not(.close-btn)') || panel.querySelector('.close-btn');
+      setTimeout(() => target && target.focus(), 60);
     } else {
       openPanel = null;
+      if (panelOpener && document.body.contains(panelOpener)) panelOpener.focus();
+      panelOpener = null;
     }
   }
 
@@ -430,13 +471,19 @@
       ta.placeholder = 'Apuntes de este capítulo: ajustes que te funcionan, dudas, ideas para probar en el próximo paseo…';
       ta.value = store.get('notes:' + CHAPTER_ID, '');
       let t;
+      const flush = () => { clearTimeout(t); store.set('notes:' + CHAPTER_ID, ta.value); };
       ta.addEventListener('input', () => {
         clearTimeout(t);
-        t = setTimeout(() => store.set('notes:' + CHAPTER_ID, ta.value), 300);
+        t = setTimeout(flush, 300);
       });
+      /* No perder la última edición al navegar o cerrar rápido */
+      ta.addEventListener('blur', flush);
+      window.addEventListener('pagehide', flush);
       const hint = document.createElement('p');
       hint.className = 'panel-hint';
-      hint.textContent = 'Se guarda automáticamente en este navegador (localStorage).';
+      hint.textContent = store.ok
+        ? 'Se guarda automáticamente en este navegador (localStorage).'
+        : '⚠ Este navegador no permite guardar: las notas se perderán al cerrar la página.';
       body.append(ta, hint);
     });
   }
@@ -482,31 +529,49 @@
   const overlay = document.createElement('div');
   overlay.className = 'search-overlay';
   overlay.innerHTML = `
-    <div class="search-box" role="dialog" aria-label="Buscar en el manual">
+    <div class="search-box" role="dialog" aria-modal="true" aria-label="Buscar en el manual">
       <div class="search-input-row">${ICONS.search}
-        <input type="text" placeholder="Buscar: enfoque, F-Log2, histograma, golden hour…" aria-label="Buscar" autocomplete="off" spellcheck="false">
+        <input type="text" placeholder="Buscar: enfoque, F-Log2, histograma, golden hour…"
+          role="combobox" aria-expanded="true" aria-controls="search-results-list"
+          aria-autocomplete="list" aria-label="Buscar" autocomplete="off" spellcheck="false">
+        <button class="close-btn" type="button" aria-label="Cerrar búsqueda">${ICONS.close}</button>
       </div>
-      <div class="search-results"></div>
+      <div class="search-results" id="search-results-list" role="listbox" aria-label="Resultados"></div>
       <div class="search-foot"><span>↑↓ navegar</span><span>↵ abrir</span><span>esc cerrar</span></div>
     </div>`;
   document.body.appendChild(overlay);
 
   const input = overlay.querySelector('input');
   const resultsEl = overlay.querySelector('.search-results');
+  overlay.querySelector('.close-btn').addEventListener('click', () => closeSearch());
+  let searchOpener = null;
+
+  /* Trampa de foco: Tab circula dentro del diálogo de búsqueda */
+  overlay.addEventListener('keydown', e => {
+    if (e.key !== 'Tab') return;
+    const focusables = Array.from(overlay.querySelectorAll('input, button, a[href]'))
+      .filter(el => el.offsetParent !== null);
+    if (!focusables.length) return;
+    const first = focusables[0], last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
   let hits = [];
   let sel = 0;
 
   const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
   const escapeHtml = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
+  /* Resalta en una sola pasada sobre el texto plano: evita que un término
+     reescriba el markup insertado por otro (p. ej. buscar «la mar») */
   function highlight(text, terms) {
-    let out = escapeHtml(text);
-    terms.forEach(t => {
-      if (t.length < 2) return;
-      const re = new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig');
-      out = out.replace(re, '<mark>$1</mark>');
-    });
-    return out;
+    const valid = terms.filter(t => t.length >= 2)
+      .map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    if (!valid.length) return escapeHtml(text);
+    const re = new RegExp('(' + valid.join('|') + ')', 'ig');
+    return text.split(re)
+      .map((part, i) => (i % 2 ? '<mark>' + escapeHtml(part) + '</mark>' : escapeHtml(part)))
+      .join('');
   }
 
   function runSearch(q) {
@@ -520,12 +585,14 @@
     hits = [];
     for (const entry of index) {
       const t = norm(entry.t), x = norm(entry.x || ''), k = norm(entry.k || '');
+      const b = norm(entry.b || '');
       let score = 0;
       let ok = true;
       for (const term of terms) {
         if (t.includes(term)) score += t.startsWith(term) ? 14 : 9;
         else if (k.includes(term)) score += 6;
         else if (x.includes(term)) score += 3;
+        else if (b.includes(term)) score += 1;
         else { ok = false; break; }
       }
       if (ok) hits.push({ entry, score });
@@ -547,6 +614,9 @@
       if (!ch) return;
       const a = document.createElement('a');
       a.className = 'search-hit' + (i === sel ? ' sel' : '');
+      a.id = 'search-hit-' + i;
+      a.setAttribute('role', 'option');
+      a.setAttribute('aria-selected', String(i === sel));
       a.href = urlOf(ch) + (h.entry.h ? '#' + h.entry.h : '');
       a.innerHTML = `
         <span class="hit-title">${highlight(h.entry.t, terms)}</span>
@@ -555,22 +625,31 @@
       a.addEventListener('mousemove', () => { sel = i; paintSel(); });
       resultsEl.appendChild(a);
     });
+    paintSel();
   }
 
   function paintSel() {
     resultsEl.querySelectorAll('.search-hit').forEach((el, i) => {
       el.classList.toggle('sel', i === sel);
+      el.setAttribute('aria-selected', String(i === sel));
       if (i === sel) el.scrollIntoView({ block: 'nearest' });
     });
+    input.setAttribute('aria-activedescendant', hits.length ? 'search-hit-' + sel : '');
   }
 
   function openSearch() {
+    searchOpener = document.activeElement;
     overlay.classList.add('open');
     input.value = '';
     runSearch('');
     setTimeout(() => input.focus(), 30);
   }
-  function closeSearch() { overlay.classList.remove('open'); }
+  function closeSearch() {
+    if (!overlay.classList.contains('open')) return;
+    overlay.classList.remove('open');
+    if (searchOpener && document.body.contains(searchOpener)) searchOpener.focus();
+    searchOpener = null;
+  }
 
   input.addEventListener('input', () => runSearch(input.value));
   input.addEventListener('keydown', e => {
@@ -597,12 +676,37 @@
     store.set('theme', light ? 'dark' : 'light');
   }
 
+  /* En modo cajón (móvil), la sidebar cerrada queda inert para no dejar
+     decenas de paradas de tabulación invisibles */
+  const drawerMq = window.matchMedia('(max-width: 900px)');
+  const menuToggleBtn = topbar.querySelector('.menu-toggle');
+
+  function syncSidebarA11y() {
+    const open = sidebar.classList.contains('open');
+    sidebar.inert = drawerMq.matches && !open;
+    if (menuToggleBtn) {
+      menuToggleBtn.setAttribute('aria-expanded', String(open));
+      menuToggleBtn.setAttribute('aria-label', open ? 'Cerrar índice' : 'Abrir índice');
+    }
+  }
+
   function toggleMenu(force) {
     const willOpen = force !== undefined ? force : !sidebar.classList.contains('open');
     sidebar.classList.toggle('open', willOpen);
     scrim.classList.toggle('show', willOpen);
+    syncSidebarA11y();
+    if (drawerMq.matches) {
+      if (willOpen) {
+        const first = sidebar.querySelector('a, button');
+        setTimeout(() => first && first.focus(), 60);
+      } else if (menuToggleBtn && document.activeElement && sidebar.contains(document.activeElement)) {
+        menuToggleBtn.focus();
+      }
+    }
   }
   scrim.addEventListener('click', () => toggleMenu(false));
+  drawerMq.addEventListener('change', syncSidebarA11y);
+  syncSidebarA11y();
 
   document.addEventListener('click', e => {
     const btn = e.target.closest('[data-action]');
@@ -623,7 +727,9 @@
   document.addEventListener('keydown', e => {
     const inField = /input|textarea|select/i.test((e.target.tagName || '')) || e.target.isContentEditable;
 
-    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+    /* Modificador nativo de cada plataforma (⌘K en Mac, Ctrl+K en el resto)
+       para no pisar atajos de edición como Ctrl-K en macOS */
+    if ((isMac ? e.metaKey && !e.ctrlKey : e.ctrlKey && !e.metaKey) && !e.altKey && e.key.toLowerCase() === 'k') {
       e.preventDefault();
       overlay.classList.contains('open') ? closeSearch() : openSearch();
       return;
@@ -639,7 +745,7 @@
     if (e.key === '/') { e.preventDefault(); openSearch(); }
     else if (e.key === 'ArrowLeft' && chapter && GUIDE.flat[chIndex - 1]) window.location.href = urlOf(GUIDE.flat[chIndex - 1]);
     else if (e.key === 'ArrowRight' && chapter && GUIDE.flat[chIndex + 1]) window.location.href = urlOf(GUIDE.flat[chIndex + 1]);
-    else if (e.key === 't') window.scrollTo({ top: 0, behavior: 'smooth' });
+    else if (e.key === 't') window.scrollTo({ top: 0, behavior: scrollBehavior() });
     else if (e.key === 'n' && chapter) togglePanel('notes');
     else if (e.key === 'b') togglePanel('bookmarks');
     else if (e.key === '?') togglePanel('shortcuts');

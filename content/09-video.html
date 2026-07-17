@@ -1236,10 +1236,12 @@
       trail.innerHTML = s;
     }
 
-    /* animación de la pelota (rebote horizontal) */
-    var t = 0;
-    function loop() {
-      t += 0.018;
+    /* animación de la pelota (rebote horizontal), normalizada por tiempo real
+       (misma velocidad a 60 y 120 Hz) y pausada cuando el widget no se ve */
+    var t = 0, lastTs = null, running = false, rafId = null;
+    function loop(ts) {
+      if (lastTs !== null) t += Math.min(ts - lastTs, 100) * 0.0011;
+      lastTs = ts;
       var cx = 240 + Math.sin(t) * 180;    /* 60..420 */
       ball.setAttribute('cx', cx.toFixed(1));
       /* el rastro va por detrás del sentido de avance */
@@ -1253,13 +1255,33 @@
         s += '<circle cx="' + (cx - off).toFixed(1) + '" cy="90" r="16" fill="var(--dg-accent)" opacity="' + op + '"/>';
       }
       trail.innerHTML = s;
-      requestAnimationFrame(loop);
+      rafId = requestAnimationFrame(loop);
+    }
+
+    function setRunning(on) {
+      if (on === running) return;
+      running = on;
+      if (on) { lastTs = null; rafId = requestAnimationFrame(loop); }
+      else if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
     }
 
     fpsEl.addEventListener('input', render);
     angEl.addEventListener('input', render);
     render();
-    if (!reduce) requestAnimationFrame(loop);
+
+    var reduceMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var visible = false;
+    var io = new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+      setRunning(visible && !reduceMq.matches && !document.hidden);
+    });
+    io.observe(root);
+    document.addEventListener('visibilitychange', function () {
+      setRunning(visible && !reduceMq.matches && !document.hidden);
+    });
+    reduceMq.addEventListener('change', function () {
+      setRunning(visible && !reduceMq.matches && !document.hidden);
+    });
   })();
   </script>
 

@@ -20,7 +20,8 @@ CONTENT = ROOT / "content"
 OUT = ROOT / "assets" / "js" / "search-index.js"
 
 EXCERPT_LEN = 150
-MAX_KEYWORDS = 12
+MAX_KEYWORDS = 16
+BODY_LEN = 1100          # texto completo (normalizado) por sección para búsqueda, no se muestra
 
 
 class SectionParser(HTMLParser):
@@ -109,13 +110,17 @@ def build_entries(path: Path):
             if key not in seen:
                 seen.add(key)
                 kws.append(kw)
-        entries.append({
+        entry = {
             "c": parser.chapter,
             "h": s["id"],
             "t": s["title"],
             "x": text[:EXCERPT_LEN].rsplit(" ", 1)[0] + ("…" if len(text) > EXCERPT_LEN else ""),
             "k": " ".join(kws[:MAX_KEYWORDS]),
-        })
+        }
+        body = text[len(entry["x"]):BODY_LEN]
+        if body:
+            entry["b"] = body
+        entries.append(entry)
     return entries
 
 

@@ -902,7 +902,7 @@
       .x5-readout { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
       .x5-chip { font-family: var(--font-mono); font-size: var(--fs-0); padding: .3rem .7rem; border-radius: 999px; border: 1px solid var(--border); color: var(--text-2); background: var(--bg); }
       .x5-chip b { color: var(--text); }
-      .x5-chip.warn { border-color: color-mix(in srgb, var(--rec) 45%, transparent); color: #f8a0a0; }
+      .x5-chip.warn { border-color: color-mix(in srgb, var(--rec) 45%, transparent); color: var(--rec); }
       .x5-chip.ok { border-color: color-mix(in srgb, var(--accent) 45%, transparent); color: var(--accent); }
       .x5-ev { font-family: var(--font-mono); font-size: var(--fs-2); margin-top: 1rem; padding: .6rem .9rem; border-radius: var(--radius); background: var(--bg); border: 1px solid var(--border); color: var(--text-2); }
       .x5-ev b { color: var(--text); }
@@ -912,6 +912,11 @@
       .x5-scene-btns button.sel { border-color: var(--part); color: var(--part); background: var(--part-dim); }
       .x5-hist-explain { margin-top: 1rem; font-size: var(--fs-2); color: var(--text-2); line-height: 1.6; }
       .x5-hist-explain b { color: var(--text); }
+      /* Móviles estrechos: la etiqueta pasa a su propia línea para no desbordar */
+      @media (max-width: 420px) {
+        .x5-ctl { grid-template-columns: 1fr auto; }
+        .x5-ctl > label { grid-column: 1 / -1; }
+      }
     </style>
     <h4>1 · Simulador del triángulo de exposición</h4>
     <p class="x5-sub">Mueve los tres controles. La escena se aclara u oscurece según la luz
@@ -1044,6 +1049,10 @@
       apV.textContent = ap.f;
       shV.textContent = sh.t;
       isoV.textContent = iso.v;
+      /* Los lectores de pantalla anuncian el valor real, no el índice del slider */
+      apEl.setAttribute('aria-valuetext', ap.f);
+      shEl.setAttribute('aria-valuetext', sh.t + ' de segundo');
+      isoEl.setAttribute('aria-valuetext', 'ISO ' + iso.v);
 
       var dev = (ap.light + sh.light + iso.light) - L0; /* pasos por encima (+) o debajo (-) de la referencia */
 
