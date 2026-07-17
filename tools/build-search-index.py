@@ -4,8 +4,9 @@
 Uso:  python3 tools/build-search-index.py
 
 Extrae una entrada por sección (h2/h3) de cada capítulo:
-  { c: chapter-id, h: heading-id, t: título, x: extracto, k: keywords }
-Las keywords se toman de <code>, <strong> y .term dentro de la sección.
+  { c: chapter-id, h: heading-id, t: título, x: extracto, k: keywords, b: texto completo }
+El texto de sección se indexa COMPLETO (campo "b", solo para búsqueda, no se
+muestra); la intro previa al primer encabezado alimenta la entrada de página.
 El sitio sigue siendo 100% estático: este script solo se ejecuta al editar contenido.
 """
 
@@ -21,7 +22,13 @@ OUT = ROOT / "assets" / "js" / "search-index.js"
 
 EXCERPT_LEN = 150
 MAX_KEYWORDS = 16
-BODY_LEN = 1100          # texto completo (normalizado) por sección para búsqueda, no se muestra
+
+# Al cerrar estos elementos se inserta un separador para no pegar palabras
+# de celdas/bloques contiguos («PosiciónQué hace» → «Posición Qué hace»)
+BLOCK_TAGS = {
+    "p", "li", "td", "th", "tr", "dt", "dd", "div", "figcaption", "caption",
+    "h4", "h5", "summary", "label", "blockquote", "ul", "ol", "table", "figure",
+}
 
 
 class SectionParser(HTMLParser):
@@ -31,19 +38,24 @@ class SectionParser(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.chapter = ""
         self.title = ""
+        self.intro = []             # texto del hero/preámbulo, antes del primer h2/h3
         self.sections = []          # dicts: id, title, text, keywords
         self._current = None
-        self._stack = []            # etiquetas abiertas
         self._in_heading = None     # (tag, id) si estamos dentro de h2/h3
         self._heading_text = []
-        self._kw_depth = 0          # dentro de code/strong/.term
+        self._kw_depth = 0
         self._in_title_tag = False
         self._skip_depth = 0        # dentro de <script>/<style>/<svg>
+        self._in_body = False
+
+    def _sink(self):
+        return self._current["text"] if self._current is not None else self.intro
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
         if tag == "body":
             self.chapter = a.get("data-chapter", "")
+            self._in_body = True
         if tag == "title":
             self._in_title_tag = True
         if tag in ("script", "style", "svg") or self._skip_depth:
@@ -53,6 +65,8 @@ class SectionParser(HTMLParser):
             self._in_heading = (tag, a.get("id", ""))
             self._heading_text = []
             return
+        if tag == "br":
+            self._sink().append(" ")
         if self._current is not None:
             cls = a.get("class", "")
             if tag in ("code", "strong") or "term" in cls.split():
@@ -73,6 +87,8 @@ class SectionParser(HTMLParser):
             self.sections.append(self._current)
             self._in_heading = None
             return
+        if tag in BLOCK_TAGS and self._in_body:
+            self._sink().append(" ")
         if self._kw_depth and tag in ("code", "strong", "span"):
             self._kw_depth -= 1
             if self._current and self._current.get("_kwbuf"):
@@ -84,15 +100,24 @@ class SectionParser(HTMLParser):
         if self._in_title_tag:
             self.title += data
             return
-        if self._skip_depth:
+        if self._skip_depth or not self._in_body:
             return
         if self._in_heading:
             self._heading_text.append(data)
             return
-        if self._current is not None:
-            self._current["text"].append(data)
-            if self._kw_depth and self._current.get("_kwbuf"):
-                self._current["_kwbuf"][-1] += data
+        self._sink().append(data)
+        if self._current is not None and self._kw_depth and self._current.get("_kwbuf"):
+            self._current["_kwbuf"][-1] += data
+
+
+def clean(parts):
+    return re.sub(r"\s+", " ", "".join(parts)).strip()
+
+
+def excerpt(text):
+    if len(text) <= EXCERPT_LEN:
+        return text
+    return text[:EXCERPT_LEN].rsplit(" ", 1)[0] + "…"
 
 
 def build_entries(path: Path):
@@ -100,10 +125,14 @@ def build_entries(path: Path):
     parser.feed(path.read_text(encoding="utf-8"))
     entries = []
     page_title = parser.title.split("—")[0].strip()
+    intro = clean(parser.intro)
     if page_title:
-        entries.append({"c": parser.chapter, "h": "", "t": page_title, "x": "", "k": ""})
+        page = {"c": parser.chapter, "h": "", "t": page_title, "x": excerpt(intro), "k": ""}
+        if intro:
+            page["b"] = intro
+        entries.append(page)
     for s in parser.sections:
-        text = re.sub(r"\s+", " ", "".join(s["text"])).strip()
+        text = clean(s["text"])
         seen, kws = set(), []
         for kw in s["keywords"]:
             key = kw.lower()
@@ -114,10 +143,10 @@ def build_entries(path: Path):
             "c": parser.chapter,
             "h": s["id"],
             "t": s["title"],
-            "x": text[:EXCERPT_LEN].rsplit(" ", 1)[0] + ("…" if len(text) > EXCERPT_LEN else ""),
+            "x": excerpt(text),
             "k": " ".join(kws[:MAX_KEYWORDS]),
         }
-        body = text[len(entry["x"]):BODY_LEN]
+        body = text[len(entry["x"].rstrip("…")):]
         if body:
             entry["b"] = body
         entries.append(entry)
@@ -143,7 +172,7 @@ def main():
         f"window.SEARCH_INDEX = {payload};\n",
         encoding="utf-8",
     )
-    print(f"\n{len(index)} entradas → {OUT.relative_to(ROOT)}")
+    print(f"\n{len(index)} entradas → {OUT.relative_to(ROOT)} ({OUT.stat().st_size // 1024} KB)")
 
 
 if __name__ == "__main__":

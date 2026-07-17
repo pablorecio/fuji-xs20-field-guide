@@ -159,31 +159,31 @@
   también la deja igual de brillante, pero por otra vía —y esa vía la pagas en ruido, como verás—.</p>
 
   <figure class="diagram">
-    <svg viewBox="0 0 640 170" role="img" aria-labelledby="d52-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
-      <title id="d52-t">Cada paso duplica la luz: la escala crece 1, 2, 4, 8, 16, 32.</title>
+    <svg viewBox="0 0 640 200" role="img" aria-labelledby="d52-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d52-t">Cada paso duplica la luz: la escala crece 1, 2, 4, 8, cada barra el doble de la anterior.</title>
       <g>
-        <rect x="30"  y="118" width="70" height="16" fill="var(--dg-amber)" opacity="0.85"/>
-        <rect x="115" y="102" width="70" height="32" fill="var(--dg-amber)" opacity="0.8"/>
-        <rect x="200" y="70"  width="70" height="64" fill="var(--dg-amber)" opacity="0.75"/>
-        <rect x="285" y="38"  width="70" height="96" fill="var(--dg-amber)" opacity="0.7"/>
+        <rect x="30"  y="154" width="70" height="16"  fill="var(--dg-amber)" opacity="0.85"/>
+        <rect x="115" y="138" width="70" height="32"  fill="var(--dg-amber)" opacity="0.8"/>
+        <rect x="200" y="106" width="70" height="64"  fill="var(--dg-amber)" opacity="0.75"/>
+        <rect x="285" y="42"  width="70" height="128" fill="var(--dg-amber)" opacity="0.7"/>
       </g>
       <g fill="var(--dg-text)" text-anchor="middle" font-size="11">
-        <text x="65"  y="150">1×</text>
-        <text x="150" y="150">2×</text>
-        <text x="235" y="150">4×</text>
-        <text x="320" y="150">8×</text>
+        <text x="65"  y="186">1×</text>
+        <text x="150" y="186">2×</text>
+        <text x="235" y="186">4×</text>
+        <text x="320" y="186">8×</text>
       </g>
       <g fill="var(--dg-accent)" text-anchor="middle" font-size="10">
-        <text x="65"  y="112">0 pasos</text>
-        <text x="150" y="96">+1</text>
-        <text x="235" y="64">+2</text>
-        <text x="320" y="32">+3</text>
+        <text x="65"  y="148">0 pasos</text>
+        <text x="150" y="132">+1</text>
+        <text x="235" y="100">+2</text>
+        <text x="320" y="36">+3</text>
       </g>
-      <line x1="380" y1="130" x2="380" y2="30" stroke="var(--dg-line)" stroke-width="1"/>
-      <text x="510" y="70" fill="var(--dg-text)" text-anchor="middle">Cada barra es</text>
-      <text x="510" y="88" fill="var(--dg-text)" text-anchor="middle">el DOBLE de la anterior.</text>
-      <text x="510" y="112" fill="var(--dg-text)" text-anchor="middle" font-size="10">Sumar en pasos =</text>
-      <text x="510" y="128" fill="var(--dg-text)" text-anchor="middle" font-size="10">multiplicar la luz.</text>
+      <line x1="380" y1="170" x2="380" y2="36" stroke="var(--dg-line)" stroke-width="1"/>
+      <text x="510" y="92"  fill="var(--dg-text)" text-anchor="middle">Cada barra es</text>
+      <text x="510" y="110" fill="var(--dg-text)" text-anchor="middle">el DOBLE de la anterior.</text>
+      <text x="510" y="134" fill="var(--dg-text)" text-anchor="middle" font-size="10">Sumar en pasos =</text>
+      <text x="510" y="150" fill="var(--dg-text)" text-anchor="middle" font-size="10">multiplicar la luz.</text>
     </svg>
     <figcaption><b>Figura 5.2.</b> La escala de pasos es exponencial. Por eso «medio paso» o «un tercio de paso» son ajustes finos reales: la X-S20 te deja moverte en tercios de paso, que es la granularidad estándar.</figcaption>
   </figure>
@@ -340,13 +340,19 @@
 
   <div class="callout gear" data-title="Qué obturador usar en la X-S20">
     <p>Regla sencilla para viajar: deja el <b>mecánico (MS)</b> como opción por defecto —es
-    fiable y no da banding— y reserva el electrónico para dos casos: silencio absoluto, o cuando
-    necesitas pasar de 1/4000 (sol fortísimo con el <a href="06-objetivos.html#35mm">35 mm
-    f/1.4</a> abierto). Para lo que <b>no</b> sirve el electrónico es para larga exposición: no
-    ofrece modo <b>Bulb</b>, así que para una cascada sedosa o un cielo nocturno tira del
-    <b>mecánico</b>. En el menú de disparo tienes <b>MS</b>, <b>ES</b> y
-    <b>MS+ES</b> (mecánico que salta a electrónico solo cuando hace falta pasar de 1/4000). Este
-    modo mixto es un buen «déjalo puesto y olvídate», con la única precaución de los LEDs.</p>
+    fiable y <b>reduce mucho el riesgo</b> de banding— y reserva el electrónico para dos casos:
+    silencio absoluto, o cuando necesitas pasar de 1/4000 (sol fortísimo con el
+    <a href="06-objetivos.html#35mm">35 mm f/1.4</a> abierto; el ES llega hasta 1/32000). Contra
+    el parpadeo de los LED tienes dos ayudas en el menú: <b>FLICKER REDUCTION</b> (para fotos,
+    sincroniza la toma con la red) y <b>FLICKERLESS S.S.</b> (para vídeo o para afinar la
+    velocidad, ajusta la obturación al ritmo de la luz). Para larga exposición el electrónico
+    <b>sí</b> sirve —admite tiempos temporizados largos, hasta 15&nbsp;min en S/M, igual que el
+    mecánico—; lo que no ofrece es un <b>Bulb</b> real (su Bulb queda fijado en 1&nbsp;s), así que
+    para una toma en Bulb abierto a tu antojo —una cascada sedosa cronometrada a mano o un cielo
+    nocturno— tira del <b>mecánico</b>, cuyo Bulb llega a 60&nbsp;min. En el menú de disparo tienes
+    <b>MS</b>, <b>ES</b> y <b>MS+ES</b> (mecánico que salta a electrónico solo cuando hace falta
+    pasar de 1/4000). Este modo mixto es un buen «déjalo puesto y olvídate», con la única
+    precaución de los LED.</p>
   </div>
 
   <h3 id="congelar-o-barrer">Congelar o barrer el movimiento</h3>
@@ -690,9 +696,15 @@
     se queda clavado en el máximo. Un cielo quemado a blanco puro no contiene <b>ningún</b>
     dato de las nubes que había ahí. No hay nada que recuperar, ni en RAW ni con magia: la
     información no se registró. Se acabó.</li>
-    <li><b>Clipping de sombras (izquierda): parcialmente recuperable.</b> En las sombras sí
-    hubo alguna señal, solo que enterrada bajo el ruido. Al aclararlas en la edición puedes
-    rescatar detalle… a costa de sacar también ese ruido. Se recupera algo, con peaje.</li>
+    <li><b>Sombras subexpuestas (izquierda): normalmente recuperables.</b> Cuidado con confundir
+    esto con clipping: que la masa se amontone a la izquierda no significa que se haya perdido la
+    información. Mientras <b>haya señal</b> —aunque esté enterrada bajo el ruido—, al aclarar en
+    la edición puedes rescatar detalle, a costa de sacar también ese ruido. Se recupera algo, con
+    peaje.</li>
+    <li><b>Clipping de sombras (negro puro): irrecuperable.</b> Solo hay clipping real de sombras
+    cuando los valores quedan <b>fijados a 0</b> y no queda ninguna señal debajo. Entonces, como
+    con un blanco quemado, no hay nada que aclarar. La distinción es clave: una sombra oscura pero
+    con señal se recupera; un negro recortado a 0, no.</li>
   </ul>
 
   <p>La consecuencia es una regla de oro: <b>expón para las altas luces</b>. Ante una escena
@@ -956,8 +968,9 @@
       }
     </style>
     <h4>1 · Simulador del triángulo de exposición</h4>
-    <p class="x5-sub">Mueve los tres controles. La escena se aclara u oscurece según la luz
-    total, y los avisos muestran el precio de cada elección.</p>
+    <p class="x5-sub">Mueve los tres controles. La escena se aclara u oscurece según el brillo
+    final, pero fíjate en la doble lectura: la apertura y el tiempo fijan la <b>luz capturada</b>;
+    el ISO solo amplifica ese brillo después. Los avisos muestran el precio de cada elección.</p>
 
     <div class="x5-stage">
       <svg viewBox="0 0 480 240" role="img" aria-label="Escena de ejemplo que cambia de brillo según la exposición" font-family="ui-monospace, Menlo, monospace">
@@ -1060,10 +1073,12 @@
     ];
     var ISO = [
       {v:'160', light:0}, {v:'320', light:1}, {v:'640', light:2},
-      {v:'1250', light:3}, {v:'2500', light:4}, {v:'5000', light:5}, {v:'12800', light:6}
+      {v:'1250', light:3}, {v:'2500', light:4}, {v:'5000', light:5},
+      {v:'12800', light:6.33} /* 5000→12800 ≈ 1⅓ pasos, no 1 */
     ];
 
-    var L0 = AP[2].light + SH[5].light + ISO[0].light; /* f/8, 1/125, 160 = exposición de referencia */
+    var CAP0 = AP[2].light + SH[5].light;            /* luz capturada de referencia: f/8, 1/125 */
+    var L0   = CAP0 + ISO[0].light;                   /* brillo final de referencia (ISO 160) */
 
     var apEl  = root.querySelector('#x5-ap');
     var shEl   = root.querySelector('#x5-sh');
@@ -1091,21 +1106,32 @@
       shEl.setAttribute('aria-valuetext', sh.t + ' de segundo');
       isoEl.setAttribute('aria-valuetext', 'ISO ' + iso.v);
 
-      var dev = (ap.light + sh.light + iso.light) - L0; /* pasos por encima (+) o debajo (-) de la referencia */
+      /* Exposición física (luz que recoge el sensor): SOLO apertura + tiempo. El ISO no entra aquí. */
+      var capDev = (ap.light + sh.light) - CAP0;
+      /* Brillo final: lo anterior más la amplificación del ISO. */
+      var dev = capDev + iso.light;
 
-      /* Brillo de la escena */
+      /* Brillo de la escena: lo que ve el ojo es el brillo FINAL (con ISO) */
       if (dev < 0) { expo.setAttribute('fill', '#000'); expo.setAttribute('opacity', Math.min(0.85, -dev * 0.14).toFixed(3)); }
       else if (dev > 0) { expo.setAttribute('fill', '#fff'); expo.setAttribute('opacity', Math.min(0.9, dev * 0.14).toFixed(3)); }
       else { expo.setAttribute('opacity', 0); }
 
-      /* Lectura EV */
-      var word, sign = dev > 0 ? '+' : '';
-      if (dev === 0) word = 'Exposición: <b>correcta</b> (0 EV respecto a la referencia).';
-      else if (dev >= 3) word = 'Exposición: <b>' + sign + dev + ' EV · muy sobreexpuesta</b>, luces quemadas.';
-      else if (dev > 0) word = 'Exposición: <b>' + sign + dev + ' EV · sobreexpuesta</b>.';
-      else if (dev <= -3) word = 'Exposición: <b>' + dev + ' EV · muy subexpuesta</b>, sombras vacías.';
-      else word = 'Exposición: <b>' + dev + ' EV · subexpuesta</b>.';
-      evEl.innerHTML = word;
+      /* Dos lecturas separadas: luz capturada (física) y brillo final (con ISO) */
+      function ev(d) { var r = Math.round(d * 10) / 10; return (r > 0 ? '+' : '') + r; }
+
+      var capLine;
+      if (capDev === 0) capLine = 'Luz capturada (apertura + tiempo): <b>referencia</b> (0 EV).';
+      else capLine = 'Luz capturada (apertura + tiempo): <b>' + ev(capDev) + ' EV</b> · ' +
+        (capDev > 0 ? 'más luz al sensor' : 'menos luz al sensor');
+
+      var briLine;
+      if (dev === 0) briLine = 'Brillo final (con ISO): <b>correcto</b> (0 EV respecto a la referencia).';
+      else if (dev >= 3) briLine = 'Brillo final (con ISO): <b>' + ev(dev) + ' EV · muy claro</b>, luces quemadas.';
+      else if (dev > 0) briLine = 'Brillo final (con ISO): <b>' + ev(dev) + ' EV · claro</b> (sobreexpuesto).';
+      else if (dev <= -3) briLine = 'Brillo final (con ISO): <b>' + ev(dev) + ' EV · muy oscuro</b>, sombras vacías.';
+      else briLine = 'Brillo final (con ISO): <b>' + ev(dev) + ' EV · oscuro</b> (subexpuesto).';
+
+      evEl.innerHTML = capLine + '<br>' + briLine;
 
       /* Efectos visuales del precio */
       /* Profundidad de campo: desenfoca el fondo cuanto más abierta la apertura */
@@ -1126,10 +1152,10 @@
       else if (ap.light >= 4) out.push(chip('Profundidad de campo media'));
       else if (ap.light <= 1) out.push(chip('Todo nítido, pero cuidado con la difracción (>f/11)', 'warn'));
       else out.push(chip('Profundidad de campo ' + ap.dof));
-      /* Ruido */
-      if (iso.light >= 5) out.push(chip('Ruido visible en las sombras', 'warn'));
-      else if (iso.light >= 3) out.push(chip('Algo de grano, muy usable'));
-      else out.push(chip('Imagen limpia', 'ok'));
+      /* Ruido: nace de la POCA LUZ CAPTURADA (shot noise); el ISO alto solo lo revela */
+      if (capDev <= -4) out.push(chip('Poca luz capturada: ruido en las sombras (el ISO alto solo lo hace más visible)', 'warn'));
+      else if (capDev <= -2) out.push(chip('Luz capturada algo justa: algo de grano, muy usable'));
+      else out.push(chip('Luz de sobra capturada: imagen limpia', 'ok'));
 
       readout.innerHTML = out.join('');
     }

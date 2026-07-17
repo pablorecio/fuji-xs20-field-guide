@@ -687,8 +687,8 @@
 
   <p>Y <b>no</b> es la lente cuando entra en juego lo que un zoom lento no puede dar:</p>
   <ul>
-    <li><b>Poca luz.</b> A f/3.5-5.6 pierde entre un paso y medio y dos pasos y medio frente al
-    23, y casi cuatro pasos frente al f/1.4 del 35. En un bar en penumbra o a la hora azul, o
+    <li><b>Poca luz.</b> A f/3.5-5.6 pierde entre 1,6 y 3 pasos frente al f/2 del
+    23, y entre 2,6 y 4 pasos frente al f/1.4 del 35. En un bar en penumbra o a la hora azul, o
     subes muchísimo el <a href="05-exposicion.html#iso-y-ruido">ISO</a> (con su ruido) o bajas
     tanto la velocidad que todo sale movido. Ahí manda un fijo.</li>
     <li><b>Retrato con fondo desenfocado.</b> Como vimos en la <a href="#profundidad-de-campo">sección
@@ -723,7 +723,7 @@
 
   <figure class="diagram">
     <svg viewBox="0 0 640 300" role="img" aria-labelledby="d64-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
-      <title id="d64-t">Diagrama de decisión: si te gusta la perspectiva actual, cambia de focal o muévete para ajustar el encuadre; si quieres otra perspectiva, muévete obligatoriamente.</title>
+      <title id="d64-t">Diagrama de decisión: si te gusta la perspectiva actual, cambia de focal o recorta sin moverte para ajustar el encuadre (la perspectiva no cambia); si quieres otra perspectiva, hay que moverse.</title>
       <!-- caja inicio -->
       <rect x="230" y="20" width="180" height="42" rx="6" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
       <text x="320" y="38" fill="var(--dg-text)" text-anchor="middle" font-size="11">Miras la escena.</text>
@@ -1073,7 +1073,7 @@
     if (!root) return;
 
     var COC = 0.02; /* circulo de confusion en mm, orientativo para APS-C */
-    var FOCALS = [{mm:23, name:'23 mm', min:2}, {mm:35, name:'35 mm', min:0}];
+    var FOCALS = [{mm:23, name:'23 mm', min:1}, {mm:35, name:'35 mm', min:0}];
     /* aperturas; el 35 llega a f/1.4 (idx 0), el 23 empieza en f/2 (idx>=... ) via .min de FOCAL? mejor: recorta por lente */
     var APS = [1.4, 2, 2.8, 4, 5.6, 8, 11, 16];
 

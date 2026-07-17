@@ -182,10 +182,13 @@
     da un movimiento ligeramente entrecortado y avisos constantes de «desajuste». La
     <b>resolución</b> es otra cosa: una secuencia a <b>1080</b> partiendo de clips 4K es una
     decisión perfectamente válida (entrega HD, más rendimiento, margen para reencuadrar) —los clips
-    solo se escalan, no salen marcos negros por eso—. Lo que sí conviene es que los fps coincidan:
-    si al arrastrar el primer clip a una secuencia vacía Premiere te pregunta si quieres
-    <b>cambiar los ajustes para que coincidan</b> con el clip, di que <b>sí</b>. Crear la secuencia
-    desde el clip evita el lío de raíz.</p>
+    solo se escalan, no salen marcos negros por eso—. La clave es tratar <b>fps y resolución por
+    separado</b>. Con los <b>fps</b>: si al arrastrar el primer clip a una secuencia vacía Premiere te
+    ofrece <b>cambiar los ajustes para que coincidan</b> con el clip, acéptalo <b>solo si el desajuste
+    fue accidental</b> (querías 25p y la secuencia salió con otra cifra). Con la <b>resolución</b> es
+    distinto: si creaste a propósito una secuencia a <b>1080</b> partiendo de clips 4K, <b>no</b> dejes
+    que ese aviso te devuelva a 4K —esa diferencia es una decisión tuya, no un error—. Crear la
+    secuencia desde el clip evita el lío de raíz cuando sí quieres que todo coincida.</p>
   </div>
 
   <h3 id="pistas">Pistas de vídeo y de audio</h3>
@@ -308,14 +311,18 @@
   quedarse en blanco mirando la timeline vacía? Con un método. Este, en concreto, es el que usan los
   montadores de piezas cortas de viaje y es casi imposible que salga mal.</p>
 
-  <h3 id="musica-primero">Paso 1: la música como esqueleto</h3>
+  <h3 id="musica-primero">Paso 1: el esqueleto sonoro (música, o voz/ambiente)</h3>
 
-  <p>Contra la intuición, <b>no empieces por la imagen</b>. Empieza por la <b>música</b>: arrástrala a
-  la pista de audio primero. La canción marca la duración, la energía y el ritmo de toda la pieza, y
-  es infinitamente más fácil colocar imagen sobre una música que existe que al revés. Reprodúcela y
-  <b>marca los beats</b> importantes —los golpes, los cambios, el momento en que entra el estribillo—
-  poniendo <b>marcadores</b> en la timeline con la tecla <kbd>M</kbd> mientras suena. Esos marcadores
-  serán los sitios donde harás coincidir tus cortes. Ya tienes el esqueleto.</p>
+  <p>Contra la intuición, <b>no empieces por la imagen</b>: empieza por el <b>esqueleto sonoro</b>, y
+  cuál sea depende de la pieza. En un vídeo de viaje <b>guiado por música</b> —lo más común— ese
+  esqueleto es la <b>canción</b>: arrástrala a la pista de audio primero. Marca la duración, la energía
+  y el ritmo de toda la pieza, y es infinitamente más fácil colocar imagen sobre una música que existe
+  que al revés. Reprodúcela y <b>marca los beats</b> importantes —los golpes, los cambios, el momento
+  en que entra el estribillo— poniendo <b>marcadores</b> en la timeline con la tecla <kbd>M</kbd>
+  mientras suena; esos marcadores serán los sitios donde harás coincidir tus cortes. Si en cambio tu
+  pieza la manda la <b>voz</b> (una narración, una entrevista) o el <b>sonido ambiente</b>, el
+  esqueleto es ese audio: colócalo primero y monta la imagen sobre lo que se cuenta, no sobre un beat.
+  En ambos casos, al terminar este paso ya tienes el esqueleto.</p>
 
   <h3 id="radio-edit">Paso 2: el primer ensamblaje de tus mejores planos</h3>
 
@@ -553,8 +560,8 @@
 
   <div class="setting-card">
     <span class="s-name">Archivo maestro (para guardar)</span>
-    <span class="s-value">Códec mezzanine intraframe: ProRes 422 HQ (o DNxHR HQ) · 10 bits · Rec.709 · audio PCM sin comprimir</span>
-    <span class="s-why">Por qué: un archivo maestro debe ser un códec <b>intraframe de baja pérdida</b> (ProRes/DNxHR), no otro H.264/H.265 comprimido que se degrada al reexportar. Los 10 bits y Rec.709 conservan el color de tu grado, y el audio sin comprimir (PCM/WAV) evita pérdidas. De este maestro sacas luego las versiones de cada plataforma sin reabrir el proyecto ni recomprimir sobre comprimido.</span>
+    <span class="s-value">Códec mezzanine intraframe: ProRes 422 HQ (o DNxHR HQX para fuentes de 10 bits) · Rec.709 · audio PCM sin comprimir</span>
+    <span class="s-why">Por qué: un archivo maestro debe ser un códec <b>intraframe de baja pérdida</b> (ProRes/DNxHR), no otro H.264/H.265 comprimido que se degrada al reexportar. Elige una variante que conserve la profundidad de color de tu grado: <b>ProRes 422 HQ</b>, o —si vas por DNxHR— <b>HQX</b>, que es el de mayor profundidad; evita <b>DNxHR HQ</b>, que es de 8 bits y estrecha el color de una fuente de 10 bits. El audio sin comprimir (PCM/WAV) evita pérdidas. De este maestro sacas luego las versiones de cada plataforma sin reabrir el proyecto ni recomprimir sobre comprimido.</span>
   </div>
 
   <div class="callout tip" data-title="Qué NO tocar si no lo dominas">
@@ -603,11 +610,11 @@
     <label><input type="checkbox" data-id="review"><span>Revisar en el Source Monitor y marcar I/O de los mejores fragmentos ANTES de la timeline</span></label>
     <label><input type="checkbox" data-id="proxies"><span>Generar proxies si el 4K va a tirones (Ingest al importar o después)</span></label>
     <label><input type="checkbox" data-id="secuencia"><span>Crear la secuencia desde un clip para que herede 4K/25p (la secuencia manda)</span></label>
-    <label><input type="checkbox" data-id="musica"><span>Música primero como esqueleto; marcar los beats con <kbd>M</kbd></span></label>
-    <label><input type="checkbox" data-id="radioedit"><span>Radio edit: mejores planos en orden narrativo, historia antes que ritmo</span></label>
+    <label><input type="checkbox" data-id="musica"><span>Esqueleto sonoro primero: la música (marcar beats con <kbd>M</kbd>) o, si mandan voz/ambiente, esa pista de audio</span></label>
+    <label><input type="checkbox" data-id="radioedit"><span>Ensamblaje (assembly/stringout): mejores planos en orden narrativo, historia antes que ritmo</span></label>
     <label><input type="checkbox" data-id="ritmo"><span>Afinar los cortes al ritmo; cortar más de lo que crees (clips de 2-4 s)</span></label>
     <label><input type="checkbox" data-id="audio"><span>Audio: niveles a oído con el medidor de nivel, ducking, transiciones y ambiente de fondo</span></label>
-    <label><input type="checkbox" data-id="color"><span>Color en Lumetri: LUT técnica F-Log2 → balance con scopes → look → coherencia entre clips</span></label>
+    <label><input type="checkbox" data-id="color"><span>Color en Lumetri: normaliza el F-Log2 (LUT técnica O gestión de color, nunca las dos) → balance con scopes → look → coherencia entre clips</span></label>
     <label><input type="checkbox" data-id="export"><span>Exportar con el preset del destino (YouTube, Reels) y guardar un archivo maestro</span></label>
   </div>
 
@@ -619,7 +626,7 @@
     (repasa <a href="11-tipos-de-plano.html#plano-general">tipos de plano</a> si lo necesitas), a 25p,
     algunos en Eterna y alguno en F-Log2 para practicar el color. Elige <b>una canción</b> de unos 60
     segundos. Ahora monta la pieza completa aplicando el flujo entero de la checklist: carpetas, bins,
-    revisión con I/O, secuencia desde clip, música como esqueleto, radio edit, cortes al beat, una
+    revisión con I/O, secuencia desde clip, esqueleto sonoro, ensamblaje, cortes al beat, una
     mezcla de audio decente y un pase de color. Exporta una versión <b>horizontal para YouTube</b> y una
     <b>vertical para Reels</b> del mismo montaje. Criterio de éxito: que un amigo lo vea entero sin
     aburrirse y no sepa decir por qué le ha gustado. Ese «no sé por qué» es el montaje bien hecho.</p>
@@ -651,7 +658,7 @@
   <details class="callout faq">
     <summary>Grabé mezclando Eterna y F-Log2. ¿Puedo montarlos juntos?</summary>
     <div class="co-body"><p>Sí, sin problema; entran en la misma secuencia. La diferencia está en el
-    color: los de <b>F-Log2</b> necesitan la LUT técnica y un pase de corrección para verse normales,
+    color: los de <b>F-Log2</b> hay que normalizarlos (con la LUT técnica <b>o</b> con la gestión de color, no las dos) y darles un pase de corrección para verse normales,
     mientras que los de <b>Eterna</b> ya vienen bonitos. El trabajo, entonces, es <b>igualarlos</b>: usa
     la Comparison View para que los planos de F-Log2, una vez corregidos, tengan el mismo aire que los de
     Eterna (o al revés). Con un poco de look común encima, nadie notará que salieron de dos perfiles
@@ -665,8 +672,9 @@
     8 bits o MP4, en modos ALL-I o Long GOP. Comprueba las propiedades del clip antes de nada. Los
     archivos H.265 10 bits son preciosos y compactos, pero durísimos de reproducir en edición. Dos
     herramientas los domestican y las tienes en
-    este capítulo: los <b>proxies</b> (para que el montaje vaya fluido pese al códec pesado) y la <b>LUT
-    oficial F-Log2 → Rec.709 de Fujifilm</b> (para devolver el color a los clips grabados en log). Con
+    este capítulo: los <b>proxies</b> (para que el montaje vaya fluido pese al códec pesado) y la
+    <b>normalización del log</b> —la LUT oficial F-Log2 → Rec.709 de Fujifilm <b>o</b> la gestión de
+    color de Premiere, una de las dos— para devolver el color a los clips grabados en log. Con
     esas dos piezas, el material más exigente de la cámara se monta con la misma soltura que un vídeo de
     móvil. Y recuerda el atajo de siempre: lo que grabaste en <b>Eterna</b> se salta casi todo el trabajo
     de color.</p>
@@ -682,12 +690,12 @@
       de tocar la timeline, y crea <b>proxies</b> si el 4K va a tirones.</li>
       <li>Crea la <b>secuencia desde un clip</b> para heredar 4K/25p: la secuencia manda. Domina cuatro
       gestos —arrastrar, recortar, cortar, ripple delete— y un puñado de atajos.</li>
-      <li>Monta por método: <b>música primero</b>, <b>radio edit</b> narrativo, <b>cortes al ritmo</b>, y
-      corta más de lo que crees (clips de 2-4 s).</li>
+      <li>Monta por método: <b>esqueleto sonoro primero</b> (música, o voz/ambiente), <b>ensamblaje</b>
+      narrativo, <b>cortes al ritmo</b>, y corta más de lo que crees (clips de 2-4 s).</li>
       <li><b>Audio</b> a oído con el medidor de nivel (voz ≈ −12 a −6 dBFS, música por debajo; para entrega, sonoridad en LUFS), ducking,
       transiciones Constant Power y ambiente de fondo como pegamento.</li>
-      <li><b>Color</b> en Lumetri y en orden: LUT técnica → balance con scopes → look creativo →
-      coherencia entre clips. Eterna casi no pide nada.</li>
+      <li><b>Color</b> en Lumetri y en orden: normaliza el F-Log2 (LUT técnica <b>o</b> gestión de
+      color) → balance con scopes → look creativo → coherencia entre clips. Eterna casi no pide nada.</li>
       <li><b>Exporta</b> con el preset del destino (YouTube horizontal, Reels vertical con el open gate a
       tu favor) y guarda un archivo maestro; VBR 2 pasos sí, misterios del códec no.</li>
     </ul>

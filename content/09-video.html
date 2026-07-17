@@ -143,11 +143,31 @@
   el tiempo se dilata suavemente. Ese es el truco de todo el <i>slow-motion</i>, y por eso 50 y
   120 fps son tan valiosos aunque tu proyecto sea de 25.</p>
 
+  <div class="callout gear" data-title="HIGH SPEED REC: cómo se traduce a cámara lenta">
+    <p>Los fps muy altos (100/120/200/240) se graban con <code>HIGH SPEED REC</code>: la cámara
+    captura deprisa pero <b>guarda el clip ya marcado para reproducirse a una base normal</b>, así
+    que la ralentización sale del cociente entre lo capturado y lo reproducido. Sobre una base de
+    <b>25p</b>:</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Capturas a</th><th>Se reproduce a 25p</th><th>Ralentización</th></tr></thead>
+      <tbody>
+        <tr><td>100 fps</td><td>25p</td><td>4× (25 %)</td></tr>
+        <tr><td>120 fps</td><td>25p</td><td>4,8× (~21 %)</td></tr>
+        <tr><td>200 fps</td><td>25p</td><td>8× (12,5 %)</td></tr>
+        <tr><td>240 fps</td><td>25p</td><td>9,6× (~10 %)</td></tr>
+      </tbody>
+    </table></div>
+    <p>La alta velocidad tiene su letra pequeña: es <b>solo 1080</b>, <b>sin audio</b>, con un
+    <b>recorte de ~1,29×</b> y muy exigente con la luz (cada foto dura poquísimo). Y no puedes
+    apilarle encima la estabilización digital: el <b>DIS no está disponible</b> en este modo (te
+    quedan IBIS/OIS y una mano firme).</p>
+  </div>
+
   <div class="table-wrap"><table>
     <thead><tr><th>fps</th><th>De dónde viene</th><th>Se siente como</th><th>Úsalo para</th></tr></thead>
     <tbody>
       <tr><td><strong>24</strong></td><td>Cine (celuloide)</td><td>«Película», ligero parpadeo del movimiento</td><td>Look cinematográfico deliberado</td></tr>
-      <tr><td><strong>25</strong></td><td>TV europea (PAL, 50 Hz)</td><td>Prácticamente cine, sin parpadeos en Europa</td><td><b>Tu base en España</b>: viaje, entrega general</td></tr>
+      <tr><td><strong>25</strong></td><td>TV europea (PAL, 50 Hz)</td><td>Prácticamente cine; menos riesgo de parpadeo en Europa</td><td><b>Tu base en España</b>: viaje, entrega general</td></tr>
       <tr><td><strong>30</strong></td><td>TV americana (NTSC, 60 Hz)</td><td>Algo más «vídeo», fluido</td><td>Contenido de web / redes de origen USA</td></tr>
       <tr><td><strong>50 / 60</strong></td><td>Doble de la base</td><td>Muy suave, «hiperreal»</td><td>Deportes, acción; y sobre todo cámara lenta 2×</td></tr>
       <tr><td><strong>100 / 200</strong></td><td>Alta velocidad (solo 1080, sin audio, recorte ~1,29×)</td><td>—</td><td>Slow-motion; en Europa casan con 50 Hz</td></tr>
@@ -161,7 +181,7 @@
     <p>Monta tu proyecto en una <b>timeline a 25 fps</b> y graba a <b>25</b> para velocidad
     normal o a <b>50</b> cuando prevés que querrás cámara lenta 2× (50 entra clavado en 25).
     Así todo casa: el mismo montaje mezcla clips normales y ralentizados sin conversiones
-    raras, y —clave— evitas el problema de las luces que viene ahora. Deja 24 y 30 para cuando
+    raras, y —clave— reduces el riesgo del problema de las luces que viene ahora. Deja 24 y 30 para cuando
     tengas una razón concreta (un look muy de cine, o material que va a EE. UU.).</p>
   </div>
 
@@ -330,10 +350,10 @@
   saber qué hace cada una y, sobre todo, qué <b>no</b> hace.</p>
 
   <ul>
-    <li><b>IS Mode (IBIS) normal.</b> El sensor flota y compensa las vibraciones. Es tu opción
+    <li><b>F IS MODE en IBIS/OIS (normal).</b> El sensor flota y compensa las vibraciones. Es tu opción
     por defecto para grabar a pulso: suaviza el temblor sin recortar la imagen. No toca tu
     encuadre ni tu calidad.</li>
-    <li><b>IS Boost.</b> Un modo pensado para <b>planos fijos a pulso</b>: bloquea la imagen con
+    <li><b>F IS MODE BOOST.</b> Un ajuste pensado para <b>planos fijos a pulso</b>: bloquea la imagen con
     fuerza extra, como si estuvieras en un mini-trípode. Ideal para un plano de una fachada, un
     detalle, una entrevista quieta. El precio: si te mueves (andando), lucha contra ti y produce
     tirones raros. Úsalo cuando quieras <b>quietud</b>, no cuando camines.</li>
@@ -350,7 +370,7 @@
     o parar un <a href="10-movimientos-de-camara.html#pan">paneo</a>. No es una ley absoluta —según el
     soporte, el objetivo y el movimiento, a veces conviene dejar algo puesto—, así que la regla real
     es: <b>desactívala si notas deriva o rebote</b>, y en paneos mantén al menos
-    <code>IS MODE BOOST</code> apagado. El detalle de qué capa usar en cada movimiento está en el
+    <code>F IS MODE BOOST</code> apagado. El detalle de qué capa usar en cada movimiento está en el
     <a href="10-movimientos-de-camara.html#la-xs20-en-movimiento">capítulo de movimientos</a>.</p>
   </div>
 
@@ -472,11 +492,12 @@
   problemas, deja margen para recortar y estabilizar en edición, y no infla los archivos como
   el 6.2K. Reserva el <i>open gate</i> para cuando de verdad vayas a entregar en vertical y
   horizontal, y el 1080 para las cámaras lentas de alta velocidad. Un detalle a tener en cuenta:
-  el <b>recorte del sensor cambia según el modo</b>. El 6.2K open gate usa todo el sensor; el 4K a
-  25/30p usa <b>casi</b> todo el ancho (un recorte muy leve); el <b>4K a 60p</b> recorta bastante más
-  (usa una zona más central, y tu gran angular pierde campo); y activar el <b>DIS</b> añade su propio
-  recorte encima. Si el ángulo ancho es crítico, comprueba el encuadre en el modo concreto que vayas a
-  usar en vez de darlo por hecho.</p>
+  el <b>recorte del sensor cambia según el modo de grabación</b>, y no depende de un solo factor:
+  influyen la resolución, los fps, el códec y —encima de todo eso— la estabilización digital
+  (<b>DIS</b>), que añade su propio recorte. El 6.2K open gate aprovecha todo el sensor; a partir de
+  ahí, los modos más exigentes tienden a recortar y tu gran angular pierde campo. En vez de fiarte
+  de una tabla mental, si el ángulo ancho es crítico <b>comprueba el encuadre en el modo concreto que
+  vayas a usar</b> (con y sin DIS) antes de dar el plano por bueno.</p>
 
   <!-- ============================================================ -->
   <h2 id="bitrate">El bitrate: por qué manda más que la resolución</h2>
@@ -823,11 +844,14 @@
   <div class="callout gear" data-title="Exponer F-Log2 en la X-S20: hacia la derecha">
     <p>El log revela más ruido al levantar sombras, así que conviene <b>exponer generoso</b> (algo a
     la derecha, como el <a href="05-exposicion.html#ettr">ETTR</a> de foto) y bajar luego en el gradeo.
-    Pero «a la derecha» necesita una referencia medible, no el ojo: en F-Log2, Fujifilm sitúa el
-    <b>gris medio 18 %</b> en torno a <b>38 IRE</b> y el blanco del 90 % sobre 58 IRE. Ponte ese
-    objetivo con el <b>histograma</b> o el <b>waveform</b>, y usa el <b>zebra</b> para vigilar las
-    altas luces a punto de quemar. Recuerda el ISO base 1250: por debajo no puedes bajar, así que en
-    interiores oscuros F-Log2 quizá no sea tu amigo.</p>
+    «A la derecha» pide una referencia, no el ojo. Fujifilm da una guía numérica para F-Log2 —el
+    <b>gris medio 18 %</b> cae en torno a <b>38 IRE</b> y el blanco del 90 % sobre 58 IRE—, pero esos
+    valores se leen en un <b>waveform</b>, y la X-S20 <b>no tiene waveform ni escala IRE</b> internos:
+    los verás en un <b>monitor externo</b> o ya en el <b>ordenador</b>. En cámara te apoyas en dos
+    comprobaciones aproximadas: el <b>histograma</b> (que la masa de tonos no choque contra ningún
+    extremo) y el <b>zebra</b>, que aquí va de <b>50 a 100 en pasos de 5</b> —ponlo alto (p. ej. 100)
+    para cazar las altas luces a punto de quemar—. Recuerda el ISO base 1250: por debajo no puedes
+    bajar, así que en interiores oscuros F-Log2 quizá no sea tu amigo.</p>
   </div>
 
   <div class="callout error" data-title="Error común: grabar en F-Log2 sin saber (ni querer) gradear">
@@ -886,9 +910,11 @@
   <!-- ============================================================ -->
   <h2 id="proxy">Proxies y el flujo de edición</h2>
 
-  <p>Ahora se cierra el círculo del que hablamos en códecs. El <b>H.265 en 4K a 10 bits</b> es
-  precioso y compacto, pero <b>durísimo de decodificar</b>: cada fotograma que el ordenador
-  muestra hay que reconstruirlo desde su keyframe. En reproducción normal, tu ordenador tira; en
+  <p>Ahora se cierra el círculo del que hablamos en códecs. El <b>H.265 en 4K a 10 bits</b> grabado
+  en <b>Long GOP</b> es precioso y compacto, pero <b>durísimo de decodificar</b>: como casi ningún
+  fotograma se guarda completo, para mostrar uno intermedio el ordenador tiene que reconstruirlo desde
+  su fotograma de referencia y los cambios acumulados. (En <b>ALL-I</b> cada fotograma es
+  independiente y se decodifica solo, a cambio de archivos mucho mayores.) En reproducción normal, tu ordenador tira; en
   <b>edición</b> —saltando, cortando, con varias capas y efectos— un portátil modesto se ahoga,
   la reproducción va a tirones y trabajar se vuelve un suplicio. No es que tu ordenador esté
   «roto»: es que le estás pidiendo un cálculo brutal en tiempo real.</p>
@@ -981,26 +1007,26 @@
 
   <div class="setting-card">
     <span class="s-name">Clip base de viaje (Eterna)</span>
-    <span class="s-value">UHD 4K · 25p · 1/50 · H.265 10-bit · Eterna · WB fijo (~5500 K) · AF-C + cara · ND de día · IS MODE IBIS/OIS</span>
-    <span class="s-why">Por qué: 25p casa con Europa y 1/50 clava los 180°; el ND te deja mantener ambos a pleno sol. WB <b>fijo</b> (no auto) para que el color no flote entre planos; AF-C con detección de cara para sujetos en movimiento; audio a picos de −12 dBFS. Si vas a <b>caminar</b>, pasa IS MODE a IBIS/OIS + DIS (asume recorte).</span>
+    <span class="s-value">Dial en <b>Movie</b> · UHD 4K · 25p · 1/50 · H.265 10-bit 4:2:0 · Long GOP (~100–200 Mbps) · Eterna · WB fijo (~5500 K) · AF-C + detección de cara · audio a picos ~−12 dBFS · F IS MODE IBIS/OIS · ND de día</span>
+    <span class="s-why">Por qué: 25p casa con Europa y 1/50 clava los 180°; el ND te deja mantener ambos a pleno sol. WB <b>fijo</b> (no auto) para que el color no flote entre planos; AF-C con detección de cara para sujetos en movimiento. Long GOP para que pese poco (el material «bonito de salida» no necesita ALL-I). Empieza el audio con los picos hacia −12 dBFS y ajusta. Si vas a <b>caminar</b>, pasa F IS MODE a IBIS/OIS + DIS (asume recorte).</span>
   </div>
 
   <div class="setting-card">
     <span class="s-name">Clip base para gradear (F-Log2)</span>
-    <span class="s-value">UHD 4K · 25p · 1/50 · H.265 10-bit 4:2:2 · F-Log2 · WB fijo · gris 18 % ≈ 38 IRE · F-Log VIEW ASSIST · ND de día</span>
-    <span class="s-why">Por qué: mismo esqueleto que el base, pero en F-Log2 para exprimir escenas contrastadas. Usa 4:2:2 10 bits si harás recortes de color fuertes, expón por IRE (no a ojo) y previsualiza con F-Log VIEW ASSIST. Solo si de verdad vas a gradear; si no, la receta Eterna de arriba.</span>
+    <span class="s-value">Dial en <b>Movie</b> · UHD 4K · 25p · 1/50 · H.265 10-bit 4:2:2 · Long GOP (~200 Mbps; ALL-I si tu equipo lo pide) · F-Log2 · WB fijo · AF-C + cara · audio ~−12 dBFS · exponer a la derecha con histograma + zebra · F-Log VIEW ASSIST · F IS MODE IBIS/OIS · ND de día</span>
+    <span class="s-why">Por qué: mismo esqueleto que el base, pero en F-Log2 para exprimir escenas contrastadas. Usa 4:2:2 10 bits si harás recortes de color fuertes, expón generoso apoyándote en histograma y zebra (la referencia fina de IRE la verás en el ordenador o en un monitor externo, no en la cámara) y previsualiza con F-Log VIEW ASSIST. Solo si de verdad vas a gradear; si no, la receta Eterna de arriba.</span>
   </div>
 
   <div class="setting-card">
     <span class="s-name">Cámara lenta</span>
-    <span class="s-value">4K 50p → 1/100 · o 1080 120p → 1/250 · timeline a 25p · ralentizar a 50 % (o ~21 %)</span>
-    <span class="s-why">Por qué: grabas a más fps y lo estiras en una timeline de 25 para una ralentización fluida (50p → 50 %; 120p → ~21 %). Cada régimen tiene su obturación de 180°: <b>1/100 para 50 fps</b> y <b>1/250 para 120 fps</b> —no las mezcles—. Necesitas más luz (cada foto dura menos): abre apertura o sube ISO. El 120p es alta velocidad (1080, sin audio, recorte ~1,29×).</span>
+    <span class="s-value">Dial en <b>Movie</b> · 4K 50p → 1/100 · o 1080 120p (HIGH SPEED REC) → 1/250 · H.265 10-bit · Long GOP · WB fijo · AF-C · timeline a 25p · ralentizar a 50 % (o ~21 %) · F IS MODE IBIS/OIS</span>
+    <span class="s-why">Por qué: grabas a más fps y lo estiras en una timeline de 25 para una ralentización fluida (50p → 50 %; 120p → ~21 %). Cada régimen tiene su obturación de 180°: <b>1/100 para 50 fps</b> y <b>1/250 para 120 fps</b> —no las mezcles—. Necesitas más luz (cada foto dura menos): abre apertura o sube ISO. El 120p es alta velocidad (1080, <b>sin audio</b>, recorte ~1,29× y <b>sin DIS</b>); el 50p sí graba sonido.</span>
   </div>
 
   <div class="setting-card">
     <span class="s-name">Interior de noche</span>
-    <span class="s-value">UHD 4K · 25p · 1/50 · Eterna · ISO fijo medido (o AUTO) · IS MODE IBIS/OIS (+ BOOST si plano fijo)</span>
-    <span class="s-why">Por qué: con poca luz, F-Log2 (mínimo ISO 1250) obliga a subexponer y el ruido aflora al levantar sombras; Eterna, con un ISO más bajo bien elegido, rinde mejor. En vídeo la X-S20 <b>no</b> tiene el «techo» de Auto ISO de foto: o fijas un ISO medido (lo ideal, para controlar el ruido) o dejas ISO AUTO asumiendo que puede dispararse. 25p reduce el banding de las luces de 50 Hz. Plano fijo, IS MODE BOOST; si andas, IBIS/OIS.</span>
+    <span class="s-value">Dial en <b>Movie</b> · UHD 4K · 25p · 1/50 · H.265 10-bit 4:2:0 · Long GOP · Eterna · ISO fijo medido (o AUTO) · WB fijo · AF-C + cara · audio ~−12 dBFS · F IS MODE IBIS/OIS (+ BOOST si plano fijo)</span>
+    <span class="s-why">Por qué: con poca luz el problema no es la ganancia, es la falta de fotones. El ISO base 1250 de F-Log2 no te deja bajar la ganancia, así que en interiores oscuros arrancas ya alto y, al levantar sombras después, la poca señal capturada saca el ruido; Eterna, que puede partir de un ISO más bajo bien elegido, te da más margen. En vídeo la X-S20 <b>no</b> tiene el «techo» de Auto ISO de foto: o fijas un ISO medido (lo ideal, para controlar el ruido) o dejas ISO AUTO asumiendo que puede dispararse. 25p reduce el riesgo de banding de las luces de 50 Hz. Plano fijo, F IS MODE BOOST; si andas, IBIS/OIS.</span>
   </div>
 
   <!-- ============================================================ -->
@@ -1096,7 +1122,7 @@
   <details class="callout faq">
     <summary>Mi portátil va a tirones al editar el 4K de la X-S20. ¿Está roto?</summary>
     <div class="co-body">
-      <p>No: es el <b>H.265 10 bits</b> exigiendo mucho al descomprimir cada fotograma en tiempo real.
+      <p>No: es el <b>H.265 10 bits en Long GOP</b> exigiendo mucho al reconstruir cada fotograma en tiempo real.
       La solución no es bajar la calidad de grabación, sino <b>generar proxies</b> al importar y editar
       con ellos; al exportar, el programa vuelve solo a los originales. Lo tienes paso a paso en
       <a href="14-premiere.html#el-proyecto">Premiere</a>. Con proxies, hasta un portátil modesto edita
@@ -1113,16 +1139,20 @@
       <li><b>Regla de los 180°:</b> obturación ≈ 1/(2×fps). A 25p → <b>1/50</b>. El desenfoque de
       movimiento es una <b>textura deseable</b>, no un error. Si sobra luz, <b>filtro ND</b>, no
       acelerar.</li>
-      <li>El <b>IBIS</b> calma el temblor continuo; <b>IS Boost</b> para plano fijo, <b>DIS</b>
+      <li>El <b>IBIS</b> calma el temblor continuo; <b>F IS MODE BOOST</b> para plano fijo, <b>DIS</b>
       recorta. El <b>rolling shutter</b> se doma moviendo la cámara despacio.</li>
       <li>El <b>bitrate</b> (Mbps) sostiene la calidad en movimiento más que la resolución; la X-S20
-      llega a 360 Mbps (V90). Los <b>códecs</b> comprimen guardando keyframes + deltas: H.265 pesa
-      menos pero cuesta editar.</li>
-      <li><b>4:2:2 10 bits</b> (que da la X-S20) = más color y sin banding, indispensable para gradear.
+      llega a 360 Mbps (V90). Los <b>códecs</b> pueden guardar en <b>Long GOP</b> (keyframes + deltas:
+      pesa menos, pero para mostrar un fotograma hay que reconstruirlo) o en <b>ALL-I</b> (cada
+      fotograma completo e independiente: pesa más, edita mejor).</li>
+      <li>Separa dos parámetros distintos: el <b>submuestreo</b> (4:2:2 guarda el doble de detalle de
+      color que 4:2:0) y la <b>profundidad</b> (10 bits dan 1.024 niveles por canal y <b>reducen el
+      riesgo</b> de banding en los degradados). La X-S20 graba <b>4:2:2 a 10 bits</b> interno.
       <b>F-Log2</b> aplana para conservar ≈13+ pasos, con ISO base <b>1250</b> y obligación de
       gradear; si no vas a hacerlo, <b>Eterna</b> es la vía honesta.</li>
-      <li>Las <b>LUTs</b> son tablas de traducción de color: la técnica (F-Log2→Rec.709) es obligatoria
-      con log; la creativa, opcional y después. Primero <b>corregir</b>, luego <b>gradear</b>. Los
+      <li>Las <b>LUTs</b> son tablas de traducción de color. Con log hay que <b>normalizar</b> sí o sí
+      —por LUT técnica (F-Log2→Rec.709) <i>o</i> por gestión de color, nunca las dos a la vez—; el look
+      creativo es opcional y va después. Primero <b>corregir</b>, luego <b>gradear</b>. Los
       <b>proxies</b> salvan la edición de H.265.</li>
     </ul>
   </div>

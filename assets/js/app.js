@@ -27,7 +27,7 @@
      storage deshabilitado), degradamos a memoria de sesión y la UI de
      notas avisa de que no hay persistencia en lugar de fingirla. */
   const memStore = {};
-  const storageOK = (() => {
+  let storageOK = (() => {
     try {
       localStorage.setItem('xs20:probe', '1');
       localStorage.removeItem('xs20:probe');
@@ -36,18 +36,28 @@
   })();
 
   const store = {
-    ok: storageOK,
+    /* mutable: si un setItem tardío falla (cuota, modo privado), el backend
+       pasa a memoria y las lecturas siguen viendo lo último escrito */
+    get ok() { return storageOK; },
     get(key, fallback) {
       try {
-        const raw = storageOK ? localStorage.getItem('xs20:' + key) : (memStore[key] ?? null);
-        return raw === null || raw === undefined ? fallback : JSON.parse(raw);
+        if (key in memStore) return JSON.parse(memStore[key]);
+        if (!storageOK) return fallback;
+        const raw = localStorage.getItem('xs20:' + key);
+        return raw === null ? fallback : JSON.parse(raw);
       } catch { return fallback; }
     },
     set(key, value) {
       const raw = JSON.stringify(value);
-      if (!storageOK) { memStore[key] = raw; return false; }
-      try { localStorage.setItem('xs20:' + key, raw); return true; }
-      catch { memStore[key] = raw; return false; }
+      if (storageOK) {
+        try {
+          localStorage.setItem('xs20:' + key, raw);
+          delete memStore[key];
+          return true;
+        } catch { storageOK = false; }
+      }
+      memStore[key] = raw;
+      return false;
     },
   };
 
@@ -578,8 +588,10 @@
     const index = window.SEARCH_INDEX || [];
     const terms = norm(q).split(/\s+/).filter(Boolean);
     if (!terms.length) {
+      resultsEl.setAttribute('role', 'status');
       resultsEl.innerHTML = '<div class="search-empty">Escribe para buscar en los ' + GUIDE.flat.length + ' capítulos del manual.</div>';
       hits = [];
+      input.removeAttribute('aria-activedescendant');
       return;
     }
     hits = [];
@@ -605,9 +617,12 @@
 
   function renderHits(terms) {
     if (!hits.length) {
+      resultsEl.setAttribute('role', 'status');
       resultsEl.innerHTML = '<div class="search-empty">Sin resultados. Prueba con otro término, o consulta el <a href="' + ROOT + 'content/glosario.html">glosario</a>.</div>';
+      input.removeAttribute('aria-activedescendant');
       return;
     }
+    resultsEl.setAttribute('role', 'listbox');
     resultsEl.innerHTML = '';
     hits.forEach((h, i) => {
       const ch = GUIDE.byId[h.entry.c];
@@ -616,6 +631,7 @@
       a.className = 'search-hit' + (i === sel ? ' sel' : '');
       a.id = 'search-hit-' + i;
       a.setAttribute('role', 'option');
+      a.setAttribute('tabindex', '-1');
       a.setAttribute('aria-selected', String(i === sel));
       a.href = urlOf(ch) + (h.entry.h ? '#' + h.entry.h : '');
       a.innerHTML = `
@@ -639,7 +655,12 @@
 
   function openSearch() {
     searchOpener = document.activeElement;
+    if (openPanel) togglePanel(openPanel, false);
+    /* fondo inerte: el diálogo es realmente modal para teclado y AT */
+    app.inert = true;
+    toTop.inert = true;
     overlay.classList.add('open');
+    input.setAttribute('aria-expanded', 'true');
     input.value = '';
     runSearch('');
     setTimeout(() => input.focus(), 30);
@@ -647,6 +668,11 @@
   function closeSearch() {
     if (!overlay.classList.contains('open')) return;
     overlay.classList.remove('open');
+    app.inert = false;
+    toTop.inert = false;
+    syncSidebarA11y(); /* restaura el inert del cajón móvil si estaba cerrado */
+    input.setAttribute('aria-expanded', 'false');
+    input.removeAttribute('aria-activedescendant');
     if (searchOpener && document.body.contains(searchOpener)) searchOpener.focus();
     searchOpener = null;
   }
@@ -684,6 +710,8 @@
   function syncSidebarA11y() {
     const open = sidebar.classList.contains('open');
     sidebar.inert = drawerMq.matches && !open;
+    /* con el cajón abierto, el contenido de detrás del scrim queda inerte */
+    main.inert = drawerMq.matches && open;
     if (menuToggleBtn) {
       menuToggleBtn.setAttribute('aria-expanded', String(open));
       menuToggleBtn.setAttribute('aria-label', open ? 'Cerrar índice' : 'Abrir índice');

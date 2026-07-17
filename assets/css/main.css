@@ -112,7 +112,8 @@
   --on-accent: #ffffff;
   --rec: #b91c1c;
   /* Texto de parte legible sobre fondos claros */
-  --part-fg: color-mix(in srgb, var(--part) 52%, #1c1e21);
+  --part-fg: color-mix(in srgb, var(--part) 42%, #16181c);
+  --dg-accent: var(--part-fg);
   /* Diagramas sobre superficie clara */
   --dg-line: #5f6771;
   --dg-line-soft: #c6c2b9;
@@ -684,14 +685,14 @@ kbd, .kbd-hint {
 .callout.faq      { --co: #fbbf24; }  /* Pregunta frecuente */
 .callout.gear     { --co: #2dd4bf; }  /* Equipo / X-S20 en concreto */
 
-:root[data-theme="light"] .callout.tip      { --co: #16a34a; }
-:root[data-theme="light"] .callout.error    { --co: #dc2626; }
-:root[data-theme="light"] .callout.exercise { --co: #2563eb; }
-:root[data-theme="light"] .callout.challenge{ --co: #9333ea; }
-:root[data-theme="light"] .callout.fact     { --co: #0891b2; }
-:root[data-theme="light"] .callout.summary  { --co: #64748b; }
-:root[data-theme="light"] .callout.faq      { --co: #d97706; }
-:root[data-theme="light"] .callout.gear     { --co: #0d9488; }
+:root[data-theme="light"] .callout.tip      { --co: #166534; }
+:root[data-theme="light"] .callout.error    { --co: #b91c1c; }
+:root[data-theme="light"] .callout.exercise { --co: #1d4ed8; }
+:root[data-theme="light"] .callout.challenge{ --co: #7e22ce; }
+:root[data-theme="light"] .callout.fact     { --co: #0e7490; }
+:root[data-theme="light"] .callout.summary  { --co: #475569; }
+:root[data-theme="light"] .callout.faq      { --co: #92400e; }
+:root[data-theme="light"] .callout.gear     { --co: #0f766e; }
 
 /* FAQ plegable */
 details.callout.faq { display: block; }
@@ -859,6 +860,7 @@ figure.diagram svg {
   margin: 1.6rem 0;
 }
 .compare > div { min-width: 0; }
+.compare svg { width: 100%; height: auto; }
 .compare .cmp-label {
   font-family: var(--font-mono);
   font-size: var(--fs-0);
@@ -1508,4 +1510,15 @@ dl.glossary dd {
     color-scheme: light;
   }
   a { color: #14532d; text-decoration: underline; }
+  .callout.tip { --co: #166534; }
+  .callout.error { --co: #991b1b; }
+  .callout.exercise { --co: #1e3a8a; }
+  .callout.challenge { --co: #6b21a8; }
+  .callout.fact { --co: #155e75; }
+  .callout.summary { --co: #374151; }
+  .callout.faq { --co: #78350f; }
+  .callout.gear { --co: #115e59; }
+  .checklist .cl-title { color: #115e59; }
+  .checklist input[type="checkbox"]:checked { background: #115e59; border-color: #115e59; }
+  .roadmap-num { color: #374151; }
 }
