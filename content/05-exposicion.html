@@ -150,10 +150,13 @@
   <p>¿Por qué en pasos y no en porcentajes? Porque nuestra visión es logarítmica: percibimos
   saltos de luz como proporciones, no como sumas. La diferencia entre 100 y 200 fotones se
   nota igual que entre 1.000 y 2.000. Doblar es la unidad natural. Y aquí está la belleza del
-  sistema: los tres controles hablan el mismo idioma. Un paso de apertura, un paso de
-  velocidad y un paso de ISO cambian el brillo exactamente lo mismo. Son <b>intercambiables</b>.
-  Si abres un paso el diafragma y aceleras un paso el obturador, la foto queda igual de
-  brillante: has movido luz de un control al otro sin cambiar la exposición.</p>
+  sistema: los tres controles hablan el mismo idioma para el <b>brillo</b>. Un paso de apertura,
+  un paso de velocidad o un paso de ISO cambian el brillo de salida exactamente lo mismo. Pero no
+  son la misma cosa: solo la apertura y la velocidad cambian la <b>exposición</b> de verdad —la
+  luz que recoge el sensor—; el ISO no toca esa luz, solo amplifica después lo que ya hay. Por
+  eso, si abres un paso el diafragma y aceleras un paso el obturador, la foto queda igual de
+  brillante <i>y</i> con la misma exposición: has movido luz de un control al otro. Subir el ISO
+  también la deja igual de brillante, pero por otra vía —y esa vía la pagas en ruido, como verás—.</p>
 
   <figure class="diagram">
     <svg viewBox="0 0 640 170" role="img" aria-labelledby="d52-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
@@ -325,20 +328,25 @@
     de abajo. Las líneas verticales de un tren en marcha o las aspas de un molino salen
     inclinadas o gelatinosas. Volvemos a esto en <a href="09-video.html#rolling-shutter">vídeo</a>,
     donde importa mucho más.</li>
-    <li><b>Banding con luces LED.</b> Muchas luces LED y fluorescentes parpadean 50 o 60
-    veces por segundo (invisible al ojo). Como el obturador electrónico escanea el sensor
-    poco a poco, capta ese parpadeo como <b>bandas horizontales</b> de brillo distinto. En un
-    interior con LEDs, cambia al obturador mecánico y desaparecen.</li>
+    <li><b>Banding con luces LED.</b> Muchas luces LED y fluorescentes parpadean a un ritmo
+    invisible al ojo —a menudo 100 o 120 veces por segundo (el doble de la red de 50/60 Hz), y
+    con reguladores de intensidad por PWM a frecuencias aún mayores y variables—. Como el
+    obturador electrónico escanea el sensor poco a poco, capta ese parpadeo como <b>bandas
+    horizontales</b> de brillo distinto. Volver al obturador mecánico <b>reduce mucho</b> el
+    problema (y habilita <b>FLICKER REDUCTION</b> en el menú de disparo, que sincroniza la toma
+    con el parpadeo), aunque con una obturación muy rápida las bandas pueden no desaparecer del
+    todo: si insisten, prueba además a bajar la velocidad.</li>
   </ul>
 
   <div class="callout gear" data-title="Qué obturador usar en la X-S20">
     <p>Regla sencilla para viajar: deja el <b>mecánico (MS)</b> como opción por defecto —es
-    fiable y no da banding— y reserva el electrónico para tres casos: silencio absoluto,
+    fiable y no da banding— y reserva el electrónico para dos casos: silencio absoluto, o cuando
     necesitas pasar de 1/4000 (sol fortísimo con el <a href="06-objetivos.html#35mm">35 mm
-    f/1.4</a> abierto), o quieres los tiempos larguísimos sin trípode. En el menú de
-    disparo tienes <b>MS</b>, <b>ES</b> y <b>MS+ES</b> (mecánico que salta a electrónico solo
-    cuando hace falta pasar de 1/4000). Este último modo mixto es un buen «déjalo puesto y
-    olvídate», con la única precaución de los LEDs.</p>
+    f/1.4</a> abierto). Para lo que <b>no</b> sirve el electrónico es para larga exposición: no
+    ofrece modo <b>Bulb</b>, así que para una cascada sedosa o un cielo nocturno tira del
+    <b>mecánico</b>. En el menú de disparo tienes <b>MS</b>, <b>ES</b> y
+    <b>MS+ES</b> (mecánico que salta a electrónico solo cuando hace falta pasar de 1/4000). Este
+    modo mixto es un buen «déjalo puesto y olvídate», con la única precaución de los LEDs.</p>
   </div>
 
   <h3 id="congelar-o-barrer">Congelar o barrer el movimiento</h3>
@@ -368,7 +376,8 @@
 
   <p>Ahora la buena noticia: la X-S20 tiene <b>estabilización en el cuerpo (IBIS)</b> de 5
   ejes, hasta <b>7 pasos</b> según el estándar CIPA. Siete pasos es muchísimo: en teoría te
-  permite bajar de 1/50 s a algo como 1/1 s a pulso y que lo estático siga nítido. En la
+  permite bajar de 1/50 s a algo cercano a <b>2,5 s</b> a pulso (siete duplicaciones del tiempo)
+  y que lo estático siga nítido. En la
   práctica cuenta con menos (3–5 pasos reales según tu firmeza), pero sigue siendo enorme
   para interiores de iglesias, calles al anochecer o esa foto sin trípode que antes era
   imposible.</p>
@@ -416,15 +425,15 @@
       </g>
       <g fill="var(--dg-text)" text-anchor="middle">
         <text x="60"  y="135">f/1.4</text>
-        <text x="170" y="135">f/2.8</text>
-        <text x="280" y="135">f/5.6</text>
-        <text x="390" y="135">f/11</text>
-        <text x="500" y="135">f/22</text>
-        <text x="600" y="135">f/32</text>
+        <text x="170" y="135">f/2</text>
+        <text x="280" y="135">f/2.8</text>
+        <text x="390" y="135">f/4</text>
+        <text x="500" y="135">f/5.6</text>
+        <text x="600" y="135">f/8</text>
       </g>
-      <text x="330" y="20" fill="var(--dg-accent)" text-anchor="middle">← más luz · más agujero        menos luz · más nítido →</text>
+      <text x="330" y="20" fill="var(--dg-accent)" text-anchor="middle">← más luz · más agujero        menos luz · más profundidad de campo →</text>
     </svg>
-    <figcaption><b>Figura 5.5.</b> Cada círculo es un paso respecto al de dos posiciones antes (aquí saltamos de paso en paso completo). El área —no el diámetro— es lo que cuenta la luz.</figcaption>
+    <figcaption><b>Figura 5.5.</b> Cada círculo es <b>un paso completo</b> respecto al anterior: al cerrar un paso, el área del agujero —no el diámetro— se reduce a la mitad. El área es lo que cuenta la luz.</figcaption>
   </figure>
 
   <h3 id="apertura-y-profundidad">El precio: la profundidad de campo</h3>
@@ -497,9 +506,10 @@
 
   <h3 id="el-error-de-subir-en-edicion">El malentendido que cuesta fotos</h3>
 
-  <p>Con esto ya puedes entender algo que confunde a mucha gente. ¿Qué queda mejor: una foto
-  <b>bien expuesta a ISO 3200</b>, o una foto <b>subexpuesta a ISO 160 y aclarada luego en
-  Lightroom</b>? Intuitivamente parece que ISO 160 «siempre es más limpio». Es al revés.</p>
+  <p>Con esto ya puedes entender algo que confunde a mucha gente. ¿Qué queda mejor: recoger toda la luz que puedas y fijar el brillo con
+  <b>ISO 3200 en la cámara</b>, o recoger esa <b>misma luz a ISO 160</b> —con la foto saliendo
+  oscura— y aclararla luego en Lightroom? Intuitivamente parece que ISO 160 «siempre es más
+  limpio». Es al revés.</p>
 
   <p>La clave es que el ruido de disparo lo fija <b>la luz que recogiste</b>, no el ISO. Si
   subexpones, recoges poca luz: la señal en las sombras es débil y llena de ruido de disparo
@@ -517,21 +527,26 @@
   emergencia).</p>
 
   <p>Hay un matiz técnico muy útil de esta generación de sensor. El X-Trans CMOS 4 de 26 MP es
-  un sensor de <b>doble ganancia de conversión</b>: además del amplificador base, tiene un
-  <b>segundo escalón de ganancia que entra en torno a ISO 800</b>. En la práctica esto
-  significa que ISO 800 no es «peor» de lo que cabría esperar por ser cuatro veces la base;
-  a partir de ahí el ruido de lectura vuelve a bajar y el sensor se comporta de forma notablemente
-  limpia. No hace falta que hagas nada especial —la cámara conmuta sola—, pero te da confianza
-  para no tenerle miedo a la franja media-alta de ISO.</p>
+  un sensor de <b>doble ganancia de conversión</b>: además del amplificador base, incorpora un
+  <b>segundo escalón de ganancia</b> que la cámara activa sola al llegar a cierta zona de ISO
+  altos. Fujifilm no publica el punto exacto, así que no te fíes de un número concreto; lo que
+  importa es el efecto: cuando entra ese segundo escalón, el ruido de lectura vuelve a bajar y el
+  sensor se comporta de forma notablemente limpia en la franja media-alta de ISO. No hace falta
+  que hagas nada —la cámara conmuta sola—, pero te da confianza para no tenerle miedo a subir el
+  ISO cuando la escena lo pide.</p>
 
   <div class="callout tip" data-title="Hasta dónde subir el ISO sin miedo en la X-S20">
-    <p>Orientación realista para viaje, revelando en RAW: <b>hasta ISO 1600</b> es
-    prácticamente indistinguible de la base para uso normal. <b>ISO 3200–6400</b> es
-    perfectamente utilizable y lo usarás sin dudar en interiores y de noche; con un poco de
-    reducción de ruido en Lightroom queda estupendo. <b>ISO 12800</b> para cuando la
-    alternativa es no tener la foto —y una foto con algo de grano siempre gana a una foto
-    movida o inexistente—. El grano de Fuji, además, es fino y agradable, más «película» que
-    «digital sucio». No sacrifiques una velocidad segura por bajar el ISO.</p>
+    <p>Orientación realista para viaje, revelando en RAW y para copias de tamaño normal —los
+    umbrales dependen de la exposición, de cuánto levantes las sombras y del tamaño al que mires
+    la foto, así que tómalos como punto de partida, no como ley—: <b>hasta ISO 1600</b> suele ser
+    casi indistinguible de la base. <b>ISO 3200–6400</b> es en general perfectamente utilizable
+    en interiores y de noche; con algo de reducción de ruido en Lightroom queda muy bien.
+    <b>ISO 12800</b> para cuando la alternativa es no tener la foto —una foto con algo de grano
+    gana a una movida o inexistente—. A partir de cierto punto, lo que ves es una mezcla de tres
+    cosas distintas: el ruido del sensor, la reducción de ruido que aplique el revelador y —si lo
+    activas— el grano añadido a propósito; puedes dosificarlas por separado en Lightroom. Haz tu
+    propia prueba: dispara la misma escena a 1600, 3200, 6400 y 12800 y decide, a tu tamaño de
+    salida, dónde está tu límite. Y no sacrifiques una velocidad segura por bajar el ISO.</p>
   </div>
 
   <!-- ============================================================ -->
@@ -551,6 +566,13 @@
     </tbody>
   </table></div>
 
+  <p>La tabla esconde una cuarta variable: el <b>ISO</b>. En cualquiera de los cuatro modos
+  puedes fijarlo a mano o dejarlo en <b>Auto</b>, y esa elección cambia quién decide de verdad el
+  brillo. Con ISO fijo, en P/A/S la cámara ajusta apertura o velocidad y en M el brillo lo
+  decides tú del todo; con Auto ISO, la cámara mueve el ISO para exponer en cualquier modo,
+  incluido M. Por eso «M» no es sinónimo de «control total»: con Auto ISO cedes el brillo a la
+  cámara a cambio de fijar tú la apertura y la velocidad.</p>
+
   <p>Fuji tiene una peculiaridad encantadora: en muchas de sus cámaras los parámetros viven en
   <b>diales físicos dedicados</b>. La X-S20 es la excepción más «moderna» de la familia —usa un
   dial de modos PASM clásico como el de arriba— pero mantiene el espíritu de repartir el
@@ -565,16 +587,19 @@
   decisiones <b>creativas</b> —la apertura (tu profundidad de campo) y la velocidad (congelar o
   no)— y dejas que la cámara resuelva la única que es puramente técnica: el brillo, subiendo o
   bajando el ISO. Eliges la mirada y la congelación; la máquina se encarga de que salga bien
-  expuesta. Con un Auto ISO bien configurado (rango y velocidad mínima), es lo más parecido a
-  «tenerlo todo bajo control sin pelear con la luz cambiante» que existe. La configuración
+  expuesta. Con un Auto ISO bien configurado —sobre todo su <b>rango de ISO</b>, porque la
+  velocidad mínima del banco solo entra en juego en P y A; aquí, en M, la velocidad ya la fijas
+  tú y ese ajuste se ignora—, es lo más parecido a «tenerlo todo bajo control sin pelear con la
+  luz cambiante» que existe. La configuración
   concreta del Auto ISO —los tres bancos, la velocidad mínima— está en
   <a href="03-configuracion-inicial.html#auto-iso">configuración inicial</a>.</p>
 
   <div class="callout gear" data-title="En la X-S20: mi reparto para caminar por una ciudad">
     <p>Modo <b>A</b> a f/5,6 con <b>Auto ISO 160–3200 y velocidad mínima 1/125</b>. Así la
-    profundidad de campo es generosa (entra la calle entera), nunca bajo de 1/125 (que congela
-    mi propio balanceo al andar y a la gente paseando), y el ISO sube solo cuando entro en una
-    zona de sombra. Cuando quiero un retrato, giro a f/2 sin tocar nada más. Es un «modo de
+    profundidad de campo es generosa (entra la calle entera); casi nunca bajo de 1/125 —el umbral
+    que congela mi propio balanceo al andar y a la gente paseando; solo lo rompe la cámara si
+    agoto el ISO máximo, cuando prefiere bajar la velocidad antes que subexponer—, y el ISO sube
+    solo cuando entro en una zona de sombra. Cuando quiero un retrato, giro a f/2 sin tocar nada más. Es un «modo de
     viaje» que resuelve el 80 % de las situaciones sin apartar el ojo del visor.</p>
   </div>
 
@@ -582,9 +607,11 @@
   <h2 id="compensacion-de-exposicion">Medición y compensación de exposición</h2>
 
   <p>Para calcular la exposición «correcta» en P, A y S, la cámara <b>mide la luz que rebota
-  en la escena</b> (medición reflejada) y busca dejarla en un <b>gris medio</b>, el famoso
-  gris al 18 % de reflectancia. Es una suposición razonable: la mayoría de las escenas, si
-  promedias sus luces y sombras, tiran a un gris medio. Y funciona… hasta que la escena no es
+  en la escena</b> (medición reflejada) y busca dejarla en un <b>tono medio</b>. La referencia
+  práctica que habrás oído es el «gris del 18 %» —la reflectancia de una carta gris de estudio—,
+  aunque la constante exacta con la que se calibra cada fotómetro no es universal y varía un poco
+  entre fabricantes; para trabajar te basta la idea de «tono medio». Es una suposición razonable:
+  la mayoría de las escenas, si promedias sus luces y sombras, tiran a un tono medio. Y funciona… hasta que la escena no es
   «promedio». Ahí la cámara se equivoca de forma predecible, y saberlo te da un superpoder.</p>
 
   <ul>
@@ -601,16 +628,20 @@
   <p>La <b>compensación de exposición</b> es tu forma de decirle a la cámara «te has
   equivocado, muévelo tantos pasos». No cambia quién decide: en modo A ajusta la velocidad;
   en S, la apertura; con Auto ISO, mueve el ISO. Es un empujón en pasos sobre el cálculo del
-  medidor, y el rango típico es de <b>±3 EV</b> (en tercios).</p>
+  medidor, y en foto llega a <b>±5 EV</b> (en tercios), aunque la previsualización en pantalla
+  solo es fiel hasta ±3 EV.</p>
 
-  <div class="callout gear" data-title="El dial de compensación en la X-S20">
-    <p>La X-S20 no lleva el dial de compensación grabado con números de otras Fuji: trae un
-    <b>dial de compensación sin marcar</b> junto al disparador. Gíralo y verás la escala
-    <span class="evf">−3 … 0 … +3</span> moverse en el visor y en pantalla, con la imagen
-    aclarándose u oscureciéndose en vivo (esto es clave: ves el resultado <b>antes</b> de
-    disparar). Acostúmbrate a mirar esa escala igual que miras el retrovisor: nieve → marca a
-    +1; contraluz → +1. En Manual sin Auto ISO el dial no compensa nada (tú ya lo controlas
-    todo); vuelve a tener sentido en cuanto el ISO pasa a Auto.</p>
+  <div class="callout gear" data-title="La compensación en la X-S20">
+    <p>La X-S20 no lleva el dial de compensación grabado con números de otras Fuji: por defecto
+    la compensación va en el <b>dial de mando trasero</b> (puedes reasignarla en <b>AJUSTE
+    BOTÓN/DIAL</b>). Gíralo y verás la escala <span class="evf">−5 … 0 … +5</span> moverse en el
+    visor y en pantalla, con la imagen aclarándose u oscureciéndose en vivo (esto es clave: ves
+    el resultado <b>antes</b> de disparar; más allá de ±3 EV la previsualización deja de ser fiel,
+    pero la foto sí recoge toda la compensación). Y fíjate en qué mueve: en <b>A</b> ajusta la
+    velocidad, en <b>S</b> la apertura y con <b>Auto ISO</b> mueve el ISO. En <b>Manual con ISO
+    fijo</b> no compensa nada (tú ya lo controlas todo); vuelve a tener sentido en cuanto el ISO
+    pasa a Auto. Acostúmbrate a mirar esa escala igual que miras el retrovisor: nieve → +1;
+    contraluz → +1.</p>
   </div>
 
   <!-- ============================================================ -->
@@ -618,9 +649,14 @@
 
   <p>La pantalla te miente. El brillo de la pantalla de la X-S20 cambia con el sol, con tus
   gafas, con la cueva o el mediodía en que estés. Fiarte de «se ve bien en pantalla» es la
-  causa número uno de fotos mal expuestas. El <b>histograma</b>, en cambio, no miente: es la
-  medición objetiva de tu exposición, y aprender a leerlo es el paso que separa a quien
-  adivina de quien sabe.</p>
+  causa número uno de fotos mal expuestas. El <b>histograma</b>, en cambio, es mucho más honesto:
+  te da una medición estable de la luz que no depende del brillo de la pantalla, y aprender a
+  leerlo es el paso que separa a quien adivina de quien sabe. Con un matiz que conviene tener
+  desde ya y que retomamos abajo: no es «la verdad absoluta del sensor», sino que se calcula
+  sobre el JPEG de previsualización con la simulación de película aplicada, y un histograma de
+  luminancia puede ocultar el recorte de un solo canal de color. Por eso, cuando la exposición
+  sea crítica, apóyate también en el histograma <b>RGB</b> y en el aviso de altas luces. Aun con
+  esos matices, es infinitamente más fiable que «se ve bien en pantalla».</p>
 
   <p>Un histograma es un gráfico simple. El <b>eje horizontal</b> son los tonos, de negro
   puro (izquierda) a blanco puro (derecha), pasando por los grises medios en el centro. El
@@ -664,8 +700,9 @@
   sombras luego. Es mucho más fácil aclarar una sombra que resucitar un blanco muerto.</p>
 
   <div class="callout tip" data-title="Blinkies: el aviso de quemado">
-    <p>Activa el aviso de altas luces («blinkies»): las zonas quemadas <b>parpadean</b> en la
-    revisión o en vivo. Es un radar instantáneo: si el cielo parpadea y te importan las nubes,
+    <p>Actívalo en <b>CONFIG. PANTALLA → AJUSTE PANT. VISUALIZAR → LIVE VIEW HIGHLIGHT
+    ALERT</b>: es el aviso de altas luces («blinkies»), y las zonas quemadas <b>parpadean</b> en
+    la revisión o en vivo. Es un radar instantáneo: si el cielo parpadea y te importan las nubes,
     baja un pelín la exposición (−⅓ o −⅔ EV) hasta que deje de hacerlo. Combinado con el
     histograma, es todo lo que necesitas para no volver a casa con cielos blancos.</p>
   </div>
@@ -825,7 +862,7 @@
   <div class="callout error" data-title="Error común: tenerle miedo al ISO">
     <p>Bajar el ISO a toda costa —aunque implique una velocidad demasiado lenta— produce más
     fotos arruinadas que cualquier ruido. Una foto movida no se arregla; un poco de grano de
-    ISO 3200, sí (y encima el de la X-S20 es bonito). Recuerda la jerarquía: primero una
+    ISO 3200, sí (y a ese nivel es moderado y fácil de tratar en revelado). Recuerda la jerarquía: primero una
     velocidad segura, luego la apertura que quieres, y el ISO que haga falta para exponer bien.
     El ISO es el criado, no el jefe.</p>
   </div>
@@ -865,7 +902,7 @@
       <li>El <b>IBIS</b> (hasta 7 pasos) mata tu temblor, <b>nunca</b> el movimiento del sujeto.
       El obturador electrónico da 1/32000 y silencio, pero trae rolling shutter y banding LED.</li>
       <li>La <b>luz manda</b>: bien expuesto a ISO alto gana a subexpuesto y aclarado. No temas
-      el ISO en la X-S20; ISO base 160 y un segundo escalón de ganancia hacia ISO 800.</li>
+      el ISO en la X-S20; ISO base 160 y un segundo escalón de ganancia en la franja de ISO altos.</li>
       <li>Lee el <b>histograma</b>, no la pantalla. Las <b>altas luces quemadas son
       irrecuperables</b>: expón para las luces. <b>ETTR</b> cuando haya tiempo y poca luz.</li>
       <li>El <b>rango dinámico</b> ronda 13–14 pasos; DR200/DR400 protegen luces subexponiendo

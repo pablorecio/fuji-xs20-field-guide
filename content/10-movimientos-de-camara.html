@@ -167,8 +167,12 @@
 
   <p>La ejecución tiene un solo secreto, la <b>velocidad</b>: casi siempre mucho más lenta de lo
   que tu instinto pide. La <b>regla de los bordes</b>: un objeto que entra por un borde del cuadro
-  debería tardar <b>al menos 5 segundos</b> en llegar al opuesto. Parece lentísimo mientras
-  grabas; en pantalla es justo y legible. Dos trucos ergonómicos: gira desde la <b>cintura</b>, no
+  debería tardar <b>al menos 5 segundos</b> en llegar al opuesto. Tómalo como punto de partida, no
+  como número mágico: la velocidad segura depende de la focal, los fps, la obturación y la distancia,
+  así que con un encuadre más cerrado o un tele hazlo aún más lento (el fondo corre más y el
+  <a href="09-video.html#rolling-shutter">rolling shutter</a> asoma antes) y <b>compruébalo siempre en
+  pantalla</b> —un paneo que en el visor parecía lento puede seguir dando tirones—. Parece lentísimo
+  mientras grabas; suele quedar justo. Dos trucos ergonómicos: gira desde la <b>cintura</b>, no
   desde los brazos (el torso es un cabezal más suave que los hombros), y en un pan largo
   <b>«enrolla» el cuerpo antes</b> —parte con el torso ya girado hacia el final y desenróllalo
   durante la toma—, para no forzar la postura justo al final.</p>
@@ -254,11 +258,13 @@
   <span class="term" title="Dolly / travelling: desplazamiento físico de la cámara sobre un eje. En cine se hace con un carro sobre raíles; a mano, andando; con la X-S20, con un gimbal o caminando con técnica.">dolly</span>) caminan hacia el
   sujeto. La diferencia no es un capricho: al moverte, la <b>perspectiva cambia</b> —el fondo
   crece o mengua respecto al sujeto, los objetos se reordenan en profundidad—, y eso es lo que el
-  cerebro lee como «estar entrando en la escena». El zoom, en cambio, aplana: acerca sin que nada
-  cambie de perspectiva, y por eso se nota falso. Es exactamente la diferencia entre acercarte a
-  una montaña andando o mirarla con prismáticos, la misma física de la
-  <a href="06-objetivos.html#perspectiva-y-compresion">perspectiva y la compresión</a> que viste
-  con los objetivos.</p>
+  cerebro lee como «estar entrando en la escena». El zoom, en cambio, se queda clavado en el sitio:
+  solo <b>amplía</b> la misma imagen, con la misma perspectiva, sin que nada se reordene en
+  profundidad, y por eso se nota falso. Cuidado con la idea de que «el zoom aplana»: eso que llamamos
+  compresión no lo causa el zoom, sino la <b>distancia</b> desde la que sueles usar un tele —lejos—;
+  es la misma física de la <a href="06-objetivos.html#perspectiva-y-compresion">perspectiva y la
+  compresión</a> que viste con los objetivos. Es exactamente la diferencia entre acercarte a una
+  montaña andando o mirarla con prismáticos.</p>
 
   <figure class="diagram">
     <svg viewBox="0 0 480 200" role="img" aria-labelledby="d104-t" font-family="ui-monospace, Menlo, monospace" font-size="11">
@@ -558,29 +564,32 @@
 
   <p>Tu cámara trae un aliado potentísimo: la estabilización. Ya viste en
   <a href="09-video.html#ibis-en-video">el IBIS en vídeo</a> que la X-S20 lleva un
-  <b>IBIS de 5 ejes</b> (estabilización óptica del propio sensor) que la vuelve sorprendentemente
-  capaz a pulso. La clave: hay <b>varias capas</b> de estabilización y cada movimiento pide una
-  combinación distinta.</p>
+  <b>IBIS de 5 ejes</b> (estabilización por desplazamiento físico del sensor) que la vuelve
+  sorprendentemente capaz a pulso. La clave: hay <b>varias capas</b> de estabilización y cada
+  movimiento pide una combinación distinta.</p>
 
   <div class="callout gear" data-title="En la X-S20: qué estabilización usar para cada movimiento">
-    <p>Las Fuji de esta generación combinan, en el menú de vídeo, la estabilización óptica del
-    sensor (<b>IS MODE</b>, el IBIS), un modo de <b>refuerzo</b> que fija el encuadre con más fuerza
-    para planos quietos, y una capa de estabilización <b>digital (DIS)</b> que añade suavizado
-    electrónico a cambio de un pequeño <b>recorte</b> del encuadre. La receta práctica:</p>
+    <p>En el menú de vídeo, la X-S20 reúne tres estabilizaciones distintas bajo <code>IS MODE</code>,
+    más un refuerzo aparte. Conviene no mezclarlas: el <b>IBIS</b> mueve físicamente el sensor; el
+    <b>OIS</b> es la estabilización óptica <i>del objetivo</i> (si lo tiene, como el XC 15-45); y el
+    <b>DIS</b> es digital y recorta un poco el encuadre. Las opciones de <code>IS MODE</code> son
+    <b>IBIS/OIS</b>, <b>IBIS/OIS + DIS</b> y <b>OFF</b>; y hay un ajuste separado,
+    <code>IS MODE BOOST</code>, que fija el encuadre con fuerza para planos quietos a pulso. La receta:</p>
     <ul>
-      <li><b>Estático a pulso:</b> IBIS + el modo de refuerzo. Fija el encuadre casi como un
-      trípode y elimina el micro-temblor. Es el modo del plano quieto que no puedes apoyar.</li>
-      <li><b>Caminando (tracking, push, pull):</b> IBIS + DIS. La capa digital domestica el vaivén
-      del paso; asume que <b>recorta</b> un poco la imagen (encuadra algo más ancho para
-      compensar) y que funciona mejor cuanto más suave sea tu paso ninja.</li>
-      <li><b>Pan o tilt sobre trípode:</b> ojo con la estabilización. Si la cámara está fija sobre
-      un cabezal, el IBIS puede <b>pelearse</b> con el giro e introducir pequeños tirones o un
-      «rebote» al arrancar y frenar. Con un buen apoyo, es habitual <b>desactivar la
-      estabilización</b> (o usar un modo de paneo si tu equipo lo ofrece) y dejar que el trípode
-      haga su trabajo.</li>
+      <li><b>Estático a pulso:</b> <code>IS MODE</code> en <b>IBIS/OIS</b> y <code>IS MODE BOOST</code>
+      en <b>ON</b>. Fija el encuadre casi como un trípode y elimina el micro-temblor. Es el modo del
+      plano quieto que no puedes apoyar.</li>
+      <li><b>Caminando (tracking, push, pull):</b> <code>IS MODE</code> en <b>IBIS/OIS + DIS</b>. La
+      capa digital domestica el vaivén del paso; asume que <b>recorta</b> un poco la imagen (encuadra
+      algo más ancho para compensar) y que funciona mejor cuanto más suave sea tu paso ninja. Mantén
+      <code>IS MODE BOOST</code> apagado al caminar.</li>
+      <li><b>Pan o tilt sobre trípode:</b> pon <code>IS MODE BOOST</code> en <b>OFF</b> y, con un buen
+      apoyo, es habitual llevar <code>IS MODE</code> a <b>OFF</b> también: sobre un cabezal, el IBIS
+      puede <b>pelearse</b> con el giro e introducir tirones o un «rebote» al arrancar y frenar. No hay
+      un «modo paneo» dedicado en la X-S20; lo que haces es apagar el refuerzo y, si molesta, la
+      estabilización entera.</li>
     </ul>
-    <p>Confirma los nombres y rutas exactas de estos ajustes en el menú de tu X-S20 antes de
-    grabar en serio; varían con las actualizaciones de firmware. Lo que no cambia es la lógica:
+    <p>Estos nombres pueden variar con las actualizaciones de firmware, pero la lógica no:
     <b>más estabilización para caminar, menos (o ninguna) sobre trípode</b>.</p>
   </div>
 
@@ -602,10 +611,12 @@
 
   <p>Y aquí va la <b>regla de oro para que tu material se pueda montar</b>: <b>empieza y termina
   cada movimiento en quietud</b>. Uno o dos segundos de plano fijo antes de arrancar el movimiento,
-  y otro tanto al terminarlo, antes de cortar. Esos rabillos de quietud se llaman <b>«handles»</b>
-  (asas) y son lo que te permite <b>cortar limpio</b> en el montaje, encadenando con el siguiente
-  plano sin que la imagen dé un tirón. Sin handles, un movimiento que arranca de golpe y se corta a
-  medio gesto es casi inservible.</p>
+  y otro tanto al terminarlo, antes de cortar. Esos rabillos de quietud son tu <b>margen estable</b>
+  para el corte: dejan a cada lado del punto de edición un trozo utilizable —lo que en montaje se
+  llama un <b>«handle»</b> (asa): metraje de más a cada lado del punto de corte, esté quieto o en
+  movimiento; aquí lo aprovechamos quieto—, y son lo que te permite <b>cortar limpio</b>, encadenando
+  con el siguiente plano sin que la imagen dé un tirón. Sin ese margen, un movimiento que arranca de
+  golpe y se corta a medio gesto es casi inservible.</p>
 
   <figure class="diagram">
     <svg viewBox="0 0 480 130" role="img" aria-labelledby="d109-t" font-family="ui-monospace, Menlo, monospace" font-size="11">
@@ -651,15 +662,19 @@
     diez clips montables sin haber movido la cámara.</p>
   </div>
 
-  <div class="callout exercise" data-title="Ejercicio 10.2 — El mismo sujeto, cinco motivos">
-    <p>Elige <b>un</b> sujeto —una estatua, una puerta bonita, un compañero de viaje— y grábalo con
-    cinco movimientos distintos, <b>diciendo en voz alta el motivo</b> antes de cada uno: un
-    <a href="#pan">pan</a> lento (revelar el entorno), un <a href="#tilt">tilt</a> (revelar la
-    altura), un <a href="#push-y-pull">push in</a> (acercar la atención), un <a href="#reveal">reveal</a>
-    (descubrirlo desde detrás de algo) y un <a href="#tracking">tracking</a> o
-    <a href="#orbit">orbit</a> (seguir / dar energía). Todos con <b>handles</b> de 1–2 s.
-    <b>Criterio de éxito:</b> que cada clip empiece y acabe en quietud y que, al verlos, notes cómo
-    el mismo sujeto «suena» distinto según el movimiento.</p>
+  <div class="callout exercise" data-title="Ejercicio 10.2 — Cinco motivos, cinco movimientos">
+    <p>Practica cómo cada movimiento «suena» distinto <b>declarando en voz alta el motivo</b> antes de
+    cada toma —y respetándolo—: un <a href="#pan">pan</a> lento (revelar el entorno), un
+    <a href="#tilt">tilt</a> (revelar la altura), un <a href="#push-y-pull">push in</a> (acercar la
+    atención), un <a href="#reveal">reveal</a> (descubrir algo desde detrás de otra cosa) y un
+    <a href="#tracking">tracking</a> u <a href="#orbit">orbit</a> (seguir o dar energía). Aquí está la
+    trampa que debes evitar: <b>elige para cada movimiento el sujeto que le dé motivo</b> —una torre
+    para el tilt, alguien caminando para el tracking— en vez de forzar los cinco sobre una misma
+    estatua quieta, que sería entrenar justo el vicio que denuncia el capítulo. Si un movimiento no
+    tiene motivo con lo que tienes delante, haz un <b>estático</b> y di por qué: es una respuesta
+    válida, no un fracaso. Todos con <b>handles</b> de 1–2 s. <b>Criterio de éxito:</b> que cada clip
+    empiece y acabe en quietud y que cada movimiento esté justificado por lo que muestra, no por
+    «tocaba moverse».</p>
   </div>
 
   <div class="callout challenge" data-title="Reto del capítulo — La escena en cinco movimientos">
@@ -744,9 +759,9 @@
       <li><b>Handheld:</b> estética buscada, no temblor. El <b>paso ninja</b> —rodillas dobladas,
       pasos rodados talón-punta, codos al cuerpo, torso que flota, respiración— hace que la cámara
       deslice sin botar.</li>
-      <li><b>X-S20:</b> IBIS + refuerzo para estático a mano; IBIS + DIS (con recorte) para caminar;
-      estabilización <b>fuera</b> (o modo paneo) sobre trípode. La máquina corrige temblor, no
-      pasos.</li>
+      <li><b>X-S20:</b> <code>IS MODE</code> IBIS/OIS + <code>IS MODE BOOST</code> para estático a
+      mano; <code>IS MODE</code> IBIS/OIS + DIS (con recorte) para caminar; estabilización <b>fuera</b>
+      sobre trípode. La máquina corrige temblor, no pasos.</li>
       <li><b>Para el montaje:</b> un plano = un movimiento; alterna estático y movimiento; y deja
       <b>handles</b> (1–2 s quietos al principio y al final) para poder cortar limpio.</li>
     </ul>

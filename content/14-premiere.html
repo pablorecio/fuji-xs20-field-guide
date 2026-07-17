@@ -171,16 +171,21 @@
   debe ser a <b>25 fps</b>. ¿La forma infalible de acertar sin pelearte con un menú de ajustes lleno
   de siglas? <b>Arrastra el primer clip bueno sobre el botón «New Item» del panel de proyecto</b>, o
   clic derecho sobre el clip → <b>New Sequence From Clip</b>. Premiere crea una secuencia con
-  <b>exactamente</b> los ajustes de ese clip: 4K, 25p, el color correcto. No hay forma más segura de
-  no equivocarte, y te ahorra descifrar el cuadro de New Sequence entero.</p>
+  <b>exactamente</b> la resolución y los fps de ese clip: 4K y 25p. Es la forma más segura de
+  acertar con esos dos, y te ahorra descifrar el cuadro de New Sequence entero. Eso sí, resolución
+  y fps no lo son todo: si trabajas con F-Log2 o mezclas clips de distinta procedencia, comprueba
+  después la <b>gestión de color</b> —el espacio del clip (Media Color Space), el espacio de
+  trabajo y el de salida de la secuencia— para que el color se interprete bien.</p>
 
   <div class="callout error" data-title="Error común: la secuencia con los ajustes equivocados">
-    <p>Montar toda una pieza en una secuencia a 30p o a 1080 cuando grabaste a 25p en 4K trae
-    problemas sutiles y molestos: movimiento ligeramente entrecortado, clips que aparecen con marco
-    negro o recortados, o un aviso constante de «desajuste». Si al arrastrar el primer clip a una
-    secuencia vacía Premiere te pregunta si quieres <b>cambiar los ajustes de la secuencia para que
-    coincidan</b> con el clip, di que <b>sí</b>. Crear la secuencia desde el clip evita la pregunta
-    de raíz.</p>
+    <p>El desajuste que de verdad molesta es el de <b>fps</b>: montar a 30p lo que grabaste a 25p
+    da un movimiento ligeramente entrecortado y avisos constantes de «desajuste». La
+    <b>resolución</b> es otra cosa: una secuencia a <b>1080</b> partiendo de clips 4K es una
+    decisión perfectamente válida (entrega HD, más rendimiento, margen para reencuadrar) —los clips
+    solo se escalan, no salen marcos negros por eso—. Lo que sí conviene es que los fps coincidan:
+    si al arrastrar el primer clip a una secuencia vacía Premiere te pregunta si quieres
+    <b>cambiar los ajustes para que coincidan</b> con el clip, di que <b>sí</b>. Crear la secuencia
+    desde el clip evita el lío de raíz.</p>
   </div>
 
   <h3 id="pistas">Pistas de vídeo y de audio</h3>
@@ -290,7 +295,10 @@
   Como tenías el doble de fotogramas, al reproducirlos a 25p el movimiento se ve fluido y a mitad de
   velocidad, sin saltos. El camino «para todo el clip desde el origen»: selecciónalo en el bin, clic
   derecho → <b>Modify → Interpret Footage</b> y dile que asuma <b>25 fps</b>; así ese material entra
-  ya ralentizado a la timeline. Con cualquiera de los dos, la cámara lenta de la X-S20 queda limpia
+  ya ralentizado a la timeline. Un aviso: si usas <a href="#proxies">proxies</a>, haz el Interpret
+  Footage <b>antes</b> de generarlos (reinterpretar los fotogramas no se lleva bien con proxies ya
+  adjuntos); si ya los creaste, tira del método plano a plano con Speed/Duration. Con cualquiera de
+  los dos, la cámara lenta de la X-S20 queda limpia
   porque grabaste los fotogramas de más <b>al capturar</b>, no los inventa el ordenador.</p>
 
   <!-- ============================================================ -->
@@ -309,16 +317,18 @@
   poniendo <b>marcadores</b> en la timeline con la tecla <kbd>M</kbd> mientras suena. Esos marcadores
   serán los sitios donde harás coincidir tus cortes. Ya tienes el esqueleto.</p>
 
-  <h3 id="radio-edit">Paso 2: el «radio edit» de tus mejores planos</h3>
+  <h3 id="radio-edit">Paso 2: el primer ensamblaje de tus mejores planos</h3>
 
   <p>Ahora coloca imagen. Coge tus clips marcados en verde y ponlos en la pista de vídeo en un
   <b>orden narrativo</b>, sin obsesionarte todavía con la duración exacta: es el momento de decidir la
   <b>historia</b>, no el ritmo. Aquí es donde vuelve todo lo de
   <a href="12-storytelling.html#la-secuencia">la secuencia</a>: un plano de establecimiento que dice
   «dónde estamos», luego planos más cerrados que llevan al espectador dentro de la escena, un detalle,
-  una transición a la siguiente localización. A este primer pase se le llama <b>radio edit</b>:
-  monta la columna vertebral de la historia de principio a fin, aunque quede tosca. Verla entera, aun
-  cruda, te dice si el relato funciona.</p>
+  una transición a la siguiente localización. A este primer pase se le llama <b>ensamblaje</b>
+  (assembly o stringout): monta la columna vertebral de la historia de principio a fin, aunque quede
+  tosca. Verla entera, aun cruda, te dice si el relato funciona. (El término <i>radio edit</i>, en
+  rigor, es un montaje de <b>audio</b> —voz o diálogo— que debe entenderse sin imagen; resérvalo
+  para cuando trabajes con narración o entrevista.)</p>
 
   <h3 id="ritmo">Paso 3: afinar los cortes al ritmo</h3>
 
@@ -351,14 +361,17 @@
 
   <h3 id="niveles">Niveles: cifras honestas</h3>
 
-  <p>Los niveles se miden en <b>dB</b> en el medidor (el <b>Audio Meter</b>, la barra vertical del
-  interfaz), donde <b>0 dB es el techo</b>: pasarte de ahí «recorta» el sonido y suena roto, sin
-  arreglo posible. Metas de trabajo sencillas y honestas: la <b>voz o el diálogo</b>, alrededor de
-  <b>-12 a -6 dB de pico</b> —claramente audible sin acercarse al techo—; la <b>música de fondo</b>,
-  <b>mucho más baja</b> cuando hay voz encima, sobre <b>-18 a -24 dB</b>, para que acompañe sin tapar.
-  Si no hay voz y la música es la protagonista, puede subir. Pero la regla real es esta: se mezcla
-  <b>a oído</b>, con el medidor solo como <b>red de seguridad</b> para no pasarte de 0. Si suena bien
-  y el medidor no toca el rojo, está bien, digan lo que digan los números.</p>
+  <p>Los niveles se miden en <b>dBFS</b> en el medidor (el <b>Audio Meter</b>, la barra vertical del
+  interfaz), donde <b>0 dBFS es el techo</b>: pasarte de ahí «recorta» el sonido y suena roto, sin
+  arreglo posible (por eso conviene dejar un margen, un <i>true peak</i> por debajo de 0). Metas de
+  trabajo sencillas: la <b>voz o el diálogo</b>, con picos alrededor de <b>−12 a −6&nbsp;dBFS</b>
+  —claramente audible sin acercarse al techo—; la <b>música de fondo</b>, <b>mucho más baja</b>
+  cuando hay voz encima, sobre <b>−18 a −24&nbsp;dBFS</b>, para que acompañe sin tapar. Si no hay
+  voz y la música es la protagonista, puede subir. Pero los picos no lo son todo: las plataformas
+  normalizan por <b>sonoridad integrada</b> (<span class="term" title="LUFS: unidad de sonoridad integrada percibida a lo largo de todo el clip; las plataformas normalizan a un objetivo, a menudo en torno a −14 LUFS.">LUFS</span>), así que para la
+  entrega apunta a la sonoridad objetivo del destino (a menudo en torno a <b>−14&nbsp;LUFS</b>) y
+  vigila el <i>true peak</i>. Aun así, se mezcla <b>a oído</b>: si suena bien, el diálogo se
+  entiende y el medidor no toca el rojo, vas bien.</p>
 
   <p>El volumen de un clip se ajusta arrastrando la <b>línea horizontal</b> que lo cruza. Y para
   cambios <b>dentro</b> de un clip —bajar la música justo cuando habla alguien y subirla después— se
@@ -395,7 +408,9 @@
   Noise</b>) o filtrando los graves. Pero un viento <b>fuerte</b>, que satura el micro, es
   <b>imposible</b> de recuperar limpio; empeñarte solo deja la voz metálica y peor que el problema. En
   ese caso la solución de verdad es tapar el clip con música y ambiente y renunciar a ese audio
-  original. Prevenir en el rodaje (la espuma en el micro) vale más que cualquier plugin.</p>
+  original. Prevenir en el rodaje vale más que cualquier plugin: una <b>espuma</b> frena la brisa
+  suave y las plosivas, pero el viento fuerte de exterior pide un cortavientos <b>peludo</b>
+  (<i>furry</i> o <i>deadcat</i>), acercar el micro a la fuente y buscar resguardo.</p>
 
   <div class="callout exercise" data-title="Ejercicio 14.2 — Mezclar a oído">
     <p>Coge un clip donde hables o donde haya un sonido protagonista, y ponle música de fondo. Sin mirar
@@ -468,8 +483,12 @@
   (descargable gratis en la web de Fujifilm). En Lumetri, sección <b>Basic Correction</b>, despliega
   <b>Input LUT</b> y cárgala. La imagen «revive» de golpe: ya tienes una base neutra y correcta sobre
   la que trabajar. Alternativa moderna: dejar que el <b>manejo de color</b> de Premiere reconozca el
-  espacio del clip y haga esa conversión automáticamente; funciona bien, pero cargar la LUT oficial a
-  mano es lo más transparente para entender qué está pasando.</p>
+  espacio del clip y haga esa conversión automáticamente. <b>Elige una sola de las dos vías, nunca
+  las dos a la vez:</b> si Premiere ya normaliza el clip por gestión de color, no le añadas encima
+  la Input LUT F-Log2→709, porque aplicarías la transformación <b>dos veces</b> (imagen quemada y
+  color roto). O gestión de color automática con las etiquetas correctas, o LUT manual con la
+  normalización automática desactivada. Cargar la LUT a mano es lo más transparente para entender
+  qué está pasando.</p>
 
   <h3 id="scopes">2. Balance y exposición con los scopes</h3>
 
@@ -534,8 +553,8 @@
 
   <div class="setting-card">
     <span class="s-name">Archivo maestro (para guardar)</span>
-    <span class="s-value">Formato de alta calidad que coincida con la secuencia · bitrate alto · VBR 2 pasos</span>
-    <span class="s-why">Por qué: una copia de máxima calidad de tu montaje terminado, para archivar y re-exportar en el futuro sin volver a abrir el proyecto. De aquí sacas luego versiones para cada plataforma sin regenerar el montaje.</span>
+    <span class="s-value">Códec mezzanine intraframe: ProRes 422 HQ (o DNxHR HQ) · 10 bits · Rec.709 · audio PCM sin comprimir</span>
+    <span class="s-why">Por qué: un archivo maestro debe ser un códec <b>intraframe de baja pérdida</b> (ProRes/DNxHR), no otro H.264/H.265 comprimido que se degrada al reexportar. Los 10 bits y Rec.709 conservan el color de tu grado, y el audio sin comprimir (PCM/WAV) evita pérdidas. De este maestro sacas luego las versiones de cada plataforma sin reabrir el proyecto ni recomprimir sobre comprimido.</span>
   </div>
 
   <div class="callout tip" data-title="Qué NO tocar si no lo dominas">
@@ -556,7 +575,7 @@
     <div class="card">
       <div class="card-eyebrow">Horizontal</div>
       <h4>YouTube</h4>
-      <p><b>16:9</b>, la orientación con la que grabaste. Duración libre (una pieza de viaje de 2-5 min
+      <p><b>16:9</b>, la orientación de entrega horizontal (si grabaste en open gate 3:2, reencuadras a 16:9 en el montaje). Duración libre (una pieza de viaje de 2-5 min
       va perfecta). Cuida la <b>miniatura</b> (portada): es lo que decide el clic, y la exportas aparte
       como una foto fija atractiva. Los <b>subtítulos</b> mejoran alcance y accesibilidad; puedes
       generarlos en el panel de <b>Captions</b> de Premiere o dejar que los ponga YouTube.</p>
@@ -566,7 +585,7 @@
       <h4>Instagram Reels / Stories</h4>
       <p><b>9:16</b>, vertical. <b>Corto</b>: los primeros 2-3 segundos deciden si alguien se queda,
       así que empieza por tu mejor plano. Muchos lo ven <b>sin sonido</b>, de ahí que los subtítulos
-      «quemados» en la imagen ayuden tanto. La portada aquí es el primer fotograma: que sea potente.</p>
+      «quemados» en la imagen ayuden tanto. Para la portada, Instagram te deja elegir un fotograma del propio vídeo o subir una imagen aparte —no está fijada al primer fotograma—; elígela con cuidado y comprueba cómo se recorta en el perfil y en el feed.</p>
     </div>
   </div>
 
@@ -587,7 +606,7 @@
     <label><input type="checkbox" data-id="musica"><span>Música primero como esqueleto; marcar los beats con <kbd>M</kbd></span></label>
     <label><input type="checkbox" data-id="radioedit"><span>Radio edit: mejores planos en orden narrativo, historia antes que ritmo</span></label>
     <label><input type="checkbox" data-id="ritmo"><span>Afinar los cortes al ritmo; cortar más de lo que crees (clips de 2-4 s)</span></label>
-    <label><input type="checkbox" data-id="audio"><span>Audio: niveles a oído con el medidor de red, ducking, transiciones y ambiente de fondo</span></label>
+    <label><input type="checkbox" data-id="audio"><span>Audio: niveles a oído con el medidor de nivel, ducking, transiciones y ambiente de fondo</span></label>
     <label><input type="checkbox" data-id="color"><span>Color en Lumetri: LUT técnica F-Log2 → balance con scopes → look → coherencia entre clips</span></label>
     <label><input type="checkbox" data-id="export"><span>Exportar con el preset del destino (YouTube, Reels) y guardar un archivo maestro</span></label>
   </div>
@@ -641,8 +660,11 @@
 
   <!-- ============================================================ -->
   <div class="callout gear" data-title="En la X-S20: domar los MOV H.265 10 bits">
-    <p>Lo que sale de tu tarjeta son archivos <code>.MOV</code> en H.265 a 4:2:2 10 bits —preciosos y
-    compactos, pero durísimos de reproducir en edición—. Dos herramientas los domestican y las tienes en
+    <p>Lo que sale de tu tarjeta depende del <b>MEDIA REC SETTING</b> que elegiste: puede ser H.265
+    4:2:2 10 bits (el más exigente y el que da más margen de color), pero también H.265 4:2:0, H.264
+    8 bits o MP4, en modos ALL-I o Long GOP. Comprueba las propiedades del clip antes de nada. Los
+    archivos H.265 10 bits son preciosos y compactos, pero durísimos de reproducir en edición. Dos
+    herramientas los domestican y las tienes en
     este capítulo: los <b>proxies</b> (para que el montaje vaya fluido pese al códec pesado) y la <b>LUT
     oficial F-Log2 → Rec.709 de Fujifilm</b> (para devolver el color a los clips grabados en log). Con
     esas dos piezas, el material más exigente de la cámara se monta con la misma soltura que un vídeo de
@@ -662,7 +684,7 @@
       gestos —arrastrar, recortar, cortar, ripple delete— y un puñado de atajos.</li>
       <li>Monta por método: <b>música primero</b>, <b>radio edit</b> narrativo, <b>cortes al ritmo</b>, y
       corta más de lo que crees (clips de 2-4 s).</li>
-      <li><b>Audio</b> a oído con el medidor de red (voz ≈ -12 a -6 dB, música por debajo), ducking,
+      <li><b>Audio</b> a oído con el medidor de nivel (voz ≈ −12 a −6 dBFS, música por debajo; para entrega, sonoridad en LUFS), ducking,
       transiciones Constant Power y ambiente de fondo como pegamento.</li>
       <li><b>Color</b> en Lumetri y en orden: LUT técnica → balance con scopes → look creativo →
       coherencia entre clips. Eterna casi no pide nada.</li>

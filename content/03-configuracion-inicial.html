@@ -87,12 +87,13 @@
   cielo ya no vuelve.</p>
 
   <p>El <strong>RAW</strong> (en Fuji, archivos <code>.RAF</code>) es la lectura en bruto del
-  sensor, sin cocinar. Guarda mucha más información —del orden de 14 bits por canal— y
-  <em>ninguna</em> decisión de revelado es definitiva: el balance de blancos, el contraste,
-  la exposición dentro de cierto margen, todo se decide después, en el ordenador, sin degradar
-  el archivo. A cambio, un RAF ocupa bastante más, no lo abre cualquier programa y
-  «de fábrica» se ve plano, porque nadie lo ha cocinado todavía. El RAW no es una foto: es el
-  negativo del que sacas la foto.</p>
+  sensor, sin cocinar. Cada fotositio guarda una sola muestra —la luz que le llegó a través de su
+  filtro de color— con mucha más precisión que el JPEG, <strong>hasta 14 bits</strong>, y
+  <em>ninguna</em> decisión de revelado es definitiva: el balance de blancos, el contraste, la
+  exposición dentro de cierto margen, todo se decide después, en el ordenador, sin degradar el
+  archivo. A cambio, un RAF ocupa bastante más, no lo abre cualquier programa y se previsualiza
+  plano hasta que un revelador lo interpreta —ese aspecto «de fábrica» lo pone la vista previa, no
+  el archivo en sí—. El RAW no es una foto: es el negativo del que sacas la foto.</p>
 
   <figure class="diagram">
     <svg viewBox="0 0 640 300" role="img" aria-labelledby="d31-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
@@ -223,7 +224,8 @@
   <code>AUTO2</code> y <code>AUTO3</code>.</p>
 
   <p>Cada preset se define con tres parámetros, en <b>MENU</b> <span class="sep">→</span>
-  <b>IMAGE QUALITY SETTING</b> <span class="sep">→</span> <code>ISO AUTO SETTING</code>:</p>
+  <b>SHOOTING SETTING</b> <span class="sep">→</span> <code>ISO</code> <span class="sep">→</span>
+  <code>ISO AUTO SETTING</code>:</p>
 
   <ul>
     <li><strong>DEFAULT SENSITIVITY</strong> (ISO por defecto, rango 160–12800): el ISO base del
@@ -232,8 +234,11 @@
     <li><strong>MAX. SENSITIVITY</strong> (ISO máximo, rango 400–12800): el techo. La cámara nunca
     subirá de aquí en modo automático. Es el freno que te protege del ruido excesivo.</li>
     <li><strong>MIN. SHUTTER SPEED</strong> (velocidad mínima, de 1/4000 s a 30 s, o AUTO): aquí
-    está la magia. Es la velocidad de obturación por debajo de la cual la cámara prefiere subir
-    el ISO antes que arriesgar una foto movida. Es tu «suelo» de velocidad.</li>
+    está la magia. Es la velocidad de obturación por debajo de la cual la cámara prefiere subir el
+    ISO antes que arriesgar una foto movida. Es tu «suelo» de velocidad —mejor dicho, tu umbral
+    preferente: si la luz cae tanto que la cámara ya ha llegado a su ISO máximo, dejará que la
+    velocidad baje de ese valor antes que subexponer. No es un tope absoluto, sino el punto en el
+    que empieza a preferir ISO sobre velocidad.</li>
   </ul>
 
   <p>El mecanismo funciona así: la cámara intenta exponer al ISO por defecto. Si para lograr
@@ -349,15 +354,16 @@
   <h2 id="simulaciones-de-pelicula">Las simulaciones de película</h2>
 
   <p>Aquí es donde una Fuji deja de parecerse a las demás. Durante décadas, Fujifilm fabricó
-  película química, y esa herencia vive dentro de la X-S20 como <strong>19 simulaciones de
-  película</strong>: recetas de color y contraste que emulan emulsiones reales (o crean estéticas
-  propias). No son filtros de Instagram; son el «look» base de tu JPEG, y aplicarlas en cámara
+  película química, y esa herencia vive dentro de la X-S20 como <strong>diecinueve simulaciones de
+  película de serie</strong> —veinte si tu firmware ya incluye Reala Ace (ver más abajo)—: recetas
+  de color y contraste que emulan emulsiones reales (o crean estéticas propias). No son filtros de Instagram; son el «look» base de tu JPEG, y aplicarlas en cámara
   significa que la foto que revisas en el sitio ya tiene alma. Recuerda: viven en el JPEG, así
   que dispara <a href="#por-que-raw-jpeg">RAW+JPEG</a> para disfrutarlas <em>y</em> conservar el
   negativo neutro.</p>
 
-  <p>Las 19 se agrupan en familias por carácter. (Las variantes de Acros y Monochrome con filtros
-  de color Ye/R/G cuentan como simulaciones independientes; de ahí que sumen 19.)</p>
+  <p>Las diecinueve básicas se agrupan en familias por carácter. (Las variantes de Acros y
+  Monochrome con filtros de color Ye/R/G cuentan como simulaciones independientes; de ahí que
+  sumen diecinueve.)</p>
 
   <div class="table-wrap"><table>
     <thead><tr><th>Simulación</th><th>Carácter</th><th>Úsala en viaje para</th></tr></thead>
@@ -539,12 +545,14 @@
     </tbody>
   </table></div>
 
-  <p>Un detalle práctico importante: cuando la detección de caras/ojos o de
-  <a href="04-enfoque.html#deteccion-de-sujetos">sujetos</a> está activa, la cámara prioriza la
-  exposición del sujeto detectado y estos modos pasan a un segundo plano. Es decir: si fotografías
-  gente con detección de ojos puesta, la cámara ya está «midiendo sobre la cara» de facto. Deja
-  <code>MULTI</code> como base; aprende a leer el <a href="05-exposicion.html#el-histograma">histograma</a>
-  y a compensar, y rara vez necesitarás cambiar de modo de medición.</p>
+  <p>Un detalle importante, y que conviene no confundir: la <strong>detección de caras/ojos</strong>
+  sí influye en la medición —la cámara da prioridad al rostro y ajusta la exposición pensando en
+  él—, así que fotografiando gente con detección de ojos estás «midiendo sobre la cara» de facto.
+  La <a href="04-enfoque.html#deteccion-de-sujetos">detección de sujetos</a> (animal, pájaro, coche,
+  tren…), en cambio, es una función <em>solo de enfoque</em>: engancha y sigue al sujeto, pero no
+  altera la medición. En ambos casos, deja <code>MULTI</code> como base; aprende a leer el
+  <a href="05-exposicion.html#el-histograma">histograma</a> y a compensar, y rara vez necesitarás
+  cambiar de modo de medición.</p>
 
   <div class="setting-card">
     <span class="s-name">PHOTOMETRY</span>
@@ -689,7 +697,7 @@
     <thead><tr><th>Ajuste</th><th>C1 · Calle/día</th><th>C2 · Paisaje/trípode</th><th>C3 · Gente/retrato</th><th>C4 · Noche</th></tr></thead>
     <tbody>
       <tr><td>Simulación</td><td>Classic Chrome</td><td>Velvia</td><td>Astia / Pro Neg. Std</td><td>Classic Neg. / Provia</td></tr>
-      <tr><td>Auto ISO</td><td>AUTO1 (máx 3200, 1/125)</td><td>ISO 160 fijo</td><td>AUTO2 (máx 6400, 1/125)</td><td>AUTO3 (máx 12800, 1/60)</td></tr>
+      <tr><td>Auto ISO</td><td>AUTO1 (máx 3200, 1/125)</td><td>ISO 160 fijo</td><td>AUTO2 (máx 6400, 1/60)</td><td>AUTO3 (máx 12800, 1/60)</td></tr>
       <tr><td>Dynamic Range</td><td>DR AUTO</td><td>DR100</td><td>DR AUTO</td><td>DR100</td></tr>
       <tr><td>Enfoque</td><td>AF-S · Zona</td><td>AF-S · punto único / MF</td><td>AF-C · detección de ojos</td><td>AF-S · punto único</td></tr>
       <tr><td>Medición</td><td>Multi</td><td>Multi</td><td>Multi (con ojos)</td><td>Spot / Multi</td></tr>
@@ -732,10 +740,13 @@
     <li><strong>Sonidos</strong> (<b>SOUND SET-UP</b>): silencia el pitido de AF y el «clic»
     artificial del obturador electrónico si vas a fotografiar en sitios tranquilos (iglesias,
     museos). Menos ruido, más discreción en la calle.</li>
-    <li><strong>Guardar configuración por USB</strong> (conexión <code>SAVE/LOAD SETTINGS</code>):
-    la X-S20 permite exportar toda tu configuración a un archivo por USB-C. Hazlo cuando termines
-    de montarlo todo: si algún día reseteas la cámara o compras otra Fuji compatible, recuperas tu
-    trabajo en segundos en vez de rehacerlo de memoria.</li>
+    <li><strong>Guardar configuración por USB</strong> (con la aplicación <em>FUJIFILM X Acquire</em>
+    en el ordenador): conecta la cámara por USB-C, ponla en modo
+    <code>USB RAW CONV./BACKUP RESTORE</code> y con X Acquire guardas o restauras toda tu
+    configuración en un archivo. No es una exportación que haga la cámara sola: necesita el programa.
+    Y la copia solo se restaura en otra X-S20 —el respaldo es específico del modelo, no vale para
+    cualquier Fuji—. Aun así, hazlo al terminar de montarlo todo: si algún día reseteas la cámara,
+    recuperas tu trabajo en segundos en vez de rehacerlo de memoria.</li>
     <li><strong>Fecha, hora y zona</strong>: si no lo hiciste en el primer arranque, hazlo ahora
     (<code>DATE/TIME</code>, <code>AREA SETTING</code>). Es lo que mantiene tus archivos ordenados
     cronológicamente.</li>
@@ -770,7 +781,9 @@
   <div class="callout error" data-title="Error común: disparar solo JPEG «para ahorrar espacio»">
     <p>Es la falsa economía más cara del viaje. Una tarjeta grande cuesta poco; recuperar un cielo
     quemado o un balance de blancos imposible en un JPEG cuesta la foto entera, porque no se puede.
-    Con el RAW debajo, cada error de exposición o color en el sitio tiene arreglo en casa. Dispara
+    Con el RAW debajo tienes margen para rescatar mucho de lo que el sensor <em>sí</em> capturó
+    —sombras, luces al borde del recorte, color—, aunque no todo: un cielo quemado del todo, un
+    sujeto movido o unas sombras sin señal tampoco vuelven en RAW. Dispara
     <a href="#por-que-raw-jpeg">FINE+RAW</a> y compra una tarjeta más grande, no memoria de arrepentimiento.</p>
   </div>
 
@@ -832,8 +845,8 @@
       revelado de todos modos.</li>
       <li>Deja los tres presets de <strong>Auto ISO</strong> afinados (calle, interiores, noche); la
       velocidad mínima es el parámetro que de verdad controlas.</li>
-      <li>Las <strong>19 simulaciones</strong> viven en el JPEG; Classic Chrome y Velvia son un gran
-      punto de partida para calle y naturaleza.</li>
+      <li>Las <strong>simulaciones de película</strong> viven en el JPEG; Classic Chrome y Velvia
+      son un gran punto de partida para calle y naturaleza.</li>
       <li>El <strong>rango dinámico DR</strong> subexpone y levanta sombras: DR200/DR400 exigen ISO
       320/640. Con RAW, DR AUTO basta.</li>
       <li><strong>AWB + RAW</strong> resuelve el balance de blancos casi siempre; fíjalo solo en
@@ -866,9 +879,10 @@
       de la X-S20 ronda las decenas de MB y el JPEG Fine es bastante menor. En una tarjeta UHS-II
       generosa (128&nbsp;GB o más) te caben del orden de miles de parejas RAW+JPEG, de sobra para días
       de viaje. La estrategia sensata no es comprimir más para ahorrar, sino <strong>volcar y
-      formatear</strong> cada día o cada dos: dos tarjetas medianas que rotas te dan redundancia
-      (si una falla, no lo pierdes todo) y tranquilidad. La tarjeta es lo más barato de tu equipo;
-      no escatimes ahí.</p>
+      formatear</strong> cada día o cada dos: dos tarjetas medianas que rotas <em>reparten el
+      riesgo</em> (si una falla, solo pierdes lo de esa tarjeta, no el viaje entero). No es
+      redundancia —eso sería una copia independiente y verificada de cada foto—, pero sí
+      tranquilidad. La tarjeta es lo más barato de tu equipo; no escatimes ahí.</p>
     </div>
   </details>
 

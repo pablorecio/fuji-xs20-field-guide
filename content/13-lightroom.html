@@ -167,11 +167,12 @@
   segundo. Varios catálogos fragmentan tu memoria visual y no resuelven nada: la organización se
   hace con <b>carpetas y palabras clave dentro</b> del catálogo único, no partiéndolo.</p>
 
-  <p>¿Dónde guardarlo? El archivo <code>.lrcat</code> y sus previsualizaciones asociadas deben
-  vivir en el <b>disco interno</b> de tu ordenador (idealmente SSD), porque Lightroom lee y
-  escribe en él constantemente y su velocidad depende de eso. Las <b>fotos</b> sí pueden estar en
-  un disco externo; el catálogo, no. Un error frecuente es poner el catálogo en el mismo disco
-  externo que las fotos «para tenerlo todo junto»: lo vuelve lento y frágil.</p>
+  <p>¿Dónde guardarlo? Lo ideal es un <b>SSD</b> por rendimiento, porque Lightroom lee y escribe
+  en el catálogo constantemente; y lo más cómodo es el <b>disco interno</b>. Un SSD externo local,
+  conectado por un puerto rápido, también es una opción perfectamente válida si lo prefieres. Lo
+  que de verdad hay que evitar es una <b>unidad de red</b> (un NAS o carpeta compartida): ahí el
+  catálogo no está soportado y se corrompe. Las <b>fotos</b> pueden vivir en un disco externo sin
+  problema. Y no metas el catálogo en un disco duro mecánico lento: lo vuelve lento y frágil.</p>
 
   <h3 id="copias-de-seguridad-del-catalogo">Copias de seguridad del catálogo</h3>
 
@@ -228,9 +229,11 @@
     la SD al portátil (o a un disco externo pequeño que lleves). Ya tienes dos copias en dos
     sitios físicos.</li>
     <li><b>Copia 3 — la nube, cuando haya wifi.</b> En cuanto pilles una conexión decente (el
-    <i>lodge</i>, un café, el hotel), sube al menos los RAW seleccionados a un servicio en la
-    nube. Esa es tu copia «fuera de casa»: si te roban la mochila con cámara y portátil dentro, no
-    lo has perdido todo.</li>
+    <i>lodge</i>, un café, el hotel), sube los RAW a un servicio en la nube. Esa es tu copia «fuera
+    de casa»: si te roban la mochila con cámara y portátil dentro, no lo has perdido todo. Si el
+    ancho de banda no da para subirlo todo, prioriza los seleccionados, pero sé consciente de que
+    —hasta que completes la subida— esas otras fotos viven solo en dos sitios (SD y portátil), no
+    en tres.</li>
   </ul>
   <p>Al volver a casa, esa estructura se consolida: las fotos van a tu <code>/Fotos</code> en el
   disco de trabajo, con un respaldo en un segundo disco (o NAS) y la nube como tercera pata. Lo
@@ -249,13 +252,17 @@
   <ol>
     <li><b>Origen:</b> la tarjeta SD (o la carpeta donde ya volcaste). Lightroom te muestra las
     miniaturas para que elijas qué traer.</li>
-    <li><b>Modo Copiar (no Añadir ni Mover).</b> Arriba eliges qué hace Lightroom con los
-    archivos. Desde una tarjeta, elige <b>Copiar</b>: duplica los archivos al disco y los añade al
-    catálogo, dejando la SD intacta (tu copia 1). «Mover» los borraría de la tarjeta; «Añadir» es
-    para fotos que ya están en su sitio definitivo.</li>
+    <li><b>Copiar (desde tarjeta, solo Copiar o Copiar como DNG).</b> Arriba eliges qué hace
+    Lightroom con los archivos. Cuando el origen es una tarjeta, Lightroom solo ofrece <b>Copiar</b>
+    y <b>Copiar como DNG</b>, y deshabilita «Añadir» y «Mover» —precisamente para que no puedas
+    borrar la tarjeta sin querer—. Copiar duplica los archivos al disco y los añade al catálogo,
+    dejando la SD intacta (tu copia 1). «Añadir» y «Mover» solo aparecen cuando importas fotos que
+    ya están en el disco.</li>
     <li><b>Destino: tu estructura por fecha-lugar.</b> A la derecha le dices que organice por
-    fecha, en tu carpeta <code>/Fotos/2026/…</code>. Que sea Lightroom quien cree la carpeta con
-    el formato correcto te ahorra errores.</li>
+    <b>fecha</b>, en tu carpeta <code>/Fotos/2026/…</code>; Lightroom crea sola la subcarpeta con
+    el formato de fecha correcto. El <b>lugar</b> lo añades tú: escribe el nombre de la subcarpeta
+    de destino (o renombra luego la carpeta) como <code>2026-06-14 Lisboa</code> —Lightroom no
+    adivina el sitio—.</li>
     <li><b>Renombrar (opcional pero recomendable).</b> Puedes dejar el nombre de la cámara
     (<code>DSCF1234.RAF</code>) o renombrar a algo con sentido:
     <code>2026-06-14_lisboa_001.RAF</code>. No es obligatorio —el catálogo encuentra todo igual—,
@@ -419,7 +426,11 @@
   <a href="03-configuracion-inicial.html#simulaciones-de-pelicula">simulaciones de película</a>
   que tanto disfrutabas en el JPEG: puedes recuperar el aspecto de Classic Chrome o Velvia como
   <b>base</b> del revelado, y seguir teniendo bajo el capó toda la información del RAW para
-  ajustar. Es lo mejor de los dos mundos. Elige el perfil que case con el ambiente de la foto
+  ajustar. Es lo mejor de los dos mundos. Un matiz importante, eso sí: el perfil replica el
+  <b>color base</b> de la simulación, pero no toda la receta del JPEG de cámara —el ajuste fino de
+  balance de blancos, el Color Chrome, el grano, las curvas de tono o la nitidez van aparte—, así
+  que es una base muy fiel, no un clon exacto del JPEG. Si necesitas el render idéntico de cámara,
+  conserva el JPEG. Elige el perfil que case con el ambiente de la foto
   —Classic Chrome para calle nostálgica, Velvia para paisaje potente, Astia o Pro Neg para piel—
   y a partir de ahí ajusta. Si prefieres un lienzo neutro para revelar desde cero, deja Adobe
   Color. Lo importante es <b>decidirlo tú</b>, no aceptar el defecto por inercia.</p>
@@ -464,7 +475,7 @@
       <tr><td><b>Textura</b></td><td>Realza (o suaviza) el detalle fino de tamaño medio, sin tocar el contraste general.</td><td>Piedra, corteza, tejidos ✓ · Piel (súbela y sale áspera) ✗</td></tr>
       <tr><td><b>Claridad</b></td><td>Contraste local en los medios tonos: da «punch» y volumen, pero oscurece y endurece.</td><td>Paisaje, arquitectura, cielos con nubes ✓ · Retratos y al 100 (halos) ✗</td></tr>
       <tr><td><b>Deshacer neblina</b></td><td>Corta la bruma atmosférica recuperando contraste y color en la distancia.</td><td>Un plano nublado o brumoso ✓ · A tope (cielos morados, esquinas negras) ✗</td></tr>
-      <tr><td><b>Intensidad</b> <i>(Vibrance)</i></td><td>Sube el color <b>solo de los tonos poco saturados</b>, y respeta los tonos de piel.</td><td>Casi siempre preferible ✓</td></tr>
+      <tr><td><b>Intensidad</b> <i>(Vibrance)</i></td><td>Sube el color sobre todo en los <b>tonos poco saturados</b> y tiende a proteger la piel (es adaptativo, no absoluto).</td><td>Casi siempre preferible, pero comprueba piel y colores ya intensos ✓</td></tr>
       <tr><td><b>Saturación</b></td><td>Sube <b>todos</b> los colores por igual, también los que ya estaban saturados.</td><td>Con mano muy ligera · fácil de pasarse ✗</td></tr>
     </tbody>
   </table></div>
@@ -499,8 +510,8 @@
   <ul>
     <li><b>Afinar un cielo:</b> baja la <b>Luminancia del azul</b> para que el cielo gane cuerpo y
     dramatismo, o toca su Tono para llevarlo de un azul cian a uno más profundo.</li>
-    <li><b>Domar un verde chillón:</b> el follaje de la X-Trans a veces sale de un verde demasiado
-    ácido; baja la <b>Saturación del verde</b> y corre su <b>Tono</b> hacia el amarillo para un
+    <li><b>Domar un verde chillón:</b> el follaje a veces sale de un verde demasiado
+    ácido (por el perfil, la luz o el revelado, no por el sensor en sí); baja la <b>Saturación del verde</b> y corre su <b>Tono</b> hacia el amarillo para un
     verde más natural y agradable.</li>
     <li><b>Piel:</b> los tonos de piel viven sobre todo en el <b>naranja</b>. Pequeños ajustes de
     su Luminancia y Saturación limpian una cara sin maquillar la foto entera.</li>
@@ -519,18 +530,20 @@
   <p>En <b>Reducción de ruido</b>, para ISOs moderados basta un toque del deslizador de ruido de
   luminancia. Pero para las fotos de <b>ISO alto de noche</b> (esa blue hour a ISO 6400, repasa
   <a href="05-exposicion.html#iso-y-ruido">ISO y ruido</a>), Lightroom incorpora un
-  <b>Denoise por IA</b> (dentro de <i>Mejorar</i>): analiza la foto con un modelo entrenado y
-  genera un archivo <b>DNG</b> nuevo con un ruido asombrosamente limpio, conservando detalle que
-  la reducción clásica se comería. Tarda unos segundos por foto y ocupa espacio (crea un archivo
-  nuevo), así que resérvalo para las fotos que lo merecen, no para las 300.</p>
+  <b>reducción de ruido por IA</b> (Denoise): analiza la foto con un modelo entrenado y limpia el
+  ruido de forma asombrosa, conservando detalle que la reducción clásica se comería. Es un proceso
+  bastante más pesado que los deslizadores normales, así que resérvalo para las fotos que lo
+  merecen, no para las 300.</p>
 
   <h3 id="lente-y-transformacion">Correcciones de lente y transformación</h3>
 
-  <p>En <b>Correcciones de perfil</b>, activa la casilla de corregir según el perfil del objetivo:
-  Lightroom conoce tus lentes Fuji (el
+  <p>En <b>Correcciones de perfil</b>, los RAF de Fuji suelen llegar con un <b>perfil integrado</b>
+  ya aplicado automáticamente (verás el aviso <i>Built-in Lens Profile applied</i>): Lightroom
+  corrige la distorsión y el viñeteado ópticos de tus lentes Fuji —el
   <a href="06-objetivos.html#23mm">XF 23mm f/2</a>, el
-  <a href="06-objetivos.html#35mm">XF 35mm f/1.4</a>) y corrige su distorsión y el viñeteado
-  ópticos automáticamente. Suele venir aplicado en los RAF de Fuji, pero comprueba que está.</p>
+  <a href="06-objetivos.html#35mm">XF 35mm f/1.4</a>— sin que tengas que activar nada. La casilla de
+  perfil manual queda para objetivos o casos que sí la necesiten; con tus Fuji, solo comprueba que
+  la corrección está puesta.</p>
   <p>El panel <b>Transformar</b> corrige la <b>perspectiva</b>: esas <b>verticales que se caen</b>
   cuando fotografías un edificio inclinando la cámara hacia arriba. Con el modo automático (o el
   guiado, trazando líneas sobre lo que debería ser vertical) enderezas la fachada para que suba
@@ -648,8 +661,8 @@
   </div>
   <div class="setting-card">
     <span class="s-name">Impresión</span>
-    <span class="s-value">JPEG calidad 100 (o TIFF) · 100% del tamaño · 300 ppp · sin redimensionar</span>
-    <span class="s-why">Por qué: la impresión necesita todos los píxeles y máxima calidad. 300 ppp es la densidad estándar de imprenta; deja que el laboratorio no tenga que inventarse nada. Espacio de color: sRGB salvo que el laboratorio te pida otro (Adobe RGB) explícitamente.</span>
+    <span class="s-value">TIFF (o JPEG 100) · dimensiones del papel · 240–300 ppp efectivos · enfoque de salida</span>
+    <span class="s-why">Por qué: parte del <b>tamaño físico</b> de la copia (p. ej. 30×45 cm) y deja que Lightroom calcule la resolución efectiva; 240–300 ppp es el rango habitual de imprenta. Activa el <b>enfoque de salida</b> (según papel mate o brillo) y usa el perfil/espacio que te indique el laboratorio (sRGB por defecto; Adobe RGB u otro solo si lo piden). No fijes «100% sin redimensionar»: eso no define a la vez tamaño y resolución, y el laboratorio o el driver reescalarán igual.</span>
   </div>
   <div class="setting-card">
     <span class="s-name">Archivo / web genérico</span>
@@ -664,8 +677,10 @@
   mayoría de pantallas hablan sRGB</b>. Si exportas en un espacio más ancho y lo subes a una web o
   a Instagram, los navegadores y apps que no gestionan color te lo mostrarán <b>apagado y
   desaturado</b> —lo contrario de lo que querías—. Por eso, para cualquier cosa que se vaya a ver
-  en pantalla: <b>sRGB, sin excepción</b>. Guarda los espacios anchos para el flujo de impresión
-  profesional, donde sí se aprovechan. Es la continuación lógica de la decisión de
+  en pantalla, <b>sRGB es la opción más segura y la que menos sustos da</b>. Las pantallas y
+  navegadores modernos ya gestionan perfiles más amplios (Display&nbsp;P3) si van correctamente
+  incrustados, pero salvo que controles ese flujo de principio a fin, entrega en sRGB. Guarda los
+  espacios anchos para el flujo de impresión profesional, donde sí se aprovechan. Es la continuación lógica de la decisión de
   <a href="03-configuracion-inicial.html#raw-o-jpeg">RAW o JPEG</a>: trabajas con todo el margen
   en RAW y entregas en el formato que el destino entiende.</p>
 
@@ -677,7 +692,7 @@
 
   <figure class="diagram">
     <svg viewBox="0 0 640 200" role="img" aria-labelledby="d132-t" font-family="ui-monospace, Menlo, monospace" font-size="11">
-      <title id="d132-t">El flujo de trabajo completo: importar, respaldar, marcar con banderas, puntuar con estrellas, revelar los cuatro o cinco estrellas, exportar y limpiar las rechazadas.</title>
+      <title id="d132-t">El flujo de trabajo completo: importar, respaldar, marcar con banderas, puntuar con estrellas, revelar las de tres estrellas o más, exportar y limpiar las rechazadas.</title>
       <defs>
         <marker id="d132-a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
           <path d="M0 0 L6 3 L0 6 Z" fill="var(--dg-accent)"/>
@@ -703,7 +718,7 @@
 
         <rect x="524" y="30" width="92" height="42" rx="6" fill="none" stroke="var(--dg-green)" stroke-width="1.3"/>
         <text x="570" y="48" fill="var(--dg-text)">5 · Revelar</text>
-        <text x="570" y="62" fill="var(--dg-green)" font-size="9">solo 4-5★</text>
+        <text x="570" y="62" fill="var(--dg-green)" font-size="9">solo 3★+</text>
 
         <!-- flechas fila 1 -->
         <g stroke="var(--dg-accent)" stroke-width="1.3">
@@ -740,7 +755,7 @@
     <label><input type="checkbox" data-id="backup"><span>Asegurar el respaldo <b>3-2-1</b> (SD intacta + disco + nube) y dejar que Lightroom haga copia del <b>catálogo</b></span></label>
     <label><input type="checkbox" data-id="flags"><span>Pasada 1: <b>banderas</b> (<kbd>P</kbd>/<kbd>X</kbd>) con Bloq Mayús, rechazando sin piedad</span></label>
     <label><input type="checkbox" data-id="stars"><span>Pasada 2: <b>estrellas</b> (3/4/5) solo sobre las seleccionadas</span></label>
-    <label><input type="checkbox" data-id="revelar"><span>Revelar los <b>4-5★</b>: perfil → básicos → curva → HSL → detalle → lente → recorte → máscaras</span></label>
+    <label><input type="checkbox" data-id="revelar"><span>Revelar los <b>3★+</b>: perfil → básicos → curva → HSL → detalle → lente → recorte → máscaras</span></label>
     <label><input type="checkbox" data-id="serie"><span>Sincronizar la serie para un <b>look coherente</b> antes de sacarla</span></label>
     <label><input type="checkbox" data-id="exportar"><span><b>Exportar</b> con la receta del destino (sRGB para pantalla)</span></label>
     <label><input type="checkbox" data-id="limpiar"><span><b>Limpiar</b> las rechazadas para no acumular basura</span></label>
@@ -792,8 +807,9 @@
   <details class="callout faq">
     <summary>¿Lightroom Classic o Lightroom «cloud»? ¿Cuál uso?</summary>
     <div class="co-body">
-      <p>Los ajustes de revelado son <b>los mismos</b> en los dos: lo que aprendes aquí vale para
-      ambos. La diferencia es la <b>gestión</b>. <b>Classic</b> es el que hemos descrito: tú
+      <p>Los dos comparten el <b>mismo modelo básico de revelado</b>, así que lo que aprendes aquí
+      vale para ambos (aunque cambian las rutas y algunas funciones no están en las dos apps). La
+      diferencia grande es la <b>gestión</b>. <b>Classic</b> es el que hemos descrito: tú
       controlas el catálogo y las carpetas en <b>tu disco</b>, ideal para grandes volúmenes y para
       quien quiere ser dueño de sus archivos —la elección recomendada para el flujo de viaje de
       este capítulo—. El <b>Lightroom «cloud»</b> (a secas) guarda todo <b>en la nube</b> y
@@ -836,7 +852,7 @@
       mirada</b>, no para «mejorar zonas» sueltas.</li>
       <li>Da <b>coherencia</b> a la serie: sincroniza, crea tu preset «viaje», mira el conjunto
       antes de publicar.</li>
-      <li><b>Exporta</b> con recetas por destino y <b>sRGB siempre</b> para pantalla.</li>
+      <li><b>Exporta</b> con recetas por destino y <b>sRGB por defecto</b> para pantalla.</li>
     </ul>
   </div>
 

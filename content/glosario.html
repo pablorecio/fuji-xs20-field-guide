@@ -25,7 +25,7 @@
     rápida sin perder el hilo, este es el sitio. Y cuando quieras entenderlos de verdad,
     cada entrada te lleva al capítulo donde se explican con calma.</p>
     <div class="hero-meta">
-      <span class="pill pill-part">136 términos</span>
+      <span class="pill pill-part">144 términos</span>
       <span class="pill">Foto y vídeo</span>
       <span class="pill">Todo enlazado</span>
     </div>
@@ -39,7 +39,7 @@
   <div class="callout tip" data-title="Cómo usar este glosario">
     <p>Tres formas de llegar aquí:</p>
     <ul>
-      <li>Pulsa <kbd>⌘</kbd><kbd>K</kbd> (la búsqueda del manual) y escribe el término:
+      <li>Pulsa <kbd>⌘</kbd><kbd>K</kbd> (o <kbd>Ctrl</kbd><kbd>K</kbd> en Windows/Linux; la búsqueda del manual) y escribe el término:
       el buscador también mira dentro de este glosario.</li>
       <li>Salta con las letras de abajo; cada término tiene su propia ancla, así que puedes
       compartir un enlace directo a una definición.</li>
@@ -52,9 +52,10 @@
   <h2 id="letra-0-9" class="glossary-letter">0–9</h2>
   <dl class="glossary">
     <dt id="180-grados">180°, regla de los</dt>
-    <dd>Para que el vídeo tenga un desenfoque de movimiento natural, la velocidad de
-    obturación debe ser aproximadamente el doble de los fps (a 24 fps, 1/50). No es
-    dogma, pero es el punto de partida. <a href="09-video.html#la-regla-de-los-180-grados">→ Vídeo desde cero</a></dd>
+    <dd>Para que el vídeo tenga un desenfoque de movimiento natural, el denominador de la velocidad
+    de obturación debe ser aproximadamente el doble de los fps (a 25 fps, ≈1/50&nbsp;s; es el
+    equivalente digital de un ángulo de obturación de 180°). No es dogma, pero es el punto de
+    partida. <a href="09-video.html#la-regla-de-los-180-grados">→ Vídeo desde cero</a></dd>
 
     <dt id="4-2-0-4-2-2">4:2:0 y 4:2:2</dt>
     <dd>Submuestreo de color: cuánta información de color guarda el vídeo respecto a la de
@@ -62,7 +63,8 @@
 
     <dt id="8-10-bits">8 y 10 bits</dt>
     <dd>Cuántos tonos por canal registra el vídeo: 8 bits da 256 niveles, 10 bits da 1024.
-    Los 10 bits evitan el <i>banding</i> y son casi obligados si vas a corregir color. <a href="09-video.html#8-bits-vs-10-bits">→ Vídeo desde cero</a></dd>
+    Los 10 bits <b>reducen el riesgo de banding</b> y dan más margen al corregir color (aunque el
+    banding también depende de la compresión y el procesado, y no siempre son obligatorios). <a href="09-video.html#8-bits-vs-10-bits">→ Vídeo desde cero</a></dd>
   </dl>
 
   <h2 id="letra-a" class="glossary-letter">A</h2>
@@ -89,7 +91,8 @@
 
     <dt id="aps-c">APS-C</dt>
     <dd>El formato del sensor de la X-S20: más pequeño que el <i>full frame</i>, lo que
-    implica un factor de recorte de 1,5× y algo menos de rendimiento con poca luz. <a href="05-exposicion.html#por-que-aps-c">→ La exposición</a></dd>
+    implica un factor de recorte de 1,5× y, a igualdad de generación y exposición equivalente, algo
+    menos de margen con poca luz que un sensor mayor. <a href="05-exposicion.html#por-que-aps-c">→ La exposición</a></dd>
 
     <dt id="auto-iso">Auto ISO</dt>
     <dd>Deja que la cámara elija el ISO dentro de unos límites que tú fijas (mínimo, máximo
@@ -108,19 +111,22 @@
 
     <dt id="balance-de-blancos">Balance de blancos</dt>
     <dd>El ajuste que le dice a la cámara qué color de luz hay para que los blancos salgan
-    blancos; se mide en kelvin. <a href="03-configuracion-inicial.html#balance-de-blancos">→ Configuración inicial</a></dd>
+    blancos; se ajusta en temperatura (kelvin) y también en tinte verde–magenta, y no toda luz tiene
+    una temperatura de color representativa. <a href="03-configuracion-inicial.html#balance-de-blancos">→ Configuración inicial</a></dd>
 
     <dt id="banding">Banding</dt>
-    <dd>Escalones visibles en un degradado suave (un cielo, una pared) cuando faltan tonos;
-    también el parpadeo en franjas del obturador electrónico bajo luces LED. <a href="05-exposicion.html#mecanico-vs-electronico">→ La exposición</a></dd>
+    <dd>Escalones visibles en un degradado suave (un cielo, una pared) cuando faltan tonos para
+    representarlo; se combate con más profundidad de bits (10 bits) y un buen procesado. No lo
+    confundas con las bandas de <i>flicker</i>, que tienen otra causa. <a href="09-video.html#8-bits-vs-10-bits">→ Vídeo desde cero</a></dd>
 
     <dt id="bins">Bins</dt>
     <dd>Las carpetas dentro de un proyecto de Premiere para organizar clips, audio y
     secuencias. <a href="14-premiere.html#bins">→ Montaje en Premiere</a></dd>
 
     <dt id="bitrate">Bitrate</dt>
-    <dd>Cuántos datos por segundo guarda el vídeo (en Mbps): más bitrate, más calidad y
-    archivos más grandes. La X-S20 llega a 360 Mbps. <a href="09-video.html#bitrate">→ Vídeo desde cero</a></dd>
+    <dd>Cuántos datos por segundo guarda el vídeo (en Mbps): a igualdad de códec, resolución y
+    contenido, más bitrate suele dar más calidad (con rendimientos decrecientes) y archivos más
+    grandes. La X-S20 llega a 360 Mbps. <a href="09-video.html#bitrate">→ Vídeo desde cero</a></dd>
 
     <dt id="blue-hour">Blue hour</dt>
     <dd>La franja de luz azul y difusa justo antes del amanecer o después del ocaso, cuando
@@ -146,8 +152,9 @@
     nítido; es el criterio que define qué cuenta como «enfocado». <a href="06-objetivos.html#que-es-nitido">→ El zoom kit y los dos fijos</a></dd>
 
     <dt id="clipping">Clipping</dt>
-    <dd>Cuando una zona se va tan a blanco o a negro que ya no guarda ningún detalle: la
-    información se ha perdido y no se recupera. <a href="05-exposicion.html#clipping">→ La exposición</a></dd>
+    <dd>Cuando una zona se va tan a blanco o a negro que no guarda detalle; la alerta y el JPEG
+    pueden recortar antes que el RAW, y a veces solo se satura un canal, así que conviene mirar el
+    dato real. <a href="05-exposicion.html#clipping">→ La exposición</a></dd>
 
     <dt id="cobertura">Cobertura</dt>
     <dd>El mínimo de planos distintos (general, medio, detalle) que necesitas de una escena
@@ -180,6 +187,10 @@
 
   <h2 id="letra-d" class="glossary-letter">D</h2>
   <dl class="glossary">
+    <dt id="dbfs">dBFS</dt>
+    <dd>La escala con la que se miden los niveles de audio digital: 0&nbsp;dBFS es el techo (pasarse
+    recorta y distorsiona), y se trabaja en negativo por debajo. <a href="14-premiere.html#niveles">→ Montaje en Premiere</a></dd>
+
     <dt id="deteccion-de-contraste">Detección de contraste</dt>
     <dd>Lo que mide el CDAF: busca el foco maximizando el contraste local de bordes. <a href="04-enfoque.html#cdaf">→ El sistema de autofoco</a></dd>
 
@@ -196,12 +207,13 @@
     vídeo. <a href="01-conociendo-la-xs20.html#dial-de-modos">→ Anatomía de la X-S20</a></dd>
 
     <dt id="difraccion">Difracción</dt>
-    <dd>La pérdida de nitidez global que aparece al cerrar mucho el diafragma (en APS-C, a
-    partir de f/11); marca el techo del <i>sweet spot</i> del objetivo. <a href="05-exposicion.html#sweet-spot-difraccion">→ La exposición</a></dd>
+    <dd>La pérdida de nitidez global que aparece de forma gradual al cerrar mucho el diafragma (en
+    APS-C, en torno a f/11 según objetivo, salida y criterio); marca el techo del <i>sweet spot</i>
+    del objetivo. <a href="05-exposicion.html#sweet-spot-difraccion">→ La exposición</a></dd>
 
     <dt id="distancia-focal">Distancia focal</dt>
-    <dd>La distancia en mm entre el centro óptico y el sensor enfocando al infinito;
-    determina el ángulo de visión: menos mm, más ancho. <a href="06-objetivos.html#focal-y-equivalencia">→ El zoom kit y los dos fijos</a></dd>
+    <dd>La distancia en mm, enfocando al infinito, entre el plano principal posterior del objetivo
+    y el sensor; determina el ángulo de visión: menos mm, más ancho. <a href="06-objetivos.html#focal-y-equivalencia">→ El zoom kit y los dos fijos</a></dd>
 
     <dt id="distancia-minima-de-enfoque">Distancia mínima de enfoque</dt>
     <dd>Lo más cerca que un objetivo puede enfocar; por debajo de ella, el sujeto ya no entra
@@ -211,9 +223,10 @@
     <dd>Los modos de rango dinámico de Fuji: subexponen y luego recuperan altas luces
     subiendo el ISO base, para no quemar cielos en JPEG. <a href="05-exposicion.html#dr-fuji">→ La exposición</a></dd>
 
-    <dt id="dual-gain">Dual gain (ISO base dual)</dt>
-    <dd>El sensor tiene dos ISO «base» de máxima calidad; al llegar al segundo circuito de
-    ganancia (en la X-S20, ISO 640) el ruido casi no sube pese a subir el ISO. <a href="05-exposicion.html#iso-base-dual-gain">→ La exposición</a></dd>
+    <dt id="dual-gain">Dual gain (doble ganancia de conversión)</dt>
+    <dd>Muchos sensores modernos tienen dos circuitos de ganancia de conversión; al pasar al
+    segundo, el ruido de lectura baja y apenas sube pese a subir el ISO. No es lo mismo que tener
+    «dos ISO base», y el punto exacto depende del sensor. <a href="05-exposicion.html#iso-base-dual-gain">→ La exposición</a></dd>
   </dl>
 
   <h2 id="letra-e" class="glossary-letter">E</h2>
@@ -265,6 +278,11 @@
     <dd>Los reflejos y el velo de luz que aparecen cuando el sol entra directo en el objetivo;
     a veces molesto, a veces buscado. <a href="08-luz.html#contraluz">→ Leer la luz</a></dd>
 
+    <dt id="flicker">Flicker</dt>
+    <dd>El parpadeo de muchas luces artificiales (LED, fluorescentes) que, según la velocidad de
+    obturación y los fps, aparece como <b>bandas horizontales</b> en la imagen; se reduce con
+    velocidades compatibles y <code>FLICKERLESS S.S.</code>. <a href="05-exposicion.html#mecanico-vs-electronico">→ La exposición</a></dd>
+
     <dt id="focus-and-recompose">Focus and recompose</dt>
     <dd>Enfocar con el punto central, bloquear y reencuadrar; rápido, pero arriesgado con poca
     profundidad de campo porque el foco puede desplazarse. <a href="04-enfoque.html#focus-and-recompose">→ El sistema de autofoco</a></dd>
@@ -296,8 +314,9 @@
   <h2 id="letra-g" class="glossary-letter">G</h2>
   <dl class="glossary">
     <dt id="gamut">Gamut</dt>
-    <dd>El rango de colores que un archivo o pantalla puede representar; sRGB es el más
-    pequeño y el estándar universal de web y móviles. <a href="13-lightroom.html#por-que-srgb">→ Revelado en Lightroom</a></dd>
+    <dd>El rango de colores que un archivo o pantalla puede representar; sRGB es el más pequeño y la
+    opción más compatible en web y móviles, aunque las pantallas modernas ya gestionan perfiles más
+    amplios (Display P3). <a href="13-lightroom.html#por-que-srgb">→ Revelado en Lightroom</a></dd>
 
     <dt id="gimbal">Gimbal</dt>
     <dd>Un estabilizador motorizado que mantiene la cámara nivelada en movimiento; da planos
@@ -308,15 +327,17 @@
     favorece casi todo. La mejor luz que da gratis el día. <a href="08-luz.html#golden-hour">→ Leer la luz</a></dd>
 
     <dt id="gop">GOP</dt>
-    <dd>El grupo de fotogramas entre dos <i>keyframes</i> en el vídeo comprimido; los códecs
-    guardan un fotograma completo y luego solo las diferencias. <a href="09-video.html#codecs">→ Vídeo desde cero</a></dd>
+    <dd>El grupo de fotogramas entre dos fotogramas completos en la codificación Long GOP
+    (inter-frame): se guarda uno entero y luego solo las diferencias. No aplica a los modos ALL-I,
+    que guardan cada fotograma completo. <a href="09-video.html#codecs">→ Vídeo desde cero</a></dd>
   </dl>
 
   <h2 id="letra-h" class="glossary-letter">H</h2>
   <dl class="glossary">
     <dt id="h264-h265">H.264 y H.265</dt>
-    <dd>Los dos códecs de la X-S20: H.264 es universal y fácil de editar; H.265 comprime más
-    (misma calidad, menos peso) pero pide más ordenador. <a href="09-video.html#h264-vs-h265">→ Vídeo desde cero</a></dd>
+    <dd>Los dos códecs de la X-S20: H.264 es el más compatible; H.265 comprime más (misma calidad,
+    menos peso) pero pide más ordenador. La facilidad de edición depende también del GOP, el perfil
+    y los bits. <a href="09-video.html#h264-vs-h265">→ Vídeo desde cero</a></dd>
 
     <dt id="handheld">Handheld</dt>
     <dd>Grabar a pulso, cámara en mano; con buena técnica y estabilización da un movimiento
@@ -326,13 +347,19 @@
     <dd>El aire que dejas por encima de la cabeza del sujeto al encuadrarlo: ni pegado al
     borde ni flotando en medio del cuadro. <a href="11-tipos-de-plano.html#headroom">→ Tipos de plano</a></dd>
 
+    <dt id="heif">HEIF</dt>
+    <dd>Un formato de imagen más eficiente que el JPEG (más calidad por tamaño, y admite 10 bits);
+    la X-S20 puede grabarlo, aunque su compatibilidad es menor que la del JPEG. <a href="03-configuracion-inicial.html#raw-o-jpeg">→ Configuración inicial</a></dd>
+
     <dt id="hiperfocal">Hiperfocal</dt>
     <dd>La distancia a la que enfocar para que todo, desde la mitad de esa distancia hasta el
     infinito, salga nítido; la clave para disparar calle o paisaje sin reenfocar. <a href="06-objetivos.html#hiperfocal">→ El zoom kit y los dos fijos</a></dd>
 
     <dt id="histograma">Histograma</dt>
-    <dd>El gráfico que reparte los píxeles de la foto de las sombras (izquierda) a las luces
-    (derecha); tu verdad objetiva sobre la exposición. <a href="05-exposicion.html#el-histograma">→ La exposición</a></dd>
+    <dd>El gráfico que reparte los píxeles de las sombras (izquierda) a las luces (derecha). En
+    cámara procede del JPEG de previsualización (simulación, WB, DR), así que orienta pero no es una
+    verdad absoluta y puede ocultar el recorte de un canal; el RGB y la alerta de altas luces lo
+    afinan. <a href="05-exposicion.html#el-histograma">→ La exposición</a></dd>
 
     <dt id="hsl">HSL</dt>
     <dd>El panel de Lightroom para ajustar tono, saturación y luminancia color a color, sin
@@ -358,8 +385,9 @@
     color a partir del mosaico de fotositos rojos, verdes y azules del sensor. <a href="13-lightroom.html#detalle">→ Revelado en Lightroom</a></dd>
 
     <dt id="iso">ISO</dt>
-    <dd>La amplificación de la señal del sensor: sube el brillo cuando falta luz, a costa de
-    más ruido. La base de la X-S20 es ISO 160. <a href="05-exposicion.html#iso-y-ruido">→ La exposición</a></dd>
+    <dd>La ganancia (amplificación) aplicada a la señal del sensor: sube el brillo de salida cuando
+    hay poca luz. No añade luz ni crea el ruido —este nace sobre todo de la poca luz capturada—;
+    subir ISO solo lo hace más visible. La base de la X-S20 es ISO 160. <a href="05-exposicion.html#iso-y-ruido">→ La exposición</a></dd>
   </dl>
 
   <h2 id="letra-j" class="glossary-letter">J</h2>
@@ -367,6 +395,10 @@
     <dt id="joystick">Joystick</dt>
     <dd>La palanquita trasera con la que mueves el punto de enfoque por el cuadro sin apartar
     el ojo del visor. <a href="01-conociendo-la-xs20.html#el-joystick">→ Anatomía de la X-S20</a></dd>
+
+    <dt id="jpeg">JPEG</dt>
+    <dd>El formato de imagen ya «revelado» por la cámara: comprimido y listo para compartir, pero
+    con menos margen que el RAW para editar. La X-S20 le aplica la simulación de película. <a href="03-configuracion-inicial.html#raw-o-jpeg">→ Configuración inicial</a></dd>
   </dl>
 
   <h2 id="letra-k" class="glossary-letter">K</h2>
@@ -386,9 +418,15 @@
     <dd>Líneas de la escena (una calle, una barandilla, un río) que conducen la mirada hacia
     el sujeto o hacia el fondo. <a href="07-composicion.html#leading-lines">→ Aprender a mirar</a></dd>
 
+    <dt id="lufs">LUFS</dt>
+    <dd>La unidad de <b>sonoridad</b> integrada percibida a lo largo de todo un clip; las plataformas
+    normalizan a un objetivo (a menudo en torno a −14&nbsp;LUFS), por eso se entrega apuntando a él
+    y no solo a los picos. <a href="14-premiere.html#niveles">→ Montaje en Premiere</a></dd>
+
     <dt id="lut">LUT</dt>
-    <dd>Una tabla que traduce colores: aplicada a un vídeo plano (F-Log2) le devuelve
-    contraste y color, ya sea para corregir o para dar un «look». <a href="09-video.html#luts">→ Vídeo desde cero</a></dd>
+    <dd>Una tabla que traduce colores. Una LUT <b>técnica</b> normaliza un vídeo plano (F-Log2) a
+    un espacio estándar (Rec.709); una <b>creativa</b> aplica un «look»; y una de <b>monitorización</b>
+    solo previsualiza. Su efecto depende del espacio de entrada y de salida. <a href="09-video.html#luts">→ Vídeo desde cero</a></dd>
 
     <dt id="luz-dura-y-suave">Luz dura y suave</dt>
     <dd>Dura = fuente pequeña o lejana, sombras marcadas de borde nítido; suave = fuente
@@ -410,12 +448,13 @@
     puntual, etc.). <a href="03-configuracion-inicial.html#medicion">→ Configuración inicial</a></dd>
 
     <dt id="modos-custom">Modos custom</dt>
-    <dd>Las posiciones C1–C… del dial que guardan un juego completo de ajustes para recuperarlo
-    al instante (calle, retrato, vídeo). <a href="03-configuracion-inicial.html#modos-custom">→ Configuración inicial</a></dd>
+    <dd>Las posiciones C1–C4 del dial que guardan un juego completo de ajustes para recuperarlo al
+    instante (calle, paisaje, retrato, noche). <a href="03-configuracion-inicial.html#modos-custom">→ Configuración inicial</a></dd>
 
     <dt id="motion-blur">Motion blur</dt>
-    <dd>El desenfoque de movimiento: la estela que deja lo que se mueve durante la exposición.
-    En vídeo es deseable y lo gobierna la regla de los 180°. <a href="09-video.html#la-regla-de-los-180-grados">→ Vídeo desde cero</a></dd>
+    <dd>El desenfoque de movimiento: la estela que deja lo que se mueve durante la exposición. En
+    vídeo, una cantidad natural (regida por la regla de los 180°) da continuidad, pero puede ser
+    insuficiente o excesivo según la intención y la acción. <a href="09-video.html#la-regla-de-los-180-grados">→ Vídeo desde cero</a></dd>
 
     <dt id="my-menu">My Menu</dt>
     <dd>El menú personalizable donde colocas los ajustes que usas de verdad, para no bucear
@@ -519,6 +558,10 @@
     <dd>El archivo que guarda todos los datos del sensor sin procesar; da la máxima
     flexibilidad en revelado, a cambio de más peso y un paso obligatorio de edición. <a href="03-configuracion-inicial.html#raw-o-jpeg">→ Configuración inicial</a></dd>
 
+    <dt id="rec-709">Rec.709</dt>
+    <dd>El espacio de color estándar del vídeo HD: el destino «normal» al que se lleva un clip
+    grabado en F-Log2 antes de darle un look. <a href="09-video.html#f-log2">→ Vídeo desde cero</a></dd>
+
     <dt id="regla-del-eje">Regla del eje (de los 180°)</dt>
     <dd>Norma de montaje: mantén la cámara al mismo lado de la línea de acción entre planos,
     o el espectador se desorienta sobre quién está dónde. <a href="12-storytelling.html#regla-del-eje">→ Contar un viaje</a></dd>
@@ -529,7 +572,8 @@
 
     <dt id="regla-reciproca">Regla recíproca</dt>
     <dd>Para disparar a pulso sin trepidación, usa una velocidad al menos igual a 1/(focal
-    equivalente); el IBIS te da varios pasos de margen extra. <a href="05-exposicion.html#regla-reciproca">→ La exposición</a></dd>
+    equivalente); el IBIS da varios pasos de margen extra, pero no compensa el <b>movimiento del
+    sujeto</b>: si este se mueve, necesitas velocidad suficiente aunque tu pulso esté estabilizado. <a href="05-exposicion.html#regla-reciproca">→ La exposición</a></dd>
 
     <dt id="reveal">Reveal</dt>
     <dd>Movimiento o encuadre que oculta algo y luego lo descubre (tras una esquina, una
@@ -554,6 +598,11 @@
     <dd>Los gráficos técnicos de Premiere (waveform, vectorscopio) que miden el color y el
     brillo de forma objetiva, sin fiarte solo del ojo. <a href="14-premiere.html#scopes">→ Montaje en Premiere</a></dd>
 
+    <dt id="sensor">Sensor</dt>
+    <dd>El chip que convierte la luz en señal eléctrica; en la X-S20, un X-Trans CMOS 4 BSI de
+    26,1&nbsp;MP en formato APS-C. Su tamaño y su lectura marcan ruido, rango dinámico y rolling
+    shutter. <a href="05-exposicion.html#el-sensor">→ La exposición</a></dd>
+
     <dt id="shot-list">Shot list</dt>
     <dd>La lista de planos que quieres conseguir antes de salir a grabar; te da rumbo y evita
     volver con material suelto e inconexo. <a href="12-storytelling.html#shot-list">→ Contar un viaje</a></dd>
@@ -563,8 +612,9 @@
     mejor la relación señal/ruido. <a href="05-exposicion.html#de-donde-viene-el-ruido">→ La exposición</a></dd>
 
     <dt id="simulacion-de-pelicula">Simulación de película</dt>
-    <dd>Los perfiles de color de Fuji (Provia, Classic Chrome, Eterna…) que emulan películas
-    clásicas; la X-S20 trae 19. <a href="03-configuracion-inicial.html#simulaciones-de-pelicula">→ Configuración inicial</a></dd>
+    <dd>Los perfiles de color de Fuji (Provia, Classic Chrome, Eterna, Reala Ace…), unos inspirados
+    en emulsiones clásicas y otros looks propios; la X-S20 trae 19 de fábrica (20 con Reala Ace tras
+    actualizar el firmware). <a href="03-configuracion-inicial.html#simulaciones-de-pelicula">→ Configuración inicial</a></dd>
 
     <dt id="single-point">Single Point</dt>
     <dd>El área de AF de un punto que tú colocas; el modo más preciso y predecible, ideal para
@@ -575,8 +625,8 @@
     afecta a cuánto aguanta el etalonaje. <a href="09-video.html#submuestreo-de-color">→ Vídeo desde cero</a></dd>
 
     <dt id="sweet-spot">Sweet spot</dt>
-    <dd>La apertura a la que un objetivo rinde su máxima nitidez, normalmente uno o dos pasos
-    por debajo de su apertura máxima. <a href="05-exposicion.html#sweet-spot-difraccion">→ La exposición</a></dd>
+    <dd>La apertura a la que un objetivo suele rendir su máxima nitidez, a menudo uno o dos pasos
+    por debajo de la máxima; varía por objetivo, focal y distancia, así que conviene probar. <a href="05-exposicion.html#sweet-spot-difraccion">→ La exposición</a></dd>
   </dl>
 
   <h2 id="letra-t" class="glossary-letter">T</h2>
@@ -591,7 +641,8 @@
 
     <dt id="timelapse">Timelapse</dt>
     <dd>Una secuencia de fotos tomadas a intervalos que luego se monta como vídeo acelerado;
-    conviene enfocar en manual para que no parpadee. <a href="04-enfoque.html#enfoque-manual">→ El sistema de autofoco</a></dd>
+    conviene enfocar en manual (evita el vaivén del AF entre fotos) y fijar exposición, apertura y
+    balance de blancos para reducir el parpadeo. <a href="04-enfoque.html#enfoque-manual">→ El sistema de autofoco</a></dd>
 
     <dt id="timeline">Timeline</dt>
     <dd>La línea de tiempo del editor donde colocas y ordenas clips, cortes, audio y efectos:
@@ -609,8 +660,9 @@
   <h2 id="letra-u" class="glossary-letter">U</h2>
   <dl class="glossary">
     <dt id="uhs-ii">UHS-II</dt>
-    <dd>El estándar de tarjetas SD rápidas que la X-S20 aprovecha; necesario para vídeo de
-    alto bitrate y ráfagas largas. Formatéala en la cámara. <a href="01-conociendo-la-xs20.html#tarjeta-y-bateria">→ Anatomía de la X-S20</a></dd>
+    <dd>El bus de tarjetas SD rápidas que la X-S20 aprovecha para descargar y vaciar el búfer; la
+    grabación de vídeo la marca la <b>clase de velocidad sostenida</b> (V60 para 360 Mbps, U3 para
+    100/200), no el bus en sí. Formatéala en la cámara. <a href="01-conociendo-la-xs20.html#tarjeta-y-bateria">→ Anatomía de la X-S20</a></dd>
   </dl>
 
   <h2 id="letra-v" class="glossary-letter">V</h2>
@@ -618,6 +670,10 @@
     <dt id="vbr">VBR</dt>
     <dd>Bitrate variable en la exportación: reparte más datos a los planos difíciles y menos a
     los fáciles; en dos pasos, mejor calidad por tamaño. <a href="14-premiere.html#exportar">→ Montaje en Premiere</a></dd>
+
+    <dt id="velocidad-de-obturacion">Velocidad de obturación</dt>
+    <dd>El tiempo que el obturador deja pasar la luz (1/1000, 1/50, 1&nbsp;s…): controla la luz
+    capturada y cómo se congela o se difumina el movimiento. <a href="05-exposicion.html#la-velocidad">→ La exposición</a></dd>
 
     <dt id="visor-electronico">Visor electrónico</dt>
     <dd>El EVF: la pantalla del ocular que muestra exposición y color reales antes de disparar,
@@ -635,8 +691,9 @@
     de fondo en el montaje. <a href="14-premiere.html#audio">→ Montaje en Premiere</a></dd>
 
     <dt id="wr">WR (Weather Resistant)</dt>
-    <dd>El sellado contra polvo y salpicaduras de algunos objetivos, como el XF 23 mm f/2 WR;
-    útil en costa, lluvia y polvo de viaje. <a href="06-objetivos.html#23mm">→ El zoom kit y los dos fijos</a></dd>
+    <dd>El sellado contra polvo y salpicaduras de algunos objetivos, como el XF 23 mm f/2 WR; pero
+    el cuerpo X-S20 no está sellado, así que el conjunto no es resistente a la intemperie: usa
+    protección y evita lluvia intensa, salitre y arena. <a href="06-objetivos.html#23mm">→ El zoom kit y los dos fijos</a></dd>
   </dl>
 
   <h2 id="letra-x" class="glossary-letter">X</h2>
@@ -661,8 +718,8 @@
     la precisión de Single Point y la comodidad de Wide. <a href="04-enfoque.html#zone">→ El sistema de autofoco</a></dd>
 
     <dt id="zoom-motorizado">Zoom motorizado (PZ)</dt>
-    <dd>El zoom accionado por motor del kit 15-45; se maneja con una palanca y da zooms suaves
-    en vídeo, pero no tiene posiciones marcadas. <a href="06-objetivos.html#zoom-motorizado-15-45">→ El zoom kit y los dos fijos</a></dd>
+    <dd>El zoom accionado por motor del kit 15-45; se controla girando el anillo de zoom (a dos
+    ritmos según lo rápido que gires) y da zooms suaves en vídeo, pero no tiene posiciones marcadas. <a href="06-objetivos.html#zoom-motorizado-15-45">→ El zoom kit y los dos fijos</a></dd>
   </dl>
 
 </div>
