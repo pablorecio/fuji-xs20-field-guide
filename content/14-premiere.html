@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="es" data-root="../">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Montaje en Premiere Pro desde cero con clips 4K H.265 10 bits de la X-S20: proyecto y carpetas, bins y proxies, timeline a 25p, método de montaje, audio, color con Lumetri y F-Log2, y exportar para YouTube e Instagram.">
+<title>Montaje en Premiere — Fuji X-S20 Field Guide</title>
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='8' y='8' width='84' height='84' rx='14' fill='%230c0e11'/><path d='M24 24h16M24 24v16M76 24H60M76 24v16M24 76h16M24 76V60M76 76H60M76 76V60' stroke='%234ade80' stroke-width='7' stroke-linecap='round' fill='none'/></svg>">
+</head>
+<body data-chapter="14-premiere">
+
+<div class="content">
+
+  <div class="chapter-hero">
+    <span class="fc"></span>
+    <div class="hero-readout">
+      <span class="r-part">Parte X · Premiere</span>
+      <span>Capítulo 14</span>
+      <span>≈40 min</span>
+    </div>
+    <h1>Montaje en Premiere</h1>
+    <p class="hero-lede">Tienes una tarjeta llena de clips 4K de la X-S20 —algunos en F-Log2,
+    otros en Eterna— y nunca has montado un vídeo. Este capítulo te lleva de esa carpeta caótica
+    a una pieza terminada: cómo se organiza un proyecto, qué es de verdad una timeline, cómo se
+    corta al ritmo de una canción, cómo suena bien y se ve bien, y cómo lo exportas para YouTube
+    y para Instagram sin que se vea mal. Montar no es difícil; es un oficio con orden.</p>
+    <div class="hero-meta">
+      <span class="pill pill-part">Proyecto y carpetas</span>
+      <span class="pill">Bins y proxies</span>
+      <span class="pill">Timeline 25p</span>
+      <span class="pill">Audio y color</span>
+      <span class="pill">YouTube · Reels</span>
+    </div>
+  </div>
+
+  <p>Grabar es la mitad; la otra mitad ocurre sentado. El montaje es donde tus clips sueltos se
+  convierten en algo que alguien quiere ver: elige qué se queda, en qué orden, cuánto dura cada
+  plano, qué se oye y de qué color es todo. Premiere Pro es la herramienta, pero la herramienta es
+  lo de menos —el 90% de un buen montaje de viaje es método, no botones—. Vamos a construirlo en el
+  orden en que se hace de verdad: primero orden <b>antes</b> de abrir el programa, luego organizar
+  dentro, luego montar contra la música, después el sonido y, al final de todo, el color. Nada de
+  esto asume que sepas nada de Premiere; sí asume que ya entiendes códecs, proxies, fps y LUTs a
+  nivel de concepto, porque eso lo montamos en <a href="09-video.html">Vídeo desde cero</a>. Aquí lo
+  llevamos a la práctica.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="el-proyecto">El proyecto: una lista de referencias, no una caja</h2>
+
+  <p>Lo primero que hay que desmontar es un malentendido muy común. Cuando creas un <b>proyecto</b>
+  en Premiere (un archivo <code>.prproj</code>), el instinto dice que ahí «dentro» se guardan tus
+  vídeos. <b>No es así.</b> El proyecto no contiene ni un solo fotograma de tu material: es un
+  archivo diminuto —unos pocos megas— que guarda <b>referencias</b> a dónde viven tus clips en el
+  disco, más todas tus decisiones de montaje (qué cortaste, en qué orden, cómo lo gradeaste). Los
+  vídeos siguen siendo los mismos archivos pesados en tu carpeta de siempre; el proyecto solo
+  <b>apunta</b> a ellos.</p>
+
+  <p>Si te suena, es porque es exactamente la misma idea que el
+  <a href="13-lightroom.html#el-catalogo">catálogo de Lightroom</a>: un índice de decisiones sobre
+  archivos que no toca. Y tiene la misma consecuencia práctica, que es la regla más importante de
+  todo este capítulo: <b>si mueves o renombras los archivos originales después de importarlos, el
+  proyecto se queda sin encontrarlos</b>. A eso se le llama <span class="term" title="Media offline: cuando Premiere no encuentra el archivo original al que apunta un clip del proyecto; el clip aparece en rojo y hay que 'relinkar' indicándole la nueva ubicación.">media offline</span>,
+  y da un susto considerable la primera vez.</p>
+
+  <h3 id="las-carpetas">Las carpetas en disco, ANTES de abrir Premiere</h3>
+
+  <p>Como el proyecto solo apunta a los archivos, tu trabajo empieza en el explorador de archivos,
+  no en Premiere. Antes de importar nada, crea una carpeta para el proyecto y dentro una estructura
+  fija. La misma cada vez: cuando montar es una rutina, dejas de perder cosas.</p>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Carpeta</th><th>Qué va dentro</th></tr></thead>
+    <tbody>
+      <tr><td><code>/proyecto</code></td><td>El archivo <code>.prproj</code> y sus copias de seguridad automáticas.</td></tr>
+      <tr><td><code>/media</code></td><td>Los clips de vídeo copiados de la tarjeta, tal cual (los <code>.MOV</code> de la X-S20).</td></tr>
+      <tr><td><code>/audio</code></td><td>Sonido grabado aparte: ambiente, voz, wild sound del viaje.</td></tr>
+      <tr><td><code>/musica</code></td><td>La canción o pista de fondo del montaje.</td></tr>
+      <tr><td><code>/exports</code></td><td>Los archivos finales que genera Premiere al exportar.</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>Copia el material de la tarjeta a <code>/media</code> <b>antes</b> de tocar Premiere, y no lo
+  vuelvas a mover. Este gesto de cinco minutos —vaciar la tarjeta a una estructura ordenada— es lo
+  que separa un flujo tranquilo de un caos de archivos perdidos tres semanas después. Cuando abras
+  Premiere y crees el proyecto, guárdalo en <code>/proyecto</code>. Luego importas: <b>File →
+  Import</b>, o arrastrando desde el panel <b>Media Browser</b>. Importar no copia nada; solo crea
+  las referencias de las que hablábamos.</p>
+
+  <div class="callout tip" data-title="Guarda el proyecto en el mismo disco que el material">
+    <p>Editar 4K H.265 tira mucho del disco. Ten el material y el proyecto en un SSD (interno o
+    externo por USB-C), no en un disco duro lento ni en una carpeta sincronizada a la nube que
+    esté moviendo archivos por debajo mientras editas. La nube y el montaje de vídeo se llevan
+    fatal.</p>
+  </div>
+
+  <h3 id="media-offline">Media offline y cómo relinkar sin pánico</h3>
+
+  <p>Antes o después te pasará: abres un proyecto y los clips aparecen en rojo con el cartel
+  <b>Media Offline</b>. No has perdido nada —los vídeos siguen en el disco—, simplemente Premiere
+  buscó en la ruta que recordaba y no los encontró (moviste la carpeta, cambiaste de disco). La cura
+  es <b>relinkar</b>: clic derecho sobre un clip offline → <b>Link Media</b>, le señalas dónde está
+  ahora <b>uno</b> de los archivos y, si el resto está en la misma carpeta, Premiere reconecta todos
+  de golpe. Cero dramatismo si sabes qué está pasando; por eso lo explicamos antes de que ocurra.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="bins">Bins: poner orden dentro del proyecto</h2>
+
+  <p>Una vez importado, el panel de proyecto es una lista larga de clips con nombres tipo
+  <code>DSCF4821.MOV</code>. Ordenarlos es la diferencia entre encontrar el plano que buscas en dos
+  segundos o rebuscar diez minutos. La herramienta son los <b>bins</b>: carpetas <b>dentro</b> del
+  proyecto (no en el disco; son organización virtual). Crea uno con el icono de carpeta del panel o
+  con clic derecho → <b>New Bin</b>.</p>
+
+  <p>Para un montaje de viaje, una estructura de bins que funciona:</p>
+  <div class="card-grid">
+    <div class="card"><div class="card-eyebrow">Por día o lugar</div><h4>01 Lisboa, 02 Sintra…</h4><p>Un bin por jornada o localización. Es como recorriste el viaje: fácil de recordar.</p></div>
+    <div class="card"><div class="card-eyebrow">Aparte</div><h4>Música</h4><p>La pista de fondo. Separada porque es el esqueleto del montaje, no un clip más.</p></div>
+    <div class="card"><div class="card-eyebrow">Aparte</div><h4>Audio</h4><p>Ambiente y wild sound grabados aparte, listos para pegar bajo la imagen.</p></div>
+    <div class="card"><div class="card-eyebrow">Aparte</div><h4>Gráficos</h4><p>Títulos, logos, subtítulos: lo que no sale de la cámara.</p></div>
+  </div>
+
+  <p>Fíjate en lo que <b>no</b> hacemos: no renombramos los clips. Es tentador poner
+  <code>atardecer-tajo-bueno.MOV</code> a cada archivo, pero es trabajo lento y frágil (rompe el
+  vínculo con la tarjeta y con cualquier copia de seguridad). Los <b>bins</b> y las <b>etiquetas de
+  color</b> (labels: clic derecho → Label) bastan de sobra para orientarte. Marca en verde lo mejor,
+  en rojo lo que casi seguro va fuera, y ya tienes un mapa visual sin tocar un solo nombre de
+  archivo.</p>
+
+  <h3 id="review">Marcar lo bueno ANTES de tocar la timeline</h3>
+
+  <p>Aquí va un cambio de mentalidad que ahorra horas. El error del principiante es arrastrar clips
+  a la timeline y ponerse a cortar a la vez que decide qué le gusta. Son dos tareas distintas y
+  mezclarlas es agotador. Primero <b>revisa</b>, luego montas.</p>
+
+  <p>La revisión se hace en el <b>Source Monitor</b>: doble clic en un clip del bin y se abre ahí para
+  verlo <b>sin</b> meterlo aún en el montaje. Reprodúcelo y, cuando encuentres el trozo que vale, marca
+  una entrada y una salida —teclas <kbd>I</kbd> (in) y <kbd>O</kbd> (out)— sobre el fragmento bueno:
+  estás diciendo «de este clip de 40 segundos, solo me interesan estos 3». Etiqueta en verde y pasa al
+  siguiente. Al terminar tendrás un puñado de clips marcados y una idea clara de qué tienes; recién
+  entonces empieza el montaje, y va rodado.</p>
+
+  <h3 id="proxies">Proxies en la práctica</h3>
+
+  <p>La teoría de por qué el H.265 4K a 10 bits ahoga a un portátil y por qué un proxy lo resuelve
+  ya la tienes en <a href="09-video.html#proxy">Vídeo desde cero</a>. Aquí solo la aterrizamos: en
+  Premiere, ¿los necesitas y cómo se hacen?</p>
+
+  <p><b>Los necesitas de verdad</b> si editas en un portátil y la reproducción va a tirones al saltar
+  o al apilar clips. Si tu ordenador reproduce el 4K con fluidez, no te compliques. Hay dos momentos
+  para crearlos. El limpio es <b>al importar</b>: en la ventana de importación activa <b>Ingest</b> y
+  elige <b>Create Proxies</b> con un preset (los <b>H.264 Low/Medium Resolution</b> van bien);
+  Premiere genera las copias ligeras en segundo plano mientras tú vas organizando bins. También
+  puedes hacerlo <b>después</b>: selecciona los clips en el bin, clic derecho → <b>Proxy → Create
+  Proxies</b>. Una vez generados, editas contra ellos y, al exportar, Premiere vuelve solo a los
+  originales. El interruptor para ver si estás mirando proxy u original es el botón <b>Toggle
+  Proxies</b> del monitor (se añade desde el editor de botones «+» del Program Monitor). Nada más;
+  esto es todo el flujo de proxies que necesitas.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="el-timeline">El timeline: dónde vive el montaje</h2>
+
+  <p>El <b>timeline</b> (línea de tiempo) es el lienzo del montaje: una regla horizontal de tiempo
+  donde colocas los clips en el orden y la duración que decides. Lo que construyes ahí dentro se
+  llama <b>secuencia</b> (sequence), y una secuencia tiene <b>ajustes propios</b> —resolución y fps—
+  que, como vimos, <b>mandan sobre los clips que metes</b>. Esta es la fuente número uno de sustos
+  del principiante, así que vamos despacio.</p>
+
+  <h3 id="crear-secuencia">La secuencia manda: créala desde un clip</h3>
+
+  <p>Si grabaste a 25p (lo normal en Europa, ver <a href="09-video.html#fps">FPS</a>), tu secuencia
+  debe ser a <b>25 fps</b>. ¿La forma infalible de acertar sin pelearte con un menú de ajustes lleno
+  de siglas? <b>Arrastra el primer clip bueno sobre el botón «New Item» del panel de proyecto</b>, o
+  clic derecho sobre el clip → <b>New Sequence From Clip</b>. Premiere crea una secuencia con
+  <b>exactamente</b> los ajustes de ese clip: 4K, 25p, el color correcto. No hay forma más segura de
+  no equivocarte, y te ahorra descifrar el cuadro de New Sequence entero.</p>
+
+  <div class="callout error" data-title="Error común: la secuencia con los ajustes equivocados">
+    <p>Montar toda una pieza en una secuencia a 30p o a 1080 cuando grabaste a 25p en 4K trae
+    problemas sutiles y molestos: movimiento ligeramente entrecortado, clips que aparecen con marco
+    negro o recortados, o un aviso constante de «desajuste». Si al arrastrar el primer clip a una
+    secuencia vacía Premiere te pregunta si quieres <b>cambiar los ajustes de la secuencia para que
+    coincidan</b> con el clip, di que <b>sí</b>. Crear la secuencia desde el clip evita la pregunta
+    de raíz.</p>
+  </div>
+
+  <h3 id="pistas">Pistas de vídeo y de audio</h3>
+
+  <p>La secuencia se organiza en <b>pistas</b> horizontales apiladas. Las de vídeo (<b>V1, V2, V3…</b>)
+  van arriba y las de audio (<b>A1, A2, A3…</b>) abajo. Regla clave de las pistas de vídeo: <b>lo que
+  está más arriba tapa a lo que está debajo</b>. Un clip en V2 se ve por encima del de V1 (útil para
+  títulos, o para poner un plano sobre otro). Las de audio, en cambio, <b>se suman</b>: todo lo que
+  haya en A1, A2 y A3 suena a la vez. Un montaje de viaje típico usa muy pocas: V1 para tus planos,
+  quizá V2 para algún título, A1 para la música y A2 para el ambiente. No te hacen falta veinte.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 660 300" role="img" aria-labelledby="d141-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d141-t">Anatomía de un timeline: pistas de vídeo apiladas arriba, pistas de audio abajo, un cabezal de reproducción que recorre el tiempo, y varios clips recortados y colocados en secuencia.</title>
+      <!-- eje de tiempo -->
+      <text x="8" y="20" fill="var(--dg-text)">Tiempo →</text>
+      <line x1="70" y1="16" x2="640" y2="16" stroke="var(--dg-line-soft)" stroke-width="1"/>
+      <!-- etiquetas de pista -->
+      <text x="8" y="56" fill="var(--dg-text)">V2</text>
+      <text x="8" y="96" fill="var(--dg-text)">V1</text>
+      <text x="8" y="150" fill="var(--dg-text)">A1</text>
+      <text x="8" y="190" fill="var(--dg-text)">A2</text>
+      <!-- carriles -->
+      <rect x="40" y="34" width="600" height="36" fill="none" stroke="var(--dg-line-soft)" stroke-width="1"/>
+      <rect x="40" y="74" width="600" height="36" fill="none" stroke="var(--dg-line-soft)" stroke-width="1"/>
+      <rect x="40" y="128" width="600" height="36" fill="none" stroke="var(--dg-line-soft)" stroke-width="1"/>
+      <rect x="40" y="168" width="600" height="36" fill="none" stroke="var(--dg-line-soft)" stroke-width="1"/>
+      <!-- V2: un título encima -->
+      <rect x="250" y="38" width="120" height="28" rx="3" fill="var(--dg-accent)" opacity="0.35" stroke="var(--dg-accent)"/>
+      <text x="258" y="56" fill="var(--dg-text)">título</text>
+      <!-- V1: clips en fila -->
+      <rect x="42" y="78" width="130" height="28" rx="3" fill="var(--dg-line)" opacity="0.25" stroke="var(--dg-line)"/>
+      <text x="50" y="96" fill="var(--dg-text)">plano 1</text>
+      <rect x="174" y="78" width="90" height="28" rx="3" fill="var(--dg-line)" opacity="0.25" stroke="var(--dg-line)"/>
+      <text x="182" y="96" fill="var(--dg-text)">pl. 2</text>
+      <rect x="266" y="78" width="150" height="28" rx="3" fill="var(--dg-line)" opacity="0.25" stroke="var(--dg-line)"/>
+      <text x="274" y="96" fill="var(--dg-text)">plano 3</text>
+      <rect x="418" y="78" width="110" height="28" rx="3" fill="var(--dg-line)" opacity="0.25" stroke="var(--dg-line)"/>
+      <text x="426" y="96" fill="var(--dg-text)">plano 4</text>
+      <!-- A1: música continua -->
+      <rect x="42" y="132" width="486" height="28" rx="3" fill="var(--dg-blue)" opacity="0.3" stroke="var(--dg-blue)"/>
+      <text x="50" y="150" fill="var(--dg-text)">música (esqueleto)</text>
+      <!-- A2: ambiente -->
+      <rect x="266" y="172" width="150" height="28" rx="3" fill="var(--dg-green)" opacity="0.3" stroke="var(--dg-green)"/>
+      <text x="274" y="190" fill="var(--dg-text)">ambiente</text>
+      <!-- cabezal -->
+      <line x1="266" y1="16" x2="266" y2="210" stroke="var(--dg-red)" stroke-width="2"/>
+      <path d="M258 16 h16 l-8 10 z" fill="var(--dg-red)"/>
+      <text x="278" y="232" fill="var(--dg-red)">cabezal (playhead)</text>
+      <!-- corte marcado entre plano 2 y 3 -->
+      <text x="150" y="262" fill="var(--dg-text)">↑ un «corte» es el punto donde acaba un clip y empieza el siguiente</text>
+    </svg>
+    <figcaption><b>Figura 14.1.</b> El cabezal recorre el tiempo y el monitor muestra lo que hay
+    bajo él. Arriba, lo de V2 tapa a lo de V1; abajo, la música de A1 y el ambiente de A2 suenan
+    sumados. Montar es, literalmente, colocar y recortar esos rectángulos.</figcaption>
+  </figure>
+
+  <h3 id="montaje-basico">Cortar, mover, recortar</h3>
+
+  <p>El montaje básico se reduce a cuatro gestos. <b>Arrastrar</b> un clip (o un fragmento marcado con
+  I/O desde el Source Monitor) a la pista. <b>Recortar</b> (trim): coges el borde de un clip ya en la
+  timeline y lo estiras o acortas para cambiar dónde empieza o acaba. <b>Cortar</b> (cut): partes un
+  clip en dos con la herramienta <b>Cuchilla</b> (Razor, tecla <kbd>C</kbd>) o, más rápido, con el
+  cabezal donde quieres el corte y <kbd>Ctrl/Cmd</kbd>+<kbd>K</kbd>. Y <b>borrar</b>: si borras un clip
+  a secas queda un hueco; si haces <b>ripple delete</b> (<kbd>Shift</kbd>+<kbd>Supr</kbd>) Premiere
+  borra el clip <b>y cierra el hueco</b> arrastrando todo lo de la derecha. El ripple delete es tu
+  amigo: en un montaje quitas cosas constantemente y no quieres huecos de silencio negro.</p>
+
+  <p>Las dos herramientas que usarás el 95% del tiempo son la <b>flecha de Selección</b>
+  (<kbd>V</kbd>, para mover y recortar) y la <b>Cuchilla</b> (<kbd>C</kbd>, para cortar). Cambia entre
+  ellas con esas teclas en vez de ir al panel de herramientas cada vez; es el hábito que más acelera.</p>
+
+  <h3 id="insert-overwrite">Insertar frente a sobrescribir</h3>
+
+  <p>Al meter un clip nuevo en medio de una secuencia ya montada, Premiere ofrece dos maneras y
+  conviene entenderlas. <b>Insertar</b> (Insert, tecla <kbd>,</kbd>) mete el clip nuevo y <b>empuja</b>
+  todo lo que había a partir de ahí hacia la derecha, alargando la secuencia (como escribir en medio
+  de una frase: el resto se corre). <b>Sobrescribir</b> (Overwrite, tecla <kbd>.</kbd>) coloca el clip
+  encima, <b>tapando</b> lo que hubiera debajo sin mover nada (como pegar sobre una foto). Insertar
+  para añadir un plano que faltaba; sobrescribir para cambiar un plano por otro de la misma duración,
+  muy típico al ajustar imagen sobre una música que no quieres descuadrar.</p>
+
+  <h3 id="atajos">Los atajos que de verdad usarás</h3>
+
+  <p>Montar con el ratón para todo es lento. Con un puñado de teclas ganas fluidez enorme. Estas son
+  las imprescindibles; el resto ya llegará solo.</p>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Tecla</th><th>Hace</th><th>Cuándo</th></tr></thead>
+    <tbody>
+      <tr><td><kbd>Espacio</kbd></td><td>Play / pausa</td><td>Reproducir el montaje.</td></tr>
+      <tr><td><kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd></td><td>Retroceder · parar · avanzar</td><td>Navegar rápido; pulsa L o J varias veces para ir más deprisa.</td></tr>
+      <tr><td><kbd>I</kbd> / <kbd>O</kbd></td><td>Marcar entrada / salida</td><td>Elegir el trozo bueno de un clip en el Source Monitor.</td></tr>
+      <tr><td><kbd>V</kbd></td><td>Herramienta Selección</td><td>Mover y recortar clips (por defecto).</td></tr>
+      <tr><td><kbd>C</kbd></td><td>Herramienta Cuchilla</td><td>Cortar un clip por donde pinches.</td></tr>
+      <tr><td><kbd>Ctrl/Cmd</kbd>+<kbd>K</kbd></td><td>Cortar en el cabezal</td><td>Partir el clip justo donde está el playhead.</td></tr>
+      <tr><td><kbd>Shift</kbd>+<kbd>Supr</kbd></td><td>Ripple delete</td><td>Borrar un clip y cerrar el hueco.</td></tr>
+      <tr><td><kbd>,</kbd> / <kbd>.</kbd></td><td>Insertar / sobrescribir</td><td>Meter un clip empujando o tapando.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 id="camara-lenta">Cámara lenta: 50 fps en una timeline de 25</h3>
+
+  <p>Si grabaste un plano a <b>50 fps</b> pensando en ralentizarlo (repasa el porqué en
+  <a href="09-video.html#fps">FPS</a>), tienes dos caminos en Premiere. El sencillo, plano a plano:
+  clic derecho sobre el clip en la timeline → <b>Speed/Duration</b> y pon la velocidad al <b>50%</b>.
+  Como tenías el doble de fotogramas, al reproducirlos a 25p el movimiento se ve fluido y a mitad de
+  velocidad, sin saltos. El camino «para todo el clip desde el origen»: selecciónalo en el bin, clic
+  derecho → <b>Modify → Interpret Footage</b> y dile que asuma <b>25 fps</b>; así ese material entra
+  ya ralentizado a la timeline. Con cualquiera de los dos, la cámara lenta de la X-S20 queda limpia
+  porque grabaste los fotogramas de más <b>al capturar</b>, no los inventa el ordenador.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="el-primer-montaje">El primer montaje: un método que funciona</h2>
+
+  <p>Tienes el material revisado y una secuencia a 25p. Ahora, ¿por dónde se empieza a montar sin
+  quedarse en blanco mirando la timeline vacía? Con un método. Este, en concreto, es el que usan los
+  montadores de piezas cortas de viaje y es casi imposible que salga mal.</p>
+
+  <h3 id="musica-primero">Paso 1: la música como esqueleto</h3>
+
+  <p>Contra la intuición, <b>no empieces por la imagen</b>. Empieza por la <b>música</b>: arrástrala a
+  la pista de audio primero. La canción marca la duración, la energía y el ritmo de toda la pieza, y
+  es infinitamente más fácil colocar imagen sobre una música que existe que al revés. Reprodúcela y
+  <b>marca los beats</b> importantes —los golpes, los cambios, el momento en que entra el estribillo—
+  poniendo <b>marcadores</b> en la timeline con la tecla <kbd>M</kbd> mientras suena. Esos marcadores
+  serán los sitios donde harás coincidir tus cortes. Ya tienes el esqueleto.</p>
+
+  <h3 id="radio-edit">Paso 2: el «radio edit» de tus mejores planos</h3>
+
+  <p>Ahora coloca imagen. Coge tus clips marcados en verde y ponlos en la pista de vídeo en un
+  <b>orden narrativo</b>, sin obsesionarte todavía con la duración exacta: es el momento de decidir la
+  <b>historia</b>, no el ritmo. Aquí es donde vuelve todo lo de
+  <a href="12-storytelling.html#la-secuencia">la secuencia</a>: un plano de establecimiento que dice
+  «dónde estamos», luego planos más cerrados que llevan al espectador dentro de la escena, un detalle,
+  una transición a la siguiente localización. A este primer pase se le llama <b>radio edit</b>:
+  monta la columna vertebral de la historia de principio a fin, aunque quede tosca. Verla entera, aun
+  cruda, te dice si el relato funciona.</p>
+
+  <h3 id="ritmo">Paso 3: afinar los cortes al ritmo</h3>
+
+  <p>Con la historia en pie y la música debajo, ahora sí afinas. Ajusta el final de cada plano para
+  que el <b>corte caiga sobre un beat</b> de los que marcaste: cuando la imagen cambia justo con el
+  golpe de la música, el montaje «respira» y se siente profesional sin que el espectador sepa por qué.
+  Es aquí donde aplicas la regla que más cuesta interiorizar y más resultados da:</p>
+
+  <div class="callout tip" data-title="Corta más de lo que crees">
+    <p>Tus planos te parecen cortos porque los grabaste tú y recuerdas el momento entero. Al
+    espectador, que lo ve por primera vez, dos o cuatro segundos por plano le bastan de sobra para
+    entenderlo. En un montaje de viaje, clips de <b>2 a 4 segundos</b> respiran bien y mantienen la
+    energía; un plano de ocho segundos que a ti te encanta al espectador se le hace eterno. Ante la
+    duda, corta antes. Un montaje ágil perdona planos regulares; un montaje lento no perdona nada.</p>
+  </div>
+
+  <div class="callout exercise" data-title="Ejercicio 14.1 — El esqueleto musical">
+    <p>Coge una canción (unos 60 s) y 10 clips cualesquiera ya revisados. Ponla en la pista de audio,
+    reprodúcela y marca con <kbd>M</kbd> los 6-8 golpes más claros. Sin montar todavía la imagen fina,
+    coloca un plano distinto empezando en cada marcador y recórtalos para que cada corte caiga en el
+    beat. Reprodúcelo. Objetivo: <b>sentir</b> cómo un corte a tiempo con la música cambia por completo
+    la sensación, aunque los planos sean sencillos.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="audio">Audio: la mitad que no se ve</h2>
+
+  <p>Ya lo avisamos en vídeo: el espectador perdona una imagen regular pero abandona ante un sonido
+  malo. En el montaje, el audio se trabaja con unas pocas ideas simples que llevan muy lejos.</p>
+
+  <h3 id="niveles">Niveles: cifras honestas</h3>
+
+  <p>Los niveles se miden en <b>dB</b> en el medidor (el <b>Audio Meter</b>, la barra vertical del
+  interfaz), donde <b>0 dB es el techo</b>: pasarte de ahí «recorta» el sonido y suena roto, sin
+  arreglo posible. Metas de trabajo sencillas y honestas: la <b>voz o el diálogo</b>, alrededor de
+  <b>-12 a -6 dB de pico</b> —claramente audible sin acercarse al techo—; la <b>música de fondo</b>,
+  <b>mucho más baja</b> cuando hay voz encima, sobre <b>-18 a -24 dB</b>, para que acompañe sin tapar.
+  Si no hay voz y la música es la protagonista, puede subir. Pero la regla real es esta: se mezcla
+  <b>a oído</b>, con el medidor solo como <b>red de seguridad</b> para no pasarte de 0. Si suena bien
+  y el medidor no toca el rojo, está bien, digan lo que digan los números.</p>
+
+  <p>El volumen de un clip se ajusta arrastrando la <b>línea horizontal</b> que lo cruza. Y para
+  cambios <b>dentro</b> de un clip —bajar la música justo cuando habla alguien y subirla después— se
+  usan <b>keyframes</b> de volumen: <kbd>Ctrl/Cmd</kbd>+clic sobre esa línea añade un punto, y moviendo
+  varios puntos dibujas la subida o bajada. Es exactamente la misma idea de keyframes que en cualquier
+  animación: valores en momentos concretos y una transición suave entre ellos.</p>
+
+  <h3 id="essential-sound">Essential Sound: ducking automático</h3>
+
+  <p>Hacer ese «bajar la música cuando hay voz» a mano en toda una pieza es un latazo. El panel
+  <b>Essential Sound</b> lo automatiza. Etiquetas cada clip por su tipo (<b>Dialogue</b>, <b>Music</b>,
+  <b>SFX</b>, <b>Ambience</b>) y el panel te da controles pensados para cada uno. Para la música,
+  activa <b>Ducking</b>: Premiere detecta cuándo suena la voz y <b>baja la música solo en esos
+  tramos</b>, subiéndola de nuevo después, con keyframes que crea él por ti. Es la forma más rápida de
+  que una pieza hablada suene mezclada de verdad sin dibujar cien keyframes a mano.</p>
+
+  <h3 id="transiciones-audio">Transiciones y ambiente</h3>
+
+  <p>Dos remates que separan un montaje amateur de uno cuidado. Primero, las <b>transiciones de
+  audio</b>: un corte de música seco «chasquea». Aplica una transición <b>Constant Power</b> (la de
+  audio por defecto) en las entradas y salidas de la música para que aparezca y desaparezca con un
+  fundido suave. Segundo, el <b>sonido ambiente</b> como pegamento: ese
+  <span class="term" title="Wild sound: sonido ambiente grabado en el sitio, sin imagen asociada, para usarlo luego como capa de fondo en el montaje.">wild sound</span>
+  que grabaste en el viaje —el mar, una plaza, pájaros— va en una pista de audio propia, bajito, por
+  <b>debajo</b> de todo. No se nota conscientemente, pero rellena los silencios entre planos y hace que
+  el montaje se sienta un lugar real y no una sucesión de clips mudos. Grabar ese ambiente en el viaje
+  es un consejo de <a href="12-storytelling.html#b-roll">storytelling</a> que aquí cobra todo el
+  sentido.</p>
+
+  <h3 id="viento">Viento: reducir sí, milagros no</h3>
+
+  <p>Al aire libre habrás capturado viento. Sé honesto con lo que se puede arreglar: un viento
+  <b>suave</b> se reduce bien con la reducción de ruido de Essential Sound (el control <b>Reduce
+  Noise</b>) o filtrando los graves. Pero un viento <b>fuerte</b>, que satura el micro, es
+  <b>imposible</b> de recuperar limpio; empeñarte solo deja la voz metálica y peor que el problema. En
+  ese caso la solución de verdad es tapar el clip con música y ambiente y renunciar a ese audio
+  original. Prevenir en el rodaje (la espuma en el micro) vale más que cualquier plugin.</p>
+
+  <div class="callout exercise" data-title="Ejercicio 14.2 — Mezclar a oído">
+    <p>Coge un clip donde hables o donde haya un sonido protagonista, y ponle música de fondo. Sin mirar
+    el medidor, sube la música hasta que te cueste entender la voz; luego bájala hasta que la voz mande
+    con claridad y la música solo acompañe. Ahora mira el medidor: comprueba que ni la voz ni la música
+    tocan el rojo (0 dB). Repite con <b>Ducking</b> activado en Essential Sound y compara cuánto trabajo
+    te ha ahorrado.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="color">Color: el panel Lumetri, en orden</h2>
+
+  <p>El color va <b>al final</b>, con el montaje ya cerrado. Antes, una regla de oro que evita horas
+  perdidas:</p>
+
+  <div class="callout error" data-title="Error común: ponerse a gradear antes de montar">
+    <p>Gradear clip por clip nada más importar, antes de saber cuáles se quedan, es tirar el tiempo:
+    la mitad de esos clips acabarán en la papelera. Monta primero, decide qué planos sobreviven y en
+    qué orden, y <b>solo entonces</b> abre el color. Además, un plano se gradea en relación con los que
+    tiene al lado, cosa que no puedes juzgar hasta que el montaje existe.</p>
+  </div>
+
+  <p>Todo el color se hace en el panel <b>Lumetri Color</b>, que está pensado para recorrerse <b>de
+  arriba abajo</b>, y ese orden no es decorativo: es el pipeline correcto. Primero corriges lo técnico,
+  luego equilibras, y al final —solo al final— pones el «look». Vamos sección por sección.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 660 220" role="img" aria-labelledby="d142-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d142-t">Pipeline de color: el clip en F-Log2 plano y desaturado pasa por una LUT técnica que lo lleva a Rec.709, luego por correcciones de balance y exposición, y por último por un look creativo, dando la imagen final.</title>
+      <defs>
+        <marker id="d142arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+          <path d="M0 0 L7 3 L0 6 z" fill="var(--dg-line)"/>
+        </marker>
+      </defs>
+      <!-- caja 1: log -->
+      <rect x="10" y="60" width="130" height="70" rx="5" fill="none" stroke="var(--dg-line-soft)" stroke-width="1.5"/>
+      <text x="75" y="88" fill="var(--dg-text)" text-anchor="middle">F-Log2</text>
+      <text x="75" y="106" fill="var(--dg-text)" text-anchor="middle" opacity="0.7">plano, gris</text>
+      <line x1="140" y1="95" x2="182" y2="95" stroke="var(--dg-line)" stroke-width="1.5" marker-end="url(#d142arrow)"/>
+      <!-- caja 2: LUT técnica -->
+      <rect x="184" y="60" width="130" height="70" rx="5" fill="none" stroke="var(--dg-blue)" stroke-width="1.5"/>
+      <text x="249" y="82" fill="var(--dg-text)" text-anchor="middle">LUT técnica</text>
+      <text x="249" y="100" fill="var(--dg-text)" text-anchor="middle" opacity="0.7">→ Rec.709</text>
+      <text x="249" y="116" fill="var(--dg-text)" text-anchor="middle" opacity="0.7">(Basic · Input LUT)</text>
+      <line x1="314" y1="95" x2="356" y2="95" stroke="var(--dg-line)" stroke-width="1.5" marker-end="url(#d142arrow)"/>
+      <!-- caja 3: correcciones -->
+      <rect x="358" y="60" width="130" height="70" rx="5" fill="none" stroke="var(--dg-amber)" stroke-width="1.5"/>
+      <text x="423" y="82" fill="var(--dg-text)" text-anchor="middle">Correcciones</text>
+      <text x="423" y="100" fill="var(--dg-text)" text-anchor="middle" opacity="0.7">balance,</text>
+      <text x="423" y="116" fill="var(--dg-text)" text-anchor="middle" opacity="0.7">exposición · scopes</text>
+      <line x1="488" y1="95" x2="530" y2="95" stroke="var(--dg-line)" stroke-width="1.5" marker-end="url(#d142arrow)"/>
+      <!-- caja 4: look -->
+      <rect x="532" y="60" width="118" height="70" rx="5" fill="none" stroke="var(--dg-green)" stroke-width="1.5"/>
+      <text x="591" y="88" fill="var(--dg-text)" text-anchor="middle">Look</text>
+      <text x="591" y="106" fill="var(--dg-text)" text-anchor="middle" opacity="0.7">creativo</text>
+      <!-- etiqueta orden -->
+      <text x="10" y="30" fill="var(--dg-text)">Orden del panel Lumetri, de arriba abajo:</text>
+      <text x="10" y="170" fill="var(--dg-text)" opacity="0.7">1. arreglar lo roto  ·  2. dejarlo neutro y correcto  ·  3. darle carácter</text>
+      <text x="10" y="192" fill="var(--dg-red)">Nunca al revés: un look sobre una base mal corregida se cae solo.</text>
+    </svg>
+    <figcaption><b>Figura 14.2.</b> El color siempre va técnico → neutro → creativo. Los clips en
+    Eterna entran casi por la última caja: apenas necesitan las tres primeras.</figcaption>
+  </figure>
+
+  <h3 id="lut-tecnica">1. Corrección técnica del F-Log2</h3>
+
+  <p>Tus clips grabados en <b>F-Log2</b> se ven planos, grises y desaturados: es correcto, es log, y
+  ya sabes por qué desde <a href="09-video.html#f-log2">Vídeo desde cero</a>. El primer paso es
+  devolverlos a un color normal aplicando la <b>LUT técnica oficial de Fujifilm F-Log2 → Rec.709</b>
+  (descargable gratis en la web de Fujifilm). En Lumetri, sección <b>Basic Correction</b>, despliega
+  <b>Input LUT</b> y cárgala. La imagen «revive» de golpe: ya tienes una base neutra y correcta sobre
+  la que trabajar. Alternativa moderna: dejar que el <b>manejo de color</b> de Premiere reconozca el
+  espacio del clip y haga esa conversión automáticamente; funciona bien, pero cargar la LUT oficial a
+  mano es lo más transparente para entender qué está pasando.</p>
+
+  <h3 id="scopes">2. Balance y exposición con los scopes</h3>
+
+  <p>Con la base neutra, equilibra exposición y color usando los <b>Lumetri Scopes</b> (el gráfico de
+  medición) para no fiarlo todo a tu pantalla, que miente según el brillo de la sala. El más útil es
+  el <b>waveform</b>, y se lee en treinta segundos: es tu imagen «tumbada», donde el eje vertical es el
+  <b>brillo</b> (abajo negros, arriba blancos) y el horizontal se corresponde con el ancho de la
+  imagen. Lo miras para comprobar dos cosas: que los negros no estén <b>aplastados</b> contra el suelo
+  (perderías sombra) ni las luces <b>quemadas</b> contra el techo (perderías cielo). Ajusta exposición
+  y contraste en Basic Correction hasta que la señal quede holgada arriba y abajo. Y una advertencia
+  sana: el waveform se <b>lee, no se adora</b>. Es una guía para no engañarte, no una nota que haya que
+  sacar; el juez final es cómo se ve.</p>
+
+  <h3 id="look">3. El look creativo, encima</h3>
+
+  <p>Solo ahora, con la base corregida, viene el carácter. En la sección <b>Creative</b> de Lumetri
+  puedes cargar una <b>Creative LUT</b> (un look de estilo cine, cálido, frío…) desde el desplegable
+  <b>Look</b>, y regular su intensidad con el deslizador. O construir tu propio look a mano con las
+  <b>ruedas de color</b> (Color Wheels), llevando las sombras a un tono y las luces a otro. La
+  diferencia con la LUT técnica del paso 1 es total: aquella <b>arreglaba</b>, esta <b>decora</b>. No
+  las confundas.</p>
+
+  <h3 id="coherencia">Coherencia entre clips y el atajo de Eterna</h3>
+
+  <p>Un montaje donde cada plano tiene un color distinto se siente barato. Para que todos «peguen»,
+  Lumetri ofrece la <b>Comparison View</b> (vista de comparación): pones un plano de referencia ya
+  gradeado a un lado y el que estás ajustando al otro, y los igualas a ojo —o pulsas <b>Color Match</b>
+  y Premiere aproxima automáticamente el segundo al primero—. Es la forma rápida de que diez planos de
+  la misma tarde tengan el mismo aire.</p>
+
+  <p>Y el atajo honesto que ya conoces: tus clips grabados en <b>Eterna</b> <b>casi no necesitan nada</b>.
+  Vienen con un color de cine agradable «de fábrica» (por eso los grabaste así; ver
+  <a href="09-video.html#f-log2">la decisión F-Log2 o Eterna</a>). Un pelín de exposición, quizá un
+  toque de look para igualarlos con los de F-Log2, y listo. No todo plano exige media hora de color; el
+  buen montador sabe cuándo dejar quieto lo que ya está bien.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="exportar">Exportar: sacar el archivo final</h2>
+
+  <p>Montaje cerrado, sonido mezclado, color puesto. Exportar es generar el <b>archivo de vídeo
+  final</b> a partir de tu secuencia, en el formato que pida cada destino; se abre con
+  <kbd>Ctrl/Cmd</kbd>+<kbd>M</kbd> (modo <b>Export</b>). Dos vías: <b>exportar directo</b> desde
+  Premiere (sencillo, pero el programa se queda ocupado mientras dura) o <b>Send to Media Encoder</b>
+  —una aplicación aparte que mete tus exportaciones en una <b>cola</b> y las procesa mientras sigues
+  editando; ideal si vas a sacar varias versiones (YouTube horizontal, Reels vertical) del mismo
+  montaje—.</p>
+
+  <p>La buena noticia es que no tienes que entender cada ajuste: Premiere trae <b>presets</b> de
+  fábrica para cada plataforma. Estas tres recetas, conservadoras, cubren casi todo lo que harás:</p>
+
+  <div class="setting-card">
+    <span class="s-name">YouTube (4K o 1080)</span>
+    <span class="s-value">Formato H.264 · MP4 · preset «YouTube 2160p 4K» o «YouTube 1080p Full HD» · VBR 2 pasos</span>
+    <span class="s-why">Por qué: son los presets oficiales de YouTube que trae Premiere; ya ponen la resolución, el frame rate y un bitrate alto correctos. El H.264 en MP4 lo reproduce todo, y YouTube reprocesa el vídeo de todas formas, así que subir con buen bitrate deja el mejor margen de calidad.</span>
+  </div>
+
+  <div class="setting-card">
+    <span class="s-name">Instagram Reels / Stories</span>
+    <span class="s-value">1080×1920 (vertical 9:16) · H.264 · MP4 · pieza corta (≈15–60 s)</span>
+    <span class="s-why">Por qué: Instagram es vertical. Aquí brilla el <a href="09-video.html#open-gate">open gate 6.2K</a> de la X-S20: si grabaste en 3:2 tienes de sobra para reencuadrar a vertical dentro de Premiere (con Position/Scale del clip) sin perder resolución. Exporta a 1080×1920 y comprueba que lo importante entra en el marco vertical.</span>
+  </div>
+
+  <div class="setting-card">
+    <span class="s-name">Archivo maestro (para guardar)</span>
+    <span class="s-value">Formato de alta calidad que coincida con la secuencia · bitrate alto · VBR 2 pasos</span>
+    <span class="s-why">Por qué: una copia de máxima calidad de tu montaje terminado, para archivar y re-exportar en el futuro sin volver a abrir el proyecto. De aquí sacas luego versiones para cada plataforma sin regenerar el montaje.</span>
+  </div>
+
+  <div class="callout tip" data-title="Qué NO tocar si no lo dominas">
+    <p>En el cuadro de exportación hay decenas de ajustes. Los que sí puedes usar con confianza:
+    activa <b>VBR, 2 pasos</b> (bitrate variable en dos pasadas: reparte mejor la calidad, tarda un
+    poco más) y sube el <b>bitrate objetivo</b> si quieres más calidad. Lo que <b>no</b> toques sin
+    saber: perfil y nivel del códec, muestreo, campos, y demás siglas oscuras. Los presets de
+    plataforma ya los dejan bien; cambiarlos a ciegas solo genera archivos que se ven raros o no
+    reproducen en algún sitio.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="entrega">Entrega: YouTube e Instagram</h2>
+
+  <p>Un mismo montaje se entrega distinto según dónde vaya. Lo esencial de cada uno:</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-eyebrow">Horizontal</div>
+      <h4>YouTube</h4>
+      <p><b>16:9</b>, la orientación con la que grabaste. Duración libre (una pieza de viaje de 2-5 min
+      va perfecta). Cuida la <b>miniatura</b> (portada): es lo que decide el clic, y la exportas aparte
+      como una foto fija atractiva. Los <b>subtítulos</b> mejoran alcance y accesibilidad; puedes
+      generarlos en el panel de <b>Captions</b> de Premiere o dejar que los ponga YouTube.</p>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">Vertical</div>
+      <h4>Instagram Reels / Stories</h4>
+      <p><b>9:16</b>, vertical. <b>Corto</b>: los primeros 2-3 segundos deciden si alguien se queda,
+      así que empieza por tu mejor plano. Muchos lo ven <b>sin sonido</b>, de ahí que los subtítulos
+      «quemados» en la imagen ayuden tanto. La portada aquí es el primer fotograma: que sea potente.</p>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="flujo">El flujo completo, de principio a fin</h2>
+
+  <p>Todo el capítulo, en una lista que puedes seguir literalmente en tu próximo montaje. Guárdala:
+  el orden importa tanto como cada paso.</p>
+
+  <div class="checklist" data-cl="pr-workflow">
+    <div class="cl-title"><span>Montar una pieza en Premiere</span><span class="cl-count"></span></div>
+    <label><input type="checkbox" data-id="carpetas"><span>Estructura de carpetas en disco (proyecto / media / audio / música / exports) y copiar la tarjeta a <code>/media</code></span></label>
+    <label><input type="checkbox" data-id="importar"><span>Crear el proyecto en <code>/proyecto</code> e importar (crea referencias, no copia)</span></label>
+    <label><input type="checkbox" data-id="bins"><span>Organizar en bins por día/lugar + música + audio + gráficos; etiquetar en verde lo bueno</span></label>
+    <label><input type="checkbox" data-id="review"><span>Revisar en el Source Monitor y marcar I/O de los mejores fragmentos ANTES de la timeline</span></label>
+    <label><input type="checkbox" data-id="proxies"><span>Generar proxies si el 4K va a tirones (Ingest al importar o después)</span></label>
+    <label><input type="checkbox" data-id="secuencia"><span>Crear la secuencia desde un clip para que herede 4K/25p (la secuencia manda)</span></label>
+    <label><input type="checkbox" data-id="musica"><span>Música primero como esqueleto; marcar los beats con <kbd>M</kbd></span></label>
+    <label><input type="checkbox" data-id="radioedit"><span>Radio edit: mejores planos en orden narrativo, historia antes que ritmo</span></label>
+    <label><input type="checkbox" data-id="ritmo"><span>Afinar los cortes al ritmo; cortar más de lo que crees (clips de 2-4 s)</span></label>
+    <label><input type="checkbox" data-id="audio"><span>Audio: niveles a oído con el medidor de red, ducking, transiciones y ambiente de fondo</span></label>
+    <label><input type="checkbox" data-id="color"><span>Color en Lumetri: LUT técnica F-Log2 → balance con scopes → look → coherencia entre clips</span></label>
+    <label><input type="checkbox" data-id="export"><span>Exportar con el preset del destino (YouTube, Reels) y guardar un archivo maestro</span></label>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="reto">El reto</h2>
+
+  <div class="callout challenge" data-title="Reto del capítulo — 60 segundos de tu barrio">
+    <p>Sal a grabar <b>12 clips</b> de tu barrio: una mezcla de planos generales, medios y detalles
+    (repasa <a href="11-tipos-de-plano.html#plano-general">tipos de plano</a> si lo necesitas), a 25p,
+    algunos en Eterna y alguno en F-Log2 para practicar el color. Elige <b>una canción</b> de unos 60
+    segundos. Ahora monta la pieza completa aplicando el flujo entero de la checklist: carpetas, bins,
+    revisión con I/O, secuencia desde clip, música como esqueleto, radio edit, cortes al beat, una
+    mezcla de audio decente y un pase de color. Exporta una versión <b>horizontal para YouTube</b> y una
+    <b>vertical para Reels</b> del mismo montaje. Criterio de éxito: que un amigo lo vea entero sin
+    aburrirse y no sepa decir por qué le ha gustado. Ese «no sé por qué» es el montaje bien hecho.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="errores">Un último error que evitar</h2>
+
+  <div class="callout error" data-title="Error común: la música a todo volumen">
+    <p>El fallo más habitual del principiante mezclando: dejar la música al mismo nivel alto todo el
+    rato, tapando el ambiente y —si hay— la voz. Una música que no baja nunca cansa y aplasta todo lo
+    demás. La música es la <b>cama</b>, no la protagonista (salvo que la pieza sea puro videoclip). En
+    cuanto haya cualquier otra cosa importante que oír, baja la música con ducking o keyframes. El
+    espectador debe sentir la música, no sufrirla.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="preguntas">Preguntas frecuentes</h2>
+
+  <details class="callout faq">
+    <summary>¿Necesito un ordenador potente para editar el 4K de la X-S20?</summary>
+    <div class="co-body"><p>Ayuda, pero no es imprescindible. El material 4K H.265 10 bits es exigente,
+    y en un portátil modesto la reproducción irá a tirones. Ahí es exactamente para lo que existen los
+    <a href="09-video.html#proxy">proxies</a>: editas fluido con copias ligeras y exportas desde los
+    originales. Con proxies, casi cualquier portátil reciente monta piezas de viaje sin drama. Lo que sí
+    marca la diferencia es tener el material en un <b>SSD</b>, no en un disco lento.</p></div>
+  </details>
+
+  <details class="callout faq">
+    <summary>Grabé mezclando Eterna y F-Log2. ¿Puedo montarlos juntos?</summary>
+    <div class="co-body"><p>Sí, sin problema; entran en la misma secuencia. La diferencia está en el
+    color: los de <b>F-Log2</b> necesitan la LUT técnica y un pase de corrección para verse normales,
+    mientras que los de <b>Eterna</b> ya vienen bonitos. El trabajo, entonces, es <b>igualarlos</b>: usa
+    la Comparison View para que los planos de F-Log2, una vez corregidos, tengan el mismo aire que los de
+    Eterna (o al revés). Con un poco de look común encima, nadie notará que salieron de dos perfiles
+    distintos.</p></div>
+  </details>
+
+  <!-- ============================================================ -->
+  <div class="callout gear" data-title="En la X-S20: domar los MOV H.265 10 bits">
+    <p>Lo que sale de tu tarjeta son archivos <code>.MOV</code> en H.265 a 4:2:2 10 bits —preciosos y
+    compactos, pero durísimos de reproducir en edición—. Dos herramientas los domestican y las tienes en
+    este capítulo: los <b>proxies</b> (para que el montaje vaya fluido pese al códec pesado) y la <b>LUT
+    oficial F-Log2 → Rec.709 de Fujifilm</b> (para devolver el color a los clips grabados en log). Con
+    esas dos piezas, el material más exigente de la cámara se monta con la misma soltura que un vídeo de
+    móvil. Y recuerda el atajo de siempre: lo que grabaste en <b>Eterna</b> se salta casi todo el trabajo
+    de color.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <div class="callout summary" data-title="Lo esencial del capítulo">
+    <ul>
+      <li>El proyecto de Premiere solo guarda <b>referencias</b> a tus archivos (como el catálogo de
+      Lightroom): ordena las <b>carpetas en disco antes</b> de importar y no las muevas; si algo se pone
+      offline, <b>relinka</b> sin pánico.</li>
+      <li>Organiza en <b>bins</b> (no renombres clips), <b>revisa</b> con I/O en el Source Monitor antes
+      de tocar la timeline, y crea <b>proxies</b> si el 4K va a tirones.</li>
+      <li>Crea la <b>secuencia desde un clip</b> para heredar 4K/25p: la secuencia manda. Domina cuatro
+      gestos —arrastrar, recortar, cortar, ripple delete— y un puñado de atajos.</li>
+      <li>Monta por método: <b>música primero</b>, <b>radio edit</b> narrativo, <b>cortes al ritmo</b>, y
+      corta más de lo que crees (clips de 2-4 s).</li>
+      <li><b>Audio</b> a oído con el medidor de red (voz ≈ -12 a -6 dB, música por debajo), ducking,
+      transiciones Constant Power y ambiente de fondo como pegamento.</li>
+      <li><b>Color</b> en Lumetri y en orden: LUT técnica → balance con scopes → look creativo →
+      coherencia entre clips. Eterna casi no pide nada.</li>
+      <li><b>Exporta</b> con el preset del destino (YouTube horizontal, Reels vertical con el open gate a
+      tu favor) y guarda un archivo maestro; VBR 2 pasos sí, misterios del códec no.</li>
+    </ul>
+  </div>
+
+</div>
+
+<script src="../assets/js/manifest.js"></script>
+<script src="../assets/js/search-index.js" defer></script>
+<script src="../assets/js/app.js" defer></script>
+</body>
+</html>

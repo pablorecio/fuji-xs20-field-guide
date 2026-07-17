@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="es" data-root="../">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Un flujo de revelado serio para las cientos de fotos de un viaje: el catálogo, importación, selección con banderas y estrellas, revelado panel a panel, máscaras de IA, coherencia de serie y recetas de exportación en Lightroom Classic.">
+<title>Revelado en Lightroom — Fuji X-S20 Field Guide</title>
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='8' y='8' width='84' height='84' rx='14' fill='%230c0e11'/><path d='M24 24h16M24 24v16M76 24H60M76 24v16M24 76h16M24 76V60M76 76H60M76 76V60' stroke='%234ade80' stroke-width='7' stroke-linecap='round' fill='none'/></svg>">
+</head>
+<body data-chapter="13-lightroom">
+
+<div class="content">
+
+  <div class="chapter-hero">
+    <span class="fc"></span>
+    <div class="hero-readout">
+      <span class="r-part">Parte IX · Lightroom</span>
+      <span>Capítulo 13</span>
+      <span>≈40 min</span>
+    </div>
+    <h1>Revelado en Lightroom</h1>
+    <p class="hero-lede">Vuelves de un viaje con cuatrocientas fotos en RAW+JPEG y una carpeta
+    caótica en el escritorio. Este capítulo convierte ese montón en un flujo de trabajo:
+    dónde vive todo (el catálogo), cómo separar el grano de la paja sin piedad, cómo
+    <b>terminar</b> las fotos que sobreviven y cómo sacarlas al mundo. No es un tutorial de
+    botones: es una forma de pensar el después de disparar, que te devolverá horas de tu vida
+    y, sobre todo, mejores fotos.</p>
+    <div class="hero-meta">
+      <span class="pill pill-part">Catálogo</span>
+      <span class="pill">Selección brutal</span>
+      <span class="pill">Revelado panel a panel</span>
+      <span class="pill">Máscaras de IA</span>
+      <span class="pill">Exportar</span>
+    </div>
+  </div>
+
+  <p>Hasta aquí el manual ha ido de capturar luz. Este capítulo va de lo que pasa <b>después</b>,
+  y conviene decirlo sin rodeos: es la parte del proceso que casi nadie hace bien y la que más
+  separa a quien mejora año tras año de quien lleva una década sacando las mismas fotos
+  correctas y olvidables. No porque revelar sea difícil, sino porque exige un método que nadie
+  enseña. Vamos a montar ese método con <b>Lightroom Classic</b> como herramienta —la referencia
+  para gestionar y revelar grandes volúmenes de fotos—, pero casi todo lo que aquí se dice vale
+  para cualquier revelador serio.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="filosofia">El revelado no arregla fotos: las termina</h2>
+
+  <p>Empecemos por desmontar la idea equivocada con la que llega casi todo el mundo. El revelado
+  <b>no</b> es un rescate: no está para salvar una foto mal pensada, mal encuadrada o mal
+  expuesta. Una foto movida seguirá movida; un encuadre flojo seguirá flojo; unas altas luces
+  totalmente quemadas —sin información en el archivo— no vuelven. Lo que el revelado hace es
+  <b>terminar</b> una foto que ya nació bien: llevar lo que capturó el sensor hasta lo que tú
+  viste (o sentiste) en el sitio. La foto se hace en la calle; en el ordenador se acaba.</p>
+
+  <p>De ahí sale la primera regla de higiene mental: <b>revelar es la recompensa de haber
+  disparado con intención</b>, no la muleta de haber disparado a lo loco. Sabiendo que el RAW
+  guarda margen pero no milagros, expones para proteger la información (repasa el
+  <a href="05-exposicion.html#el-histograma">histograma</a> y la idea de
+  <a href="05-exposicion.html#ettr">exponer a la derecha</a>) y encuadras pensando ya en el
+  recorte final.</p>
+
+  <h3 id="edicion-no-destructiva">Qué significa de verdad «no destructivo»</h3>
+
+  <p>Vas a oír mil veces que Lightroom es un editor <b>no destructivo</b>, y casi nadie explica
+  qué quiere decir. Aquí está, y es más bonito de lo que parece: cuando mueves el deslizador de
+  exposición, <b>Lightroom no toca ni un solo píxel de tu archivo RAW</b>. Lo que hace es
+  apuntar en una base de datos una instrucción —«exposición +0,7; sombras +40; recorte a 4:5»—
+  y mostrarte, en tiempo real, cómo se vería el RAW si se le aplicaran esas instrucciones. El
+  archivo <span class="term" title="RAW: el volcado en bruto de lo que leyó el sensor, sin revelar. En Fuji la extensión es .RAF. Contiene mucha más información latente que un JPEG, pero necesita revelado.">RAF</span> original de tu Fuji queda intacto para siempre, como el negativo de un
+  carrete.</p>
+
+  <p>Las consecuencias son liberadoras. Puedes probar mil versiones sin arruinar nada; puedes
+  volver dentro de dos años, cuando tu criterio sea otro, y re-revelar desde cero; un clic en
+  <i>Reset</i> devuelve el RAW virgen al instante. No existe el «guardar» destructivo de
+  Photoshop: tus ediciones son una <b>receta</b> reversible que vive aparte de la imagen. La
+  única forma de obtener un archivo con los píxeles ya «cocinados» es <b>exportar</b> —crear una
+  copia nueva, normalmente un JPEG— y eso lo haces al final, a propósito, sin tocar el original.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="el-catalogo">El catálogo: el cerebro de todo</h2>
+
+  <p>Aquí es donde se pierde la mayoría de los principiantes, así que vamos despacio. El
+  <span class="term" title="Catálogo de Lightroom: base de datos (archivo .lrcat) que guarda las referencias a dónde están tus fotos y todas las ediciones, palabras clave y valoraciones. NO contiene las fotos.">catálogo</span> es un archivo de base de datos (con extensión <code>.lrcat</code>) que
+  guarda <b>dos cosas</b>: una lista de dónde están tus fotos en el disco, y todo lo que has
+  hecho con ellas —cada instrucción de revelado, cada estrella, cada palabra clave, cada
+  recorte—. Lo que el catálogo <b>no</b> contiene, y esto es lo que nadie interioriza al
+  principio, son las fotos. Ni una. Tus RAF siguen viviendo en sus carpetas del disco; el
+  catálogo solo <b>apunta</b> hacia ellas.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 300" role="img" aria-labelledby="d131-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d131-t">El catálogo de Lightroom guarda referencias y ediciones, pero las fotos viven en el disco. Borrar en un lado no borra en el otro.</title>
+      <!-- catálogo -->
+      <rect x="40" y="60" width="200" height="170" rx="8" fill="none" stroke="var(--dg-accent)" stroke-width="1.5"/>
+      <text x="140" y="48" fill="var(--dg-accent)" text-anchor="middle">CATÁLOGO · .lrcat</text>
+      <text x="140" y="86" fill="var(--dg-text)" text-anchor="middle" font-size="10">base de datos</text>
+      <g fill="var(--dg-text)" font-size="9.5" text-anchor="middle">
+        <text x="140" y="118">«IMG_0421 está en</text>
+        <text x="140" y="132">/2026/06-portugal»</text>
+        <text x="140" y="156">exposición +0,7</text>
+        <text x="140" y="170">★★★★ · recorte 4:5</text>
+        <text x="140" y="184">keyword: lisboa</text>
+      </g>
+      <text x="140" y="214" fill="var(--dg-accent)" text-anchor="middle" font-size="9.5">referencias + ediciones</text>
+
+      <!-- disco -->
+      <rect x="400" y="60" width="200" height="170" rx="8" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <text x="500" y="48" fill="var(--dg-text)" text-anchor="middle">DISCO · tus carpetas</text>
+      <g fill="var(--dg-line-soft)" stroke="var(--dg-line)" stroke-width="1">
+        <rect x="430" y="90" width="40" height="30" rx="3"/>
+        <rect x="480" y="90" width="40" height="30" rx="3"/>
+        <rect x="530" y="90" width="40" height="30" rx="3"/>
+        <rect x="430" y="130" width="40" height="30" rx="3"/>
+        <rect x="480" y="130" width="40" height="30" rx="3"/>
+        <rect x="530" y="130" width="40" height="30" rx="3"/>
+      </g>
+      <text x="500" y="182" fill="var(--dg-text)" text-anchor="middle" font-size="10">IMG_0421.RAF …</text>
+      <text x="500" y="214" fill="var(--dg-text)" text-anchor="middle" font-size="9.5">los píxeles de verdad</text>
+
+      <!-- flecha de referencia -->
+      <line x1="240" y1="145" x2="400" y2="145" stroke="var(--dg-accent)" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#d131-arrow)"/>
+      <text x="320" y="137" fill="var(--dg-accent)" text-anchor="middle" font-size="9.5">apunta a →</text>
+
+      <!-- avisos -->
+      <text x="140" y="262" fill="var(--dg-red)" text-anchor="middle" font-size="9.5">borrar el .lrcat</text>
+      <text x="140" y="276" fill="var(--dg-text)" text-anchor="middle" font-size="9">≠ borrar las fotos</text>
+      <text x="500" y="262" fill="var(--dg-red)" text-anchor="middle" font-size="9.5">borrar la carpeta en disco</text>
+      <text x="500" y="276" fill="var(--dg-text)" text-anchor="middle" font-size="9">→ ? en Lightroom</text>
+
+      <defs>
+        <marker id="d131-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0 0 L6 3 L0 6 Z" fill="var(--dg-accent)"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption><b>Figura 13.1.</b> Dos mundos separados que hay que tener siempre en la cabeza:
+    el catálogo (referencias y ediciones) y el disco (los archivos). Lightroom es la ventana que
+    conecta uno con otro. Casi todos los sustos de principiante nacen de olvidar que son cosas
+    distintas.</figcaption>
+  </figure>
+
+  <h3 id="el-error-mental-clasico">El error mental que le pasa a todo el mundo</h3>
+
+  <p>De esa separación nacen los dos sustos clásicos, y merece la pena grabártelos ahora para no
+  sufrirlos luego:</p>
+  <ul>
+    <li><b>Borras una carpeta en el disco (en el Finder o el Explorador) y Lightroom entra en
+    pánico.</b> La próxima vez que abras el catálogo, esas fotos aparecen con un
+    <b>signo de interrogación</b>: el catálogo sigue teniendo su ficha —tus estrellas, tus
+    ediciones— pero ya no encuentra el archivo al que apuntaba. Has roto el vínculo. Por eso la
+    gestión de archivos se hace <b>desde dentro</b> de Lightroom (mover carpetas, renombrar,
+    borrar), no por fuera a sus espaldas.</li>
+    <li><b>Eliminas una foto en Lightroom y crees que se ha ido del disco… o al revés.</b> Cuando
+    borras dentro de Lightroom, el programa te <b>pregunta</b> qué quieres: «quitar del catálogo»
+    (solo borra la ficha; el archivo sigue en el disco) o «mover a la papelera» (borra el archivo
+    de verdad). Son cosas distintas. Entender esa pregunta —y leerla cada vez— es media guerra
+    ganada.</li>
+  </ul>
+
+  <h3 id="un-solo-catalogo">Un solo catálogo para todo</h3>
+
+  <p>La duda de todo novato: ¿un catálogo por viaje, por año, por proyecto? La respuesta, para el
+  99&nbsp;% de la gente, es <b>uno solo, para toda tu vida fotográfica</b>. Un catálogo aguanta
+  cientos de miles de fotos, y tener uno único es lo que te permite buscar «todas mis fotos de
+  cinco estrellas de los últimos tres años» o «todo lo etiquetado como <i>Lisboa</i>» en un
+  segundo. Varios catálogos fragmentan tu memoria visual y no resuelven nada: la organización se
+  hace con <b>carpetas y palabras clave dentro</b> del catálogo único, no partiéndolo.</p>
+
+  <p>¿Dónde guardarlo? El archivo <code>.lrcat</code> y sus previsualizaciones asociadas deben
+  vivir en el <b>disco interno</b> de tu ordenador (idealmente SSD), porque Lightroom lee y
+  escribe en él constantemente y su velocidad depende de eso. Las <b>fotos</b> sí pueden estar en
+  un disco externo; el catálogo, no. Un error frecuente es poner el catálogo en el mismo disco
+  externo que las fotos «para tenerlo todo junto»: lo vuelve lento y frágil.</p>
+
+  <h3 id="copias-de-seguridad-del-catalogo">Copias de seguridad del catálogo</h3>
+
+  <p>Este catálogo concentra <b>meses o años de decisiones</b>: cada estrella, cada revelado. Si
+  se corrompe y no tienes copia, no pierdes las fotos (siguen en el disco), pero pierdes todo el
+  trabajo de selección y edición. Por suerte Lightroom insiste en ayudarte: al cerrar el programa
+  ofrece <b>hacer una copia de seguridad del catálogo</b>, con opción de comprobar su integridad.
+  Configúralo para que lo haga a menudo (semanal como mínimo) y <b>guarda esas copias en un disco
+  distinto</b> del que tiene el catálogo activo. Ojo: esa copia es del catálogo, <b>no</b> de tus
+  fotos; el respaldo de las fotos es harina de otro costal, y lo vemos ahora.</p>
+
+  <div class="callout error" data-title="Error común: no hacer copia de seguridad del catálogo (ni de las fotos)">
+    <p>La copia de seguridad que ofrece Lightroom al salir solo protege el <b>catálogo</b> —la
+    base de datos con tus ediciones y valoraciones—. No copia ni una de tus fotos. Mucha gente
+    cierra ese diálogo a toda prisa (o lo desactiva) y encima cree que con eso «ya tiene todo
+    respaldado». Son dos respaldos independientes y necesitas los dos: uno del <code>.lrcat</code>
+    (que hace Lightroom) y otro de tus RAF (que tienes que montar tú, con la estrategia
+    3-2-1 que viene abajo). Perder el primero cuesta tu trabajo; perder el segundo cuesta el
+    viaje entero.</p>
+  </div>
+
+  <h3 id="estructura-de-carpetas">Estructura de carpetas en el disco</h3>
+
+  <p>Antes de importar nada, decide una estructura y no la cambies nunca. La que mejor funciona
+  para viajes, por ser a prueba de futuro y ordenarse sola, es <b>por fecha y lugar</b>. Algo así:</p>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Nivel</th><th>Ejemplo</th><th>Por qué</th></tr></thead>
+    <tbody>
+      <tr><td>Carpeta raíz de fotos</td><td><code>/Fotos</code></td><td>Un único árbol para todo; el que respaldas entero.</td></tr>
+      <tr><td>Año</td><td><code>/2026</code></td><td>Ordena solo cronológicamente; escala sin pensar.</td></tr>
+      <tr><td>Fecha + lugar</td><td><code>/2026/2026-06-14 Lisboa</code></td><td>La fecha por delante (AAAA-MM-DD) hace que se ordene alfabética = cronológicamente. El lugar te deja encontrarla de un vistazo.</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>La clave no es <b>cuál</b> sistema elijas, sino ser <b>consistente</b>: mismo formato de
+  fecha siempre (empieza por el año, con ceros: <code>2026-06-14</code>, no <code>14/6/26</code>),
+  nombres sin acentos ni caracteres raros que a veces molestan entre sistemas. Dentro de cada
+  jornada, no crees subcarpetas por tema: para eso están las palabras clave y las colecciones,
+  que son mucho más flexibles. La carpeta es <b>dónde vive el archivo</b>; la organización
+  temática vive en el catálogo.</p>
+
+  <h3 id="discos-y-viaje">Discos externos y el respaldo en viaje (3-2-1)</h3>
+
+  <p>La regla que usan los profesionales para no perder nunca su trabajo se llama <b>3-2-1</b>:
+  <b>3</b> copias de cada foto, en <b>2</b> tipos de soporte distintos, con <b>1</b> de ellas
+  fuera de casa (o en la nube). Suena a mucho; para un viajero se simplifica a un hábito diario
+  perfectamente asumible:</p>
+  <ul>
+    <li><b>Copia 1 — la tarjeta SD.</b> Mientras viajas, <b>no borres ni formatees</b> la tarjeta
+    de la cámara. Es tu primera copia, y es gratis. Lleva una segunda tarjeta para no quedarte sin
+    espacio antes que borrar.</li>
+    <li><b>Copia 2 — el portátil o un disco.</b> Cada noche, o cada dos días, vuelca las fotos de
+    la SD al portátil (o a un disco externo pequeño que lleves). Ya tienes dos copias en dos
+    sitios físicos.</li>
+    <li><b>Copia 3 — la nube, cuando haya wifi.</b> En cuanto pilles una conexión decente (el
+    <i>lodge</i>, un café, el hotel), sube al menos los RAW seleccionados a un servicio en la
+    nube. Esa es tu copia «fuera de casa»: si te roban la mochila con cámara y portátil dentro, no
+    lo has perdido todo.</li>
+  </ul>
+  <p>Al volver a casa, esa estructura se consolida: las fotos van a tu <code>/Fotos</code> en el
+  disco de trabajo, con un respaldo en un segundo disco (o NAS) y la nube como tercera pata. Lo
+  importante es que <b>en ningún momento del viaje una sola foto existe en un único sitio</b>. Un
+  disco se cae, una tarjeta se corrompe; dos cosas no fallan a la vez casi nunca.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="importacion">Importación: el ritual de cada jornada</h2>
+
+  <p>Importar en Lightroom no es «meter fotos»: es el momento en que el catálogo <b>se entera</b>
+  de que existen unas fotos nuevas en el disco y empieza a apuntar hacia ellas. Hazlo con método
+  y todo lo demás fluye; hazlo a lo loco y tendrás un catálogo desordenado para siempre. El
+  cuadro de importación tiene tres columnas —de dónde (izquierda), qué hacer (centro), a dónde
+  (derecha)— y este es el flujo real al volver de una jornada:</p>
+
+  <ol>
+    <li><b>Origen:</b> la tarjeta SD (o la carpeta donde ya volcaste). Lightroom te muestra las
+    miniaturas para que elijas qué traer.</li>
+    <li><b>Modo Copiar (no Añadir ni Mover).</b> Arriba eliges qué hace Lightroom con los
+    archivos. Desde una tarjeta, elige <b>Copiar</b>: duplica los archivos al disco y los añade al
+    catálogo, dejando la SD intacta (tu copia 1). «Mover» los borraría de la tarjeta; «Añadir» es
+    para fotos que ya están en su sitio definitivo.</li>
+    <li><b>Destino: tu estructura por fecha-lugar.</b> A la derecha le dices que organice por
+    fecha, en tu carpeta <code>/Fotos/2026/…</code>. Que sea Lightroom quien cree la carpeta con
+    el formato correcto te ahorra errores.</li>
+    <li><b>Renombrar (opcional pero recomendable).</b> Puedes dejar el nombre de la cámara
+    (<code>DSCF1234.RAF</code>) o renombrar a algo con sentido:
+    <code>2026-06-14_lisboa_001.RAF</code>. No es obligatorio —el catálogo encuentra todo igual—,
+    pero ayuda el día que un archivo suelto acaba fuera de Lightroom.</li>
+    <li><b>Metadatos y palabras clave mínimas.</b> En la importación puedes aplicar de golpe a
+    todas las fotos un puñado de <span class="term" title="Palabras clave (keywords): etiquetas de texto que asignas a las fotos para buscarlas luego. En Lightroom son la base de la organización, más potente que las carpetas.">palabras clave</span> comunes:
+    <code>portugal</code>, <code>lisboa</code>, <code>2026</code>. No te obsesiones ahora; con
+    tres o cuatro por jornada basta para encontrarlo todo dentro de un año. También un preset de
+    metadatos con tu nombre y copyright.</li>
+    <li><b>Previsualizaciones.</b> Abajo a la derecha eliges qué previews genera. Es la decisión
+    que más afecta a tu velocidad, y la explico aparte.</li>
+  </ol>
+
+  <h3 id="previews">Previews 1:1 vs. estándar: por qué importa</h3>
+
+  <p>Lightroom no muestra el RAF directamente (sería lentísimo): muestra
+  <b>previsualizaciones</b> que genera a partir de él. Tienes varias opciones y el compromiso es
+  siempre <b>tiempo de importación</b> contra <b>fluidez después</b>:</p>
+  <ul>
+    <li><b>Estándar:</b> previews de tamaño medio, suficientes para ojear la biblioteca. Rápidas
+    de generar. Pero cuando amplías una foto al 100&nbsp;% para juzgar el enfoque, Lightroom tiene
+    que renderizarla en ese momento y notas el tirón.</li>
+    <li><b>1:1:</b> previews a resolución completa. Tardan bastante más en generarse (déjalo
+    trabajando mientras cenas), pero luego <b>la selección vuela</b>: puedes ampliar foto tras
+    foto al 100&nbsp;% para comprobar la nitidez sin esperar ni un segundo. Para el paso de
+    selección, que es de mirar muchísimo de cerca, esto es oro.</li>
+  </ul>
+  <div class="callout tip" data-title="El truco: importa con 1:1 y vete a cenar">
+    <p>El flujo ganador es lanzar la importación con previews <b>1:1</b> al llegar, dejar el
+    ordenador generándolas solo, y sentarte a seleccionar cuando estén listas. Conviertes una
+    espera pasiva (el ordenador trabajando) en velocidad activa (tú eligiendo sin fricción). Es la
+    diferencia entre una sesión de selección ágil y otra a trompicones que abandonas a la mitad.</p>
+  </div>
+
+  <div class="callout error" data-title="Error común: importar arrastrando fotos a cualquier sitio">
+    <p>La tentación del principiante es arrastrar la carpeta de la SD al escritorio, y de ahí
+    «meterla» en Lightroom de cualquier manera, un día a una carpeta y otro día a otra. Al cabo de
+    tres viajes tienes fotos desperdigadas en cinco sitios del disco, duplicados, y un catálogo que
+    apunta a un caos. <b>Toda</b> foto entra por el diálogo de importación, con Copiar, hacia tu
+    estructura por fecha-lugar. Sin excepciones. La consistencia aquí te la agradecerás durante
+    años.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="seleccion-y-rating">Selección y rating: el paso que nadie hace</h2>
+
+  <p>Si de todo este capítulo te llevas una sola cosa, que sea esta. La selección —el arte de
+  elegir qué fotos merecen tu tiempo y descartar el resto sin piedad— es <b>el paso que más
+  mejora tus resultados</b> y el que casi todo el mundo se salta. Y se lo salta porque duele:
+  obliga a admitir que la mayoría de lo que disparaste no vale, y a matar fotos con las que tienes
+  un apego sentimental. Pero un cuerpo de trabajo se define tanto por lo que muestras como por lo
+  que <b>escondes</b>. Volver de un viaje con 40 fotos excelentes te hace mejor fotógrafo a ojos
+  de cualquiera que volver con 400 «majas».</p>
+
+  <div class="callout error" data-title="Error común: empezar a editar antes de haber seleccionado">
+    <p>El impulso natural al importar es abrir la primera foto que te gusta y ponerte a mover
+    deslizadores. Es un error de estrategia. Editar es lento; seleccionar es rápido. Si editas
+    antes de filtrar, gastarás horas puliendo fotos que luego no entrarían ni en el tercer corte,
+    y llegarás agotado a las buenas. <b>Primero eliges, luego revelas —y solo revelas lo que
+    sobrevivió—.</b> El orden importa tanto como el trabajo.</p>
+  </div>
+
+  <p>El método que funciona, y que puedes ejecutar sobre 400 fotos en menos de media hora, son
+  <b>dos pasadas</b> en el módulo Biblioteca (<i>Library</i>). Ni una sola edición todavía: solo
+  mirar y juzgar.</p>
+
+  <h3 id="pasada-uno-banderas">Pasada 1: banderas, deprisa y sin piedad</h3>
+
+  <p>La primera pasada es un cribado rápido con <b>banderas</b> (<i>flags</i>), que solo tienen
+  dos estados útiles: <b>seleccionar</b> (tecla <kbd>P</kbd>, de <i>pick</i>) y <b>rechazar</b>
+  (tecla <kbd>X</kbd>). Recorres todas las fotos una a una, a buen ritmo, y para cada una decides
+  en un segundo. El criterio para rechazar (<kbd>X</kbd>) es implacable y solo tiene dos motivos:</p>
+  <ul>
+    <li><b>Técnica rota:</b> está movida, desenfocada donde importa, mal expuesta sin remedio, con
+    los ojos cerrados. Nada de esto lo arregla el revelado. Fuera.</li>
+    <li><b>Sin intención:</b> es una foto que no dice nada, un duplicado peor que su hermana, un
+    «por si acaso» que no acabó siendo nada. Si al mirarla no sientes ni un chispazo, fuera.</li>
+  </ul>
+  <p>Marca con <kbd>P</kbd> solo las que te hacen levantar una ceja: candidatas. El resto,
+  déjalas sin bandera (indecisas) o recházalas. La regla de oro de esta pasada es <b>ir rápido y
+  ser cruel</b>: si dudas más de dos segundos, no era tan buena. No borras nada todavía; solo
+  clasificas.</p>
+
+  <div class="callout gear" data-title="Atajos de Biblioteca: Bloq Mayús y el avance automático">
+    <p>Dos ayudas convierten la selección en un juego rápido. Primero, con <kbd>Bloq Mayús</kbd>
+    activado, cada vez que pulsas una bandera o una estrella Lightroom <b>avanza solo a la
+    siguiente foto</b>: vas <kbd>P</kbd>… <kbd>X</kbd>… <kbd>X</kbd>… <kbd>P</kbd> sin tocar las
+    flechas, a ritmo de metralleta. Segundo, aprende cuatro teclas y no necesitas el ratón:
+    <kbd>P</kbd> seleccionar, <kbd>X</kbd> rechazar, <kbd>U</kbd> quitar bandera, y las teclas
+    <kbd>1</kbd>–<kbd>5</kbd> para estrellas. La tecla <kbd>E</kbd> abre la foto a pantalla (vista
+    <i>Loupe</i>) y <kbd>G</kbd> vuelve a la cuadrícula. Con esto, 400 fotos se criban de un
+    tirón.</p>
+  </div>
+
+  <h3 id="pasada-dos-estrellas">Pasada 2: estrellas, solo sobre las seleccionadas</h3>
+
+  <p>Ahora usa el <b>filtro</b> de la parte inferior (o el filtro de biblioteca) para ver
+  <b>solo las fotos con bandera de selección</b>. De 400, quizá te queden 60–80. Sobre ese grupo
+  reducido haces la segunda pasada, esta vez con <b>estrellas</b>, con un sistema deliberadamente
+  simple —tres niveles y basta—:</p>
+  <div class="card-grid">
+    <div class="card"><div class="card-eyebrow">★★★</div><h4>Vale</h4><p>Buena foto, sólida, publicable. La mayoría de las que sobreviven caen aquí. Entra en el flujo de revelado.</p></div>
+    <div class="card"><div class="card-eyebrow">★★★★</div><h4>Buena</h4><p>Destaca de verdad. Es de las que enseñarías sin dudar. Estas se llevan tu mejor revelado.</p></div>
+    <div class="card"><div class="card-eyebrow">★★★★★</div><h4>Portfolio</h4><p>La joya del viaje. Habrá muy pocas, y está bien. Es la vara con la que mides tu progreso.</p></div>
+  </div>
+  <p>No uses una y dos estrellas: si una foto no llega a tres, es que en realidad no pasó el
+  corte y debió quedarse fuera. Menos niveles = decisiones más rápidas y honestas. Al terminar,
+  las fotos <b>rechazadas</b> (<kbd>X</kbd>) puedes eliminarlas del disco todas juntas
+  (Lightroom tiene un comando para «eliminar fotos rechazadas»); es liberador y recupera espacio,
+  aunque si eres aprensivo puedes limitarte a quitarlas del catálogo.</p>
+
+  <h3 id="el-ratio-honesto">El ratio honesto</h3>
+
+  <p>Conviene tener expectativas realistas para no frustrarse. De una jornada de unas <b>400
+  fotos</b>, un flujo sano deja algo así: unas <b>30–60 sobreviven</b> a la primera criba (tres
+  estrellas o más), de esas quizá <b>5–10 son de verdad buenas</b> (cuatro estrellas), y <b>una o
+  dos, o ninguna</b>, de portfolio. Esto le pasa a todo el mundo, profesionales incluidos: la
+  diferencia no es que el profesional acierte más a menudo, es que <b>tira todo lo que no
+  acierta</b>. Un ratio de aciertos bajo no es un problema; enseñar los fallos, sí.</p>
+
+  <div class="callout tip" data-title="Seleccionar es contar una historia">
+    <p>La selección no es solo control de calidad foto a foto: es el primer acto de
+    <a href="12-storytelling.html#la-secuencia">narrar el viaje</a>. Al elegir, no busques solo
+    fotos buenas sueltas, busca la <b>serie</b>: el plano general que sitúa, el detalle que da
+    textura, el retrato que pone cara. A veces una foto solo regular se queda porque <b>cuenta
+    algo</b> que ninguna de las buenas cuenta. Selecciona pensando en el conjunto que vas a
+    enseñar, no en una galería de trofeos inconexos.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="revelado">Revelado: panel a panel, en orden de trabajo</h2>
+
+  <p>Con las fotos ya elegidas, pasas al módulo <b>Revelar</b> (<i>Develop</i>) y trabajas solo
+  sobre las de tres estrellas o más. Los paneles de la derecha están ordenados, más o menos, en
+  el orden en que conviene tocarlos: de lo global (el aspecto general) a lo local (los detalles).
+  Seguir ese orden evita rehacer el trabajo. Vamos panel a panel con el <b>método</b> de cada
+  uno, no solo con qué hace.</p>
+
+  <div class="callout error" data-title="Error común: llevar los deslizadores al 100">
+    <p>El pecado universal del principiante es descubrir un deslizador (Claridad, Intensidad,
+    Deshacer neblina, Sombras) y empujarlo hasta el fondo porque «así se nota más». El resultado
+    es la estética inconfundible de la foto sobre-editada: halos, cielos morados, piel de cera,
+    ese aspecto de HDR de catálogo de inmobiliaria. La regla es la contraria:
+    <b>lleva el deslizador donde crees que queda bien, y entonces retrocede un tercio</b>. El
+    mejor revelado es el que no se ve. Si alguien mira tu foto y piensa «vaya edición», has
+    perdido; debería pensar «vaya luz».</p>
+  </div>
+
+  <h3 id="perfil-de-camara">Primero de todo: el perfil de cámara</h3>
+
+  <p>Antes de tocar ningún deslizador, sube al principio del panel <i>Básicos</i>, al desplegable
+  <b>Perfil</b>. Aquí es donde vive una alegría concreta para quien dispara Fuji. Por defecto,
+  Adobe abre tus RAF con el perfil <b>Adobe Color</b>: un punto de partida neutro y agradable,
+  pero <b>genérico</b>, que ignora las famosas simulaciones de película de Fuji. La buena noticia
+  es que Adobe incluye perfiles <b>«Camera Matching»</b> que replican esas simulaciones
+  <i>sobre el RAW</i>: verás nombres como <b>Camera Provia/Standard</b>, <b>Camera
+  Velvia/Vivid</b>, <b>Camera Astia/Soft</b>, <b>Camera Classic Chrome</b>, <b>Camera Eterna</b>,
+  <b>Camera Acros</b>, etc.</p>
+
+  <p>Esto significa que, aunque dispares en RAW «para tener todo el margen», no pierdes las
+  <a href="03-configuracion-inicial.html#simulaciones-de-pelicula">simulaciones de película</a>
+  que tanto disfrutabas en el JPEG: puedes recuperar el aspecto de Classic Chrome o Velvia como
+  <b>base</b> del revelado, y seguir teniendo bajo el capó toda la información del RAW para
+  ajustar. Es lo mejor de los dos mundos. Elige el perfil que case con el ambiente de la foto
+  —Classic Chrome para calle nostálgica, Velvia para paisaje potente, Astia o Pro Neg para piel—
+  y a partir de ahí ajusta. Si prefieres un lienzo neutro para revelar desde cero, deja Adobe
+  Color. Lo importante es <b>decidirlo tú</b>, no aceptar el defecto por inercia.</p>
+
+  <h3 id="basicos">Balance de blancos, exposición y las cuatro palancas</h3>
+
+  <p>Bajando por el panel Básicos, el orden natural es:</p>
+  <ul>
+    <li><b>Balance de blancos.</b> Como disparaste en RAW, aquí decides el color de la luz sin
+    perder nada (repasa el <a href="08-luz.html#el-color-de-la-luz">color de la luz</a>). El
+    cuentagotas de balance de blancos, pinchado sobre algo que <b>sepas</b> que es gris neutro,
+    te da un punto de partida objetivo; a partir de ahí caldeas o enfrías <b>a gusto</b>: no hay
+    balance «correcto», hay el que sirve a la emoción de la foto. En golden hour, no neutralices
+    el dorado que fuiste a buscar.</li>
+    <li><b>Exposición.</b> El brillo global. Ajústalo primero, mirando el
+    <a href="05-exposicion.html#el-histograma">histograma</a>, hasta que los medios tonos estén
+    donde quieres. Es la base sobre la que trabajan los demás.</li>
+    <li><b>Las cuatro palancas de rango tonal.</b> Aquí está el músculo del RAW. Son cuatro
+    deslizadores que actúan sobre cuatro tramos del brillo, de más claro a más oscuro:
+    <b>Blancos → Altas luces → Sombras → Negros</b>. El método:
+      <ol>
+        <li><b>Altas luces abajo</b> para <b>recuperar el cielo</b>: ese blanco lechoso vuelve a
+        tener nubes y azul. Aquí es donde el RAW brilla frente al JPEG.</li>
+        <li><b>Sombras arriba</b> para <b>abrir</b> las zonas oscuras y ver detalle en el
+        follaje, los portales, la ropa oscura, sin exagerar (ojo al ruido que asoma).</li>
+        <li><b>Blancos y Negros para fijar los extremos:</b> el truco profesional es mantener
+        <kbd>Alt</kbd> (u <kbd>Opción</kbd>) mientras arrastras <b>Blancos</b> hasta que
+        aparezcan los primeros puntitos de blanco puro, y luego <b>Negros</b> hasta el primer
+        negro real. Así usas <b>todo</b> el rango tonal: la foto tiene un blanco de verdad y un
+        negro de verdad, y deja de verse «lavada».</li>
+      </ol>
+    </li>
+  </ul>
+
+  <h3 id="presencia">Textura, Claridad, Deshacer neblina, Intensidad y Saturación</h3>
+
+  <p>El bloque de <i>Presencia</i>, abajo del panel Básicos, concentra los deslizadores que más
+  se malusan. Merece la pena saber <b>qué hace de verdad</b> cada uno:</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Deslizador</th><th>Qué hace de verdad</th><th>Buen uso · mal uso</th></tr></thead>
+    <tbody>
+      <tr><td><b>Textura</b></td><td>Realza (o suaviza) el detalle fino de tamaño medio, sin tocar el contraste general.</td><td>Piedra, corteza, tejidos ✓ · Piel (súbela y sale áspera) ✗</td></tr>
+      <tr><td><b>Claridad</b></td><td>Contraste local en los medios tonos: da «punch» y volumen, pero oscurece y endurece.</td><td>Paisaje, arquitectura, cielos con nubes ✓ · Retratos y al 100 (halos) ✗</td></tr>
+      <tr><td><b>Deshacer neblina</b></td><td>Corta la bruma atmosférica recuperando contraste y color en la distancia.</td><td>Un plano nublado o brumoso ✓ · A tope (cielos morados, esquinas negras) ✗</td></tr>
+      <tr><td><b>Intensidad</b> <i>(Vibrance)</i></td><td>Sube el color <b>solo de los tonos poco saturados</b>, y respeta los tonos de piel.</td><td>Casi siempre preferible ✓</td></tr>
+      <tr><td><b>Saturación</b></td><td>Sube <b>todos</b> los colores por igual, también los que ya estaban saturados.</td><td>Con mano muy ligera · fácil de pasarse ✗</td></tr>
+    </tbody>
+  </table></div>
+  <p>La distinción <b>Intensidad vs. Saturación</b> es la que más impacto tiene: para dar vida al
+  color de una escena de viaje, sube <b>Intensidad</b> primero —empuja lo apagado sin reventar lo
+  que ya era vivo ni volver naranjas las caras— y reserva Saturación para retoques mínimos. Subir
+  Saturación a lo bruto es la vía rápida a la postal chillona.</p>
+
+  <h3 id="curva-de-tonos">La curva de tonos</h3>
+
+  <p>La <b>curva de tonos</b> es el mismo control de contraste que las palancas de arriba, pero
+  gráfico y más fino: un diagrama donde el eje horizontal son los tonos de entrada (de negros a
+  la izquierda a blancos a la derecha) y el vertical, los de salida. Subes un punto y ese tramo se
+  aclara; lo bajas y se oscurece. Dos usos que debes conocer:</p>
+  <ul>
+    <li><b>La «S» suave.</b> Subir un poco las luces y bajar un poco las sombras dibuja una S
+    tendida: sube el contraste de forma elegante, mucho más controlada que el deslizador de
+    contraste bruto. Es el pan de cada día.</li>
+    <li><b>El «fade» en las sombras.</b> Levanta el <b>extremo inferior izquierdo</b> de la curva
+    (el punto de negro) unos milímetros hacia arriba: los negros dejan de ser negros puros y se
+    vuelven un gris apagado. Es el look «desvaído», cinematográfico, de carrete antiguo, muy de
+    moda para fotografía de viaje con aire nostálgico. Con moderación, da carácter; en exceso,
+    parece una foto mal escaneada.</li>
+  </ul>
+
+  <h3 id="hsl">HSL / Mezclador de color</h3>
+
+  <p>El panel <b>HSL/Color</b> te deja tocar cada <b>familia de color por separado</b> en sus tres
+  dimensiones: <b>Tono</b> (H, corre el color hacia un vecino), <b>Saturación</b> (S, su
+  intensidad) y <b>Luminancia</b> (L, su brillo). Es cirugía de color, y en viaje resuelve
+  problemas concretísimos:</p>
+  <ul>
+    <li><b>Afinar un cielo:</b> baja la <b>Luminancia del azul</b> para que el cielo gane cuerpo y
+    dramatismo, o toca su Tono para llevarlo de un azul cian a uno más profundo.</li>
+    <li><b>Domar un verde chillón:</b> el follaje de la X-Trans a veces sale de un verde demasiado
+    ácido; baja la <b>Saturación del verde</b> y corre su <b>Tono</b> hacia el amarillo para un
+    verde más natural y agradable.</li>
+    <li><b>Piel:</b> los tonos de piel viven sobre todo en el <b>naranja</b>. Pequeños ajustes de
+    su Luminancia y Saturación limpian una cara sin maquillar la foto entera.</li>
+  </ul>
+
+  <h3 id="detalle">Detalle: enfoque y reducción de ruido</h3>
+
+  <p>El panel <b>Detalle</b> tiene dos mitades: enfoque (nitidez de captura) y reducción de ruido.</p>
+  <p>En <b>Enfoque</b>, el control que hay que conocer sí o sí es <b>Máscara</b>
+  (<i>Masking</i>): mantén <kbd>Alt</kbd>/<kbd>Opción</kbd> mientras lo arrastras y la imagen se
+  vuelve blanco y negro, mostrándote <b>exactamente dónde</b> se está aplicando el enfoque
+  (blanco) y dónde no (negro). Súbelo hasta que solo queden blancos los <b>bordes</b> —el contorno
+  de un edificio, las pestañas, la arista de una roca— y quede negro lo liso —cielo, piel, agua—.
+  Así afilas lo que debe estar nítido <b>sin</b> afilar el ruido de las zonas planas. Es el truco
+  que separa una foto crujiente de una foto con grano realzado.</p>
+  <p>En <b>Reducción de ruido</b>, para ISOs moderados basta un toque del deslizador de ruido de
+  luminancia. Pero para las fotos de <b>ISO alto de noche</b> (esa blue hour a ISO 6400, repasa
+  <a href="05-exposicion.html#iso-y-ruido">ISO y ruido</a>), Lightroom incorpora un
+  <b>Denoise por IA</b> (dentro de <i>Mejorar</i>): analiza la foto con un modelo entrenado y
+  genera un archivo <b>DNG</b> nuevo con un ruido asombrosamente limpio, conservando detalle que
+  la reducción clásica se comería. Tarda unos segundos por foto y ocupa espacio (crea un archivo
+  nuevo), así que resérvalo para las fotos que lo merecen, no para las 300.</p>
+
+  <h3 id="lente-y-transformacion">Correcciones de lente y transformación</h3>
+
+  <p>En <b>Correcciones de perfil</b>, activa la casilla de corregir según el perfil del objetivo:
+  Lightroom conoce tus lentes Fuji (el
+  <a href="06-objetivos.html#23mm">XF 23mm f/2</a>, el
+  <a href="06-objetivos.html#35mm">XF 35mm f/1.4</a>) y corrige su distorsión y el viñeteado
+  ópticos automáticamente. Suele venir aplicado en los RAF de Fuji, pero comprueba que está.</p>
+  <p>El panel <b>Transformar</b> corrige la <b>perspectiva</b>: esas <b>verticales que se caen</b>
+  cuando fotografías un edificio inclinando la cámara hacia arriba. Con el modo automático (o el
+  guiado, trazando líneas sobre lo que debería ser vertical) enderezas la fachada para que suba
+  recta, como la vería el ojo. Con mano ligera; corregir del todo a veces deja el edificio con
+  aspecto de estar echándose sobre ti.</p>
+
+  <h3 id="recorte">Recorte: endereza siempre, reencuadra con intención</h3>
+
+  <p>Dejo el recorte para el final del revelado a propósito, aunque físicamente esté arriba del
+  todo. Dos cosas:</p>
+  <ul>
+    <li><b>Endereza el horizonte SIEMPRE.</b> Un horizonte torcido es el error que más grita
+    «aficionado» y el más fácil de arreglar: la herramienta de recorte tiene una regla
+    (<i>Ángulo</i>) con la que trazas una línea sobre el horizonte del mar o la base de un
+    edificio y Lightroom nivela solo. No se negocia: mar torcido, foto arruinada.</li>
+    <li><b>Reencuadra con intención, no por defecto.</b> El recorte es tu segunda oportunidad de
+    <a href="07-composicion.html">componer</a>: puedes reforzar una
+    <a href="07-composicion.html#leading-lines">línea que guía</a>, quitar un borde muerto,
+    cambiar a 4:5 (vertical de Instagram) o a un panorámico. Pero recortar mucho es tirar
+    resolución; el recorte arregla, no sustituye a encuadrar bien en el sitio.</li>
+  </ul>
+
+  <div class="callout gear" data-title="En la X-S20: los RAF de Fuji en Lightroom">
+    <p>Los archivos <b>.RAF</b> de la X-S20 se revelan estupendamente en Lightroom, con dos
+    matices propios de Fuji que conviene conocer con prudencia:</p>
+    <ul>
+      <li><b>Simulaciones recuperables.</b> Como vimos, los perfiles <b>Camera Matching</b>
+      replican Provia, Velvia, Astia, Classic Chrome, Eterna, Acros… sobre el RAW. Disparar RAW no
+      te cuesta perder el «look Fuji»: lo eliges al revelar.</li>
+      <li><b>El sensor X-Trans y el detalle fino.</b> El sensor de la X-S20 usa una matriz de color
+      <b>X-Trans</b>, distinta de la Bayer habitual. Durante años se discutió que la
+      <span class="term" title="Interpolación de color (demosaicing): el proceso por el que el revelador reconstruye una imagen a todo color a partir del mosaico de fotositos rojos, verdes y azules del sensor.">interpolación de color</span> de Adobe rendía el detalle fino de Fuji (follaje,
+      hierba lejana) con un aspecto algo «acuareloso» comparado con otros reveladores. Con las
+      versiones modernas de Lightroom el asunto es mucho menos notable y, para el uso normal, la
+      mayoría de la gente no ve problema. Aun así, un consejo prudente: en fotos con
+      <b>vegetación densa a distancia</b>, no te pases con el deslizador de enfoque —usa la
+      <b>máscara</b> con <kbd>Alt</kbd>— y, si algún día quieres exprimir el máximo detalle de una
+      foto concreta, sabes que hay reveladores especializados en X-Trans. Para el 99&nbsp;% de tus
+      fotos de viaje, Lightroom sobra.</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="mascaras">Máscaras: revelar solo un trozo</h2>
+
+  <p>Todo lo anterior era <b>global</b>: afectaba a la foto entera. Las <b>máscaras</b>
+  (<i>masking</i>) son lo contrario: te dejan aplicar ajustes <b>solo a una zona</b>. Es el salto
+  que más eleva el revelado, y en Lightroom moderno es casi mágico gracias a la
+  <b>inteligencia artificial</b>. Las herramientas que usarás a diario:</p>
+  <ul>
+    <li><b>Seleccionar cielo</b> (<i>Select Sky</i>): con un clic, Lightroom detecta el cielo y lo
+    aísla, respetando la silueta de los edificios y los árboles. Antes esto eran diez minutos con
+    pincel; ahora es un segundo.</li>
+    <li><b>Seleccionar sujeto</b> (<i>Select Subject</i>): detecta la persona (o el objeto
+    principal) y lo separa del fondo, también con un clic.</li>
+    <li><b>Filtro degradado</b> (lineal): una transición suave, como el clásico filtro degradado
+    de paisaje, para oscurecer un cielo de arriba abajo.</li>
+    <li><b>Filtro radial:</b> una elipse, para iluminar u oscurecer una zona circular.</li>
+    <li><b>Pincel:</b> pintas la máscara a mano donde la IA no llega.</li>
+  </ul>
+  <p>Casos de viaje concretos, que resuelves en treinta segundos:</p>
+  <ul>
+    <li><b>Cielo a −1 EV.</b> Seleccionar cielo, y bajarle la exposición un paso: recuperas azul y
+    nubes que estaban demasiado claros, sin oscurecer el paisaje de abajo. El truco de paisaje más
+    rentable que existe.</li>
+    <li><b>Sujeto con un empujón.</b> Seleccionar sujeto, y subirle un pelín la exposición y la
+    claridad: la persona (o el faro, o el barco) se despega del fondo y salta a la vista.</li>
+    <li><b>Viñeteado dirigido.</b> Un filtro radial grande sobre tu motivo, oscureciendo
+    <b>fuera</b> de él muy sutilmente: un viñeteado que no está centrado a lo bobo, sino colocado
+    donde tú quieres que caiga la mirada.</li>
+  </ul>
+  <p>Y aquí el principio que ordena todo esto: <b>el ajuste local existe para dirigir la
+  mirada</b>. Aclarar al sujeto y oscurecer alrededor es exactamente jugar con el
+  <a href="07-composicion.html#peso-visual">peso visual</a> que estudiaste en composición, pero
+  en el revelado: lo más claro y más contrastado atrae el ojo. No uses las máscaras para «mejorar
+  zonas» en abstracto, úsalas para <b>construir un recorrido</b> por la foto. Esa es la
+  diferencia entre retocar y dirigir.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="coherencia-de-serie">Color y coherencia de serie</h2>
+
+  <p>Una foto suelta puede tener el revelado que quiera. Pero un viaje se publica <b>en serie</b>
+  —un carrusel de Instagram, una galería, un fotolibro— y ahí aparece una exigencia nueva:
+  <b>coherencia</b>. Diez fotos de la misma tarde, cada una con un color y un contraste distintos,
+  se ven amateur aunque cada una por separado esté bien. Lightroom te da tres herramientas para
+  esto:</p>
+  <ul>
+    <li><b>Sincronizar ajustes.</b> Revela bien <b>una</b> foto de una escena (mismo sitio, misma
+    luz), selecciónala junto a sus hermanas y pulsa <b>Sincronizar</b>: Lightroom copia los
+    ajustes elegidos al resto. Retocas luego los detalles individuales (cada encuadre pide su
+    exposición fina), pero partes de una base común. Ahorra horas y da unidad.</li>
+    <li><b>Presets propios.</b> Un <span class="term" title="Preset: conjunto guardado de ajustes de revelado que aplicas a otras fotos con un clic, como punto de partida. Tú creas los tuyos a partir de tus revelados favoritos.">preset</span> es un revelado guardado que
+    aplicas con un clic. Cuando des con un punto de partida que te gusta para viaje —tu perfil
+    Fuji favorito, una curva en S suave, un toque de fade, tu balance de color— <b>guárdalo como
+    preset «viaje»</b> y aplícalo al importar o al empezar cada foto. No es el final del revelado,
+    es un buen comienzo repetible que te da un sello propio.</li>
+    <li><b>Un «look» consistente para lo que se publica junto.</b> Antes de exportar una serie,
+    míralas todas juntas en la cuadrícula y pregúntate si «casan»: temperatura de color parecida,
+    contraste parecido, misma personalidad. Un carrusel coherente se lee como el trabajo de
+    alguien con voz; uno disperso, como una carpeta de pruebas.</li>
+  </ul>
+
+  <!-- ============================================================ -->
+  <h2 id="exportacion">Exportación: sacar las fotos al mundo</h2>
+
+  <p>Exportar es el único paso que <b>crea archivos nuevos</b>: coge tu RAF más la receta de
+  revelado y «cocina» un JPEG (o TIFF) con los píxeles ya aplicados, del tamaño y calidad que le
+  pidas. Tu RAF no se toca. La clave es tener <b>recetas</b> guardadas (presets de exportación)
+  para cada destino, y no reinventarlas cada vez. Estas tres cubren casi todo:</p>
+
+  <div class="setting-card">
+    <span class="s-name">Instagram / redes</span>
+    <span class="s-value">JPEG · sRGB · 2048 px lado largo · calidad ~85</span>
+    <span class="s-why">Por qué: la red recomprime igualmente, así que no ganas nada subiendo un archivo enorme. 2048 px de lado largo es de sobra para pantalla; calidad ~85 es indistinguible de 100 a la mitad de peso. sRGB obligatorio (ver abajo).</span>
+  </div>
+  <div class="setting-card">
+    <span class="s-name">Impresión</span>
+    <span class="s-value">JPEG calidad 100 (o TIFF) · 100% del tamaño · 300 ppp · sin redimensionar</span>
+    <span class="s-why">Por qué: la impresión necesita todos los píxeles y máxima calidad. 300 ppp es la densidad estándar de imprenta; deja que el laboratorio no tenga que inventarse nada. Espacio de color: sRGB salvo que el laboratorio te pida otro (Adobe RGB) explícitamente.</span>
+  </div>
+  <div class="setting-card">
+    <span class="s-name">Archivo / web genérico</span>
+    <span class="s-value">JPEG · sRGB · lado largo 2560–3000 px · calidad ~90 · metadatos + copyright</span>
+    <span class="s-why">Por qué: una copia «buena para casi todo» que puedes mandar por correo, subir a una web o guardar como versión revelada de consulta rápida, sin cargar el RAW.</span>
+  </div>
+
+  <h3 id="por-que-srgb">Por qué sRGB siempre para pantalla</h3>
+
+  <p>Un espacio de color (<span class="term" title="Espacio de color / gamut: el rango de colores que un archivo puede representar. sRGB es el más pequeño y el estándar universal de pantallas y web.">gamut</span>) es el rango de colores que puede
+  contener un archivo. Los hay más amplios (Adobe RGB, ProPhoto), pero <b>internet y la inmensa
+  mayoría de pantallas hablan sRGB</b>. Si exportas en un espacio más ancho y lo subes a una web o
+  a Instagram, los navegadores y apps que no gestionan color te lo mostrarán <b>apagado y
+  desaturado</b> —lo contrario de lo que querías—. Por eso, para cualquier cosa que se vaya a ver
+  en pantalla: <b>sRGB, sin excepción</b>. Guarda los espacios anchos para el flujo de impresión
+  profesional, donde sí se aprovechan. Es la continuación lógica de la decisión de
+  <a href="03-configuracion-inicial.html#raw-o-jpeg">RAW o JPEG</a>: trabajas con todo el margen
+  en RAW y entregas en el formato que el destino entiende.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="workflow-completo">El flujo completo, de un vistazo</h2>
+
+  <p>Todo el capítulo se resume en una secuencia de siete pasos que, con práctica, se convierte
+  en un ritual casi automático al volver de cada jornada de viaje:</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 200" role="img" aria-labelledby="d132-t" font-family="ui-monospace, Menlo, monospace" font-size="11">
+      <title id="d132-t">El flujo de trabajo completo: importar, respaldar, marcar con banderas, puntuar con estrellas, revelar los cuatro o cinco estrellas, exportar y limpiar las rechazadas.</title>
+      <defs>
+        <marker id="d132-a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0 0 L6 3 L0 6 Z" fill="var(--dg-accent)"/>
+        </marker>
+      </defs>
+      <g text-anchor="middle">
+        <!-- fila 1 -->
+        <rect x="20"  y="30" width="86" height="42" rx="6" fill="none" stroke="var(--dg-accent)" stroke-width="1.3"/>
+        <text x="63"  y="48" fill="var(--dg-text)">1 · Importar</text>
+        <text x="63"  y="62" fill="var(--dg-line-soft)" font-size="9">copiar · 1:1</text>
+
+        <rect x="146" y="30" width="86" height="42" rx="6" fill="none" stroke="var(--dg-accent)" stroke-width="1.3"/>
+        <text x="189" y="48" fill="var(--dg-text)">2 · Backup</text>
+        <text x="189" y="62" fill="var(--dg-line-soft)" font-size="9">3-2-1</text>
+
+        <rect x="272" y="30" width="86" height="42" rx="6" fill="none" stroke="var(--dg-accent)" stroke-width="1.3"/>
+        <text x="315" y="48" fill="var(--dg-text)">3 · Banderas</text>
+        <text x="315" y="62" fill="var(--dg-red)" font-size="9">P / X sin piedad</text>
+
+        <rect x="398" y="30" width="86" height="42" rx="6" fill="none" stroke="var(--dg-accent)" stroke-width="1.3"/>
+        <text x="441" y="48" fill="var(--dg-text)">4 · Estrellas</text>
+        <text x="441" y="62" fill="var(--dg-line-soft)" font-size="9">3 / 4 / 5★</text>
+
+        <rect x="524" y="30" width="92" height="42" rx="6" fill="none" stroke="var(--dg-green)" stroke-width="1.3"/>
+        <text x="570" y="48" fill="var(--dg-text)">5 · Revelar</text>
+        <text x="570" y="62" fill="var(--dg-green)" font-size="9">solo 4-5★</text>
+
+        <!-- flechas fila 1 -->
+        <g stroke="var(--dg-accent)" stroke-width="1.3">
+          <line x1="106" y1="51" x2="146" y2="51" marker-end="url(#d132-a)"/>
+          <line x1="232" y1="51" x2="272" y2="51" marker-end="url(#d132-a)"/>
+          <line x1="358" y1="51" x2="398" y2="51" marker-end="url(#d132-a)"/>
+          <line x1="484" y1="51" x2="524" y2="51" marker-end="url(#d132-a)"/>
+        </g>
+        <!-- bajada -->
+        <line x1="570" y1="72" x2="570" y2="110" stroke="var(--dg-accent)" stroke-width="1.3" marker-end="url(#d132-a)"/>
+
+        <!-- fila 2 -->
+        <rect x="398" y="128" width="92" height="42" rx="6" fill="none" stroke="var(--dg-accent)" stroke-width="1.3"/>
+        <text x="444" y="146" fill="var(--dg-text)">6 · Exportar</text>
+        <text x="444" y="160" fill="var(--dg-line-soft)" font-size="9">sRGB · receta</text>
+
+        <rect x="252" y="128" width="110" height="42" rx="6" fill="none" stroke="var(--dg-line)" stroke-width="1.3"/>
+        <text x="307" y="146" fill="var(--dg-text)">7 · Limpiar</text>
+        <text x="307" y="160" fill="var(--dg-line-soft)" font-size="9">borrar rechazadas</text>
+
+        <line x1="524" y1="149" x2="490" y2="149" stroke="var(--dg-accent)" stroke-width="1.3" marker-end="url(#d132-a)"/>
+        <line x1="398" y1="149" x2="362" y2="149" stroke="var(--dg-accent)" stroke-width="1.3" marker-end="url(#d132-a)"/>
+      </g>
+    </svg>
+    <figcaption><b>Figura 13.2.</b> El embudo completo. Fíjate en la forma: entra ancho (cientos
+    de fotos), se estrecha con cada criba y solo un puñado llega al revelado cuidado. Gastar el
+    tiempo en el orden correcto —seleccionar antes de revelar— es lo que hace el flujo sostenible
+    jornada tras jornada.</figcaption>
+  </figure>
+
+  <div class="checklist" data-cl="lr-workflow">
+    <div class="cl-title"><span>Flujo de revelado de una jornada</span><span class="cl-count"></span></div>
+    <label><input type="checkbox" data-id="importar"><span>Importar con <b>Copiar</b>, previews <b>1:1</b>, a la carpeta <code>/año/fecha-lugar</code> y con keywords mínimas</span></label>
+    <label><input type="checkbox" data-id="backup"><span>Asegurar el respaldo <b>3-2-1</b> (SD intacta + disco + nube) y dejar que Lightroom haga copia del <b>catálogo</b></span></label>
+    <label><input type="checkbox" data-id="flags"><span>Pasada 1: <b>banderas</b> (<kbd>P</kbd>/<kbd>X</kbd>) con Bloq Mayús, rechazando sin piedad</span></label>
+    <label><input type="checkbox" data-id="stars"><span>Pasada 2: <b>estrellas</b> (3/4/5) solo sobre las seleccionadas</span></label>
+    <label><input type="checkbox" data-id="revelar"><span>Revelar los <b>4-5★</b>: perfil → básicos → curva → HSL → detalle → lente → recorte → máscaras</span></label>
+    <label><input type="checkbox" data-id="serie"><span>Sincronizar la serie para un <b>look coherente</b> antes de sacarla</span></label>
+    <label><input type="checkbox" data-id="exportar"><span><b>Exportar</b> con la receta del destino (sRGB para pantalla)</span></label>
+    <label><input type="checkbox" data-id="limpiar"><span><b>Limpiar</b> las rechazadas para no acumular basura</span></label>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="practica">A practicar</h2>
+
+  <div class="callout exercise" data-title="Ejercicio 13.1 — Criba a ciegas, en veinte minutos">
+    <p>Coge una jornada entera de tu último viaje —cuantas más fotos, mejor, idealmente 200 o
+    más—. Importa con previews 1:1 y haz <b>solo la pasada 1</b>: banderas con <kbd>Bloq
+    Mayús</kbd>, un segundo por foto, <kbd>P</kbd> o <kbd>X</kbd>, sin pararte a editar ni a
+    dudar. Cronométrate. <b>Criterio de éxito:</b> terminar en menos de veinte minutos y quedarte
+    con <b>menos del 20&nbsp;%</b> marcado como selección. Si te cuesta rechazar, ese es
+    justamente el músculo que estás entrenando: la foto que te da pena tirar casi nunca es tan
+    buena como el apego que le tienes.</p>
+  </div>
+
+  <div class="callout exercise" data-title="Ejercicio 13.2 — Antes / después honesto">
+    <p>Elige una sola foto de cuatro estrellas y revélala con método, en orden de paneles: perfil
+    Fuji, balance de blancos, exposición, las cuatro palancas (usa <kbd>Alt</kbd> en Blancos y
+    Negros), una curva en S suave, y una <b>máscara</b> de cielo a −1 EV. Ahora usa la vista
+    <b>Antes/Después</b> de Lightroom (tecla <kbd>Y</kbd>) para verlas lado a lado.
+    <b>Criterio de éxito:</b> que el «después» se vea claramente mejor <b>pero no salte a la vista
+    como “editado”</b>. Si parece HDR o los colores gritan, has caído en los deslizadores al 100:
+    vuelve atrás y retrocede un tercio en cada uno.</p>
+  </div>
+
+  <div class="callout challenge" data-title="Reto del capítulo — La misma foto, tres personalidades">
+    <p>Elige <b>una</b> foto con margen (una escena de calle o paisaje en RAW) y revélala
+    <b>tres veces</b>, creando tres copias virtuales (clic derecho → <i>Crear copia virtual</i>:
+    son ediciones alternativas sin duplicar el RAF), cada una con una intención distinta:</p>
+    <ul>
+      <li><b>Documental:</b> fiel y neutra. Perfil Adobe Color o Provia, balance de blancos
+      correcto, contraste natural, colores creíbles. Como la vería un ojo sereno.</li>
+      <li><b>Dramática:</b> contraste alto, claridad y textura marcadas (con cabeza), cielo
+      oscurecido con máscara, negros profundos. Intensa, teatral.</li>
+      <li><b>Fade:</b> el look desvaído: curva con el punto de negro levantado, contraste bajo,
+      color apagado y algo cálido, aire de carrete antiguo.</li>
+    </ul>
+    <p>Ponlas en fila. Verás con tus propios ojos que <b>no hay un revelado “correcto”</b>: hay
+    intenciones, y cada una es legítima. Este ejercicio te libera del miedo a «hacerlo mal» y te
+    empuja hacia la pregunta que de verdad importa: ¿qué quiero que <b>sienta</b> quien mire esto?</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="cierre">Dudas y lo esencial</h2>
+
+  <details class="callout faq">
+    <summary>¿Lightroom Classic o Lightroom «cloud»? ¿Cuál uso?</summary>
+    <div class="co-body">
+      <p>Los ajustes de revelado son <b>los mismos</b> en los dos: lo que aprendes aquí vale para
+      ambos. La diferencia es la <b>gestión</b>. <b>Classic</b> es el que hemos descrito: tú
+      controlas el catálogo y las carpetas en <b>tu disco</b>, ideal para grandes volúmenes y para
+      quien quiere ser dueño de sus archivos —la elección recomendada para el flujo de viaje de
+      este capítulo—. El <b>Lightroom «cloud»</b> (a secas) guarda todo <b>en la nube</b> y
+      sincroniza entre móvil, tablet y ordenador; es más simple y cómodo para editar desde
+      cualquier sitio, pero dependes de tu almacenamiento de pago y cedes el control de la
+      estructura. Para cientos de RAF de viaje y una biblioteca que crece, Classic manda.</p>
+    </div>
+  </details>
+
+  <details class="callout faq">
+    <summary>Si disparo RAW+JPEG, ¿para qué me sirve el JPEG una vez en Lightroom?</summary>
+    <div class="co-body">
+      <p>Para poco, la verdad, una vez tienes flujo de revelado. El JPEG fue útil como vista previa
+      inmediata y para compartir sobre la marcha en el viaje (repasa
+      <a href="03-configuracion-inicial.html#raw-o-jpeg">RAW o JPEG</a>). Pero en el revelado serio
+      trabajas el <b>RAW</b>, que tiene todo el margen, y recuperas el «look» del JPEG con los
+      perfiles Camera Matching si te gustaba. Muchos, al importar, configuran Lightroom para
+      <b>tratar el JPEG como archivo aparte</b> (o directamente no importarlo) para no ver cada
+      foto por duplicado. Un consejo: no borres los JPEG del viaje hasta haber confirmado que
+      tienes bien respaldados los RAW; luego, ocupan espacio y aportan poco.</p>
+    </div>
+  </details>
+
+  <div class="callout summary" data-title="Lo esencial del capítulo">
+    <ul>
+      <li>El revelado <b>termina</b> fotos que nacieron bien; no rescata las que no. Es <b>no
+      destructivo</b>: tus ajustes son instrucciones sobre el RAF, que nunca se toca.</li>
+      <li>El <b>catálogo</b> (<code>.lrcat</code>) guarda referencias y ediciones, <b>no</b> las
+      fotos. Vive en el disco interno; las fotos pueden ir en externo. Uno solo para toda tu vida.
+      Respáldalo (y respalda las fotos aparte, con la regla <b>3-2-1</b>).</li>
+      <li><b>Importa</b> siempre por el diálogo, con <b>Copiar</b>, a tu estructura
+      <b>año/fecha-lugar</b>, y con previews <b>1:1</b> para que la selección vuele.</li>
+      <li>La <b>selección</b> es el paso que más te mejora: pasada 1 con <b>banderas</b>
+      (P/X, cruel), pasada 2 con <b>estrellas</b> (3/4/5) solo sobre las salvadas. De 400,
+      sobreviven 30–60; buenas, 5–10.</li>
+      <li><b>Revela en orden</b>: perfil Fuji → balance y exposición → cuatro palancas (Alt en
+      blancos/negros) → presencia (Intensidad&nbsp;&gt;&nbsp;Saturación) → curva → HSL → detalle
+      (máscara con Alt; IA Denoise de noche) → lente/transformar → recorte (endereza SIEMPRE).</li>
+      <li>Las <b>máscaras</b> de IA (cielo, sujeto, degradados) sirven para <b>dirigir la
+      mirada</b>, no para «mejorar zonas» sueltas.</li>
+      <li>Da <b>coherencia</b> a la serie: sincroniza, crea tu preset «viaje», mira el conjunto
+      antes de publicar.</li>
+      <li><b>Exporta</b> con recetas por destino y <b>sRGB siempre</b> para pantalla.</li>
+    </ul>
+  </div>
+
+  <p>Con esto cierras el ciclo completo de la fotografía: capturaste con intención y ahora sabes
+  terminar y presentar tu trabajo. El siguiente paso natural, si además grabaste vídeo en el
+  viaje, es hacer con esos clips lo mismo que aquí hicimos con las fotos —seleccionar, montar,
+  colorear y exportar—: es el <a href="14-premiere.html">montaje en Premiere</a>. Y cuando llegue
+  el viaje de verdad, la <a href="15-portugal.html#checklists">guía de campo de Portugal</a>
+  incluye el ritual de respaldo diario para que ni una foto exista nunca en un solo sitio.</p>
+
+</div>
+
+<script src="../assets/js/manifest.js"></script>
+<script src="../assets/js/search-index.js" defer></script>
+<script src="../assets/js/app.js" defer></script>
+</body>
+</html>

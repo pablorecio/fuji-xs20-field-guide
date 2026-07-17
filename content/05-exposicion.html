@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="es" data-root="../">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Qué es de verdad la exposición: desde los fotones que llegan al sensor de la X-S20 hasta el triángulo, el histograma, ETTR y el rango dinámico.">
+<title>La exposición — Fuji X-S20 Field Guide</title>
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='8' y='8' width='84' height='84' rx='14' fill='%230c0e11'/><path d='M24 24h16M24 24v16M76 24H60M76 24v16M24 76h16M24 76V60M76 76H60M76 76V60' stroke='%234ade80' stroke-width='7' stroke-linecap='round' fill='none'/></svg>">
+</head>
+<body data-chapter="05-exposicion">
+
+<div class="content">
+
+  <div class="chapter-hero">
+    <span class="fc"></span>
+    <div class="hero-readout">
+      <span class="r-part">Parte III · Exposición</span>
+      <span>Capítulo 5</span>
+      <span>≈50 min</span>
+    </div>
+    <h1>La exposición</h1>
+    <p class="hero-lede">Toda foto empieza siendo un puñado de fotones cayendo sobre un
+    trozo de silicio. Este capítulo va de eso: cuánta luz recoges, durante cuánto tiempo,
+    y qué precio pagas por cada forma de conseguir la que te falta. Cuando lo entiendas de
+    raíz, dejarás de disparar a ciegas y empezarás a decidir.</p>
+    <div class="hero-meta">
+      <span class="pill pill-part">Fotones → número</span>
+      <span class="pill">El paso (stop)</span>
+      <span class="pill">Triángulo</span>
+      <span class="pill">Histograma</span>
+      <span class="pill">ETTR y DR</span>
+    </div>
+  </div>
+
+  <p>La exposición es el concepto más malinterpretado de la fotografía, y no porque sea
+  difícil, sino porque casi nadie lo explica desde el principio. Se enseña como una receta
+  —«sube el ISO si hay poca luz»— y no como lo que es: la física de cuánta luz cabe en tu
+  imagen. Vamos a empezar por debajo de todo, por el sensor, y a subir desde ahí. Al final
+  del capítulo tendrás una sola idea grande —el <b>paso</b>— con la que se explican los tres
+  controles, el histograma y el rango dinámico. Si solo te llevas una cosa, que sea esa.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="el-sensor">El sensor: de fotones a números</h2>
+
+  <p>La luz es un flujo de partículas: <b>fotones</b>. Cuando disparas, el objetivo proyecta
+  una pequeña imagen del mundo sobre el sensor de la X-S20, un rectángulo de silicio de
+  23,5 × 15,6 mm dividido en unos 26 millones de casillas microscópicas. Cada casilla se
+  llama <span class="term" title="Fotosito: la celda física del sensor que recoge fotones y los convierte en carga eléctrica. Es el 'píxel' del hardware.">fotosito</span>
+  (en inglés <i>photosite</i>). Piensa en cada fotosito como un cubo diminuto puesto bajo la
+  lluvia: no mide «el color» ni «el brillo», solo <b>cuenta gotas</b>. Cuantos más fotones
+  caen dentro durante la toma, más se llena el cubo.</p>
+
+  <p>El proceso, paso a paso, es sorprendentemente mecánico:</p>
+  <ol>
+    <li>Un fotón entra en el fotosito y, por efecto fotoeléctrico, arranca un
+    <b>electrón</b> del silicio. Más luz, más electrones.</li>
+    <li>Esos electrones se acumulan como carga durante todo el tiempo que el obturador
+    está abierto. El fotosito es, literalmente, un pozo que se va llenando.</li>
+    <li>Al cerrar el obturador, esa carga se lee como un pequeño <b>voltaje</b>.</li>
+    <li>Un conversor analógico-digital (ADC) traduce ese voltaje a un <b>número</b>. Ese
+    número es el dato en bruto de un píxel del RAW.</li>
+  </ol>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 260" role="img" aria-labelledby="d51-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d51-t">Un fotosito recoge fotones que se convierten en electrones, luego en voltaje y finalmente en un número.</title>
+      <!-- fotones cayendo -->
+      <g fill="var(--dg-amber)">
+        <circle cx="70" cy="30" r="3"/><circle cx="95" cy="55" r="3"/><circle cx="55" cy="80" r="3"/>
+        <circle cx="110" cy="35" r="3"/><circle cx="80" cy="95" r="3"/><circle cx="125" cy="70" r="3"/>
+      </g>
+      <line x1="30" y1="20" x2="150" y2="20" stroke="var(--dg-amber)" stroke-width="1" stroke-dasharray="3 4"/>
+      <text x="90" y="14" fill="var(--dg-amber)" text-anchor="middle">fotones (luz)</text>
+      <!-- el pozo -->
+      <path d="M40 120 L40 200 L140 200 L140 120" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <rect x="40" y="165" width="100" height="35" fill="var(--dg-accent)" opacity="0.35"/>
+      <line x1="40" y1="165" x2="140" y2="165" stroke="var(--dg-accent)" stroke-width="1.5"/>
+      <text x="90" y="222" fill="var(--dg-text)" text-anchor="middle">fotosito (pozo)</text>
+      <text x="90" y="238" fill="var(--dg-text)" text-anchor="middle" font-size="10">capacidad máxima = techo</text>
+      <!-- flechas etapa -->
+      <g stroke="var(--dg-line-soft)" stroke-width="1.5" fill="none">
+        <path d="M160 160 L215 160" marker-end="url(#a51)"/>
+        <path d="M320 160 L375 160" marker-end="url(#a51)"/>
+        <path d="M480 160 L535 160" marker-end="url(#a51)"/>
+      </g>
+      <defs>
+        <marker id="a51" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+          <path d="M0 0 L8 4 L0 8 z" fill="var(--dg-line-soft)"/>
+        </marker>
+      </defs>
+      <!-- electrones -->
+      <text x="268" y="150" fill="var(--dg-text)" text-anchor="middle">electrones</text>
+      <text x="268" y="168" fill="var(--dg-blue)" text-anchor="middle" font-size="16">e⁻ e⁻ e⁻</text>
+      <!-- voltaje -->
+      <text x="428" y="150" fill="var(--dg-text)" text-anchor="middle">voltaje</text>
+      <path d="M400 178 L410 178 L415 162 L425 194 L435 170 L445 178 L456 178" fill="none" stroke="var(--dg-green)" stroke-width="1.5"/>
+      <!-- número -->
+      <text x="588" y="150" fill="var(--dg-text)" text-anchor="middle">número (ADC)</text>
+      <text x="588" y="172" fill="var(--dg-accent)" text-anchor="middle" font-size="16">14 730</text>
+    </svg>
+    <figcaption><b>Figura 5.1.</b> El sensor no «ve»: cuenta fotones y devuelve números. Todo lo demás —color, brillo, ruido— se deduce de esos números. Cuando el pozo se llena hasta el techo, ya no cabe más información: eso es el clipping de altas luces.</figcaption>
+  </figure>
+
+  <p>Aquí aparece ya la definición honesta. La <b>exposición</b> no es «lo brillante que
+  queda la foto». Es una magnitud física precisa: <b>la cantidad de luz recibida por unidad
+  de área del sensor durante el tiempo de obturación</b>. En unidades, iluminancia (lux)
+  multiplicada por segundos. Solo dos cosas la determinan de verdad: cuánta luz dejas pasar
+  (la apertura) y durante cuánto tiempo la recoges (la velocidad). El ISO, ya lo verás, no
+  cambia la luz que llega: cambia lo que haces con ella después. Guárdalo, porque es la
+  fuente de la mitad de los malentendidos.</p>
+
+  <h3 id="por-que-aps-c">Por qué un APS-C recoge lo que recoge</h3>
+
+  <p>El sensor de la X-S20 es <b>APS-C</b>: más pequeño que un fotograma de 35 mm («full
+  frame») y más grande que el de un móvil. El tamaño importa por una razón puramente
+  geométrica: un sensor más grande, a igualdad de todo lo demás, intercepta más luz total
+  porque su superficie es mayor. No es que cada fotosito de APS-C sea peor; es que hay menos
+  área total capturando fotones. Por eso una full frame rinde algo mejor con luz escasa: no
+  por magia, sino por metros cuadrados de silicio. La X-S20 tiene un sensor magnífico para
+  viajar —ligero, con enorme calidad— y esa diferencia solo se nota de verdad en los límites,
+  de noche y a ISO muy alto. En el 95 % de tus fotos de viaje es irrelevante.</p>
+
+  <p>El factor de recorte del APS-C de Fuji es <b>1,5×</b>. Eso afecta al campo de visión de
+  tus objetivos (tu <a href="06-objetivos.html#23mm">XF 23 mm</a> encuadra como un 35 mm en
+  full frame) y, como verás en la sección de velocidad, a la regla para disparar a pulso.
+  Lo desarrollamos en <a href="06-objetivos.html#perspectiva-y-compresion">el capítulo de
+  objetivos</a>.</p>
+
+  <div class="callout fact">
+    <p>Casi todas las cámaras usan un mosaico de color <b>Bayer</b>: filtros rojos, verdes y
+    azules en un patrón repetido de 2×2 (con el doble de verdes, porque nuestro ojo es más
+    sensible al verde). Fuji hace algo distinto con su <b>X-Trans</b>: un patrón de 6×6, más
+    irregular. La idea original era romper la regularidad que produce el <i>moiré</i> (esos
+    patrones de interferencia en tejidos y rejillas) y poder prescindir del filtro
+    antialias, ganando algo de nitidez. En la práctica, con la X-S20 esto es una curiosidad
+    de ingeniería más que una batalla que debas librar: la calidad depende mil veces más de
+    la luz y de tu técnica que de si el mosaico es Bayer o X-Trans. Tenlo como cultura general.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="el-paso">La luz se mide en pasos</h2>
+
+  <p>Ahora, la idea que unifica todo el capítulo. La luz que manejamos en fotografía no
+  varía de uno en uno, sino <b>duplicándose o partiéndose por la mitad</b>. Un
+  <span class="term" title="Paso (stop): duplicar o reducir a la mitad la cantidad de luz. La unidad universal de la exposición.">paso</span>
+  (en inglés <i>stop</i>) es exactamente eso: <b>una duplicación o una división a la mitad de
+  la luz</b>. Subir un paso = el doble de luz. Bajar un paso = la mitad.</p>
+
+  <p>¿Por qué en pasos y no en porcentajes? Porque nuestra visión es logarítmica: percibimos
+  saltos de luz como proporciones, no como sumas. La diferencia entre 100 y 200 fotones se
+  nota igual que entre 1.000 y 2.000. Doblar es la unidad natural. Y aquí está la belleza del
+  sistema: los tres controles hablan el mismo idioma. Un paso de apertura, un paso de
+  velocidad y un paso de ISO cambian el brillo exactamente lo mismo. Son <b>intercambiables</b>.
+  Si abres un paso el diafragma y aceleras un paso el obturador, la foto queda igual de
+  brillante: has movido luz de un control al otro sin cambiar la exposición.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 170" role="img" aria-labelledby="d52-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d52-t">Cada paso duplica la luz: la escala crece 1, 2, 4, 8, 16, 32.</title>
+      <g>
+        <rect x="30"  y="118" width="70" height="16" fill="var(--dg-amber)" opacity="0.85"/>
+        <rect x="115" y="102" width="70" height="32" fill="var(--dg-amber)" opacity="0.8"/>
+        <rect x="200" y="70"  width="70" height="64" fill="var(--dg-amber)" opacity="0.75"/>
+        <rect x="285" y="38"  width="70" height="96" fill="var(--dg-amber)" opacity="0.7"/>
+      </g>
+      <g fill="var(--dg-text)" text-anchor="middle" font-size="11">
+        <text x="65"  y="150">1×</text>
+        <text x="150" y="150">2×</text>
+        <text x="235" y="150">4×</text>
+        <text x="320" y="150">8×</text>
+      </g>
+      <g fill="var(--dg-accent)" text-anchor="middle" font-size="10">
+        <text x="65"  y="112">0 pasos</text>
+        <text x="150" y="96">+1</text>
+        <text x="235" y="64">+2</text>
+        <text x="320" y="32">+3</text>
+      </g>
+      <line x1="380" y1="130" x2="380" y2="30" stroke="var(--dg-line)" stroke-width="1"/>
+      <text x="510" y="70" fill="var(--dg-text)" text-anchor="middle">Cada barra es</text>
+      <text x="510" y="88" fill="var(--dg-text)" text-anchor="middle">el DOBLE de la anterior.</text>
+      <text x="510" y="112" fill="var(--dg-text)" text-anchor="middle" font-size="10">Sumar en pasos =</text>
+      <text x="510" y="128" fill="var(--dg-text)" text-anchor="middle" font-size="10">multiplicar la luz.</text>
+    </svg>
+    <figcaption><b>Figura 5.2.</b> La escala de pasos es exponencial. Por eso «medio paso» o «un tercio de paso» son ajustes finos reales: la X-S20 te deja moverte en tercios de paso, que es la granularidad estándar.</figcaption>
+  </figure>
+
+  <p>Las cámaras trabajan en <b>tercios de paso</b>. Cuando ves velocidades como 1/100,
+  1/125, 1/160… no son caprichosas: 1/125 está un paso por encima de 1/60, y 1/100 y 1/160
+  son los tercios intermedios. Lo mismo con las aperturas (f/2 → f/2.2 → f/2.5 → f/2.8) y con
+  el ISO (160 → 200 → 250 → 320). No necesitas memorizar los tercios; sí necesitas pensar en
+  <b>pasos enteros</b>, que es como razona un fotógrafo: «esto está oscuro, subo un paso».</p>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>+ luz (más brillante)</th><th>Control</th><th>− luz (más oscuro)</th></tr></thead>
+    <tbody>
+      <tr><td>Abrir 1 paso: f/8 → f/5,6</td><td><strong>Apertura</strong></td><td>Cerrar 1 paso: f/8 → f/11</td></tr>
+      <tr><td>Ralentizar 1 paso: 1/250 → 1/125</td><td><strong>Velocidad</strong></td><td>Acelerar 1 paso: 1/250 → 1/500</td></tr>
+      <tr><td>Amplificar 1 paso: ISO 400 → 800</td><td><strong>ISO</strong></td><td>Reducir 1 paso: ISO 400 → 200</td></tr>
+    </tbody>
+  </table></div>
+
+  <!-- ============================================================ -->
+  <h2 id="el-triangulo-de-exposicion">El triángulo de exposición, sin mentiras</h2>
+
+  <p>Aquí viene la parte que las guías cuentan mal. Se dibuja un triángulo bonito y se dice
+  «equilibra los tres», como si fueran iguales. No lo son. Los tres cambian el brillo lo
+  mismo —un paso es un paso—, pero <b>cada uno cobra un precio distinto por su paso</b>. El
+  triángulo no es un equilibrio: es una negociación con tres monedas diferentes.</p>
+
+  <ul>
+    <li><b>La velocidad</b> te cobra en <b>movimiento</b>. Cuanto más lenta, más luz, pero
+    más riesgo de que salga movido lo que se mueve (el sujeto o tú).</li>
+    <li><b>La apertura</b> te cobra en <b>profundidad de campo</b>. Cuanto más abierta, más
+    luz, pero menos zona nítida delante y detrás del punto de enfoque.</li>
+    <li><b>El ISO</b> te cobra en <b>ruido</b>. Cuanto más alto, más brillo aparente, pero
+    más grano y menos limpieza en las sombras.</li>
+  </ul>
+
+  <p>Esa es la única razón por la que hay tres controles y no uno. Si solo importara el
+  brillo, sobraría con un mando. Existen tres porque cada uno tiene un <b>efecto lateral</b>,
+  y la fotografía consiste precisamente en elegir qué efecto lateral quieres y cuál no. Un
+  retrato de tu compañera de viaje con el fondo desenfocado, una cascada sedosa, un pájaro
+  congelado en pleno vuelo: cada uno pide sacrificar una moneda distinta.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 520 400" role="img" aria-labelledby="d53-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d53-t">Triángulo de exposición: cada vértice controla el brillo pero cobra un precio distinto.</title>
+      <polygon points="260,50 70,330 450,330" fill="none" stroke="var(--dg-line-soft)" stroke-width="1.5"/>
+      <!-- vértices -->
+      <g text-anchor="middle">
+        <circle cx="260" cy="50" r="6" fill="var(--dg-amber)"/>
+        <text x="260" y="34" fill="var(--dg-amber)" font-size="13">VELOCIDAD</text>
+        <circle cx="70" cy="330" r="6" fill="var(--dg-blue)"/>
+        <text x="70" y="360" fill="var(--dg-blue)" font-size="13">APERTURA</text>
+        <circle cx="450" cy="330" r="6" fill="var(--dg-red)"/>
+        <text x="450" y="360" fill="var(--dg-red)" font-size="13">ISO</text>
+      </g>
+      <!-- precios en el centro de cada lado / cerca del vértice -->
+      <g text-anchor="middle" fill="var(--dg-text)" font-size="11">
+        <text x="260" y="88">precio: movimiento</text>
+        <text x="260" y="103" font-size="10">congela o barre</text>
+
+        <text x="70" y="300">precio:</text>
+        <text x="70" y="315" font-size="10">profundidad</text>
+
+        <text x="450" y="300">precio:</text>
+        <text x="450" y="315" font-size="10">ruido</text>
+      </g>
+      <!-- centro -->
+      <text x="260" y="205" fill="var(--dg-accent)" text-anchor="middle" font-size="13">brillo</text>
+      <text x="260" y="223" fill="var(--dg-text)" text-anchor="middle" font-size="10">los tres lo cambian</text>
+      <text x="260" y="238" fill="var(--dg-text)" text-anchor="middle" font-size="10">exactamente igual</text>
+    </svg>
+    <figcaption><b>Figura 5.3.</b> El vértice te da luz; la etiqueta de fuera es lo que pagas por ella. Mueve un vértice y tendrás que compensar con otro para mantener el brillo: ahí decides qué precio prefieres.</figcaption>
+  </figure>
+
+  <p>Más abajo tienes un <a href="#x5-tri">simulador del triángulo</a> para toquetear los
+  tres controles y ver el brillo y los precios en tiempo real. Pero antes conviene entender
+  cada control por separado, porque el precio de cada uno tiene matices que la X-S20 puede
+  suavizar… o no.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="la-velocidad">La velocidad de obturación</h2>
+
+  <p>El <b>obturador</b> es la compuerta que decide durante cuánto tiempo el sensor recoge
+  luz. La velocidad de obturación es ese tiempo: 1/125 de segundo, 1/1000, 2 segundos. Es la
+  mitad de la exposición «de verdad» (la otra mitad es la apertura). Y tiene un doble efecto
+  que la hace fascinante: además de dosificar la luz, <b>dibuja o congela el movimiento</b>.</p>
+
+  <h3 id="mecanico-vs-electronico">Obturador mecánico y electrónico</h3>
+
+  <p>La X-S20 tiene dos formas de abrir y cerrar esa compuerta.</p>
+
+  <p>El <b>obturador mecánico</b> son dos cortinillas físicas que cruzan el sensor. Para
+  exposiciones normales, una primera cortinilla lo destapa y una segunda lo vuelve a tapar.
+  A velocidades altas las dos cortinillas viajan casi pegadas, dejando pasar la luz a través
+  de una <b>rendija</b> que barre el sensor: no todo el sensor está expuesto a la vez. En la
+  X-S20 el mecánico llega hasta <b>1/4000 s</b>.</p>
+
+  <p>El <b>obturador electrónico</b> no mueve nada: enciende y apaga la lectura de los
+  fotositos por software. Llega hasta <b>1/32.000 s</b> (útil para disparar a plena apertura
+  bajo un sol brutal, o para el silencio total en un museo o una iglesia). Pero tiene una
+  trampa importante: el sensor no se lee de golpe, sino <b>fila por fila, de arriba abajo</b>.
+  Eso introduce el <span class="term" title="Rolling shutter: distorsión por leer el sensor fila a fila en vez de a la vez; inclina o dobla lo que se mueve rápido.">rolling shutter</span>,
+  y trae dos problemas concretos:</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 220" role="img" aria-labelledby="d54-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d54-t">El obturador mecánico usa dos cortinillas que barren el sensor con una rendija; el electrónico lee fila a fila.</title>
+      <style>
+        .d54-c1 { animation: d54slide 3s var(--ease) infinite; }
+        .d54-c2 { animation: d54slide 3s var(--ease) infinite; animation-delay: .45s; }
+        .d54-scan { animation: d54scan 3s linear infinite; }
+        @keyframes d54slide { 0%,10% { transform: translateY(-92px); } 55%,100% { transform: translateY(92px); } }
+        @keyframes d54scan { 0% { transform: translateY(0); opacity: 1; } 90%,100% { transform: translateY(92px); opacity: 1; } }
+        @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+      </style>
+      <!-- lado mecánico -->
+      <text x="150" y="24" fill="var(--dg-text)" text-anchor="middle">MECÁNICO · dos cortinillas</text>
+      <rect x="60" y="40" width="180" height="130" rx="4" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <clipPath id="d54clip"><rect x="60" y="40" width="180" height="130" rx="4"/></clipPath>
+      <g clip-path="url(#d54clip)">
+        <rect class="d54-c1" x="60" y="40" width="180" height="60" fill="var(--dg-line-soft)" opacity="0.55"/>
+        <rect class="d54-c2" x="60" y="110" width="180" height="60" fill="var(--dg-line-soft)" opacity="0.55"/>
+      </g>
+      <text x="150" y="192" fill="var(--dg-amber)" text-anchor="middle" font-size="10">la rendija deja pasar la luz</text>
+      <!-- lado electrónico -->
+      <text x="480" y="24" fill="var(--dg-text)" text-anchor="middle">ELECTRÓNICO · lectura fila a fila</text>
+      <rect x="390" y="40" width="180" height="130" rx="4" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <g stroke="var(--dg-line-soft)" stroke-width="1">
+        <line x1="390" y1="62" x2="570" y2="62"/><line x1="390" y1="84" x2="570" y2="84"/>
+        <line x1="390" y1="106" x2="570" y2="106"/><line x1="390" y1="128" x2="570" y2="128"/>
+        <line x1="390" y1="150" x2="570" y2="150"/>
+      </g>
+      <rect class="d54-scan" x="390" y="40" width="180" height="8" fill="var(--dg-green)" opacity="0.8"/>
+      <text x="480" y="192" fill="var(--dg-green)" text-anchor="middle" font-size="10">el escaneo tarda: lo rápido se inclina</text>
+    </svg>
+    <figcaption><b>Figura 5.4.</b> A la izquierda, la rendija mecánica; a la derecha, la línea que escanea el sensor de arriba abajo. Ese barrido temporal es la causa del rolling shutter y del banding con luces artificiales.</figcaption>
+  </figure>
+
+  <ul>
+    <li><b>Distorsión (rolling shutter).</b> Si el sujeto (o la cámara) se mueve rápido
+    durante ese barrido, la parte de arriba de la imagen se captura un instante antes que la
+    de abajo. Las líneas verticales de un tren en marcha o las aspas de un molino salen
+    inclinadas o gelatinosas. Volvemos a esto en <a href="09-video.html#rolling-shutter">vídeo</a>,
+    donde importa mucho más.</li>
+    <li><b>Banding con luces LED.</b> Muchas luces LED y fluorescentes parpadean 50 o 60
+    veces por segundo (invisible al ojo). Como el obturador electrónico escanea el sensor
+    poco a poco, capta ese parpadeo como <b>bandas horizontales</b> de brillo distinto. En un
+    interior con LEDs, cambia al obturador mecánico y desaparecen.</li>
+  </ul>
+
+  <div class="callout gear" data-title="Qué obturador usar en la X-S20">
+    <p>Regla sencilla para viajar: deja el <b>mecánico (MS)</b> como opción por defecto —es
+    fiable y no da banding— y reserva el electrónico para tres casos: silencio absoluto,
+    necesitas pasar de 1/4000 (sol fortísimo con el <a href="06-objetivos.html#35mm">35 mm
+    f/1.4</a> abierto), o quieres los tiempos larguísimos sin trípode. En el menú de
+    disparo tienes <b>MS</b>, <b>ES</b> y <b>MS+ES</b> (mecánico que salta a electrónico solo
+    cuando hace falta pasar de 1/4000). Este último modo mixto es un buen «déjalo puesto y
+    olvídate», con la única precaución de los LEDs.</p>
+  </div>
+
+  <h3 id="congelar-o-barrer">Congelar o barrer el movimiento</h3>
+
+  <p>Esta es la parte creativa. La velocidad no solo evita que la foto salga movida: es una
+  herramienta expresiva.</p>
+  <ul>
+    <li><b>Congelar:</b> velocidades altas (1/500, 1/1000, 1/2000) detienen la acción. Un
+    salto en la playa, agua salpicando, un ciclista. Todo nítido, como suspendido. Para que
+    además salga <b>enfocado</b>, un sujeto que se mueve pide seguimiento continuo:
+    <a href="04-enfoque.html#af-c">AF-C</a>.</li>
+    <li><b>Barrer:</b> velocidades lentas (1/4, 1 s, varios segundos) convierten el
+    movimiento en trazo. La cascada se vuelve seda, los faros de los coches se estiran en
+    líneas, las nubes se difuminan. Aquí <b>necesitas trípode</b> (o un buen apoyo) para que
+    lo que está quieto siga quieto mientras solo se mueve lo que quieres mover.</li>
+  </ul>
+
+  <h3 id="regla-reciproca">La regla de la recíproca (y qué hace el IBIS)</h3>
+
+  <p>Disparando a pulso, tu propio pulso mueve la cámara. La regla clásica dice: para que no
+  se note, usa una velocidad al menos igual a <b>1 / distancia focal</b>. Con un 50 mm,
+  1/50 s; con un 200 mm, 1/200 s (los teleobjetivos amplifican el temblor, por eso piden más
+  velocidad). Pero ojo: en un sensor APS-C hay que aplicar el <b>factor 1,5×</b> a la focal
+  real, porque encuadras como una focal más larga. Tu XF 23 mm se comporta como un 35 mm, así
+  que la regla pide ≈ 1/35 s; redondeando al alza, <b>1/50 s</b>. El XF 35 mm equivale a ≈ 53
+  mm, así que ≈ 1/60 s.</p>
+
+  <p>Ahora la buena noticia: la X-S20 tiene <b>estabilización en el cuerpo (IBIS)</b> de 5
+  ejes, hasta <b>7 pasos</b> según el estándar CIPA. Siete pasos es muchísimo: en teoría te
+  permite bajar de 1/50 s a algo como 1/1 s a pulso y que lo estático siga nítido. En la
+  práctica cuenta con menos (3–5 pasos reales según tu firmeza), pero sigue siendo enorme
+  para interiores de iglesias, calles al anochecer o esa foto sin trípode que antes era
+  imposible.</p>
+
+  <div class="callout error" data-title="Error común: creer que el IBIS congela el movimiento">
+    <p>El IBIS compensa <b>el temblor de la cámara</b>, y solo eso. <b>No hace absolutamente
+    nada</b> contra el movimiento del sujeto. Puedes disparar a 1/8 s con IBIS y una catedral
+    quieta saldrá nítida, pero la persona que camina por ella saldrá movida igual, porque
+    ella se mueve de verdad dentro de esa larga exposición. Si lo que se mueve es el sujeto,
+    la única cura es <b>subir la velocidad</b>. Regla mental: IBIS para paredes, velocidad
+    para personas.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="la-apertura">La apertura</h2>
+
+  <p>Dentro del objetivo hay un <b>diafragma</b>: un anillo de láminas metálicas que forman
+  un agujero de tamaño variable, como el iris de tu ojo. La apertura es el diámetro de ese
+  agujero, y es la otra mitad de la exposición «de verdad»: más agujero, más luz por unidad
+  de tiempo.</p>
+
+  <h3 id="numeros-f">Por qué los números f son tan raros</h3>
+
+  <p>La escala f desconcierta a todo el mundo: f/1.4, f/2, f/2.8, f/4, f/5.6, f/8, f/11,
+  f/16. ¿Por qué esos números? Porque el número f no es el diámetro, sino una <b>proporción</b>:
+  f/N significa «la focal dividida entre N». En un 50 mm, f/2 quiere decir que el agujero mide
+  25 mm de diámetro. Y aquí está el truco: lo que deja pasar luz no es el diámetro, sino el
+  <b>área</b> del agujero, que crece con el cuadrado del diámetro. Para <b>duplicar el área</b>
+  (un paso de luz) hay que multiplicar el diámetro por <b>√2 ≈ 1,41</b>. Por eso la serie
+  avanza multiplicando por 1,41 cada vez: 1 → 1,4 → 2 → 2,8 → 4 → 5,6 → 8… Cada uno de esos
+  saltos es exactamente un paso. Los números parecen aleatorios; en realidad son las potencias
+  de la raíz de dos. Y una fuente eterna de confusión: <b>número f pequeño = agujero grande =
+  más luz</b>. f/1.4 es una boca enorme; f/16 es un alfiler.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 150" role="img" aria-labelledby="d55-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d55-t">La escala f: cada paso multiplica el diámetro por raíz de dos y duplica (o parte) la luz.</title>
+      <g>
+        <circle cx="60"  cy="70" r="44" fill="var(--dg-amber)" opacity="0.85"/>
+        <circle cx="170" cy="70" r="31" fill="var(--dg-amber)" opacity="0.78"/>
+        <circle cx="280" cy="70" r="22" fill="var(--dg-amber)" opacity="0.7"/>
+        <circle cx="390" cy="70" r="16" fill="var(--dg-amber)" opacity="0.62"/>
+        <circle cx="500" cy="70" r="11" fill="var(--dg-amber)" opacity="0.54"/>
+        <circle cx="600" cy="70" r="8"  fill="var(--dg-amber)" opacity="0.46"/>
+      </g>
+      <g fill="var(--dg-text)" text-anchor="middle">
+        <text x="60"  y="135">f/1.4</text>
+        <text x="170" y="135">f/2.8</text>
+        <text x="280" y="135">f/5.6</text>
+        <text x="390" y="135">f/11</text>
+        <text x="500" y="135">f/22</text>
+        <text x="600" y="135">f/32</text>
+      </g>
+      <text x="330" y="20" fill="var(--dg-accent)" text-anchor="middle">← más luz · más agujero        menos luz · más nítido →</text>
+    </svg>
+    <figcaption><b>Figura 5.5.</b> Cada círculo es un paso respecto al de dos posiciones antes (aquí saltamos de paso en paso completo). El área —no el diámetro— es lo que cuenta la luz.</figcaption>
+  </figure>
+
+  <h3 id="apertura-y-profundidad">El precio: la profundidad de campo</h3>
+
+  <p>El efecto lateral de la apertura es la <b>profundidad de campo</b>: la franja de la
+  escena que sale aceptablemente nítida, del primer plano al fondo. Con el diafragma muy
+  abierto (f/1.4, f/2) esa franja es finísima —los ojos nítidos, las orejas ya blandas— y el
+  fondo se funde en ese desenfoque cremoso que aísla al sujeto. Cerrando (f/8, f/11) la franja
+  crece y entra en foco casi todo, de la flor de delante a la montaña del fondo. Es solo una
+  introducción; el mecanismo completo (distancia, focal, tamaño de sensor y el porqué del
+  <i>bokeh</i>) lo tienes en
+  <a href="06-objetivos.html#profundidad-de-campo">profundidad de campo</a>.</p>
+
+  <h3 id="sweet-spot-difraccion">El punto dulce y la difracción</h3>
+
+  <p>Podrías pensar que cerrar cuanto más mejor para máxima nitidez de esquina a esquina. No.
+  Hay un <b>punto dulce</b>, normalmente uno o dos pasos por debajo de la apertura máxima
+  (para muchos objetivos, entre f/4 y f/8), donde la lente rinde su máxima nitidez. Cerrar más
+  allá empeora la imagen por un fenómeno físico llamado <b>difracción</b>: al pasar por un
+  agujero muy pequeño, la luz se dispersa en los bordes y cada punto se emborrona levemente.</p>
+
+  <p>En un sensor APS-C denso como el de la X-S20, con fotositos pequeños, la difracción se
+  empieza a notar antes que en full frame: <b>a partir de f/11 la nitidez global cae de forma
+  perceptible</b>, y f/16 es claramente blando. La consecuencia práctica es liberadora:
+  raramente necesitas pasar de f/8–f/11 para un paisaje. Si buscas «que salga todo nítido»,
+  f/8 casi siempre es mejor elección que f/16.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="iso-y-ruido">El ISO y el ruido</h2>
+
+  <p>Y llegamos al control peor explicado de todos. Te habrán dicho que el ISO es «la
+  sensibilidad del sensor». <b>No lo es.</b> La sensibilidad del silicio es fija; no puedes
+  hacer que un fotosito capture más fotones subiendo un número en un menú. Lo que el ISO hace
+  de verdad es <b>amplificar la señal</b> que ya se ha recogido antes de convertirla en
+  número. Es el volumen de un amplificador: no genera más música, sube la que hay. Y como todo
+  amplificador, al subir el volumen también sube el <b>ruido</b> de fondo.</p>
+
+  <h3 id="de-donde-viene-el-ruido">De dónde viene el ruido</h3>
+
+  <p>Hay dos fuentes de ruido, y distinguirlas lo explica todo:</p>
+  <ul>
+    <li><b>Ruido de disparo</b> (<span class="term" title="Shot noise: la fluctuación estadística inevitable en la llegada de los fotones. Cuanta más luz, mejor la relación señal/ruido.">shot noise</span>).
+    No es un defecto de la cámara: es la propia naturaleza de la luz. Los fotones llegan de
+    forma aleatoria, como gotas de lluvia. Si en un fotosito caen de media 100 fotones, en
+    uno concreto pueden caer 90 o 110. Esa fluctuación es el ruido, y su tamaño relativo
+    <b>disminuye con más luz</b>: la relación señal/ruido mejora con la raíz cuadrada del
+    número de fotones. Traducido: <b>cuanta más luz recojas, más limpia la imagen</b>, hagas
+    lo que hagas después.</li>
+    <li><b>Ruido de lectura</b>. El pequeño ruido eléctrico que añaden el conversor y la
+    electrónica al leer cada fotosito. Es casi constante, así que solo domina cuando la señal
+    es muy débil: en las <b>sombras</b>.</li>
+  </ul>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 250" role="img" aria-labelledby="d56-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d56-t">La relación señal/ruido mejora cuanta más luz recoge el sensor.</title>
+      <line x1="60" y1="210" x2="600" y2="210" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <line x1="60" y1="210" x2="60" y2="30" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <text x="330" y="242" fill="var(--dg-text)" text-anchor="middle">luz recogida (fotones) →</text>
+      <text x="30" y="120" fill="var(--dg-text)" text-anchor="middle" transform="rotate(-90 30 120)">calidad (señal/ruido) →</text>
+      <path d="M60 205 Q200 120 380 80 T600 55" fill="none" stroke="var(--dg-green)" stroke-width="2"/>
+      <circle cx="130" cy="170" r="4" fill="var(--dg-red)"/>
+      <text x="130" y="160" fill="var(--dg-red)" text-anchor="middle" font-size="10">foto oscura</text>
+      <circle cx="470" cy="68" r="4" fill="var(--dg-green)"/>
+      <text x="470" y="58" fill="var(--dg-green)" text-anchor="middle" font-size="10">bien expuesta</text>
+      <text x="330" y="150" fill="var(--dg-text)" text-anchor="middle" font-size="10">más luz = más señal frente al ruido inevitable</text>
+    </svg>
+    <figcaption><b>Figura 5.6.</b> La curva es empinada abajo y se aplana arriba: recoger más luz siempre ayuda, pero el mayor salto de calidad ocurre al salir de la penumbra. Por eso la exposición correcta manda sobre cualquier ajuste posterior.</figcaption>
+  </figure>
+
+  <h3 id="el-error-de-subir-en-edicion">El malentendido que cuesta fotos</h3>
+
+  <p>Con esto ya puedes entender algo que confunde a mucha gente. ¿Qué queda mejor: una foto
+  <b>bien expuesta a ISO 3200</b>, o una foto <b>subexpuesta a ISO 160 y aclarada luego en
+  Lightroom</b>? Intuitivamente parece que ISO 160 «siempre es más limpio». Es al revés.</p>
+
+  <p>La clave es que el ruido de disparo lo fija <b>la luz que recogiste</b>, no el ISO. Si
+  subexpones, recoges poca luz: la señal en las sombras es débil y llena de ruido de disparo
+  y de lectura. Al aclararla en la edición, amplificas ese ruido junto con la imagen. En
+  cambio, cuando subes el ISO <b>en la cámara</b>, la amplificación es analógica y se aplica
+  <b>antes</b> del ruido de lectura, así que ese ruido de lectura pesa relativamente menos. El
+  resultado: <b>la luz manda</b>. Expón correctamente aunque tengas que subir el ISO; no
+  «protejas» un ISO bajo a base de subexponer, porque saldrá peor.</p>
+
+  <h3 id="iso-base-dual-gain">ISO base 160 y el segundo escalón de ganancia</h3>
+
+  <p>El <b>ISO base</b> de la X-S20 es <b>160</b>: es donde el sensor recoge la máxima luz sin
+  amplificar, con el mejor rango dinámico y el menor ruido. Siempre que la luz lo permita,
+  dispara ahí. El rango nativo llega a 12800 (ampliable a 51200, pero eso ya es un recurso de
+  emergencia).</p>
+
+  <p>Hay un matiz técnico muy útil de esta generación de sensor. El X-Trans CMOS 4 de 26 MP es
+  un sensor de <b>doble ganancia de conversión</b>: además del amplificador base, tiene un
+  <b>segundo escalón de ganancia que entra en torno a ISO 800</b>. En la práctica esto
+  significa que ISO 800 no es «peor» de lo que cabría esperar por ser cuatro veces la base;
+  a partir de ahí el ruido de lectura vuelve a bajar y el sensor se comporta de forma notablemente
+  limpia. No hace falta que hagas nada especial —la cámara conmuta sola—, pero te da confianza
+  para no tenerle miedo a la franja media-alta de ISO.</p>
+
+  <div class="callout tip" data-title="Hasta dónde subir el ISO sin miedo en la X-S20">
+    <p>Orientación realista para viaje, revelando en RAW: <b>hasta ISO 1600</b> es
+    prácticamente indistinguible de la base para uso normal. <b>ISO 3200–6400</b> es
+    perfectamente utilizable y lo usarás sin dudar en interiores y de noche; con un poco de
+    reducción de ruido en Lightroom queda estupendo. <b>ISO 12800</b> para cuando la
+    alternativa es no tener la foto —y una foto con algo de grano siempre gana a una foto
+    movida o inexistente—. El grano de Fuji, además, es fino y agradable, más «película» que
+    «digital sucio». No sacrifiques una velocidad segura por bajar el ISO.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="los-modos">P, A, S, M: quién decide qué</h2>
+
+  <p>Los modos de exposición no son «niveles de dificultad». Son un reparto de decisiones
+  entre tú y la cámara sobre tres parámetros: apertura, velocidad e ISO. En cada modo, tú
+  fijas algunos y la cámara calcula el resto para que la exposición cuadre según su medición.</p>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Modo</th><th>Tú decides</th><th>La cámara decide</th><th>Ideal para</th></tr></thead>
+    <tbody>
+      <tr><td><strong>P</strong> · Programa</td><td>Nada (puedes desplazar)</td><td>Apertura y velocidad</td><td>Instantáneas rápidas, callejeo sin pensar</td></tr>
+      <tr><td><strong>A</strong> · Prioridad a la apertura</td><td>Apertura</td><td>Velocidad</td><td>Retratos, paisaje: controlas la profundidad de campo</td></tr>
+      <tr><td><strong>S</strong> · Prioridad a la velocidad</td><td>Velocidad</td><td>Apertura</td><td>Acción, agua sedosa: controlas el movimiento</td></tr>
+      <tr><td><strong>M</strong> · Manual</td><td>Apertura y velocidad</td><td>Nada (o el ISO, si es Auto)</td><td>Luz constante o difícil, vídeo, control total</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>Fuji tiene una peculiaridad encantadora: en muchas de sus cámaras los parámetros viven en
+  <b>diales físicos dedicados</b>. La X-S20 es la excepción más «moderna» de la familia —usa un
+  dial de modos PASM clásico como el de arriba— pero mantiene el espíritu de repartir el
+  control entre los <a href="01-conociendo-la-xs20.html#los-dos-diales">dos diales de mando</a>:
+  uno gobierna la apertura y otro la velocidad, según el modo. Repasamos la disposición física
+  en <a href="01-conociendo-la-xs20.html#dial-de-modos">el capítulo de anatomía</a>.</p>
+
+  <h3 id="m-mas-auto-iso">El «cuarto modo»: M + Auto ISO</h3>
+
+  <p>Este es el ajuste que más cambia la vida a un viajero, y casi nadie lo cuenta. Ponte en
+  <b>M</b> (Manual) pero con el <b>ISO en Auto</b>. Entonces tú fijas las dos cosas que son
+  decisiones <b>creativas</b> —la apertura (tu profundidad de campo) y la velocidad (congelar o
+  no)— y dejas que la cámara resuelva la única que es puramente técnica: el brillo, subiendo o
+  bajando el ISO. Eliges la mirada y la congelación; la máquina se encarga de que salga bien
+  expuesta. Con un Auto ISO bien configurado (rango y velocidad mínima), es lo más parecido a
+  «tenerlo todo bajo control sin pelear con la luz cambiante» que existe. La configuración
+  concreta del Auto ISO —los tres bancos, la velocidad mínima— está en
+  <a href="03-configuracion-inicial.html#auto-iso">configuración inicial</a>.</p>
+
+  <div class="callout gear" data-title="En la X-S20: mi reparto para caminar por una ciudad">
+    <p>Modo <b>A</b> a f/5,6 con <b>Auto ISO 160–3200 y velocidad mínima 1/125</b>. Así la
+    profundidad de campo es generosa (entra la calle entera), nunca bajo de 1/125 (que congela
+    mi propio balanceo al andar y a la gente paseando), y el ISO sube solo cuando entro en una
+    zona de sombra. Cuando quiero un retrato, giro a f/2 sin tocar nada más. Es un «modo de
+    viaje» que resuelve el 80 % de las situaciones sin apartar el ojo del visor.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="compensacion-de-exposicion">Medición y compensación de exposición</h2>
+
+  <p>Para calcular la exposición «correcta» en P, A y S, la cámara <b>mide la luz que rebota
+  en la escena</b> (medición reflejada) y busca dejarla en un <b>gris medio</b>, el famoso
+  gris al 18 % de reflectancia. Es una suposición razonable: la mayoría de las escenas, si
+  promedias sus luces y sombras, tiran a un gris medio. Y funciona… hasta que la escena no es
+  «promedio». Ahí la cámara se equivoca de forma predecible, y saberlo te da un superpoder.</p>
+
+  <ul>
+    <li><b>Nieve / playa / pared blanca:</b> la escena es mucho más clara que un gris medio.
+    La cámara, empeñada en «grisearla», <b>subexpone</b> y la nieve sale gris sucia. Solución:
+    <b>+1 a +2 EV</b> de compensación para devolverle su blanco.</li>
+    <li><b>Escena muy oscura / traje negro / callejón nocturno:</b> al revés. La cámara la
+    aclara hacia el gris y el negro sale lechoso. Solución: <b>−1 a −2 EV</b>.</li>
+    <li><b>Contraluz:</b> un fondo brillantísimo (un cielo, una ventana) engaña al medidor a
+    subexponer el conjunto, y tu sujeto sale como una silueta negra. Si quieres verle la cara,
+    <b>+1 a +2 EV</b> (o mides sobre él).</li>
+  </ul>
+
+  <p>La <b>compensación de exposición</b> es tu forma de decirle a la cámara «te has
+  equivocado, muévelo tantos pasos». No cambia quién decide: en modo A ajusta la velocidad;
+  en S, la apertura; con Auto ISO, mueve el ISO. Es un empujón en pasos sobre el cálculo del
+  medidor, y el rango típico es de <b>±3 EV</b> (en tercios).</p>
+
+  <div class="callout gear" data-title="El dial de compensación en la X-S20">
+    <p>La X-S20 no lleva el dial de compensación grabado con números de otras Fuji: trae un
+    <b>dial de compensación sin marcar</b> junto al disparador. Gíralo y verás la escala
+    <span class="evf">−3 … 0 … +3</span> moverse en el visor y en pantalla, con la imagen
+    aclarándose u oscureciéndose en vivo (esto es clave: ves el resultado <b>antes</b> de
+    disparar). Acostúmbrate a mirar esa escala igual que miras el retrovisor: nieve → marca a
+    +1; contraluz → +1. En Manual sin Auto ISO el dial no compensa nada (tú ya lo controlas
+    todo); vuelve a tener sentido en cuanto el ISO pasa a Auto.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="el-histograma">El histograma: leer la luz de verdad</h2>
+
+  <p>La pantalla te miente. El brillo de la pantalla de la X-S20 cambia con el sol, con tus
+  gafas, con la cueva o el mediodía en que estés. Fiarte de «se ve bien en pantalla» es la
+  causa número uno de fotos mal expuestas. El <b>histograma</b>, en cambio, no miente: es la
+  medición objetiva de tu exposición, y aprender a leerlo es el paso que separa a quien
+  adivina de quien sabe.</p>
+
+  <p>Un histograma es un gráfico simple. El <b>eje horizontal</b> son los tonos, de negro
+  puro (izquierda) a blanco puro (derecha), pasando por los grises medios en el centro. El
+  <b>eje vertical</b> es <b>cuántos píxeles</b> de la foto tienen ese tono. Un pico a la
+  izquierda = mucha sombra; un pico a la derecha = mucha luz alta; una montaña centrada =
+  escena de tonos medios. No hay una forma «correcta»: la forma correcta es la que
+  corresponde a tu escena.</p>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Forma</th><th>Qué significa</th><th>Escena típica</th></tr></thead>
+    <tbody>
+      <tr><td>Masa pegada a la <b>derecha</b></td><td>Clave alta: predominan tonos claros</td><td>Nieve, niebla, pared encalada portuguesa al sol</td></tr>
+      <tr><td>Masa pegada a la <b>izquierda</b></td><td>Clave baja: predominan las sombras</td><td>Escena nocturna, concierto, interior en penumbra</td></tr>
+      <tr><td>Dos picos separados (<b>bimodal</b>)</td><td>Alto contraste: sombras y luces, poco medio</td><td>Contraluz, interior con ventana, callejón con cielo</td></tr>
+      <tr><td>Montaña <b>centrada</b></td><td>Tonos medios equilibrados</td><td>Retrato a la sombra, día nublado, bosque</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>Prueba a leer histogramas con el <a href="#x5-hist">lector interactivo</a> de más abajo:
+  eliges una escena y ves qué forma produce y por qué.</p>
+
+  <h3 id="clipping">Clipping: lo que se pierde y no vuelve</h3>
+
+  <p>Cuando la masa del histograma se sale por un borde y se «apila» contra la pared, hay
+  <b>clipping</b>: píxeles que han llegado al extremo y han perdido toda la información. Y
+  aquí la asimetría fundamental del sensor digital, que debes grabar a fuego:</p>
+
+  <ul>
+    <li><b>Clipping de altas luces (derecha): irrecuperable.</b> Recuerda el pozo de la
+    Figura 5.1. Cuando un fotosito se llena hasta el techo (satura), deja de contar: el número
+    se queda clavado en el máximo. Un cielo quemado a blanco puro no contiene <b>ningún</b>
+    dato de las nubes que había ahí. No hay nada que recuperar, ni en RAW ni con magia: la
+    información no se registró. Se acabó.</li>
+    <li><b>Clipping de sombras (izquierda): parcialmente recuperable.</b> En las sombras sí
+    hubo alguna señal, solo que enterrada bajo el ruido. Al aclararlas en la edición puedes
+    rescatar detalle… a costa de sacar también ese ruido. Se recupera algo, con peaje.</li>
+  </ul>
+
+  <p>La consecuencia es una regla de oro: <b>expón para las altas luces</b>. Ante una escena
+  contrastada, protege primero lo claro (que no se queme) y, si hace falta, recupera las
+  sombras luego. Es mucho más fácil aclarar una sombra que resucitar un blanco muerto.</p>
+
+  <div class="callout tip" data-title="Blinkies: el aviso de quemado">
+    <p>Activa el aviso de altas luces («blinkies»): las zonas quemadas <b>parpadean</b> en la
+    revisión o en vivo. Es un radar instantáneo: si el cielo parpadea y te importan las nubes,
+    baja un pelín la exposición (−⅓ o −⅔ EV) hasta que deje de hacerlo. Combinado con el
+    histograma, es todo lo que necesitas para no volver a casa con cielos blancos.</p>
+  </div>
+
+  <h3 id="histograma-del-jpeg">El histograma es del JPEG, no del RAW</h3>
+
+  <p>Un matiz crucial y poco conocido. El histograma y los blinkies del <i>live view</i> se
+  calculan sobre el <b>JPEG de previsualización</b> que genera la cámara, <b>con la simulación
+  de película aplicada</b>. Si llevas puesta una simulación contrastada como
+  <a href="03-configuracion-inicial.html#simulaciones-de-pelicula">Velvia</a>, el histograma
+  mostrará sombras y luces más extremas de las que hay realmente en el RAW. Dicho de otro
+  modo: <b>tu archivo RAW tiene más margen del que el histograma sugiere</b>, tanto en luces
+  como en sombras.</p>
+
+  <p>Implicación práctica si disparas en RAW: cuando los blinkies empiecen a parpadear
+  suavemente, aún te queda algo de recorrido real en el archivo antes del clipping verdadero.
+  Un truco de muchos fujistas es poner una simulación plana y de bajo contraste (por ejemplo
+  <b>Eterna</b>) como perfil de visualización precisamente para que el histograma se parezca
+  más al RAW. Si disparas JPEG, en cambio, lo que ves es exactamente lo que te llevas, así que
+  ese histograma es la verdad literal. La decisión RAW/JPEG y sus consecuencias están en
+  <a href="03-configuracion-inicial.html#raw-o-jpeg">RAW o JPEG</a>.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="ettr">ETTR: exponer a la derecha</h2>
+
+  <p><span class="term" title="ETTR (Expose To The Right): exponer lo más a la derecha posible del histograma sin quemar, para recoger la máxima luz y minimizar el ruido.">ETTR</span>
+  (del inglés <i>Expose To The Right</i>) es una técnica que ahora entenderás sin esfuerzo,
+  porque ya tienes las dos piezas: <b>más luz = menos ruido</b> (el ruido de disparo) y <b>las
+  altas luces se queman sin retorno</b> (el clipping). ETTR consiste en <b>exponer lo más a la
+  derecha posible del histograma sin llegar a quemar</b> las luces que te importan.</p>
+
+  <p>La lógica es pura física. Al empujar la exposición hacia la derecha recoges más fotones,
+  así que la relación señal/ruido sube, sobre todo en las sombras. Luego, en la edición, bajas
+  el brillo global hasta donde quieras: has «bajado» una imagen limpia en lugar de «subir» una
+  ruidosa. El resultado es un archivo con sombras más limpias y más margen de maniobra. Es
+  especialmente valioso en escenas de poca luz y con las sombras importantes.</p>
+
+  <p><b>Cómo practicarlo:</b> con <b>histograma + blinkies</b>. Sube la exposición
+  (compensación positiva, o velocidad más lenta / apertura más abierta / ISO base) hasta que
+  la masa del histograma se acerque al borde derecho y los blinkies estén a punto de aparecer;
+  ahí, retrocede lo justo para que <b>no</b> parpadeen las zonas con detalle que quieres
+  conservar. Esa es tu exposición ETTR.</p>
+
+  <div class="callout error" data-title="Error común: hacer ETTR a ciegas y quemar el cielo">
+    <p>ETTR mal entendido es «sobreexpón siempre». No. Es «acércate al borde <b>sin</b>
+    pasarte». Si quemas las altas luces con detalle (las nubes, un vestido blanco), has
+    destruido información irrecuperable a cambio de un poco menos de ruido en las sombras: un
+    pésimo negocio. ETTR pide vigilar el borde derecho, no ignorarlo.</p>
+  </div>
+
+  <div class="callout tip" data-title="Cuándo NO complicarte con ETTR">
+    <p>ETTR brilla con trípode, escena estática y luz controlada, donde exprimes cada gota de
+    calidad. En pleno viaje, cazando una escena que dura tres segundos, <b>olvídalo</b>: una
+    exposición correcta y una velocidad segura valen mil veces más que un ETTR perfecto que te
+    hizo perder el momento. Y a ISO base con luz de sobra, el beneficio es tan pequeño que no
+    compensa el esfuerzo mental. Ten ETTR en el bolsillo para cuando la luz sea escasa y
+    tengas tiempo; el resto del tiempo, expón bien y a seguir andando.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="rango-dinamico">El rango dinámico</h2>
+
+  <p>El <b>rango dinámico</b> es la distancia, medida en pasos, entre la sombra más oscura y
+  la luz más clara que el sensor puede registrar <b>en una misma toma</b> con detalle. Por
+  arriba lo limita la capacidad del pozo (cuándo satura); por abajo, el ruido (cuándo la señal
+  se pierde en él). Los sensores modernos como el de la X-S20 rondan los <b>13–14 pasos</b> a
+  ISO base, lo cual es muchísimo. Pero el mundo real a veces da más: un interior en penumbra
+  con una ventana a mediodía puede abarcar 18 o 20 pasos. Cuando la escena excede el rango del
+  sensor, algo se te va a ir: o quemas la ventana o entierras el interior en negro. No hay
+  ajuste que meta 20 pasos en 14.</p>
+
+  <p>Las señales de que una escena excede el rango dinámico son las que ya sabes leer: un
+  histograma <b>bimodal</b> pegado a los dos bordes a la vez, y blinkies en las luces mientras
+  las sombras aparecen empastadas. Ahí toca decidir por qué extremo sacrificas —y casi siempre
+  la respuesta es proteger las luces— o recurrir a técnicas de varias tomas (horquillado / HDR)
+  que verás si te interesa el paisaje extremo.</p>
+
+  <h3 id="dr-fuji">Las herramientas DR200 y DR400 de Fuji</h3>
+
+  <p>Fuji ofrece un truco específico para escenas contrastadas: los modos <b>DR200</b> y
+  <b>DR400</b> (frente al normal <b>DR100</b>). Suenan a magia —«el doble o el cuádruple de
+  rango dinámico»— pero el mecanismo es sencillo y honesto de entender, y conviene que sepas
+  qué hacen de verdad:</p>
+
+  <ul>
+    <li>La cámara <b>expone la escena para proteger las altas luces</b>, es decir,
+    subexpone deliberadamente el sensor <b>1 paso</b> (DR200) o <b>2 pasos</b> (DR400). Así el
+    cielo o la ventana no se queman: caben dentro del pozo.</li>
+    <li>Después, al generar el <b>JPEG</b>, <b>levanta las sombras y los medios</b> con la
+    curva de tono para que la imagen no se vea oscura. El resultado es un JPEG con las luces
+    salvadas y las sombras recuperadas.</li>
+    <li>Por eso exigen un <b>ISO mínimo</b>: para subexponer necesitan «espacio» por debajo de
+    la base. DR200 pide ISO ≥ 320 y DR400 pide ISO ≥ 640, aproximadamente un paso más de ISO
+    por cada paso de protección.</li>
+  </ul>
+
+  <p>La consecuencia importante para ti: <b>en el archivo RAW, DR200/DR400 equivalen
+  simplemente a subexponer</b> ese uno o dos pasos. El «levantar sombras» solo ocurre en el
+  JPEG. Así que si revelas en RAW, puedes obtener exactamente el mismo efecto exponiendo para
+  las luces y subiendo las sombras tú mismo en Lightroom, con más control. DR es, sobre todo,
+  una herramienta para quien quiere JPEGs contrastados listos para usar. El ajuste y cuándo
+  activarlo (incluido el modo DR-Auto) están en
+  <a href="03-configuracion-inicial.html#rango-dinamico-dr">rango dinámico</a>.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="practica">A practicar</h2>
+
+  <div class="callout exercise" data-title="Ejercicio 5.1 — Un paseo a ISO fijo">
+    <p>Sal a caminar una hora con el <b>ISO fijo en 160</b> (nada de Auto) y la cámara en modo
+    <b>A</b>. Tu única misión: mantener una velocidad segura mirando la que calcula la cámara
+    en el visor. Cuando entres en una zona de sombra verás cómo la velocidad cae por debajo de
+    1/60, 1/30… Fíjate en el momento exacto en que empieza a ser peligrosa para disparar a
+    pulso. <b>Criterio de éxito:</b> volver sabiendo, sin mirar los números, en qué tipo de luz
+    el ISO 160 «se queda corto». Ese instinto es media exposición.</p>
+  </div>
+
+  <div class="callout exercise" data-title="Ejercicio 5.2 — Las tres monedas del brillo">
+    <p>Sobre un trípode o apoyo firme, encuadra una escena con algo cercano y algo lejano, y
+    con algo en movimiento (una calle, una fuente). Haz una foto que consideres bien expuesta.
+    Ahora <b>repite esa misma exposición de tres maneras</b>: (1) apertura muy abierta, (2)
+    velocidad muy lenta, (3) ISO alto —compensando cada vez con los otros dos para mantener el
+    brillo—. Compara las tres en casa. Son igual de brillantes y radicalmente distintas:
+    profundidad, trazo de movimiento y ruido. <b>Criterio de éxito:</b> ver con tus ojos que un
+    paso no es solo brillo, es una decisión.</p>
+  </div>
+
+  <div class="callout exercise" data-title="Ejercicio 5.3 — Cazar los blinkies">
+    <p>Activa el histograma y los blinkies. Busca una escena de alto contraste (una calle en
+    sombra con el cielo brillante, o un contraluz). Dispara una vez «a lo que salga» y observa
+    el histograma bimodal y el cielo parpadeando. Luego baja la exposición con el dial de
+    compensación hasta que <b>dejen de parpadear</b> las nubes. Comprueba cómo se han oscurecido
+    las sombras a cambio. <b>Criterio de éxito:</b> entender en la práctica el sacrificio de
+    «exponer para las luces» y saber cuánta compensación te pidió esa escena.</p>
+  </div>
+
+  <div class="callout challenge" data-title="Reto del capítulo — Un día entero en Manual">
+    <p>Pasa <b>un día completo de viaje en modo M con Auto ISO</b>. Fija tú la apertura (según
+    la profundidad que quieras) y la velocidad (según lo que se mueva), y deja que la cámara
+    resuelva el brillo con el ISO. Usa el <b>dial de compensación</b> cuando la escena engañe
+    al medidor (nieve, contraluz), y vigila el <b>histograma</b> en las escenas difíciles.
+    Anota mentalmente las tres o cuatro veces en que tuviste que pensar de verdad. Al final del
+    día habrás interiorizado el reparto de decisiones mejor que con diez capítulos leídos: es la
+    forma más rápida de que la exposición pase de teoría a instinto. Un aviso honesto: los
+    primeros disparos serán torpes; para media tarde ya no mirarás los números, solo la luz.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="cierre">Errores, dudas y lo esencial</h2>
+
+  <div class="callout error" data-title="Error común: fiarte del brillo de la pantalla">
+    <p>«Se veía bien en la cámara» es la frase que precede a mil fotos subexpuestas o quemadas.
+    La pantalla se ve distinta bajo el sol, en la sombra o de noche, y su brillo automático te
+    engaña. Decide la exposición por el <b>histograma y los blinkies</b>, no por cómo se ve la
+    imagen. La pantalla es para la composición; el histograma, para la luz.</p>
+  </div>
+
+  <div class="callout error" data-title="Error común: tenerle miedo al ISO">
+    <p>Bajar el ISO a toda costa —aunque implique una velocidad demasiado lenta— produce más
+    fotos arruinadas que cualquier ruido. Una foto movida no se arregla; un poco de grano de
+    ISO 3200, sí (y encima el de la X-S20 es bonito). Recuerda la jerarquía: primero una
+    velocidad segura, luego la apertura que quieres, y el ISO que haga falta para exponer bien.
+    El ISO es el criado, no el jefe.</p>
+  </div>
+
+  <details class="callout faq">
+    <summary>¿En qué modo debería dejar la cámara para un viaje?</summary>
+    <div class="co-body">
+      <p>Para el 80 % del día: modo <b>A</b> con <b>Auto ISO</b> configurado (rango y velocidad
+      mínima) es imbatible por comodidad; controlas la profundidad de campo y no te preocupas de
+      nada más. Cuando la acción manda (niños corriendo, deporte, agua), salta a <b>S</b> o a
+      <b>M + Auto ISO</b> para fijar la velocidad. Reserva el <b>M puro</b> (ISO fijo) para luz
+      constante y para vídeo. No hay un modo «de profesionales»: hay el modo que te deja pensar
+      en la foto y no en la cámara.</p>
+    </div>
+  </details>
+
+  <details class="callout faq">
+    <summary>Si disparo en RAW, ¿da igual cómo exponga porque lo arreglo luego?</summary>
+    <div class="co-body">
+      <p>No, y ahora sabes por qué. El RAW da margen para <b>ajustar</b>, no para <b>inventar</b>.
+      Las altas luces quemadas no vuelven porque el sensor no registró nada (el pozo se
+      desbordó), y subir sombras muy subexpuestas saca ruido porque recogiste poca luz. El RAW
+      perdona errores pequeños con elegancia, pero la exposición en el momento sigue mandando:
+      expón para las luces y recoge toda la luz que puedas. «Ya lo arreglo en Lightroom» tiene
+      límites físicos, no de software.</p>
+    </div>
+  </details>
+
+  <div class="callout summary" data-title="Lo esencial del capítulo">
+    <ul>
+      <li>El sensor <b>cuenta fotones</b> y los convierte en números. La <b>exposición</b> real
+      es solo luz × tiempo: apertura y velocidad. El ISO no es exposición.</li>
+      <li>Un <b>paso</b> es duplicar o partir la luz por la mitad. Es la unidad que une los tres
+      controles: un paso de cualquiera cambia el brillo lo mismo.</li>
+      <li>El <b>triángulo</b> no es equilibrio: cada control cobra un precio distinto —velocidad
+      → movimiento, apertura → profundidad de campo, ISO → ruido—.</li>
+      <li>El <b>IBIS</b> (hasta 7 pasos) mata tu temblor, <b>nunca</b> el movimiento del sujeto.
+      El obturador electrónico da 1/32000 y silencio, pero trae rolling shutter y banding LED.</li>
+      <li>La <b>luz manda</b>: bien expuesto a ISO alto gana a subexpuesto y aclarado. No temas
+      el ISO en la X-S20; ISO base 160 y un segundo escalón de ganancia hacia ISO 800.</li>
+      <li>Lee el <b>histograma</b>, no la pantalla. Las <b>altas luces quemadas son
+      irrecuperables</b>: expón para las luces. <b>ETTR</b> cuando haya tiempo y poca luz.</li>
+      <li>El <b>rango dinámico</b> ronda 13–14 pasos; DR200/DR400 protegen luces subexponiendo
+      y levantando sombras en el JPEG (en RAW, equivale a subexponer).</li>
+    </ul>
+  </div>
+
+  <p>Con esto tienes la base física de toda la fotografía. El siguiente paso natural es cómo la
+  luz que entra se convierte en <b>una mirada</b>: qué objetivo, qué profundidad, qué
+  perspectiva. Seguimos en <a href="06-objetivos.html">23mm y 35mm</a>. Y si vas a grabar,
+  la velocidad de obturación tiene una regla propia e innegociable en vídeo: la
+  <a href="09-video.html#la-regla-de-los-180-grados">regla de los 180 grados</a>.</p>
+
+  <!-- ============================================================ -->
+  <!-- INTERACTIVO 1: SIMULADOR DEL TRIÁNGULO -->
+  <!-- ============================================================ -->
+  <h2 id="interactivos">Dos interactivos para fijar la idea</h2>
+
+  <p>Toca los controles: no hay forma más rápida de que el triángulo y el histograma dejen de
+  ser abstractos.</p>
+
+  <div id="x5-tri" class="x5-widget">
+    <style>
+      .x5-widget { background: var(--bg-raised); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.3rem 1.4rem 1.5rem; margin: 1.7rem 0; }
+      .x5-widget h4 { margin: 0 0 .3rem; font-size: var(--fs-3); font-weight: 650; }
+      .x5-widget .x5-sub { color: var(--text-3); font-size: var(--fs-1); margin: 0 0 1.1rem; }
+      .x5-stage { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: #0a0c0f; }
+      .x5-stage svg { display: block; width: 100%; }
+      .x5-controls { display: grid; gap: .9rem; margin-top: 1.1rem; }
+      .x5-ctl { display: grid; grid-template-columns: 5.5rem 1fr auto; gap: .7rem; align-items: center; }
+      .x5-ctl > label { font-size: var(--fs-1); color: var(--text-2); font-weight: 600; }
+      .x5-ctl input[type=range] { width: 100%; accent-color: var(--part); }
+      .x5-ctl .x5-val { font-family: var(--font-mono); font-size: var(--fs-1); color: var(--accent); min-width: 4.2rem; text-align: right; }
+      .x5-readout { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
+      .x5-chip { font-family: var(--font-mono); font-size: var(--fs-0); padding: .3rem .7rem; border-radius: 999px; border: 1px solid var(--border); color: var(--text-2); background: var(--bg); }
+      .x5-chip b { color: var(--text); }
+      .x5-chip.warn { border-color: color-mix(in srgb, var(--rec) 45%, transparent); color: #f8a0a0; }
+      .x5-chip.ok { border-color: color-mix(in srgb, var(--accent) 45%, transparent); color: var(--accent); }
+      .x5-ev { font-family: var(--font-mono); font-size: var(--fs-2); margin-top: 1rem; padding: .6rem .9rem; border-radius: var(--radius); background: var(--bg); border: 1px solid var(--border); color: var(--text-2); }
+      .x5-ev b { color: var(--text); }
+      .x5-scene-btns { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 0; }
+      .x5-scene-btns button { font-size: var(--fs-1); padding: .35rem .8rem; border: 1px solid var(--border); border-radius: 999px; color: var(--text-2); transition: all var(--t-fast) var(--ease); }
+      .x5-scene-btns button:hover { border-color: var(--border-strong); color: var(--text); }
+      .x5-scene-btns button.sel { border-color: var(--part); color: var(--part); background: var(--part-dim); }
+      .x5-hist-explain { margin-top: 1rem; font-size: var(--fs-2); color: var(--text-2); line-height: 1.6; }
+      .x5-hist-explain b { color: var(--text); }
+    </style>
+    <h4>1 · Simulador del triángulo de exposición</h4>
+    <p class="x5-sub">Mueve los tres controles. La escena se aclara u oscurece según la luz
+    total, y los avisos muestran el precio de cada elección.</p>
+
+    <div class="x5-stage">
+      <svg viewBox="0 0 480 240" role="img" aria-label="Escena de ejemplo que cambia de brillo según la exposición" font-family="ui-monospace, Menlo, monospace">
+        <!-- cielo -->
+        <rect x="0" y="0" width="480" height="150" fill="#3a4a63"/>
+        <!-- sol -->
+        <circle cx="380" cy="45" r="22" fill="#f5c96b"/>
+        <!-- montañas de fondo (más desenfocadas segun DOF) -->
+        <g id="x5-bg">
+          <polygon points="0,150 120,80 240,150" fill="#26303f"/>
+          <polygon points="180,150 320,70 460,150" fill="#2c3748"/>
+        </g>
+        <!-- suelo -->
+        <rect x="0" y="150" width="480" height="90" fill="#233021"/>
+        <!-- sujeto en primer plano (referencia de nitidez/movimiento) -->
+        <g id="x5-subject">
+          <ellipse cx="150" cy="205" rx="30" ry="8" fill="#0a0c0f" opacity="0.5"/>
+          <circle cx="150" cy="165" r="14" fill="#c98b5b"/>
+          <rect x="138" y="178" width="24" height="42" rx="8" fill="#7a8a5a"/>
+        </g>
+        <!-- capa de exposición: se oscurece o aclara -->
+        <rect id="x5-expo" x="0" y="0" width="480" height="240" fill="#000" opacity="0"/>
+      </svg>
+    </div>
+
+    <div class="x5-controls">
+      <div class="x5-ctl">
+        <label for="x5-ap">Apertura</label>
+        <input type="range" id="x5-ap" min="0" max="7" step="1" value="2">
+        <span class="x5-val" id="x5-ap-v">f/8</span>
+      </div>
+      <div class="x5-ctl">
+        <label for="x5-sh">Velocidad</label>
+        <input type="range" id="x5-sh" min="0" max="10" step="1" value="5">
+        <span class="x5-val" id="x5-sh-v">1/125</span>
+      </div>
+      <div class="x5-ctl">
+        <label for="x5-iso">ISO</label>
+        <input type="range" id="x5-iso" min="0" max="6" step="1" value="0">
+        <span class="x5-val" id="x5-iso-v">160</span>
+      </div>
+    </div>
+
+    <div class="x5-ev" id="x5-ev">Exposición: <b>correcta</b>.</div>
+
+    <div class="x5-readout" id="x5-readout"><!-- chips de aviso --></div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- INTERACTIVO 2: LEE EL HISTOGRAMA -->
+  <!-- ============================================================ -->
+  <div id="x5-hist" class="x5-widget">
+    <h4>2 · Lee el histograma</h4>
+    <p class="x5-sub">Elige una escena. Verás su histograma aproximado y qué te está contando
+    la forma.</p>
+
+    <div class="x5-stage">
+      <svg viewBox="0 0 480 200" role="img" aria-label="Escena seleccionada" font-family="ui-monospace, Menlo, monospace">
+        <g id="x5-scene"><!-- escena inyectada --></g>
+      </svg>
+    </div>
+
+    <div class="x5-scene-btns" id="x5-scene-btns"><!-- botones --></div>
+
+    <div class="x5-stage" style="margin-top:1rem;background:var(--bg);">
+      <svg viewBox="0 0 480 160" role="img" aria-label="Histograma de la escena" font-family="ui-monospace, Menlo, monospace">
+        <!-- rejilla de zonas -->
+        <rect x="20" y="20" width="440" height="110" fill="none" stroke="var(--border)" stroke-width="1"/>
+        <line x1="166" y1="20" x2="166" y2="130" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="313" y1="20" x2="313" y2="130" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 4"/>
+        <g id="x5-hist-bars"></g>
+        <text x="24" y="148" fill="#737c88" font-size="11">sombras</text>
+        <text x="240" y="148" fill="#737c88" font-size="11" text-anchor="middle">medios</text>
+        <text x="456" y="148" fill="#737c88" font-size="11" text-anchor="end">luces</text>
+      </svg>
+    </div>
+
+    <p class="x5-hist-explain" id="x5-hist-explain"></p>
+  </div>
+
+  <script>
+  /* ===== Interactivo 1 · Simulador del triángulo ===== */
+  (function () {
+    var root = document.getElementById('x5-tri');
+    if (!root) return;
+
+    var AP  = [
+      {f:'f/16', light:0, dof:'grande'}, {f:'f/11', light:1, dof:'grande'},
+      {f:'f/8',  light:2, dof:'amplia'}, {f:'f/5.6',light:3, dof:'amplia'},
+      {f:'f/4',  light:4, dof:'media'},  {f:'f/2.8',light:5, dof:'corta'},
+      {f:'f/2',  light:6, dof:'muy corta'}, {f:'f/1.4',light:7, dof:'mínima'}
+    ];
+    var SH = [
+      {t:'1/4000', light:0, s:4000}, {t:'1/2000', light:1, s:2000},
+      {t:'1/1000', light:2, s:1000}, {t:'1/500',  light:3, s:500},
+      {t:'1/250',  light:4, s:250},  {t:'1/125',  light:5, s:125},
+      {t:'1/60',   light:6, s:60},   {t:'1/30',   light:7, s:30},
+      {t:'1/15',   light:8, s:15},   {t:'1/8',    light:9, s:8},
+      {t:'1/4',    light:10, s:4}
+    ];
+    var ISO = [
+      {v:'160', light:0}, {v:'320', light:1}, {v:'640', light:2},
+      {v:'1250', light:3}, {v:'2500', light:4}, {v:'5000', light:5}, {v:'12800', light:6}
+    ];
+
+    var L0 = AP[2].light + SH[5].light + ISO[0].light; /* f/8, 1/125, 160 = exposición de referencia */
+
+    var apEl  = root.querySelector('#x5-ap');
+    var shEl   = root.querySelector('#x5-sh');
+    var isoEl  = root.querySelector('#x5-iso');
+    var apV    = root.querySelector('#x5-ap-v');
+    var shV    = root.querySelector('#x5-sh-v');
+    var isoV   = root.querySelector('#x5-iso-v');
+    var expo   = root.querySelector('#x5-expo');
+    var subject= root.querySelector('#x5-subject');
+    var bg     = root.querySelector('#x5-bg');
+    var evEl   = root.querySelector('#x5-ev');
+    var readout= root.querySelector('#x5-readout');
+
+    function chip(text, cls) {
+      return '<span class="x5-chip' + (cls ? ' ' + cls : '') + '">' + text + '</span>';
+    }
+
+    function render() {
+      var ap = AP[+apEl.value], sh = SH[+shEl.value], iso = ISO[+isoEl.value];
+      apV.textContent = ap.f;
+      shV.textContent = sh.t;
+      isoV.textContent = iso.v;
+
+      var dev = (ap.light + sh.light + iso.light) - L0; /* pasos por encima (+) o debajo (-) de la referencia */
+
+      /* Brillo de la escena */
+      if (dev < 0) { expo.setAttribute('fill', '#000'); expo.setAttribute('opacity', Math.min(0.85, -dev * 0.14).toFixed(3)); }
+      else if (dev > 0) { expo.setAttribute('fill', '#fff'); expo.setAttribute('opacity', Math.min(0.9, dev * 0.14).toFixed(3)); }
+      else { expo.setAttribute('opacity', 0); }
+
+      /* Lectura EV */
+      var word, sign = dev > 0 ? '+' : '';
+      if (dev === 0) word = 'Exposición: <b>correcta</b> (0 EV respecto a la referencia).';
+      else if (dev >= 3) word = 'Exposición: <b>' + sign + dev + ' EV · muy sobreexpuesta</b>, luces quemadas.';
+      else if (dev > 0) word = 'Exposición: <b>' + sign + dev + ' EV · sobreexpuesta</b>.';
+      else if (dev <= -3) word = 'Exposición: <b>' + dev + ' EV · muy subexpuesta</b>, sombras vacías.';
+      else word = 'Exposición: <b>' + dev + ' EV · subexpuesta</b>.';
+      evEl.innerHTML = word;
+
+      /* Efectos visuales del precio */
+      /* Profundidad de campo: desenfoca el fondo cuanto más abierta la apertura */
+      var blur = Math.max(0, (ap.light - 2)) * 0.9;
+      bg.style.filter = blur > 0 ? 'blur(' + blur.toFixed(1) + 'px)' : 'none';
+      /* Movimiento: el sujeto se "desdibuja" a velocidades lentas */
+      var motion = sh.s <= 60 ? Math.min(3, (60 / sh.s)) : 0;
+      subject.style.filter = motion > 0 ? 'blur(' + motion.toFixed(1) + 'px)' : 'none';
+
+      /* Avisos */
+      var out = [];
+      /* Movimiento del sujeto / trepidación */
+      if (sh.s <= 15) out.push(chip('Trepidación probable incluso con IBIS', 'warn'));
+      else if (sh.s <= 60) out.push(chip('Sujeto en movimiento puede salir movido', 'warn'));
+      else out.push(chip('Velocidad segura a pulso', 'ok'));
+      /* Profundidad de campo */
+      if (ap.light >= 5) out.push(chip('Profundidad de campo ' + ap.dof + ' · fondo desenfocado'));
+      else if (ap.light >= 4) out.push(chip('Profundidad de campo media'));
+      else if (ap.light <= 1) out.push(chip('Todo nítido, pero cuidado con la difracción (>f/11)', 'warn'));
+      else out.push(chip('Profundidad de campo ' + ap.dof));
+      /* Ruido */
+      if (iso.light >= 5) out.push(chip('Ruido visible en las sombras', 'warn'));
+      else if (iso.light >= 3) out.push(chip('Algo de grano, muy usable'));
+      else out.push(chip('Imagen limpia', 'ok'));
+
+      readout.innerHTML = out.join('');
+    }
+
+    apEl.addEventListener('input', render);
+    shEl.addEventListener('input', render);
+    isoEl.addEventListener('input', render);
+    render();
+  })();
+
+  /* ===== Interactivo 2 · Lee el histograma ===== */
+  (function () {
+    var root = document.getElementById('x5-hist');
+    if (!root) return;
+
+    /* Escenas: cada una con su SVG estilizado, su histograma (32 bins, 0..1) y su explicación */
+    function bell(bins, center, width, height) {
+      var a = [];
+      for (var i = 0; i < bins; i++) {
+        var x = (i - center) / width;
+        a.push(height * Math.exp(-x * x));
+      }
+      return a;
+    }
+    function add(a, b) { return a.map(function (v, i) { return Math.min(1, v + b[i]); }); }
+
+    var BINS = 32;
+
+    var SCENES = [
+      {
+        name: 'Nieve',
+        svg: '<rect x="0" y="0" width="480" height="200" fill="#e9eef4"/>' +
+             '<polygon points="0,200 150,120 300,200" fill="#d3dae2"/>' +
+             '<polygon points="220,200 360,110 480,200" fill="#c7cfd8"/>' +
+             '<circle cx="400" cy="45" r="20" fill="#fbf4de"/>' +
+             '<rect x="120" y="150" width="10" height="40" fill="#5b6470"/>',
+        hist: bell(BINS, 25, 4, 1).map(function (v) { return v; }),
+        explain: '<b>Clave alta.</b> Casi todos los píxeles son claros, así que la masa se agolpa a la <b>derecha</b>. Aquí el medidor tiende a subexponer para "grisear" la nieve: aplica <b>+1 a +2 EV</b> para devolverle el blanco, vigilando que no se queme del todo con los blinkies.'
+      },
+      {
+        name: 'Noche',
+        svg: '<rect x="0" y="0" width="480" height="200" fill="#0e1420"/>' +
+             '<rect x="0" y="140" width="480" height="60" fill="#0a0e16"/>' +
+             '<rect x="60" y="90" width="30" height="60" fill="#1a2230"/>' +
+             '<rect x="70" y="100" width="8" height="8" fill="#f5c96b"/>' +
+             '<rect x="200" y="70" width="26" height="80" fill="#1a2230"/>' +
+             '<rect x="207" y="82" width="7" height="7" fill="#f5c96b"/>' +
+             '<circle cx="360" cy="40" r="14" fill="#f0ead4"/>',
+        hist: add(bell(BINS, 5, 4, 1), bell(BINS, 28, 1.2, 0.18)),
+        explain: '<b>Clave baja.</b> Predomina la sombra: gran masa a la <b>izquierda</b>, con unos pocos picos aislados a la derecha (las farolas, la luna). Es correcto que esté así; forzarla al centro solo mete ruido. Cuida que las luces puntuales no arrastren al medidor a oscurecer todo de más.'
+      },
+      {
+        name: 'Contraluz',
+        svg: '<rect x="0" y="0" width="480" height="200" fill="#cdd6df"/>' +
+             '<circle cx="240" cy="70" r="34" fill="#fdf6e0"/>' +
+             '<rect x="0" y="150" width="480" height="50" fill="#20262e"/>' +
+             '<ellipse cx="240" cy="150" rx="34" ry="10" fill="#12161c"/>' +
+             '<rect x="228" y="95" width="24" height="58" rx="8" fill="#12161c"/>' +
+             '<circle cx="240" cy="88" r="12" fill="#12161c"/>',
+        hist: add(bell(BINS, 4, 3, 0.85), bell(BINS, 28, 3, 0.95)),
+        explain: '<b>Bimodal (alto contraste).</b> Dos montañas: una a la izquierda (el sujeto en sombra) y otra a la derecha (el cielo brillante), con un valle en los medios. La escena excede el rango dinámico. Decide qué salvas: para verle la cara al sujeto, <b>+1 a +2 EV</b> y asume que el cielo se quema; para conservar el cielo, expón para él y recupera sombras luego.'
+      },
+      {
+        name: 'Día nublado',
+        svg: '<rect x="0" y="0" width="480" height="200" fill="#aab4bf"/>' +
+             '<polygon points="0,200 160,110 320,200" fill="#5f7050"/>' +
+             '<polygon points="200,200 360,100 480,200" fill="#556848"/>' +
+             '<rect x="0" y="170" width="480" height="30" fill="#4a5a3e"/>',
+        hist: bell(BINS, 16, 6, 1),
+        explain: '<b>Tonos medios centrados.</b> La montaña vive en el centro, sin tocar los bordes: la escena cabe holgadamente en el rango dinámico del sensor y el medidor acierta casi siempre. Es la situación más fácil de exponer; poca o ninguna compensación necesaria.'
+      },
+      {
+        name: 'Retrato a la sombra',
+        svg: '<rect x="0" y="0" width="480" height="200" fill="#7a8a6e"/>' +
+             '<rect x="0" y="0" width="480" height="200" fill="#3a4636" opacity="0.35"/>' +
+             '<circle cx="240" cy="90" r="42" fill="#c98b5b"/>' +
+             '<rect x="196" y="128" width="88" height="72" rx="16" fill="#8a5a3a"/>',
+        hist: add(bell(BINS, 13, 5, 0.9), bell(BINS, 20, 3, 0.5)),
+        explain: '<b>Medios con ligero sesgo.</b> El grueso está en los tonos medios (piel, fondo en sombra), sin luces quemadas ni sombras vacías. Ideal para retrato: hay margen a ambos lados. Si la piel es clara, puedes empujar un poco a la derecha (ETTR suave) para sombras más limpias.'
+      }
+    ];
+
+    var sceneG = root.querySelector('#x5-scene');
+    var barsG  = root.querySelector('#x5-hist-bars');
+    var explain= root.querySelector('#x5-hist-explain');
+    var btnWrap= root.querySelector('#x5-scene-btns');
+
+    function drawHist(hist) {
+      var x0 = 20, w = 440, y0 = 20, h = 110;
+      var bw = w / hist.length;
+      var s = '';
+      for (var i = 0; i < hist.length; i++) {
+        var bh = Math.max(1, hist[i] * h);
+        var x = x0 + i * bw;
+        var y = y0 + (h - bh);
+        /* color por zona: sombras azuladas, medios neutros, luces cálidas */
+        var col = i < hist.length / 3 ? 'var(--dg-blue)' : (i > hist.length * 2 / 3 ? 'var(--dg-amber)' : 'var(--dg-text)');
+        s += '<rect x="' + (x + 0.6).toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + (bw - 1.2).toFixed(1) + '" height="' + bh.toFixed(1) + '" fill="' + col + '" opacity="0.8"/>';
+      }
+      barsG.innerHTML = s;
+    }
+
+    function select(idx) {
+      var sc = SCENES[idx];
+      sceneG.innerHTML = sc.svg;
+      drawHist(sc.hist);
+      explain.innerHTML = sc.explain;
+      Array.prototype.forEach.call(btnWrap.children, function (b, i) {
+        b.classList.toggle('sel', i === idx);
+      });
+    }
+
+    SCENES.forEach(function (sc, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = sc.name;
+      b.addEventListener('click', function () { select(i); });
+      btnWrap.appendChild(b);
+    });
+
+    select(0);
+  })();
+  </script>
+
+</div>
+
+<script src="../assets/js/manifest.js"></script>
+<script src="../assets/js/search-index.js" defer></script>
+<script src="../assets/js/app.js" defer></script>
+</body>
+</html>

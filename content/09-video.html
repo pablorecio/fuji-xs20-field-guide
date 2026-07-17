@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="es" data-root="../">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Vídeo desde cero con la X-S20: qué es un frame, FPS, la regla de los 180 grados, rolling shutter, bitrate, códecs, submuestreo de color, 10 bits, F-Log2 y LUTs.">
+<title>Vídeo desde cero — Fuji X-S20 Field Guide</title>
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='8' y='8' width='84' height='84' rx='14' fill='%230c0e11'/><path d='M24 24h16M24 24v16M76 24H60M76 24v16M24 76h16M24 76V60M76 76H60M76 76V60' stroke='%234ade80' stroke-width='7' stroke-linecap='round' fill='none'/></svg>">
+</head>
+<body data-chapter="09-video">
+
+<div class="content">
+
+  <div class="chapter-hero">
+    <span class="fc"></span>
+    <div class="hero-readout">
+      <span class="r-part">Parte VII · Vídeo</span>
+      <span>Capítulo 9</span>
+      <span>≈55 min</span>
+    </div>
+    <h1>Vídeo desde cero</h1>
+    <p class="hero-lede">Nunca has grabado vídeo «de verdad» y este capítulo asume justo eso:
+    empezamos por qué es un fotograma y no paramos hasta que entiendas por qué tu clip se ve
+    bien o mal en movimiento. FPS, la regla de los 180 grados, bitrate, códecs, 10 bits,
+    F-Log2 y las LUTs dejarán de ser palabrería. Es el capítulo más largo del manual, y con
+    razón: aquí se aprende un idioma nuevo.</p>
+    <div class="hero-meta">
+      <span class="pill pill-part">Frame → movimiento</span>
+      <span class="pill">FPS y 180°</span>
+      <span class="pill">Bitrate y códecs</span>
+      <span class="pill">10 bits · 4:2:2</span>
+      <span class="pill">F-Log2 y LUTs</span>
+    </div>
+  </div>
+
+  <p>La fotografía te da un instante; el vídeo te da el tiempo. Es una herramienta distinta,
+  con reglas propias, y casi todo lo que hace bonita una foto —congelar, exponer al gusto,
+  disparar en ráfaga— aquí se hace de otra manera o directamente al revés. La buena noticia
+  es que el vídeo digital, por debajo, es sencillísimo de entender si empiezas por el
+  principio de verdad. Vamos a construirlo pieza a pieza: primero qué es un vídeo, luego cómo
+  se ve el movimiento, después qué guarda la cámara en la tarjeta y, al final, cómo conservar
+  el máximo de color para tratarlo en el ordenador. Al terminar sabrás poner la X-S20 en
+  vídeo con criterio, no copiando ajustes de un foro.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="que-es-un-frame">Un vídeo es una tira de fotos</h2>
+
+  <p>Esta es la idea de la que cuelga todo lo demás, así que grábala primero. Un vídeo <b>no</b>
+  es una cosa que «se mueve». Es una <b>secuencia de fotos fijas</b> mostradas tan deprisa una
+  tras otra que tu cerebro las funde en movimiento. Nada se mueve dentro del archivo: hay una
+  foto, y otra foto, y otra, y otra. Cada una de esas fotos se llama <b>fotograma</b> (en
+  inglés <span class="term" title="Frame: cada una de las imágenes fijas que componen un vídeo. Mostradas en rápida sucesión, crean la ilusión de movimiento.">frame</span>).
+  Un minuto de vídeo a 25 fotogramas por segundo son 1.500 fotos exactas guardadas en fila.</p>
+
+  <p>La cámara, cuando graba, hace justo eso: dispara fotos a un ritmo constante y las apila.
+  El reproductor, luego, las enseña al mismo ritmo. La «magia» del movimiento no está en la
+  cámara ni en la pantalla, sino en tu ojo: cuando las imágenes se suceden rápido, el sistema
+  visual no percibe fotos separadas sino un flujo continuo. Es el mismo fenómeno de los viejos
+  folioscopios (esos cuadernos que dibujabas en la esquina y pasabas con el pulgar) y del
+  cine de celuloide. A partir de unas <b>16 imágenes por segundo</b> el cerebro empieza a leer
+  movimiento en vez de diapositivas; por debajo de eso ves una sucesión de fotos a saltos.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 200" role="img" aria-labelledby="d91-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d91-t">Una tira de fotogramas casi idénticos que, reproducidos deprisa, se leen como una figura que salta.</title>
+      <style>
+        .d91-play { animation: d91move 4.8s steps(6) infinite; }
+        @keyframes d91move { from { transform: translateX(0); } to { transform: translateX(576px); } }
+        @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+      </style>
+      <!-- 6 fotogramas con una figura en distinta posición de salto -->
+      <g stroke="var(--dg-line)" stroke-width="1.5" fill="none">
+        <rect x="16"  y="50" width="88" height="66" rx="3"/>
+        <rect x="112" y="50" width="88" height="66" rx="3"/>
+        <rect x="208" y="50" width="88" height="66" rx="3"/>
+        <rect x="304" y="50" width="88" height="66" rx="3"/>
+        <rect x="400" y="50" width="88" height="66" rx="3"/>
+        <rect x="496" y="50" width="88" height="66" rx="3"/>
+      </g>
+      <!-- figura saltando: cy sube y baja -->
+      <g fill="var(--dg-accent)">
+        <circle cx="60"  cy="100" r="7"/>
+        <circle cx="156" cy="86"  r="7"/>
+        <circle cx="252" cy="74"  r="7"/>
+        <circle cx="348" cy="74"  r="7"/>
+        <circle cx="444" cy="86"  r="7"/>
+        <circle cx="540" cy="100" r="7"/>
+      </g>
+      <!-- suelo en cada frame -->
+      <g stroke="var(--dg-line-soft)" stroke-width="1">
+        <line x1="24"  y1="110" x2="96"  y2="110"/><line x1="120" y1="110" x2="192" y2="110"/>
+        <line x1="216" y1="110" x2="288" y2="110"/><line x1="312" y1="110" x2="384" y2="110"/>
+        <line x1="408" y1="110" x2="480" y2="110"/><line x1="504" y1="110" x2="576" y2="110"/>
+      </g>
+      <!-- cabezal de reproducción que recorre la tira -->
+      <rect class="d91-play" x="16" y="46" width="88" height="74" rx="3" fill="var(--dg-green)" opacity="0.16"/>
+      <g fill="var(--dg-text)" font-size="10" text-anchor="middle">
+        <text x="60"  y="136">frame 1</text><text x="156" y="136">2</text>
+        <text x="252" y="136">3</text><text x="348" y="136">4</text>
+        <text x="444" y="136">5</text><text x="540" y="136">6</text>
+      </g>
+      <text x="320" y="30" fill="var(--dg-accent)" text-anchor="middle">reproducir = pasar el cabezal por las fotos, deprisa →</text>
+      <text x="320" y="168" fill="var(--dg-text)" text-anchor="middle" font-size="10">cada fotograma es una foto fija; el movimiento lo pone tu ojo</text>
+    </svg>
+    <figcaption><b>Figura 9.1.</b> Seis fotos con la figura un poco más arriba en cada una. Enseñadas despacio son diapositivas; enseñadas rápido, un salto. Esa es toda la esencia del vídeo, y explica por qué a más fotogramas por segundo el movimiento se ve más fluido.</figcaption>
+  </figure>
+
+  <p>Que un vídeo sea una tira de fotos tiene una consecuencia enorme: <b>todo lo que sabes de
+  una foto se aplica a cada fotograma</b> —exposición, enfoque, ruido— pero aparece una
+  dimensión nueva, el <b>tiempo</b>, y con ella preguntas que en foto no existían. ¿Cuántas
+  fotos por segundo? ¿Cómo se ve el movimiento dentro de cada foto? ¿Cuánta información guardar
+  por segundo sin llenar la tarjeta en cinco minutos? Empecemos por la primera.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="fps">Los fotogramas por segundo (FPS)</h2>
+
+  <p>Los <b>fotogramas por segundo</b> (fps, del inglés <i>frames per second</i>) son
+  exactamente eso: cuántas fotos captura y reproduce el vídeo en cada segundo. Es la
+  frecuencia del pase de diapositivas. Y aquí viene lo que sorprende a todo el mundo: no
+  eliges los fps solo por «cuánta fluidez quieres». Los eliges por una mezcla de <b>estética</b>,
+  <b>compatibilidad</b> y <b>la red eléctrica del país donde grabas</b>. Sí, la corriente de
+  tu enchufe entra en esta decisión; lo veremos enseguida.</p>
+
+  <p>Hay un puñado de valores estándar, y no son arbitrarios: vienen de la historia del cine y
+  de la televisión. Vamos uno a uno, porque cada uno tiene una personalidad.</p>
+
+  <div class="card-grid">
+    <div class="card"><div class="card-eyebrow">24 fps</div><h4>Cine</h4><p>El estándar del cine desde hace casi un siglo. No es «más realista»; es <b>lo que culturalmente leemos como película</b>. Tu ojo asocia ese ligero parpadeo del movimiento a «esto es una peli». Es una convención aprendida, poderosísima.</p></div>
+    <div class="card"><div class="card-eyebrow">25 fps</div><h4>PAL · tu estándar</h4><p>El estándar de televisión europeo. Nació atado a la <b>red eléctrica de 50 Hz</b> de Europa. Es tu opción por defecto en España: casa con las luces y evita parpadeos. Estéticamente casi indistinguible de 24.</p></div>
+    <div class="card"><div class="card-eyebrow">30 fps</div><h4>NTSC · web</h4><p>El estándar americano (60 Hz), habitual en redes sociales y en mucho contenido de internet. Un pelín más fluido que 24/25, con un aire más «vídeo» y menos «cine».</p></div>
+    <div class="card"><div class="card-eyebrow">50 / 60 fps</div><h4>Fluido y cámara lenta</h4><p>El doble de fotos: movimiento muy suave (deportes, acción) y, sobre todo, <b>materia prima para cámara lenta</b>. Grabado a 50 y montado en un proyecto de 25 → ralentización 2× perfectamente fluida.</p></div>
+    <div class="card"><div class="card-eyebrow">100 / 120 fps</div><h4>Slow-motion extremo</h4><p>Cuatro o cinco veces la base. En la X-S20 disponible en <b>Full HD (1080)</b> como grabación de alta velocidad. Agua salpicando, un salto, el pelo al viento: cámara lenta 4×–5× espectacular.</p></div>
+    <div class="card"><div class="card-eyebrow">240 fps</div><h4>El límite</h4><p>La X-S20 llega a <b>240p en 1080</b>. Ralentización de hasta ~10×. Muy exigente con la luz (cada foto dura poquísimo) y solo a 1080, pero para un detalle puntual es un recurso brutal.</p></div>
+  </div>
+
+  <p>Antes de la tabla, dos conceptos que hay que separar para no liarse. Una cosa es a
+  <b>cuántos fps grabas</b> y otra a <b>cuántos fps reproduces</b> (los fps del proyecto de
+  edición, la «línea de tiempo» o <span class="term" title="Timeline: la línea de tiempo del proyecto de edición, con su propia resolución y fps a la que se reproduce todo el montaje.">timeline</span>).
+  Si grabas y reproduces a la misma cifra, el movimiento va a «velocidad normal». Si grabas a
+  más fps de los que reproduce el proyecto y estiras el clip, obtienes <b>cámara lenta</b>: has
+  capturado más fotos de las que el segundo va a mostrar, así que sobran fotos para rellenar y
+  el tiempo se dilata suavemente. Ese es el truco de todo el <i>slow-motion</i>, y por eso 50 y
+  120 fps son tan valiosos aunque tu proyecto sea de 25.</p>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>fps</th><th>De dónde viene</th><th>Se siente como</th><th>Úsalo para</th></tr></thead>
+    <tbody>
+      <tr><td><strong>24</strong></td><td>Cine (celuloide)</td><td>«Película», ligero parpadeo del movimiento</td><td>Look cinematográfico deliberado</td></tr>
+      <tr><td><strong>25</strong></td><td>TV europea (PAL, 50 Hz)</td><td>Prácticamente cine, sin parpadeos en Europa</td><td><b>Tu base en España</b>: viaje, entrega general</td></tr>
+      <tr><td><strong>30</strong></td><td>TV americana (NTSC, 60 Hz)</td><td>Algo más «vídeo», fluido</td><td>Contenido de web / redes de origen USA</td></tr>
+      <tr><td><strong>50 / 60</strong></td><td>Doble de la base</td><td>Muy suave, «hiperreal»</td><td>Deportes, acción; y sobre todo cámara lenta 2×</td></tr>
+      <tr><td><strong>100 / 120</strong></td><td>Alta velocidad (solo 1080)</td><td>—</td><td>Slow-motion 4×–5×</td></tr>
+      <tr><td><strong>240</strong></td><td>Alta velocidad (solo 1080)</td><td>—</td><td>Slow-motion extremo de un detalle</td></tr>
+    </tbody>
+  </table></div>
+
+  <p class="menu-path"><b>MENU</b> <span class="sep">→</span> AJUSTE VÍDEO <span class="sep">→</span> AJUSTE MODO VÍDEO <span class="sep">→</span> <b>tamaño y fps</b></p>
+
+  <div class="callout tip" data-title="La regla de oro para Europa: 25 (y 50) todo el tiempo">
+    <p>Monta tu proyecto en una <b>timeline a 25 fps</b> y graba a <b>25</b> para velocidad
+    normal o a <b>50</b> cuando prevés que querrás cámara lenta 2× (50 entra clavado en 25).
+    Así todo casa: el mismo montaje mezcla clips normales y ralentizados sin conversiones
+    raras, y —clave— evitas el problema de las luces que viene ahora. Deja 24 y 30 para cuando
+    tengas una razón concreta (un look muy de cine, o material que va a EE. UU.).</p>
+  </div>
+
+  <div class="callout error" data-title="Error común: grabar a 60 fps bajo luces europeas">
+    <p>Esta pilla a todo el mundo. En Europa la corriente es de <b>50 Hz</b>, y casi todas las
+    luces artificiales (LED, fluorescentes, farolas) <b>parpadean 50 o 100 veces por segundo</b>
+    aunque tu ojo no lo vea. Si grabas a 60 fps, la cámara y ese parpadeo van «desacompasados» y
+    aparecen <b>bandas horizontales</b> que suben o bajan por la imagen —el temido <i>banding</i>—.
+    A <b>25 o 50 fps</b> el ritmo encaja con la red de 50 Hz y el banding desaparece. Existe un
+    modo antiparpadeo, pero lo simple es no meterte ahí: en Europa, 25/50.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="la-regla-de-los-180-grados">La velocidad de obturación y la regla de los 180 grados</h2>
+
+  <p>Ya sabes de <a href="05-exposicion.html#la-velocidad">el capítulo de exposición</a> que la
+  velocidad de obturación es el tiempo que el sensor recoge luz en cada foto. En vídeo, cada
+  fotograma es una foto, así que cada fotograma también tiene su velocidad de obturación. Y
+  aquí aparece la primera regla férrea del vídeo, la que separa un clip que «se ve raro» de
+  uno que «se ve bien» sin que sepas por qué: <b>la regla de los 180 grados</b>.</p>
+
+  <p>La regla práctica es sencilla de memorizar: <b>la velocidad de obturación debe ser
+  aproximadamente el doble de tus fps</b>. En fórmula, obturación ≈ 1/(2 × fps).</p>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Grabas a…</th><th>Obturación ideal (180°)</th><th>Ajuste en la X-S20</th></tr></thead>
+    <tbody>
+      <tr><td>24 fps</td><td>1/48 s</td><td>1/50 (lo más cercano)</td></tr>
+      <tr><td><b>25 fps</b></td><td>1/50 s</td><td><b>1/50</b></td></tr>
+      <tr><td>30 fps</td><td>1/60 s</td><td>1/60</td></tr>
+      <tr><td><b>50 fps</b></td><td>1/100 s</td><td><b>1/100</b></td></tr>
+      <tr><td>60 fps</td><td>1/120 s</td><td>1/125</td></tr>
+      <tr><td>120 fps</td><td>1/240 s</td><td>1/250</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 id="de-donde-viene-el-nombre">De dónde viene lo de «180 grados»</h3>
+
+  <p>El nombre parece esotérico hasta que ves el mecanismo, y entonces no se olvida. Las
+  cámaras de cine de celuloide no tenían un obturador de cortinillas como una réflex: tenían un
+  <b>disco giratorio con un trozo recortado</b>, como una porción de tarta que falta. El disco
+  daba una vuelta completa por cada fotograma. Mientras el hueco pasaba por delante de la
+  película, la luz entraba y exponía ese fotograma; mientras pasaba la parte llena del disco,
+  la luz se bloqueaba y el mecanismo avanzaba el celuloide al siguiente fotograma. Si el hueco
+  abarcaba <b>180 grados</b> —media tarta—, la película se exponía durante <b>la mitad</b> del
+  tiempo que dura cada fotograma. A 24 fps, cada fotograma dura 1/24 s, y la mitad es 1/48 s.
+  De ahí sale la fórmula.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 240" role="img" aria-labelledby="d92-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d92-t">Un obturador rotatorio de cine con una abertura de 180 grados girando frente a la ventanilla de la película.</title>
+      <style>
+        .d92-disc { transform-origin: 130px 120px; animation: d92spin 3s linear infinite; }
+        @keyframes d92spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+      </style>
+      <!-- ventanilla de película detrás -->
+      <rect x="104" y="94" width="52" height="52" rx="3" fill="var(--dg-amber)" opacity="0.5"/>
+      <text x="130" y="182" fill="var(--dg-amber)" text-anchor="middle" font-size="10">ventanilla (película)</text>
+      <!-- disco: círculo con media abertura (pac-man) -->
+      <g class="d92-disc">
+        <path d="M130 120 L130 40 A80 80 0 1 1 50 120 Z" fill="var(--dg-line-soft)" opacity="0.85"/>
+        <circle cx="130" cy="120" r="80" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+        <circle cx="130" cy="120" r="5" fill="var(--dg-line)"/>
+      </g>
+      <text x="130" y="30" fill="var(--dg-text)" text-anchor="middle" font-size="10">disco girando · abertura 180°</text>
+      <!-- explicación a la derecha -->
+      <line x1="250" y1="40" x2="250" y2="200" stroke="var(--dg-line)" stroke-width="1"/>
+      <g fill="var(--dg-text)">
+        <text x="290" y="70">Media vuelta abierta → la luz</text>
+        <text x="290" y="88">expone el fotograma.</text>
+        <text x="290" y="122">Media vuelta cerrada → se</text>
+        <text x="290" y="140">bloquea y avanza la película.</text>
+      </g>
+      <text x="290" y="180" fill="var(--dg-accent)">Expone la MITAD de 1/fps → obturación = 1/(2·fps)</text>
+      <!-- mini reloj de porciones -->
+      <g transform="translate(560,70)">
+        <circle r="34" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+        <path d="M0 0 L0 -34 A34 34 0 0 1 0 34 Z" fill="var(--dg-green)" opacity="0.35"/>
+        <text x="0" y="58" fill="var(--dg-green)" text-anchor="middle" font-size="10">180°</text>
+      </g>
+    </svg>
+    <figcaption><b>Figura 9.2.</b> El obturador de 180° del cine clásico: el hueco de media tarta expone cada fotograma durante justo la mitad de su duración. Tu X-S20 no tiene disco, pero imitamos ese «ángulo» eligiendo la obturación 1/(2×fps).</figcaption>
+  </figure>
+
+  <p>¿Y por qué imitar una limitación mecánica de hace un siglo? Porque produce una cantidad
+  de <b>desenfoque de movimiento</b> (<span class="term" title="Motion blur: el rastro o estela que deja un objeto en movimiento dentro de un mismo fotograma. En vídeo es una textura deseable, no un defecto.">motion blur</span>)
+  que a tu cerebro le resulta natural. Aquí está el cambio de mentalidad más importante del
+  capítulo: <b>en vídeo, el desenfoque de movimiento no es un error, es una textura</b>.
+  Mientras el obturador está abierto, todo lo que se mueve deja un pequeño rastro dentro de ese
+  fotograma. Ese rastro es lo que hace que el movimiento entre un fotograma y el siguiente se
+  «una» de forma fluida y orgánica, como lo ve el ojo. En foto persigues congelar; en vídeo,
+  normalmente, quieres esa estela justa.</p>
+
+  <h3 id="obturar-de-mas-o-de-menos">Qué pasa si te sales de la regla</h3>
+
+  <ul>
+    <li><b>Obturación mucho más rápida (ángulo pequeño, p. ej. 1/500 a 25 fps).</b> Cada
+    fotograma congela el movimiento como una foto nítida, sin rastro. Al reproducir, el salto
+    de un fotograma nítido al siguiente se nota: el movimiento sale <b>nervioso, entrecortado,
+    con un temblor "staccato"</b>. Es el efecto de las escenas de batalla de <i>Salvar al
+    soldado Ryan</i>: se usa <b>a propósito</b> para transmitir caos y crudeza. Fuera de ese
+    recurso, delata a un principiante que dejó una obturación de foto puesta en vídeo.</li>
+    <li><b>Obturación mucho más lenta (ángulo grande, p. ej. 1/12 a 25 fps).</b> El rastro se
+    alarga: cada fotograma es una mancha borrosa. El resultado es <b>onírico, soñador, líquido</b>.
+    A veces es precioso (un sueño, un recuerdo, agua), pero para uso general se ve «mal grabado»
+    y demasiado blando.</li>
+  </ul>
+
+  <p>Toca el interactivo del final del capítulo, <a href="#x9-obturador">«El obturador en
+  vídeo»</a>, para <i>ver</i> cómo cambia el rastro del movimiento según la obturación: es la
+  forma más rápida de que la regla de los 180 grados deje de ser un número y pase a ser algo que
+  reconoces con el ojo.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="la-luz-en-video">El problema de la luz (y por qué necesitas un filtro ND)</h2>
+
+  <p>Aquí choca la teoría con el sol de Portugal, y es uno de los momentos «ajá» del vídeo. En
+  foto, si te sobra luz, aceleras el obturador: 1/2000, 1/4000, lo que haga falta. En vídeo
+  <b>no puedes</b>, porque la obturación está clavada por la regla de los 180 grados: a 25 fps
+  quieres 1/50 s y punto. Te has quedado sin una de las tres perillas del
+  <a href="05-exposicion.html#el-triangulo-de-exposicion">triángulo de exposición</a>. El
+  trío se queda cojo.</p>
+
+  <p>Repasemos qué te queda. El <b>ISO</b> ya está lo más bajo posible (o clavado por F-Log2,
+  como verás). La <b>apertura</b> la usas para controlar la profundidad de campo, no como
+  válvula de luz: si cierras a f/16 para no quemar, pierdes el desenfoque de fondo <i>y</i>
+  entras en difracción. Y la <b>obturación</b> no la puedes tocar sin romper el look. Resultado:
+  <b>a pleno sol, en vídeo, te sobra luz y no tienes cómo tirarla</b>. La imagen sale quemada
+  hagas lo que hagas.</p>
+
+  <p>La solución es un accesorio que en foto casi nunca usas y en vídeo es <b>el</b> accesorio:
+  el <b>filtro de densidad neutra</b> (<span class="term" title="Filtro ND (Neutral Density): un cristal gris neutro que se enrosca en el objetivo y reduce la luz que entra, sin alterar el color, permitiendo mantener obturación y apertura.">filtro ND</span>).
+  Es un cristal gris neutro que se enrosca delante del objetivo y <b>reduce la cantidad de luz
+  que entra</b> sin cambiar el color. Es, literalmente, unas gafas de sol para tu cámara. Con
+  un ND puedes mantener 1/50 y f/2.8 a pleno mediodía porque el filtro se «come» esos pasos de
+  luz que te sobraban. La X-S20 <b>no tiene ND interno</b> (algunas cámaras de vídeo sí), así
+  que es un filtro físico que compras aparte.</p>
+
+  <div class="callout gear" data-title="Qué ND llevar de viaje">
+    <p>Para no cargar con tres filtros, un <b>ND variable</b> (un ND que gira y va de ~2 a ~6
+    pasos) es lo más cómodo para viajar: un solo cristal cubre desde una tarde nublada hasta
+    pleno sol. Compra uno de calidad decente (los muy baratos tiñen de verde o hacen una «X»
+    oscura al máximo) y del diámetro de tu objetivo —tanto el <a href="06-objetivos.html#23mm">XF
+    23 mm</a> como el <a href="06-objetivos.html#35mm">XF 35 mm</a> montan filtros pequeños, así
+    que un ND variable no pesa casi nada—. Regla mental: si vas a grabar vídeo de día, el ND va
+    en la mochila igual que la batería de repuesto.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="ibis-en-video">La estabilización en vídeo</h2>
+
+  <p>En foto, el <a href="05-exposicion.html#regla-reciproca">IBIS</a> te dejaba disparar a
+  pulso a velocidades lentísimas. En vídeo su papel es más visible: no lucha contra el temblor de
+  <i>una</i> foto, sino contra el temblor <b>continuo</b> de tus manos a lo largo del clip. Sin
+  estabilización, un plano a pulso «respira» y distrae; con ella, se calma. La X-S20 tiene
+  <b>IBIS de 5 ejes</b> (desplazamiento físico del sensor) y una capa digital opcional. Conviene
+  saber qué hace cada una y, sobre todo, qué <b>no</b> hace.</p>
+
+  <ul>
+    <li><b>IS Mode (IBIS) normal.</b> El sensor flota y compensa las vibraciones. Es tu opción
+    por defecto para grabar a pulso: suaviza el temblor sin recortar la imagen. No toca tu
+    encuadre ni tu calidad.</li>
+    <li><b>IS Boost.</b> Un modo pensado para <b>planos fijos a pulso</b>: bloquea la imagen con
+    fuerza extra, como si estuvieras en un mini-trípode. Ideal para un plano de una fachada, un
+    detalle, una entrevista quieta. El precio: si te mueves (andando), lucha contra ti y produce
+    tirones raros. Úsalo cuando quieras <b>quietud</b>, no cuando camines.</li>
+    <li><b>DIS (estabilización digital).</b> Estabilización por <i>software</i>: la cámara usa
+    un margen de píxeles alrededor del encuadre para «reencuadrar» y cancelar el temblor. Ayuda
+    mucho al caminar, pero cobra un precio doble: <b>recorta la imagen</b> (te hace un poco más
+    tele, pierdes gran angular) y puede introducir pequeñas deformaciones. Actívala solo cuando
+    la necesites de verdad (caminando y sin gimbal); apágala en plano fijo.</li>
+  </ul>
+
+  <div class="callout tip" data-title="Cuándo apagarlo todo">
+    <p>Sobre <b>trípode</b>, apaga toda la estabilización. Un IBIS activo sobre una base
+    perfectamente quieta puede «buscar» movimiento que no existe y meter una micro-deriva o un
+    tirón al empezar o parar un <a href="10-movimientos-de-camara.html#pan">paneo</a>. Trípode =
+    estabilización off. Y para los <a href="10-movimientos-de-camara.html#handheld">planos a
+    pulso</a> con intención y los movimientos de cámara, lo desarrollamos en el
+    <a href="10-movimientos-de-camara.html">capítulo de movimientos</a>.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="rolling-shutter">El rolling shutter</h2>
+
+  <p>Ya asomó en <a href="05-exposicion.html#mecanico-vs-electronico">exposición</a>, pero en
+  vídeo importa mucho más, porque el vídeo de la X-S20 se lee <b>siempre</b> con obturador
+  electrónico. El sensor no captura toda la imagen a la vez: la lee <b>fila por fila, de arriba
+  abajo</b>, muy rápido pero no instantáneamente. Ese barrido tarda unos milisegundos. Si algo
+  se mueve deprisa —o mueves tú la cámara— durante ese barrido, la parte de arriba del
+  fotograma se captura un instante antes que la de abajo, y el resultado es una <b>distorsión</b>:
+  el <span class="term" title="Rolling shutter: distorsión por leer el sensor fila a fila; las líneas verticales se inclinan o 'tiemblan como gelatina' al panear rápido o ante movimiento veloz.">rolling shutter</span>.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 240" role="img" aria-labelledby="d93-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d93-t">Un edificio vertical que se inclina hacia un lado cuando la cámara panea rápido, porque el sensor se lee de arriba abajo.</title>
+      <style>
+        .d93-b { animation: d93skew 3.2s var(--ease, ease-in-out) infinite; transform-origin: 320px 200px; }
+        @keyframes d93skew {
+          0%, 18% { transform: skewX(0deg); }
+          50%     { transform: skewX(18deg); }
+          82%,100%{ transform: skewX(0deg); }
+        }
+        .d93-scan { animation: d93scan 1.1s linear infinite; }
+        @keyframes d93scan { 0% { transform: translateY(0); } 100% { transform: translateY(150px); } }
+        @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+      </style>
+      <!-- marco de encuadre -->
+      <rect x="200" y="46" width="240" height="158" rx="4" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <clipPath id="d93clip"><rect x="200" y="46" width="240" height="158" rx="4"/></clipPath>
+      <g clip-path="url(#d93clip)">
+        <!-- edificio que se inclina -->
+        <g class="d93-b" stroke="var(--dg-accent)" stroke-width="2" fill="none">
+          <rect x="290" y="70" width="60" height="130"/>
+          <line x1="305" y1="90" x2="335" y2="90"/><line x1="305" y1="120" x2="335" y2="120"/>
+          <line x1="305" y1="150" x2="335" y2="150"/>
+        </g>
+        <!-- línea de escaneo -->
+        <rect class="d93-scan" x="200" y="46" width="240" height="6" fill="var(--dg-green)" opacity="0.7"/>
+      </g>
+      <!-- flecha de paneo -->
+      <path d="M470 125 L560 125" stroke="var(--dg-line-soft)" stroke-width="2" marker-end="url(#a93)"/>
+      <defs><marker id="a93" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="var(--dg-line-soft)"/></marker></defs>
+      <text x="515" y="115" fill="var(--dg-text)" text-anchor="middle" font-size="10">paneo rápido</text>
+      <text x="120" y="118" fill="var(--dg-green)" text-anchor="middle" font-size="10">lectura</text>
+      <text x="120" y="132" fill="var(--dg-green)" text-anchor="middle" font-size="10">fila a fila ↓</text>
+      <text x="320" y="228" fill="var(--dg-text)" text-anchor="middle" font-size="10">arriba se lee antes que abajo → lo vertical se inclina</text>
+    </svg>
+    <figcaption><b>Figura 9.3.</b> Al panear rápido, mientras el sensor termina de leer las filas de abajo la cámara ya se ha desplazado, así que la base del edificio queda «retrasada» respecto a la cima: el edificio se inclina o se dobla como gelatina.</figcaption>
+  </figure>
+
+  <p>¿Cuándo se nota? En dos situaciones típicas de viaje: <b>paneos rápidos</b> (barrer una
+  plaza de un tirón) y <b>latigazos</b> de la cámara (un movimiento brusco de muñeca), y ante
+  objetos muy veloces que cruzan el encuadre (un coche cercano, las aspas de un molino). Todo lo
+  vertical —farolas, edificios, columnas— se inclina o se ondula. La cura no es un ajuste
+  mágico, es <b>técnica</b>: mueve la cámara <b>despacio y suave</b>. Los paneos lentos y los
+  movimientos controlados apenas dan rolling shutter; los latigazos y los tirones lo disparan.
+  Es una razón más para grabar tus <a href="10-movimientos-de-camara.html#pan">movimientos de
+  cámara</a> con calma. La X-S20 tiene una lectura de sensor razonable para su categoría, así
+  que con buenos modales apenas lo verás.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="resolucion-y-formatos">Resolución y formatos de la X-S20</h2>
+
+  <p>La <b>resolución</b> es cuántos píxeles tiene cada fotograma: más píxeles, más detalle y
+  más posibilidad de recortar sin perder calidad. Los nombres suenan a marketing, pero
+  significan cosas concretas. «4K» quiere decir ~4.000 píxeles de ancho; «1080» (Full HD) son
+  1.920 × 1.080. La X-S20 ofrece un abanico generoso para su tamaño:</p>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Formato</th><th>Píxeles (aprox.)</th><th>fps máx.</th><th>Para qué</th></tr></thead>
+    <tbody>
+      <tr><td><b>6.2K</b> (3:2, <i>open gate</i>)</td><td>6240 × 4160</td><td>30p</td><td>Máximo detalle y reencuadre; usa todo el sensor</td></tr>
+      <tr><td><b>DCI 4K</b> (17:9)</td><td>4096 × 2160</td><td>60p</td><td>Look de cine, algo más ancho</td></tr>
+      <tr><td><b>UHD 4K</b> (16:9)</td><td>3840 × 2160</td><td>60p</td><td><b>La base sensata para viaje</b></td></tr>
+      <tr><td><b>Full HD</b> (16:9)</td><td>1920 × 1080</td><td>240p</td><td>Cámara lenta (alta velocidad)</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 id="open-gate">Qué es el «open gate» y para qué sirve</h3>
+
+  <p>El modo de <b>6.2K en 3:2</b> se llama <span class="term" title="Open gate: modo que graba usando toda la superficie del sensor (relación 3:2), sin recortar a un formato de vídeo concreto, para reencuadrar después en horizontal y vertical desde un mismo clip.">open gate</span>
+  («compuerta abierta»), y es una idea preciosa una vez la entiendes. Un vídeo normal usa solo
+  una franja apaisada del sensor (16:9 o 17:9); el resto del sensor, arriba y abajo, se
+  desaprovecha. El <i>open gate</i> graba usando <b>toda la superficie del sensor</b>, con su
+  forma 3:2 casi cuadrada. ¿Para qué quieres tanto alto? Para <b>reencuadrar después</b> desde
+  un único clip: del mismo material puedes sacar un recorte <b>horizontal 16:9</b> para YouTube
+  <i>y</i> un recorte <b>vertical 9:16</b> para Instagram/TikTok, con margen de sobra en ambos.
+  Grabas una vez, entregas en dos formatos. Es especialmente cómodo si publicas en redes
+  verticales sin querer girar la cámara y perder el material horizontal.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 260" role="img" aria-labelledby="d94-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d94-t">Un fotograma 3:2 open gate del que se extraen un recorte horizontal 16:9 y uno vertical 9:16.</title>
+      <!-- sensor 3:2 completo -->
+      <rect x="60" y="30" width="240" height="160" rx="3" fill="var(--dg-line-soft)" opacity="0.25" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <text x="180" y="20" fill="var(--dg-text)" text-anchor="middle" font-size="10">sensor completo · 3:2 · 6.2K</text>
+      <!-- crop 16:9 (ancho, centrado verticalmente) -->
+      <rect x="60" y="65" width="240" height="90" fill="none" stroke="var(--dg-green)" stroke-width="2" stroke-dasharray="5 4"/>
+      <text x="180" y="115" fill="var(--dg-green)" text-anchor="middle" font-size="10">16:9 horizontal</text>
+      <!-- crop 9:16 (alto, centrado horizontalmente) -->
+      <rect x="135" y="30" width="90" height="160" fill="none" stroke="var(--dg-blue)" stroke-width="2" stroke-dasharray="5 4"/>
+      <text x="180" y="205" fill="var(--dg-blue)" text-anchor="middle" font-size="10">9:16 vertical</text>
+      <!-- flechas a los dos entregables -->
+      <path d="M320 110 L360 110" stroke="var(--dg-line-soft)" stroke-width="1.5" marker-end="url(#a94)"/>
+      <defs><marker id="a94" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="var(--dg-line-soft)"/></marker></defs>
+      <rect x="380" y="55" width="150" height="84" rx="3" fill="none" stroke="var(--dg-green)" stroke-width="1.5"/>
+      <text x="455" y="150" fill="var(--dg-green)" text-anchor="middle" font-size="10">YouTube</text>
+      <rect x="560" y="40" width="56" height="100" rx="3" fill="none" stroke="var(--dg-blue)" stroke-width="1.5"/>
+      <text x="588" y="150" fill="var(--dg-blue)" text-anchor="middle" font-size="10">Reels</text>
+      <text x="340" y="240" fill="var(--dg-accent)" text-anchor="middle">Un clip → dos entregables, horizontal y vertical, sin volver a grabar</text>
+    </svg>
+    <figcaption><b>Figura 9.4.</b> El sensor 3:2 casi cuadrado da margen para extraer tanto el apaisado como el vertical desde el mismo clip. El precio: archivos más grandes y que necesitas reencuadrar en el montaje.</figcaption>
+  </figure>
+
+  <p>¿Qué elegir para viajar? Salvo que ya vivas en las redes verticales, <b>UHD 4K a 25p</b>
+  es la base más sensata: sobra detalle, es el estándar que todo el mundo reproduce sin
+  problemas, deja margen para recortar y estabilizar en edición, y no infla los archivos como
+  el 6.2K. Reserva el <i>open gate</i> para cuando de verdad vayas a entregar en vertical y
+  horizontal, y el 1080 para las cámaras lentas de alta velocidad. Un detalle a tener en cuenta:
+  el <b>4K a 60p</b> aplica un pequeño <b>recorte adicional</b> del sensor (usa una zona más
+  central), así que tu gran angular pierde algo de campo; para 4K a 25/30p usas el ancho
+  completo.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="bitrate">El bitrate: por qué manda más que la resolución</h2>
+
+  <p>Aquí hay un concepto que casi nadie explica y que, sin embargo, decide la calidad de tu
+  vídeo más que la resolución. El <b>bitrate</b> (caudal de datos) es <b>cuántos datos por
+  segundo guarda la cámara</b> para describir el vídeo, medido en <b>megabits por segundo (Mbps)</b>.
+  Piensa en una tubería: la resolución es el <i>tamaño</i> de la imagen; el bitrate es el
+  <i>grosor de la tubería</i> por la que esa imagen viaja al archivo. Una imagen enorme por una
+  tubería fina llega estrujada y con defectos; una tubería gruesa la deja pasar íntegra.</p>
+
+  <p>¿Por qué importa tanto <b>en movimiento</b>? Porque el vídeo se comprime aprovechando lo que
+  se parecen los fotogramas entre sí (lo veremos en códecs). Cuando la escena tiene <b>mucho
+  detalle en movimiento</b> —hojas al viento, agua, una multitud— hay poco que «reaprovechar» y el
+  códec necesita muchos datos para describirlo. Si el bitrate es bajo, no le llegan y aparecen
+  <b>bloques</b> feos (macrobloques) justo en las escenas más bonitas del viaje. Por eso un 1080 a
+  bitrate alto puede verse mejor <b>en movimiento</b> que un 4K ahogado.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 190" role="img" aria-labelledby="d95-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d95-t">La misma escena a bitrate bajo, con bloques visibles, y a bitrate alto, con detalle limpio.</title>
+      <!-- bajo bitrate: bloques -->
+      <text x="150" y="24" fill="var(--dg-red)" text-anchor="middle">bitrate bajo (tubería fina)</text>
+      <g>
+        <rect x="60" y="40" width="180" height="110" rx="3" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+        <!-- follaje "bloqueado": cuadrados grandes -->
+        <g fill="var(--dg-green)" opacity="0.5">
+          <rect x="70"  y="50" width="26" height="26"/><rect x="122" y="50" width="26" height="26"/>
+          <rect x="96"  y="76" width="26" height="26"/><rect x="174" y="76" width="26" height="26"/>
+          <rect x="70"  y="102" width="26" height="26"/><rect x="148" y="102" width="26" height="26"/>
+          <rect x="200" y="50" width="26" height="26"/>
+        </g>
+        <text x="150" y="168" fill="var(--dg-red)" text-anchor="middle" font-size="10">macrobloques, detalle perdido</text>
+      </g>
+      <!-- flecha -->
+      <text x="320" y="100" fill="var(--dg-line)" text-anchor="middle" font-size="18">→</text>
+      <!-- alto bitrate: detalle fino -->
+      <text x="490" y="24" fill="var(--dg-green)" text-anchor="middle">bitrate alto (tubería gruesa)</text>
+      <g>
+        <rect x="400" y="40" width="180" height="110" rx="3" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+        <g fill="var(--dg-green)" opacity="0.55">
+          <circle cx="420" cy="60" r="4"/><circle cx="438" cy="72" r="3"/><circle cx="452" cy="58" r="4"/>
+          <circle cx="470" cy="70" r="3"/><circle cx="488" cy="60" r="4"/><circle cx="506" cy="74" r="3"/>
+          <circle cx="524" cy="62" r="4"/><circle cx="542" cy="72" r="3"/><circle cx="560" cy="60" r="4"/>
+          <circle cx="430" cy="96" r="3"/><circle cx="450" cy="108" r="4"/><circle cx="472" cy="98" r="3"/>
+          <circle cx="494" cy="110" r="4"/><circle cx="516" cy="100" r="3"/><circle cx="540" cy="112" r="4"/>
+          <circle cx="560" cy="100" r="3"/><circle cx="420" cy="128" r="3"/><circle cx="500" cy="130" r="3"/>
+        </g>
+        <text x="490" y="168" fill="var(--dg-green)" text-anchor="middle" font-size="10">cada hoja definida</text>
+      </g>
+    </svg>
+    <figcaption><b>Figura 9.5.</b> Misma resolución, distinto bitrate. Donde hay mucho detalle en movimiento (follaje, agua), el bitrate bajo colapsa en bloques. El caudal de datos es lo que sostiene la calidad percibida.</figcaption>
+  </figure>
+
+  <p>La X-S20 ofrece <b>50, 100, 200 y 360 Mbps</b>. Cuanto más alto, mejor calidad y archivos
+  más grandes. Órdenes de magnitud útiles para planificar tarjeta y disco duro:</p>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Bitrate</th><th>≈ por minuto</th><th>Tarjeta recomendada</th><th>Cuándo</th></tr></thead>
+    <tbody>
+      <tr><td>100 Mbps</td><td>≈ 0,75 GB/min</td><td>V60 de sobra</td><td>Uso general, entrega a redes</td></tr>
+      <tr><td>200 Mbps</td><td>≈ 1,5 GB/min</td><td>V60 (con holgura V90)</td><td>Buen equilibrio calidad/tamaño</td></tr>
+      <tr><td>360 Mbps</td><td>≈ 2,7 GB/min</td><td><b>V90</b> por seguridad</td><td>Máxima calidad, gradeo intensivo</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>Esas letras «V60/V90» son la <b>clase de velocidad de vídeo</b> de la tarjeta SD: garantizan
+  una escritura sostenida mínima (60 o 90 MB/s). Si la tarjeta no escribe lo bastante rápido para
+  el bitrate elegido, la grabación se corta sola. La X-S20 tiene <b>una ranura SD UHS-II</b>: usa
+  una tarjeta UHS-II <b>V90</b> de una marca seria si vas a grabar a 360 Mbps o mucha cámara
+  lenta; una <b>V60</b> te vale para el resto. Y llévala formateada en la propia cámara.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="codecs">Los códecs: cómo se comprime el vídeo</h2>
+
+  <p>Si guardáramos cada fotograma como una foto completa, un minuto de 4K ocuparía decenas de
+  gigas. Imposible. Por eso el vídeo se <b>comprime</b>, y el encargado de ello es el
+  <span class="term" title="Códec: el algoritmo que comprime (codifica) y descomprime (decodifica) el vídeo. Decide cuánto ocupa y qué esfuerzo cuesta reproducirlo o editarlo.">códec</span>
+  (de <i>codificador-decodificador</i>). Un códec es el algoritmo que empaqueta el vídeo para
+  que quepa y luego lo desempaqueta para reproducirlo. Entender cómo comprime explica media
+  docena de cosas que de otro modo parecen caprichos.</p>
+
+  <p>El truco central es que <b>fotogramas seguidos se parecen muchísimo</b>. Si grabas una
+  plaza, el suelo y los edificios son casi idénticos de un fotograma al siguiente; solo cambian
+  las palomas y la gente. Sería un derroche guardar el edificio 25 veces por segundo. Así que el
+  códec guarda de vez en cuando un <b>fotograma completo</b> —el <b>keyframe</b> o fotograma I—
+  y, entre medias, guarda solo <b>lo que ha cambiado</b> respecto al anterior: los
+  <b>fotogramas delta</b> (P/B). Esto es la <b>compresión inter-frame</b> (entre fotogramas).</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 200" role="img" aria-labelledby="d96-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d96-t">Un keyframe completo seguido de varios fotogramas delta que solo guardan lo que cambia, hasta el siguiente keyframe.</title>
+      <!-- keyframe -->
+      <rect x="20" y="50" width="80" height="60" rx="3" fill="var(--dg-accent)" opacity="0.28" stroke="var(--dg-accent)" stroke-width="2"/>
+      <text x="60" y="84" fill="var(--dg-text)" text-anchor="middle" font-size="10">imagen</text>
+      <text x="60" y="98" fill="var(--dg-text)" text-anchor="middle" font-size="10">completa</text>
+      <text x="60" y="128" fill="var(--dg-accent)" text-anchor="middle" font-size="10">KEYFRAME (I)</text>
+      <!-- deltas -->
+      <g>
+        <rect x="130" y="50" width="60" height="60" rx="3" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+        <rect x="210" y="50" width="60" height="60" rx="3" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+        <rect x="290" y="50" width="60" height="60" rx="3" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+        <rect x="370" y="50" width="60" height="60" rx="3" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+      </g>
+      <!-- solo cambios: puntitos -->
+      <g fill="var(--dg-green)">
+        <circle cx="160" cy="80" r="3"/>
+        <circle cx="238" cy="72" r="3"/><circle cx="246" cy="88" r="3"/>
+        <circle cx="316" cy="70" r="3"/><circle cx="324" cy="90" r="3"/><circle cx="332" cy="80" r="3"/>
+        <circle cx="396" cy="68" r="3"/><circle cx="404" cy="92" r="3"/><circle cx="412" cy="78" r="3"/><circle cx="390" cy="84" r="3"/>
+      </g>
+      <text x="280" y="132" fill="var(--dg-green)" text-anchor="middle" font-size="10">deltas: solo lo que se movió (P/B)</text>
+      <!-- siguiente keyframe -->
+      <rect x="450" y="50" width="80" height="60" rx="3" fill="var(--dg-accent)" opacity="0.28" stroke="var(--dg-accent)" stroke-width="2"/>
+      <text x="490" y="88" fill="var(--dg-text)" text-anchor="middle" font-size="10">completa</text>
+      <text x="490" y="128" fill="var(--dg-accent)" text-anchor="middle" font-size="10">KEYFRAME</text>
+      <text x="325" y="30" fill="var(--dg-text)" text-anchor="middle" font-size="10">el grupo entre dos keyframes se llama GOP</text>
+      <text x="325" y="176" fill="var(--dg-accent)" text-anchor="middle">guardar solo cambios = archivos pequeños, pero editar cuesta más</text>
+    </svg>
+    <figcaption><b>Figura 9.6.</b> Compresión inter-frame: un keyframe completo y luego solo las diferencias. Es eficientísimo en tamaño, pero para mostrar un fotograma delta cualquiera el ordenador debe reconstruirlo desde el keyframe, lo que hace la edición más pesada.</figcaption>
+  </figure>
+
+  <p>Esto tiene un coste oculto que sufrirás al editar: para mostrar un fotograma delta el
+  ordenador debe reconstruirlo a partir del keyframe y de todos los cambios intermedios. En
+  reproducción no se nota, pero al <b>editar</b> —saltando adelante y atrás, cortando en
+  cualquier punto— obligas al ordenador a rehacer ese cálculo constantemente, y un portátil
+  modesto se ahoga. Ese es el origen del problema que resolveremos con los
+  <a href="#proxy">proxies</a>. (Existe también la compresión <b>intra-frame</b>, que guarda
+  cada fotograma completo pero comprimido; ocupa más y edita más fácil, pero la X-S20 usa
+  esquemas inter-frame.)</p>
+
+  <h3 id="h264-vs-h265">H.264 y H.265</h3>
+
+  <p>La X-S20 graba con dos códecs, y la elección tiene un matiz importante:</p>
+  <ul>
+    <li><b>H.264</b> (AVC): el veterano, universal. En la X-S20 es <b>8 bits, 4:2:0</b>. Lo
+    reproduce y edita cualquier ordenador o móvil sin sudar. A cambio, para la misma calidad
+    necesita más bitrate (comprime peor).</li>
+    <li><b>H.265</b> (HEVC): el moderno y eficiente. Mete la misma calidad en <b>menos datos</b>
+    (~40 % menos), y es el que te habilita en la X-S20 los <b>10 bits</b> y el <b>4:2:2</b> (lo
+    verás en las dos secciones siguientes). Su pega: <b>cuesta más de decodificar</b>, así que
+    editarlo pide un ordenador más capaz y suele ser <i>el</i> motivo por el que necesitarás
+    proxies.</li>
+  </ul>
+
+  <p>La regla honesta: si quieres <b>máxima calidad para gradear</b> (10 bits, 4:2:2), grabas
+  H.265 y asumes que tu portátil quizá necesite proxies. Si quieres <b>máxima facilidad</b> y no
+  vas a hacer color grading serio, H.264 8 bits es más ligero de editar. Para viaje con
+  intención de tratar el color, H.265 10 bits.</p>
+
+  <div class="callout fact">
+    <p>No confundas <b>códec</b> con <b>contenedor</b>. El contenedor es la «caja» del archivo,
+    su extensión: <b>.MOV</b> o <b>.MP4</b>. Dentro de esa caja van el vídeo (codificado con un
+    códec como H.265), el audio y metadatos. La X-S20 guarda en <b>MOV</b> (H.265 o H.264) y
+    también en <b>MP4</b> (H.264). Es como una caja de cartón (contenedor) que puede llevar
+    dentro cosas empaquetadas de distinta forma (códec). Cuando alguien dice «un MP4» no está
+    diciendo nada sobre la calidad: eso lo dice el códec y el bitrate de dentro.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="submuestreo-de-color">El color: submuestreo y profundidad de bits</h2>
+
+  <p>Llegamos a dos conceptos que suenan intimidantes —<b>submuestreo de color</b> y
+  <b>profundidad de bits</b>— y que en realidad se entienden de un vistazo con un par de
+  dibujos. Los dos responden a la misma pregunta: <b>cuánta información de color guarda cada
+  fotograma</b>. Y los dos importan solo si vas a <b>tratar el color</b> después; si entregas el
+  vídeo tal cual, casi da igual.</p>
+
+  <p>El primero, el <b>submuestreo de color</b> (en inglés <i>chroma subsampling</i>), sale de un
+  hecho sobre tu ojo: eres muy sensible a los cambios de <b>brillo</b> (luz/sombra) pero bastante
+  torpe con los cambios finos de <b>color</b> puro. Los ingenieros aprovecharon esa flojera:
+  guardan el <b>brillo con todo el detalle</b> pero el <b>color con menos resolución</b>, y casi
+  no lo notas. Se expresa con tres números tipo <b>4:2:2</b> o <b>4:2:0</b>, que dicen, sobre un
+  bloque de referencia, cuántas muestras de color se guardan respecto a las de brillo.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 220" role="img" aria-labelledby="d97-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d97-t">Tres rejillas comparando 4:4:4, 4:2:2 y 4:2:0: el brillo se guarda entero y el color con distinta densidad de muestras.</title>
+      <!-- 4:4:4 -->
+      <text x="110" y="24" fill="var(--dg-text)" text-anchor="middle">4:4:4 · color completo</text>
+      <g>
+        <rect x="40" y="40" width="140" height="120" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+        <!-- 4x4 celdas todas con muestra de color -->
+        <g fill="var(--dg-blue)" opacity="0.7">
+          <circle cx="57"  cy="57" r="6"/><circle cx="92" cy="57" r="6"/><circle cx="127" cy="57" r="6"/><circle cx="162" cy="57" r="6"/>
+          <circle cx="57"  cy="92" r="6"/><circle cx="92" cy="92" r="6"/><circle cx="127" cy="92" r="6"/><circle cx="162" cy="92" r="6"/>
+          <circle cx="57"  cy="127" r="6"/><circle cx="92" cy="127" r="6"/><circle cx="127" cy="127" r="6"/><circle cx="162" cy="127" r="6"/>
+          <circle cx="57"  cy="145" r="6"/><circle cx="92" cy="145" r="6"/><circle cx="127" cy="145" r="6"/><circle cx="162" cy="145" r="6"/>
+        </g>
+      </g>
+      <text x="110" y="182" fill="var(--dg-text)" text-anchor="middle" font-size="10">estudio / RAW</text>
+      <!-- 4:2:2 -->
+      <text x="320" y="24" fill="var(--dg-green)" text-anchor="middle">4:2:2 · medio color</text>
+      <g>
+        <rect x="250" y="40" width="140" height="120" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+        <g fill="var(--dg-green)" opacity="0.7">
+          <circle cx="267" cy="57" r="6"/><circle cx="337" cy="57" r="6"/>
+          <circle cx="267" cy="92" r="6"/><circle cx="337" cy="92" r="6"/>
+          <circle cx="267" cy="127" r="6"/><circle cx="337" cy="127" r="6"/>
+          <circle cx="267" cy="145" r="6"/><circle cx="337" cy="145" r="6"/>
+        </g>
+        <!-- brillo (puntitos pequeños) en todas -->
+        <g fill="var(--dg-line-soft)"><circle cx="302" cy="57" r="2"/><circle cx="372" cy="57" r="2"/><circle cx="302" cy="92" r="2"/><circle cx="372" cy="92" r="2"/></g>
+      </g>
+      <text x="320" y="182" fill="var(--dg-green)" text-anchor="middle" font-size="10">X-S20 (H.265)</text>
+      <!-- 4:2:0 -->
+      <text x="530" y="24" fill="var(--dg-amber)" text-anchor="middle">4:2:0 · cuarto de color</text>
+      <g>
+        <rect x="460" y="40" width="140" height="120" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+        <g fill="var(--dg-amber)" opacity="0.75">
+          <circle cx="477" cy="66" r="6"/><circle cx="547" cy="66" r="6"/>
+          <circle cx="477" cy="130" r="6"/><circle cx="547" cy="130" r="6"/>
+        </g>
+      </g>
+      <text x="530" y="182" fill="var(--dg-amber)" text-anchor="middle" font-size="10">web / streaming</text>
+      <text x="320" y="206" fill="var(--dg-accent)" text-anchor="middle">el brillo va completo en los tres; solo cambia cuántas muestras de color se guardan</text>
+    </svg>
+    <figcaption><b>Figura 9.7.</b> Cuanto menos color guardas, más pequeño el archivo, pero menos margen para retocarlo. La X-S20 graba <b>4:2:2</b> interno (por H.265): el doble de información de color que el 4:2:0 de la mayoría de móviles y del H.264.</figcaption>
+  </figure>
+
+  <p>En la práctica, <b>4:2:0</b> (lo que graba un móvil o el H.264 de la X-S20) es
+  perfectamente bonito para ver; <b>4:2:2</b> guarda el doble de detalle de color y se nota
+  cuando <b>corriges o gradeas fuerte</b>: los bordes de color quedan más limpios, un cielo
+  cambia de tono sin ensuciarse, y el <a href="14-premiere.html#color">croma / recorte por
+  color</a> funciona mejor. La X-S20 graba <b>4:2:2 10 bits interno</b> (con H.265), algo que
+  hace años exigía un grabador externo carísimo. Es una de sus mejores cartas para vídeo.</p>
+
+  <h3 id="8-bits-vs-10-bits">8 bits frente a 10 bits</h3>
+
+  <p>La <b>profundidad de bits</b> es cuántos <b>tonos distintos</b> puede tener cada canal de
+  color. Con <b>8 bits</b> hay 256 niveles por canal; con <b>10 bits</b>, 1.024 —cuatro veces
+  más—. Suena abstracto, así que la imagen mental es esta: un <b>degradado suave</b>, como un
+  cielo que va de azul intenso a azul claro. Con 8 bits, a veces no hay «peldaños» suficientes
+  para describir esa transición y aparecen <b>franjas</b> visibles, como curvas de nivel de un
+  mapa: es el <span class="term" title="Banding: franjas o escalones visibles en un degradado suave (típico en cielos) cuando no hay suficientes niveles de tono para describir la transición.">banding</span>.
+  Con 10 bits hay peldaños de sobra y el degradado se ve continuo.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 190" role="img" aria-labelledby="d98-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d98-t">Un degradado con franjas visibles (8 bits) frente a un degradado continuo (10 bits).</title>
+      <defs>
+        <linearGradient id="d98smooth" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="var(--dg-blue)"/>
+          <stop offset="1" stop-color="var(--dg-blue)" stop-opacity="0.08"/>
+        </linearGradient>
+      </defs>
+      <!-- 8 bits: bandas escalonadas -->
+      <text x="150" y="24" fill="var(--dg-red)" text-anchor="middle">8 bits → banding en el cielo</text>
+      <g>
+        <rect x="40" y="40" width="30" height="90" fill="var(--dg-blue)" opacity="0.95"/>
+        <rect x="70" y="40" width="30" height="90" fill="var(--dg-blue)" opacity="0.78"/>
+        <rect x="100" y="40" width="30" height="90" fill="var(--dg-blue)" opacity="0.60"/>
+        <rect x="130" y="40" width="30" height="90" fill="var(--dg-blue)" opacity="0.42"/>
+        <rect x="160" y="40" width="30" height="90" fill="var(--dg-blue)" opacity="0.26"/>
+        <rect x="190" y="40" width="30" height="90" fill="var(--dg-blue)" opacity="0.12"/>
+      </g>
+      <text x="150" y="150" fill="var(--dg-red)" text-anchor="middle" font-size="10">saltos visibles entre tonos</text>
+      <!-- 10 bits: continuo -->
+      <text x="470" y="24" fill="var(--dg-green)" text-anchor="middle">10 bits → transición continua</text>
+      <rect x="360" y="40" width="240" height="90" fill="url(#d98smooth)"/>
+      <text x="480" y="150" fill="var(--dg-green)" text-anchor="middle" font-size="10">degradado suave, sin escalones</text>
+    </svg>
+    <figcaption><b>Figura 9.8.</b> El banding vive en los degradados suaves —cielos al atardecer, paredes lisas, humo—. Los 10 bits dan margen para levantar y torcer el color en el gradeo sin que aparezcan esas franjas. La X-S20 graba 10 bits internos.</figcaption>
+  </figure>
+
+  <p>La consecuencia práctica: <b>10 bits te da margen para maltratar la imagen en el gradeo</b>
+  (subir sombras, virar el color, aplicar una curva agresiva) sin que se rompa en franjas. Es
+  <i>indispensable</i> si grabas en F-Log2, porque ahí vas a estirar mucho el color. Para
+  entrega directa sin tocar, 8 bits basta. La X-S20 te da 10 bits internos con H.265, así que no
+  hay razón para no aprovecharlos si vas a editar el color.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="f-log2">F-Log2 y los perfiles logarítmicos</h2>
+
+  <p>Este es el concepto que más gente usa sin entender, y por eso más fotos y vídeos arruina.
+  Vamos despacio. Un <b>perfil logarítmico</b> (un «log») es una forma de <b>grabar aplanando el
+  contraste</b> para conservar el máximo <a href="05-exposicion.html#rango-dinamico">rango
+  dinámico</a> posible, es decir, la mayor distancia entre la sombra más oscura y la luz más
+  clara con detalle.</p>
+
+  <p>La idea es esta. Un vídeo «normal» (perfil Rec.709, o una simulación como Provia) reparte
+  los tonos como se van a ver en pantalla: contrastado, bonito de fábrica, pero <b>tira
+  información</b> en los extremos —sombras profundas y luces altas se empastan—. Un perfil
+  <b>log</b> hace lo contrario: comprime toda la escena en una imagen <b>plana, lavada,
+  grisácea</b> para que quepan <i>todos</i> los tonos sin quemar ni empastar nada. Esa imagen fea
+  es a propósito: es un «negativo digital» que guarda todo el rango para que tú decidas después,
+  en el gradeo, dónde van los negros y los blancos.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 260" role="img" aria-labelledby="d99-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d99-t">Curva de un perfil logarítmico frente a Rec.709: el log aplana el contraste para capturar más rango dinámico.</title>
+      <!-- ejes -->
+      <line x1="70" y1="220" x2="600" y2="220" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <line x1="70" y1="220" x2="70" y2="30" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <text x="335" y="250" fill="var(--dg-text)" text-anchor="middle" font-size="10">luz de la escena (de sombra a luz alta) →</text>
+      <text x="34" y="130" fill="var(--dg-text)" text-anchor="middle" font-size="10" transform="rotate(-90 34 130)">valor grabado →</text>
+      <!-- Rec.709: curva en S contrastada -->
+      <path d="M70 218 C 180 216, 210 60, 340 45 S 520 34, 600 33" fill="none" stroke="var(--dg-accent)" stroke-width="2"/>
+      <text x="470" y="52" fill="var(--dg-accent)" font-size="11">Rec.709 (contrastado)</text>
+      <text x="470" y="68" fill="var(--dg-accent)" font-size="9">quema luces y empasta sombras</text>
+      <!-- Log: recta suave y comprimida -->
+      <path d="M70 175 C 200 130, 420 95, 600 80" fill="none" stroke="var(--dg-green)" stroke-width="2" stroke-dasharray="6 4"/>
+      <text x="360" y="150" fill="var(--dg-green)" font-size="11">F-Log2 (plano)</text>
+      <text x="360" y="166" fill="var(--dg-green)" font-size="9">conserva todo el rango: ≈13+ pasos</text>
+      <!-- zonas conservadas -->
+      <rect x="70" y="30" width="530" height="16" fill="var(--dg-amber)" opacity="0.12"/>
+      <text x="335" y="24" fill="var(--dg-amber)" text-anchor="middle" font-size="9">el log no quema aquí…</text>
+    </svg>
+    <figcaption><b>Figura 9.9.</b> El perfil log (verde) es casi una recta suave y comprimida: no llega a los extremos, así que no se quema ni se empasta y guarda más pasos de rango. Rec.709 (naranja) es contrastado y bonito de salida, pero descarta información en luces y sombras.</figcaption>
+  </figure>
+
+  <p><b>F-Log2</b> es el perfil log de gama alta de Fuji, y en la X-S20 captura del orden de
+  <b>13 pasos o más</b> de rango dinámico —muchísimo, para recuperar cielos y sombras en una
+  escena contrastada—. Pero no es gratis, y aquí vienen sus dos peajes.</p>
+
+  <ul>
+    <li><b>ISO base alto.</b> Para exprimir todo ese rango, F-Log2 <b>parte de un ISO base
+    elevado</b>: en la X-S20 es <b>ISO 1250</b> (frente a los 160 de foto o los 640 de F-Log).
+    Eso significa que en <b>poca luz</b> F-Log2 te obliga a un ISO mínimo alto, con su ruido, y
+    <b>a pleno sol</b> agrava el problema de que te sobra luz (más motivo para el
+    <a href="#la-luz-en-video">filtro ND</a>). Con luz media es fantástico; en los extremos, hay
+    que saberlo.</li>
+    <li><b>Imagen lavada que asusta.</b> En la pantalla verás algo gris, plano y sin vida, y el
+    instinto es pensar «esto está mal». No lo está: es el aspecto normal de un log sin gradear.
+    Para poder encuadrar y exponer sin agobiarte, la X-S20 tiene el <b>View Assist (F-Log2 View
+    Assist)</b>, que aplica una previsualización con contraste normal <b>solo en pantalla</b>,
+    sin afectar a lo que se graba. Actívalo o grabarás a ciegas.</li>
+  </ul>
+
+  <div class="callout gear" data-title="Exponer F-Log2 en la X-S20: hacia la derecha">
+    <p>El log es más ruidoso en sombras, así que conviene <b>exponer generoso</b> (algo a la
+    derecha, como el <a href="05-exposicion.html#ettr">ETTR</a> de foto) y bajar luego en el
+    gradeo: sombras más limpias. Usa el <b>histograma</b> y, si activas el <b>zebra</b>, ponlo
+    para avisarte de las altas luces a punto de quemar. Y recuerda el ISO base 1250: por debajo
+    no puedes bajar, así que en interiores oscuros F-Log2 quizá no sea tu amigo.</p>
+  </div>
+
+  <div class="callout error" data-title="Error común: grabar en F-Log2 sin saber (ni querer) gradear">
+    <p>F-Log2 <b>no</b> es «modo calidad». Es materia prima que <b>obliga</b> a un paso posterior:
+    aplicar como mínimo una LUT de conversión y, casi siempre, ajustar el color a mano. Si grabas
+    log y luego subes el clip gris directamente, o le pegas una LUT al tuntún sin corregir la
+    exposición, el resultado es <b>peor</b> que haber grabado con una simulación bonita. Sé
+    honesto contigo: si no vas a dedicar tiempo al color, o necesitas entregar rápido, o estás en
+    poca luz extrema, <b>no uses F-Log2</b>. Grabar con <b>Eterna</b> es un atajo perfectamente
+    digno —lo vemos abajo—.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="luts">Las LUTs</h2>
+
+  <p>Una <b>LUT</b> (del inglés <i>Look-Up Table</i>, «tabla de consulta») es exactamente eso:
+  una <b>tabla que dice a qué color de salida debe convertirse cada color de entrada</b>. No es
+  un filtro mágico ni tiene inteligencia: es una receta de traducción de color, fija, que se
+  aplica igual a cada fotograma. Entender que es «una tabla» y no «magia» evita la mitad de las
+  frustraciones. Hay dos tipos, y confundirlos es un clásico:</p>
+
+  <ul>
+    <li><b>LUT técnica (de conversión).</b> Su único trabajo es <b>deshacer el aplanado del
+    log</b>: convierte tu imagen F-Log2 gris a una imagen de contraste normal (Rec.709). Fuji
+    publica gratis su LUT oficial <b>«F-Log2 → Rec.709»</b>. Es el <b>punto de partida
+    obligatorio</b> de cualquier clip en log: primero lo devuelves a la normalidad y <i>luego</i>
+    trabajas.</li>
+    <li><b>LUT creativa (de look).</b> Es un <b>estilo</b>: tonos cálidos de atardecer, aire de
+    película antigua, verdes de cine. Se aplica <b>encima</b> de una imagen ya normalizada (nunca
+    sobre el log crudo) para darle carácter. Hay miles, gratis y de pago.</li>
+  </ul>
+
+  <p>¿Dónde se aplican? No en la cámara: en el <b>montaje</b>. En Premiere las LUTs se cargan en
+  el panel de color (Lumetri), primero la técnica y encima, si quieres, la creativa. El flujo
+  detallado —cargar la LUT de Fuji, corregir y luego el look— está en
+  <a href="14-premiere.html#color">el capítulo de Premiere</a>. Aquí quédate con el concepto: la
+  LUT es una traducción de color, la técnica es obligatoria con log y la creativa es opcional y
+  va después.</p>
+
+  <h3 id="corregir-vs-gradear">Corregir no es gradear</h3>
+
+  <p>Dos palabras que se usan como sinónimos y no lo son. <b>Corregir el color</b> (<i>color
+  correction</i>) es <b>arreglar</b>: dejar la exposición correcta, el balance de blancos neutro,
+  los tonos de piel naturales, que los clips de una misma escena casen entre sí. Es objetivo,
+  hay un «bien». <b>Gradear</b> (<i>color grading</i>) es <b>dar un look</b>: decidir una
+  atmósfera —cálida y nostálgica, fría y tensa, veraniega—. Es subjetivo, es autoría. El orden
+  siempre es el mismo: <b>primero corriges, luego gradeas</b>. Sobre una base neutra el look
+  sienta bien; sobre una base torcida, cualquier look se ve mal. Con F-Log2 el flujo completo es:
+  LUT técnica → corrección → gradeo (o LUT creativa).</p>
+
+  <!-- ============================================================ -->
+  <h2 id="proxy">Proxies y el flujo de edición</h2>
+
+  <p>Ahora se cierra el círculo del que hablamos en códecs. El <b>H.265 en 4K a 10 bits</b> es
+  precioso y compacto, pero <b>durísimo de decodificar</b>: cada fotograma que el ordenador
+  muestra hay que reconstruirlo desde su keyframe. En reproducción normal, tu ordenador tira; en
+  <b>edición</b> —saltando, cortando, con varias capas y efectos— un portátil modesto se ahoga,
+  la reproducción va a tirones y trabajar se vuelve un suplicio. No es que tu ordenador esté
+  «roto»: es que le estás pidiendo un cálculo brutal en tiempo real.</p>
+
+  <p>La solución elegante es el <b>proxy</b>. Un
+  <span class="term" title="Proxy: una copia ligera y fácil de decodificar de cada clip, con la que editas con fluidez; al exportar, el programa vuelve a usar los originales en máxima calidad.">proxy</span>
+  es una <b>copia ligera</b> de cada clip —baja resolución, códec fácil de reproducir— que el
+  programa genera y usa <b>solo mientras editas</b>. Montas con las copias ligeras, que van
+  fluidas, y al <b>exportar</b> el programa vuelve automáticamente a los <b>originales en máxima
+  calidad</b>. Tienes lo mejor de los dos mundos: edición ágil y entrega íntegra. Cuándo
+  generarlos (nada más importar el material pesado) y cómo, en
+  <a href="14-premiere.html#el-proyecto">Premiere</a>.</p>
+
+  <h3 id="timeline-y-exportacion">Timeline y exportación, en una idea</h3>
+
+  <p>Para cerrar la parte técnica, dos conceptos que desarrollará
+  <a href="14-premiere.html#el-timeline">Premiere</a> pero que conviene tener claros ya. La
+  <b>timeline</b> (línea de tiempo) del proyecto tiene <b>su propia resolución y sus propios
+  fps</b>, y <b>mandan sobre los clips</b>: si tu proyecto es 4K a 25p, todo se reproduce a 25p,
+  metas dentro un clip de 25 (velocidad normal) o de 50 (que ralentizarás a la mitad). Por eso en
+  Europa pones la timeline a 25 y todo encaja. Y <b>exportar no es lo mismo que grabar</b>:
+  grabar es lo que hace la cámara en la tarjeta; exportar es el archivo final que genera el
+  programa a partir de tu montaje ya editado y gradeado, en el formato que pida el destino
+  (YouTube, Instagram). Un mismo montaje se exporta en horizontal para uno y vertical para otro.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="simulaciones-video">Simulaciones de película en vídeo (la vía honesta)</h2>
+
+  <p>No todo el vídeo pasa por F-Log2 y un gradeo de media hora. Fuji tiene un as que en vídeo
+  brilla especialmente: las <a href="03-configuracion-inicial.html#simulaciones-de-pelicula">simulaciones
+  de película</a> se aplican también al grabar, y te dan un color acabado y bonito <b>directamente
+  en la tarjeta</b>, sin tocar nada después. Para un viajero que quiere resultados y no vivir en
+  Premiere, esto es oro.</p>
+
+  <p>La reina para vídeo es <b>Eterna</b> (y su variante Eterna Bleach Bypass). Está inspirada en
+  la película de cine de Fuji: da un contraste <b>suave</b>, colores <b>desaturados y elegantes</b>
+  y un aire cinematográfico de fábrica. Es, en la práctica, un <b>«log ligero» ya revelado</b>:
+  conserva bastante rango en luces y sombras —bastante más que Provia o Velvia— pero se ve
+  <b>agradable de salida</b>, sin gris lavado ni obligación de gradear. Grabar en Eterna es la
+  alternativa honesta a F-Log2 para la mayoría de tus planos de viaje: entregas bonito hoy, sin
+  flujo de color. Si un día te apetece gradear, siempre puedes ajustar un poco encima.</p>
+
+  <p>La X-S20 incluye también un <b>modo Vlog</b> pensado para grabarte a ti mismo hablando a
+  cámara: simplifica controles, ayuda con el enfoque a la cara y facilita el «producto» y el
+  desenfoque de fondo. Es cómodo para piezas habladas, pero tiene límites: es un modo
+  simplificado, con menos control fino que el modo de vídeo completo. Úsalo para vlogging rápido;
+  para tus planos cuidados de paisaje y ciudad, el modo de vídeo normal te da más control.</p>
+
+  <div class="callout tip" data-title="La decisión honesta: F-Log2 o Eterna">
+    <p>Regla sencilla para elegir sin agobio. ¿Vas a sentarte a gradear con tiempo y quieres
+    exprimir una escena muy contrastada (un atardecer, un interior con ventana)? <b>F-Log2</b> (10
+    bits, ND, expón a la derecha). ¿Quieres material bonito ya, para montar rápido o publicar sin
+    color grading, o estás con poca luz? <b>Eterna</b>. No hay una opción «de profesionales»: hay
+    la que encaja con el tiempo que vas a dedicarle al color. Empezar por Eterna no es de
+    principiante; es de listo.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="audio">El audio: la mitad que no se ve</h2>
+
+  <p>Un secreto incómodo del vídeo: el espectador <b>perdona</b> una imagen mediocre, pero
+  <b>abandona</b> ante un audio malo. El sonido es la mitad de la experiencia y la más
+  descuidada. La X-S20 tiene un <b>micrófono interno</b> que sirve para captar ambiente y como
+  referencia, pero es pequeño, capta el ruido de tus dedos sobre la cámara y no aísla nada. Para
+  cualquier cosa hablada, se queda corto.</p>
+
+  <p>El salto de calidad más grande y barato es un <b>micrófono de cañón</b> (shotgun) en la
+  zapata, conectado al <b>jack de micrófono de 3,5 mm</b>: es direccional, capta lo que tienes
+  delante y rechaza los lados, así que la voz sale limpia. Cuida el <b>nivel de grabación</b>
+  (mejor grabar un poco bajo y subir luego que quemar el sonido, igual que con las altas luces en
+  foto) y usa el <b>jack de auriculares de 3,5 mm</b> para <i>oír</i> lo que grabas, no te fíes de
+  los vúmetros solos. Y una regla de oro al aire libre: el <b>viento</b> arruina el sonido; pon
+  siempre la <b>espuma o el «peludo» (deadcat)</b> sobre el micro en exteriores.</p>
+
+  <p>El tratamiento del sonido en el montaje —niveles, limpiar ruido, música— es un mundo aparte
+  que verás en <a href="14-premiere.html#audio">Premiere</a>. Aquí quédate con lo esencial de
+  captura: micro direccional, nivel controlado, auriculares puestos y protección de viento.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="recetas">Recetas de campo</h2>
+
+  <p>Tres puntos de partida concretos. No son dogma: son ajustes sensatos para arrancar y ajustar
+  desde ahí.</p>
+
+  <div class="setting-card">
+    <span class="s-name">Clip base de viaje</span>
+    <span class="s-value">UHD 4K · 25p · 1/50 · IS normal · Eterna o F-Log2 · ND puesto de día</span>
+    <span class="s-why">Por qué: 25p casa con Europa, 1/50 es la regla de los 180° clavada, el ND te deja mantener ambos a pleno sol. Eterna si entregas rápido; F-Log2 (10 bits, expón a la derecha) si vas a gradear. IBIS normal para andar suave.</span>
+  </div>
+
+  <div class="setting-card">
+    <span class="s-name">Cámara lenta</span>
+    <span class="s-value">4K 50p (o 1080 120p) · 1/100 · timeline a 25p · ralentizar al 50 % (o menos)</span>
+    <span class="s-why">Por qué: grabas al doble (o más) de fps y lo estiras en una timeline de 25 para una ralentización fluida. Obturación 1/100 respeta los 180° a 50 fps. Necesitas más luz (cada foto dura menos): abre apertura o sube ISO.</span>
+  </div>
+
+  <div class="setting-card">
+    <span class="s-name">Interior de noche</span>
+    <span class="s-value">UHD 4K · 25p · 1/50 · Eterna · ISO auto con techo · IS normal o Boost si plano fijo</span>
+    <span class="s-why">Por qué: con poca luz, F-Log2 (ISO base 1250) suele meter demasiado ruido; Eterna a ISO más bajo rinde mejor. 25p evita el banding de las luces de 50 Hz. Si el plano es fijo, IS Boost lo clava; si andas, IS normal.</span>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="practica">A practicar</h2>
+
+  <div class="callout exercise" data-title="Ejercicio 9.1 — Siente los 180 grados">
+    <p>Pon la cámara en 25p y graba una misma acción sencilla (alguien caminando hacia ti, tu
+    propia mano moviéndose) <b>tres veces</b>: a <b>1/50</b> (regla), a <b>1/500</b> (obturación
+    de foto) y a <b>1/12</b> (muy lenta). Míralas en pantalla grande. <b>Criterio de éxito:</b>
+    reconocer con el ojo el movimiento «natural» de 1/50, el «nervioso staccato» de 1/500 y el
+    «borroso onírico» de 1/12, sin mirar los datos. A partir de ahí, 1/50 dejará de ser un número
+    para ser un aspecto.</p>
+  </div>
+
+  <div class="callout exercise" data-title="Ejercicio 9.2 — Provoca (y doma) el rolling shutter">
+    <p>Busca algo bien vertical: una farola, una columna, la esquina de un edificio. Grábalo
+    haciendo un <b>paneo brusco</b> de lado a lado y luego un <b>paneo lento y suave</b>. Compara.
+    <b>Criterio de éxito:</b> ver el edificio inclinarse/ondularse en el brusco y quedarse recto en
+    el lento, e interiorizar que la cura del rolling shutter no es un menú, es tu muñeca.</p>
+  </div>
+
+  <div class="callout exercise" data-title="Ejercicio 9.3 — Eterna contra F-Log2">
+    <p>Elige una escena contrastada (una calle en sombra con cielo brillante). Graba el mismo plano
+    en <b>Eterna</b> y en <b>F-Log2</b> (con View Assist y exponiendo a la derecha). En el ordenador,
+    deja el de Eterna tal cual y al de F-Log2 aplícale la <b>LUT F-Log2→Rec.709 de Fuji</b> y una
+    corrección básica. <b>Criterio de éxito:</b> comprobar cuánta luz de cielo y de sombra recuperas
+    con F-Log2… y cuánto trabajo cuesta frente a lo bonito que salió Eterna «gratis». Esa es la
+    decisión que tomarás en cada viaje.</p>
+  </div>
+
+  <div class="callout challenge" data-title="Reto del capítulo — La misma escena a 24 y a 50 fps">
+    <p>Elige una escena con movimiento constante y agradable: una fuente, gente paseando por una
+    plaza, ropa tendida al viento, olas. Grábala primero a <b>24 (o 25) fps a 1/50</b> y luego a
+    <b>50 fps a 1/100</b>. Monta los dos clips seguidos en una <b>timeline de 25p</b>, dejando el de
+    50 fps <b>ralentizado al 50 %</b>. Míralos uno detrás de otro en pantalla grande y describe con
+    tus palabras la diferencia: cómo el de 24/25 «se siente peli» y el de 50 ralentizado fluye como a
+    cámara lenta. <b>Éxito:</b> saber, para tu próximo viaje, cuándo querrás cada uno —y entender en
+    tus carnes por qué 50 fps es la materia prima de la cámara lenta y no un capricho de fluidez—.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="cierre">Errores, dudas y lo esencial</h2>
+
+  <div class="callout error" data-title="Error común: dejar una obturación de foto puesta en vídeo">
+    <p>Vienes de foto, tenías 1/500 o 1/1000 puesto, empiezas a grabar y no lo tocas. El resultado
+    es ese movimiento nervioso y entrecortado que delata al recién llegado. En vídeo, la obturación
+    <b>no</b> es libre: es esclava de tus fps por la regla de los 180 grados (≈ el doble de los fps).
+    Ponla a 1/50 para 25p y no la muevas salvo que quieras un efecto. Si sobra luz, la solución es el
+    <b>ND</b>, nunca acelerar el obturador.</p>
+  </div>
+
+  <div class="callout error" data-title="Error común: grabarlo todo a 60 fps «por si acaso»">
+    <p>«60 se ve más fluido, grabo todo así.» Mal negocio triple: en Europa te arriesgas al
+    <b>banding</b> de las luces de 50 Hz, gastas el doble de tarjeta y disco, y —lo peor— tu material
+    normal se ve «demasiado» fluido, con ese aire de telenovela que resta cine. Graba a <b>25</b> por
+    defecto y sube a <b>50</b> solo cuando <i>sepas</i> que querrás cámara lenta ahí. Los fps son una
+    decisión, no un «cuanto más, mejor».</p>
+  </div>
+
+  <div class="callout error" data-title="Error común: F-Log2 como amuleto de calidad">
+    <p>Grabar en log porque «es lo pro» y luego subir el clip gris sin gradear, o pegarle una LUT sin
+    corregir la exposición, produce vídeo <b>peor</b> que una simple Eterna bien expuesta. F-Log2 es
+    un compromiso: te da rango dinámico a cambio de trabajo de color, ISO base 1250 y una imagen que
+    hay que revelar. Si no vas a hacer ese trabajo, no es calidad, es un lastre. Elige log cuando
+    vayas a gradear de verdad; el resto del tiempo, una buena simulación.</p>
+  </div>
+
+  <details class="callout faq">
+    <summary>¿Cuál es la diferencia real entre F-Log y F-Log2?</summary>
+    <div class="co-body">
+      <p>Ambos son perfiles logarítmicos de Fuji; <b>F-Log2</b> es el más nuevo y captura <b>más
+      rango dinámico</b> (≈ 13+ pasos frente a los ~12 de F-Log), a costa de un <b>ISO base más alto</b>
+      (1250 en la X-S20, frente a 640 de F-Log). Para escenas muy contrastadas con luz suficiente,
+      F-Log2 exprime más. En poca luz, F-Log —con su base 640— puede darte menos ruido. Y ambos exigen
+      gradear: si no vas a hacerlo, ninguno de los dos es para ti. Para empezar, con entender F-Log2 y
+      Eterna vas sobrado.</p>
+    </div>
+  </details>
+
+  <details class="callout faq">
+    <summary>¿4K a 25p o mejor grabo 6.2K open gate para tener margen?</summary>
+    <div class="co-body">
+      <p>Para el 90 % del viaje, <b>4K a 25p</b>: sobra detalle, es ligero de editar y todo el mundo lo
+      reproduce. El <b>open gate 6.2K</b> tiene sentido si de verdad vas a entregar en <b>vertical y
+      horizontal</b> desde el mismo clip (redes), pero paga con archivos mucho mayores, tarjetas y discos
+      más llenos y edición más pesada (más proxies). No grabes 6.2K «por si acaso»: grábalo cuando el
+      entregable vertical sea parte del plan.</p>
+    </div>
+  </details>
+
+  <details class="callout faq">
+    <summary>Mi portátil va a tirones al editar el 4K de la X-S20. ¿Está roto?</summary>
+    <div class="co-body">
+      <p>No: es el <b>H.265 10 bits</b> exigiendo mucho al descomprimir cada fotograma en tiempo real.
+      La solución no es bajar la calidad de grabación, sino <b>generar proxies</b> al importar y editar
+      con ellos; al exportar, el programa vuelve solo a los originales. Lo tienes paso a paso en
+      <a href="14-premiere.html#el-proyecto">Premiere</a>. Con proxies, hasta un portátil modesto edita
+      4K con fluidez.</p>
+    </div>
+  </details>
+
+  <div class="callout summary" data-title="Lo esencial del capítulo">
+    <ul>
+      <li>Un vídeo es una <b>tira de fotos</b> (fotogramas) que tu ojo funde en movimiento. Todo lo
+      de foto se aplica a cada frame; se añade el <b>tiempo</b>.</li>
+      <li>Los <b>fps</b> mezclan estética, compatibilidad y red eléctrica: en Europa, base <b>25</b>,
+      cámara lenta desde <b>50</b>. A 60 bajo luces de 50 Hz, <b>banding</b>.</li>
+      <li><b>Regla de los 180°:</b> obturación ≈ 1/(2×fps). A 25p → <b>1/50</b>. El desenfoque de
+      movimiento es una <b>textura deseable</b>, no un error. Si sobra luz, <b>filtro ND</b>, no
+      acelerar.</li>
+      <li>El <b>IBIS</b> calma el temblor continuo; <b>IS Boost</b> para plano fijo, <b>DIS</b>
+      recorta. El <b>rolling shutter</b> se doma moviendo la cámara despacio.</li>
+      <li>El <b>bitrate</b> (Mbps) sostiene la calidad en movimiento más que la resolución; la X-S20
+      llega a 360 Mbps (V90). Los <b>códecs</b> comprimen guardando keyframes + deltas: H.265 pesa
+      menos pero cuesta editar.</li>
+      <li><b>4:2:2 10 bits</b> (que da la X-S20) = más color y sin banding, indispensable para gradear.
+      <b>F-Log2</b> aplana para conservar ≈13+ pasos, con ISO base <b>1250</b> y obligación de
+      gradear; si no vas a hacerlo, <b>Eterna</b> es la vía honesta.</li>
+      <li>Las <b>LUTs</b> son tablas de traducción de color: la técnica (F-Log2→Rec.709) es obligatoria
+      con log; la creativa, opcional y después. Primero <b>corregir</b>, luego <b>gradear</b>. Los
+      <b>proxies</b> salvan la edición de H.265.</li>
+    </ul>
+  </div>
+
+  <p>Ya tienes el idioma del vídeo. Lo que falta es lo que de verdad emociona: <b>mover la
+  cámara</b> con intención y <b>elegir qué plano</b> cuenta cada cosa. Seguimos en
+  <a href="10-movimientos-de-camara.html">movimientos de cámara</a> y
+  <a href="11-tipos-de-plano.html">tipos de plano</a>, y todo desemboca en el
+  <a href="14-premiere.html">montaje en Premiere</a>, donde tus clips en Eterna o F-Log2 se
+  convierten en una historia.</p>
+
+  <!-- ============================================================ -->
+  <!-- INTERACTIVO · EL OBTURADOR EN VÍDEO (regla de los 180°) -->
+  <!-- ============================================================ -->
+  <h2 id="interactivo">Un interactivo para fijar la regla de los 180°</h2>
+
+  <p>Mueve los fps y la obturación y observa el rastro de la pelota: es la forma más rápida de
+  <i>ver</i> el desenfoque de movimiento y por qué el ángulo de 180° se siente natural.</p>
+
+  <div id="x9-obturador" class="x9-widget">
+    <style>
+      .x9-widget { background: var(--bg-raised); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.3rem 1.4rem 1.5rem; margin: 1.7rem 0; }
+      .x9-widget h4 { margin: 0 0 .3rem; font-size: var(--fs-3); font-weight: 650; }
+      .x9-widget .x9-sub { color: var(--text-3); font-size: var(--fs-1); margin: 0 0 1.1rem; }
+      .x9-stage { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: #0a0c0f; }
+      .x9-stage svg { display: block; width: 100%; }
+      .x9-controls { display: grid; gap: .9rem; margin-top: 1.1rem; }
+      .x9-ctl { display: grid; grid-template-columns: 6rem 1fr auto; gap: .7rem; align-items: center; }
+      .x9-ctl > label { font-size: var(--fs-1); color: var(--text-2); font-weight: 600; }
+      .x9-ctl input[type=range] { width: 100%; accent-color: var(--part); }
+      .x9-ctl .x9-val { font-family: var(--font-mono); font-size: var(--fs-1); color: var(--accent); min-width: 5rem; text-align: right; }
+      .x9-ev { font-family: var(--font-mono); font-size: var(--fs-2); margin-top: 1rem; padding: .6rem .9rem; border-radius: var(--radius); background: var(--bg); border: 1px solid var(--border); color: var(--text-2); }
+      .x9-ev b { color: var(--text); }
+      .x9-readout { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+      .x9-chip { font-family: var(--font-mono); font-size: var(--fs-0); padding: .3rem .7rem; border-radius: 999px; border: 1px solid var(--border); color: var(--text-2); background: var(--bg); }
+      .x9-chip b { color: var(--text); }
+      .x9-chip.warn { border-color: color-mix(in srgb, var(--rec) 45%, transparent); color: #f8a0a0; }
+      .x9-chip.ok { border-color: color-mix(in srgb, var(--accent) 45%, transparent); color: var(--accent); }
+    </style>
+    <h4>El obturador en vídeo</h4>
+    <p class="x9-sub">La obturación recomendada (180°) es el doble de tus fps. Aléjate de ella y
+    mira qué le pasa al movimiento.</p>
+
+    <div class="x9-stage">
+      <svg viewBox="0 0 480 160" role="img" aria-label="Una pelota en movimiento con más o menos rastro según la obturación" font-family="ui-monospace, Menlo, monospace">
+        <line x1="20" y1="120" x2="460" y2="120" stroke="var(--dg-line-soft)" stroke-width="1"/>
+        <g id="x9-trail"></g>
+        <circle id="x9-ball" cx="240" cy="90" r="16" fill="var(--dg-accent)"/>
+      </svg>
+    </div>
+
+    <div class="x9-controls">
+      <div class="x9-ctl">
+        <label for="x9-fps">fps</label>
+        <input type="range" id="x9-fps" min="0" max="5" step="1" value="1">
+        <span class="x9-val" id="x9-fps-v">25</span>
+      </div>
+      <div class="x9-ctl">
+        <label for="x9-ang">Obturación</label>
+        <input type="range" id="x9-ang" min="0" max="4" step="1" value="2">
+        <span class="x9-val" id="x9-ang-v">1/50</span>
+      </div>
+    </div>
+
+    <div class="x9-ev" id="x9-ev">—</div>
+    <div class="x9-readout" id="x9-readout"></div>
+  </div>
+
+  <script>
+  /* ===== Interactivo · El obturador en vídeo (regla de los 180°) ===== */
+  (function () {
+    var root = document.getElementById('x9-obturador');
+    if (!root) return;
+
+    var FPS = [24, 25, 30, 50, 60, 120];
+    /* ángulos de obturador y su fracción de 1/fps (360°=1/fps, 180°=1/(2fps)…) */
+    var ANG = [
+      { deg: 360, frac: 1,    look: 'onírico' },
+      { deg: 270, frac: 3/4,  look: 'onírico' },
+      { deg: 180, frac: 1/2,  look: 'natural' },
+      { deg: 90,  frac: 1/4,  look: 'nervioso' },
+      { deg: 45,  frac: 1/8,  look: 'nervioso' }
+    ];
+
+    var fpsEl = root.querySelector('#x9-fps');
+    var angEl = root.querySelector('#x9-ang');
+    var fpsV  = root.querySelector('#x9-fps-v');
+    var angV  = root.querySelector('#x9-ang-v');
+    var evEl  = root.querySelector('#x9-ev');
+    var out   = root.querySelector('#x9-readout');
+    var ball  = root.querySelector('#x9-ball');
+    var trail = root.querySelector('#x9-trail');
+
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* redondea el 1/(fps·360/deg) al tiempo de obturación "de cámara" más cercano */
+    var STD = [24, 30, 48, 50, 60, 100, 125, 200, 250, 500, 1000];
+    function nearestShutter(denom) {
+      var best = STD[0], bd = Math.abs(denom - STD[0]);
+      for (var i = 1; i < STD.length; i++) {
+        var d = Math.abs(denom - STD[i]);
+        if (d < bd) { bd = d; best = STD[i]; }
+      }
+      return best;
+    }
+    function chip(t, c) { return '<span class="x9-chip' + (c ? ' ' + c : '') + '">' + t + '</span>'; }
+
+    var state = { deg: 180, frac: 0.5 };
+
+    function render() {
+      var fps = FPS[+fpsEl.value];
+      var ang = ANG[+angEl.value];
+      fpsV.textContent = fps;
+
+      var denom = Math.round(fps * 360 / ang.deg);           /* 1/denom segundos */
+      var shutterDenom = nearestShutter(denom);
+      angV.textContent = '1/' + shutterDenom;
+
+      state.frac = ang.frac;
+      state.deg = ang.deg;
+
+      /* obturación recomendada = 180° para estos fps */
+      var recDenom = nearestShutter(fps * 2);
+      var isRec = ang.deg === 180;
+
+      var msg;
+      if (isRec) msg = 'Obturador a <b>180°</b> (1/' + shutterDenom + ') para ' + fps + ' fps: <b>el look natural</b>, cinematográfico.';
+      else if (ang.look === 'nervioso') msg = 'Obturador a <b>' + ang.deg + '°</b> (1/' + shutterDenom + '): demasiado rápido para ' + fps + ' fps → <b>nervioso, entrecortado</b> (estilo "Ryan").';
+      else msg = 'Obturador a <b>' + ang.deg + '°</b> (1/' + shutterDenom + '): demasiado lento para ' + fps + ' fps → <b>borroso, onírico</b>.';
+      msg += ' Recomendado: 1/' + recDenom + '.';
+      evEl.innerHTML = msg;
+
+      var chips = [];
+      chips.push(chip('Ángulo: ' + ang.deg + '°'));
+      if (isRec) chips.push(chip('✓ Regla de los 180°', 'ok'));
+      else chips.push(chip('✕ Fuera de los 180°', 'warn'));
+      if (ang.look === 'nervioso') chips.push(chip('Poco motion blur', 'warn'));
+      else if (ang.look === 'onírico') chips.push(chip('Mucho motion blur', 'warn'));
+      else chips.push(chip('Motion blur natural', 'ok'));
+      if (fps >= 100) chips.push(chip('Solo 1080 (alta velocidad)'));
+      else if (fps >= 50) chips.push(chip('Materia prima para cámara lenta'));
+      out.innerHTML = chips.join('');
+
+      if (reduce) { drawTrail(240); }
+    }
+
+    /* dibuja el rastro (ghosts) según la fracción de apertura, centrado en x */
+    function drawTrail(cx) {
+      var spread = state.frac * 90;      /* cuánto se extiende el rastro */
+      var n = Math.max(1, Math.round(state.frac * 10));
+      var s = '';
+      for (var i = 1; i <= n; i++) {
+        var off = (spread * i) / n;
+        var op = (0.32 * (1 - i / (n + 1))).toFixed(3);
+        s += '<circle cx="' + (cx - off).toFixed(1) + '" cy="90" r="16" fill="var(--dg-accent)" opacity="' + op + '"/>';
+      }
+      trail.innerHTML = s;
+    }
+
+    /* animación de la pelota (rebote horizontal) */
+    var t = 0;
+    function loop() {
+      t += 0.018;
+      var cx = 240 + Math.sin(t) * 180;    /* 60..420 */
+      ball.setAttribute('cx', cx.toFixed(1));
+      /* el rastro va por detrás del sentido de avance */
+      var dir = Math.cos(t) >= 0 ? 1 : -1;
+      var spread = state.frac * 90;
+      var n = Math.max(1, Math.round(state.frac * 10));
+      var s = '';
+      for (var i = 1; i <= n; i++) {
+        var off = (spread * i) / n * dir;
+        var op = (0.32 * (1 - i / (n + 1))).toFixed(3);
+        s += '<circle cx="' + (cx - off).toFixed(1) + '" cy="90" r="16" fill="var(--dg-accent)" opacity="' + op + '"/>';
+      }
+      trail.innerHTML = s;
+      requestAnimationFrame(loop);
+    }
+
+    fpsEl.addEventListener('input', render);
+    angEl.addEventListener('input', render);
+    render();
+    if (!reduce) requestAnimationFrame(loop);
+  })();
+  </script>
+
+</div>
+
+<script src="../assets/js/manifest.js"></script>
+<script src="../assets/js/search-index.js" defer></script>
+<script src="../assets/js/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="es" data-root="../">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Aprender a mirar: composición fotográfica como decisión, no como reglas. Líneas, espacio negativo, peso visual, color, capas, escala y profundidad, con el método del barrido de campo.">
+<title>Aprender a mirar — Fuji X-S20 Field Guide</title>
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='8' y='8' width='84' height='84' rx='14' fill='%230c0e11'/><path d='M24 24h16M24 24v16M76 24H60M76 24v16M24 76h16M24 76V60M76 76H60M76 76V60' stroke='%234ade80' stroke-width='7' stroke-linecap='round' fill='none'/></svg>">
+</head>
+<body data-chapter="07-composicion">
+
+<div class="content">
+
+  <div class="chapter-hero">
+    <span class="fc"></span>
+    <div class="hero-readout">
+      <span class="r-part">Parte V · Composición</span>
+      <span>Capítulo 7</span>
+      <span>≈45 min</span>
+    </div>
+    <h1>Aprender a mirar</h1>
+    <p class="hero-lede">La cámara no captura lo que viste: captura un rectángulo. Este
+    capítulo no va de reglas que obedecer, sino de aprender a mirar una escena y decidir qué
+    entra y qué se queda fuera. Cuando termines, la regla de los tercios habrá dejado de ser
+    un mandamiento para convertirse en lo que siempre fue: un caso particular de algo mucho
+    más grande.</p>
+    <div class="hero-meta">
+      <span class="pill pill-part">Mirar, no obedecer</span>
+      <span class="pill">Peso visual</span>
+      <span class="pill">Capas</span>
+      <span class="pill">El barrido</span>
+    </div>
+  </div>
+
+  <p>Hay una experiencia que todos hemos tenido. Estás en un mirador de Lisboa al atardecer,
+  el Tajo brillando, los tejados en cascada, el aire tibio, y piensas «esto tengo que
+  fotografiarlo». Disparas. Miras la pantalla. Y la foto es… correcta, pero muerta. No está
+  desenfocada ni mal expuesta: simplemente no contiene lo que sentiste. La conclusión fácil es
+  «la cámara no es lo bastante buena» o «no tengo ojo». Las dos son falsas. Lo que pasó es más
+  interesante, y tiene arreglo.</p>
+
+  <p>Componer es lo que ocurre entre ver una escena y pulsar el disparador. Es la parte de la
+  fotografía que no depende de la cámara —una X-S20, un móvil y una cámara de cine componen con
+  las mismas herramientas— y es, con diferencia, la que más separa una foto que emociona de una
+  que solo documenta. La buena noticia: no es un talento con el que se nace, es una forma de
+  mirar que se entrena. Vamos a entrenarla.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="componer-es-decidir-que-no-sale">Componer es decidir qué no sale</h2>
+
+  <p>Cuando estás en ese mirador, no ves «una imagen». Ves un mundo envolvente: 180 grados de
+  paisaje, el sonido de un tranvía, el olor del río, la temperatura, tu propia emoción. Tu
+  cerebro fusiona todo eso en una sensación única de «qué bonito». Pero la cámara no puede
+  grabar nada de eso. La cámara solo puede hacer una cosa: recortar un rectángulo del mundo y
+  aplanarlo. La fotografía no <b>reproduce</b> lo que viste; lo <b>traduce</b> a un idioma con
+  muchas menos palabras: dos dimensiones, un marco fijo, sin sonido, sin olfato, sin
+  antes-ni-después.</p>
+
+  <p>Aquí está el error de raíz que arruina la mayoría de las fotos de viaje: miramos <b>la
+  escena</b> cuando deberíamos mirar <b>el rectángulo</b>. Nos enamoramos del sitio y apuntamos
+  hacia él, confiando en que la magia entre sola por el objetivo. Pero la magia del sitio vive
+  en todo lo que la cámara <i>no</i> puede grabar. Lo único que llega a la foto es lo que cabe
+  dentro del marco y cómo está organizado ahí dentro. Componer, entonces, no es «añadir» belleza:
+  es <b>restar</b>. Es decidir, de todo el mundo que tienes delante, qué pequeño trozo se queda
+  dentro del borde y —sobre todo— qué se queda fuera.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 250" role="img" aria-labelledby="d71-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d71-t">Una escena panorámica amplia y el pequeño rectángulo que la cámara recorta de ella.</title>
+      <!-- escena panorámica de fondo -->
+      <g opacity="0.5" stroke="var(--dg-line)" stroke-width="1" fill="none">
+        <path d="M20 160 L120 120 L200 150 L300 100 L400 145 L520 110 L620 155"/>
+        <path d="M20 200 h600"/>
+        <circle cx="500" cy="60" r="18"/>
+      </g>
+      <g opacity="0.5" fill="var(--dg-line)">
+        <rect x="60" y="150" width="14" height="50"/><rect x="90" y="140" width="12" height="60"/>
+        <rect x="340" y="150" width="16" height="50"/><rect x="370" y="135" width="12" height="65"/>
+        <rect x="560" y="150" width="14" height="50"/>
+      </g>
+      <text x="320" y="28" fill="var(--dg-text)" text-anchor="middle">lo que ves: todo el mundo, envolvente</text>
+      <!-- el rectángulo elegido -->
+      <rect x="300" y="90" width="150" height="100" fill="none" stroke="var(--dg-accent)" stroke-width="2.5"/>
+      <rect x="300" y="90" width="150" height="100" fill="var(--dg-accent)" opacity="0.08"/>
+      <text x="375" y="210" fill="var(--dg-accent)" text-anchor="middle">lo que graba la cámara</text>
+      <!-- lo descartado -->
+      <text x="130" y="230" fill="var(--dg-text)" text-anchor="middle" font-size="10">todo esto queda FUERA — y esa es tu decisión</text>
+    </svg>
+    <figcaption><b>Figura 7.1.</b> La escena es infinita y envolvente; la foto es un rectángulo
+    pequeño. Tu primer acto creativo no es apuntar: es elegir dónde poner los cuatro bordes.</figcaption>
+  </figure>
+
+  <p>Este cambio mental lo tiene todo. En vez de preguntarte «¿qué hay aquí que sea bonito?»,
+  pregúntate «¿qué quiero que sea <b>esta foto en concreto</b>, y qué está sobrando dentro del
+  marco para contarlo?». La papelera de la esquina, el cable que cruza el cielo, la mitad de un
+  turista con camiseta fosforito: no son detalles menores, son ruido que compite con tu tema.
+  La composición empieza cuando dejas de mirar el mundo y empiezas a mirar los cuatro bordes.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="como-mira-el-ojo">Cómo mira el ojo (y por qué eso te da poder)</h2>
+
+  <p>Antes de las herramientas, una idea que las explica todas. Cuando alguien mira tu foto, su
+  ojo <b>no</b> la recorre de forma uniforme, como un escáner. Se mueve a saltos —los llamados
+  <i>sacádicos</i>— aterrizando en unos sitios y saltándose otros, y lo hace guiado por reglas
+  perceptivas que no elegimos: son de fábrica, herencia de un cerebro que necesitaba encontrar
+  rápido una cara, un depredador o comida entre la maleza. Componer es, básicamente,
+  <b>aprovechar esas reglas</b> para conducir la mirada de tu espectador por donde tú quieres.</p>
+
+  <p>Las tres más útiles de conocer:</p>
+  <ul>
+    <li><b>El contraste llama.</b> El ojo va primero a donde hay más diferencia: la zona más
+    clara sobre un fondo oscuro, la mancha de color en un entorno apagado, el borde más nítido
+    en una imagen suave. No mira «el centro»; mira <b>el máximo contraste</b>. Si el punto de
+    mayor contraste de tu foto no es tu tema, tu foto está señalando otra cosa.</li>
+    <li><b>Los bordes definen las cosas.</b> La visión trabaja detectando bordes: líneas donde
+    algo cambia. Por eso una silueta limpia contra el cielo se lee al instante y una figura que
+    se solapa con un fondo del mismo tono «desaparece». Separar tu sujeto del fondo es,
+    literalmente, darle bordes.</li>
+    <li><b>Las caras y las figuras humanas ganan siempre.</b> Tenemos una zona del cerebro
+    dedicada a detectar caras (por eso vemos caras en los enchufes). En una foto, una figura
+    humana —aunque sea diminuta— atrae la mirada por encima de casi cualquier otra cosa. Es la
+    herramienta compositiva más potente que existe: coloca una personita en una esquina y has
+    creado un imán para el ojo.</li>
+  </ul>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 230" role="img" aria-labelledby="d72-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d72-t">Un muro grande y uniforme con una figura humana pequeña; una línea de mirada salta directa a la figura.</title>
+      <!-- muro texturado tenue -->
+      <rect x="30" y="30" width="580" height="150" fill="none" stroke="var(--dg-line)" stroke-width="1"/>
+      <g opacity="0.35" stroke="var(--dg-line)" stroke-width="1">
+        <line x1="30" y1="70" x2="610" y2="70"/><line x1="30" y1="110" x2="610" y2="110"/>
+        <line x1="30" y1="150" x2="610" y2="150"/>
+        <line x1="180" y1="30" x2="180" y2="180"/><line x1="330" y1="30" x2="330" y2="180"/>
+        <line x1="480" y1="30" x2="480" y2="180"/>
+      </g>
+      <!-- figura humana pequeña -->
+      <g fill="var(--dg-accent)">
+        <circle cx="500" cy="128" r="6"/>
+        <rect x="496" y="135" width="8" height="26" rx="3"/>
+      </g>
+      <!-- recorrido de la mirada -->
+      <path d="M70 55 q120 40 220 10 q100 -20 195 55" fill="none" stroke="var(--dg-amber)" stroke-width="1.5" stroke-dasharray="4 5" marker-end="url(#eye7)"/>
+      <defs><marker id="eye7" markerWidth="9" markerHeight="9" refX="6" refY="4" orient="auto"><path d="M0 0 L9 4 L0 8 z" fill="var(--dg-amber)"/></marker></defs>
+      <text x="150" y="205" fill="var(--dg-amber)" text-anchor="middle">la mirada entra…</text>
+      <text x="500" y="185" fill="var(--dg-accent)" text-anchor="middle">…y aterriza en la figura</text>
+    </svg>
+    <figcaption><b>Figura 7.2.</b> Sobre un muro enorme y monótono, una figura minúscula secuestra
+    toda la atención. El tamaño no manda: manda el interés humano y el contraste con el entorno.</figcaption>
+  </figure>
+
+  <p>A partir de aquí, cada «herramienta» del capítulo es una forma de manejar estas tres fuerzas.
+  Ninguna es una regla. Todas son maneras de responder la única pregunta que importa: <b>¿por dónde
+  quiero que viaje el ojo, y dónde quiero que descanse?</b></p>
+
+  <!-- ============================================================ -->
+  <h2 id="peso-visual">Equilibrio y peso visual</h2>
+
+  <p>Empezamos por aquí a propósito, porque es la herramienta que engloba a la famosa regla de
+  los tercios. <b>Peso visual</b> es la cantidad de «atención» que reclama cada elemento de la
+  imagen. Un objeto grande pesa; pero también pesa una mancha de color intenso aunque sea pequeña,
+  una cara aunque esté al fondo, una zona de mucho contraste, algo nítido frente a algo borroso.
+  Componer con equilibrio es repartir esos pesos dentro del marco para que la imagen no se
+  «caiga» hacia un lado ni se quede plana y muerta en el centro.</p>
+
+  <p>Piensa en una balanza, pero con truco: no necesitas simetría. Una figura pequeña y llamativa
+  en un lado puede equilibrar una gran masa apagada en el otro, igual que en un balancín un niño
+  cerca del borde equilibra a un adulto sentado en el centro. Ese es el juego: pesos distintos a
+  distancias distintas del centro.</p>
+
+  <h3 id="la-regla-de-los-tercios">De dónde sale la regla de los tercios</h3>
+
+  <p>La regla dice: divide el encuadre en tres franjas horizontales y tres verticales, y coloca los
+  elementos importantes sobre esas líneas o en sus cruces. Funciona, pero no por ninguna razón
+  mágica ni sagrada (la leyenda de la «proporción áurea» es en gran parte marketing). Funciona por
+  algo simple: <b>colocar el tema fuera del centro casi siempre crea una imagen más equilibrada y
+  con más tensión que clavarlo en el medio</b>. Cuando pones el sujeto en un tercio, dejas espacio
+  al otro lado para que respire, para que mire hacia algo, para meter contexto. El centro exacto
+  es un sitio estático: la mirada llega y se para en seco. Un tercio invita a recorrer.</p>
+
+  <p>Así que quédate con la <b>razón</b>, no con la cuadrícula: descentra para equilibrar y para
+  dar aire. Y desobedécela sin culpa cuando la escena pida centro —una simetría perfecta, un
+  retrato frontal potente, el final de un callejón que apunta al medio—. La regla es un buen
+  consejo por defecto, no una ley.</p>
+
+  <div class="compare">
+    <div class="bad">
+      <div class="cmp-label">✕ Todo el peso en el centro</div>
+      <svg viewBox="0 0 300 200" role="img" aria-labelledby="d73b" font-family="ui-monospace, Menlo, monospace" font-size="10">
+        <title id="d73b">Un faro clavado en el centro exacto, con el horizonte partiendo la imagen por la mitad.</title>
+        <rect x="1" y="1" width="298" height="198" fill="none" stroke="var(--border)" stroke-width="1"/>
+        <line x1="0" y1="100" x2="300" y2="100" stroke="var(--rec)" stroke-width="1.5"/>
+        <!-- faro centrado -->
+        <path d="M143 100 L146 45 L154 45 L157 100 Z" fill="none" stroke="var(--text-2)" stroke-width="2"/>
+        <rect x="145" y="38" width="10" height="8" fill="none" stroke="var(--text-2)" stroke-width="1.5"/>
+        <text x="150" y="120" fill="var(--rec)" text-anchor="middle">horizonte a la mitad</text>
+        <text x="150" y="185" fill="var(--rec)" text-anchor="middle">estático · sin aire · se parte en dos</text>
+      </svg>
+    </div>
+    <div class="good">
+      <div class="cmp-label">✓ Peso descentrado, horizonte bajo</div>
+      <svg viewBox="0 0 300 200" role="img" aria-labelledby="d73g" font-family="ui-monospace, Menlo, monospace" font-size="10">
+        <title id="d73g">El mismo faro colocado sobre el tercio derecho, con el horizonte en el tercio inferior y cielo abierto a la izquierda.</title>
+        <rect x="1" y="1" width="298" height="198" fill="none" stroke="var(--border)" stroke-width="1"/>
+        <!-- rejilla de tercios -->
+        <g stroke="var(--part)" stroke-width="0.8" opacity="0.5" stroke-dasharray="3 4">
+          <line x1="100" y1="0" x2="100" y2="200"/><line x1="200" y1="0" x2="200" y2="200"/>
+          <line x1="0" y1="67" x2="300" y2="67"/><line x1="0" y1="133" x2="300" y2="133"/>
+        </g>
+        <line x1="0" y1="133" x2="300" y2="133" stroke="var(--accent)" stroke-width="1.5"/>
+        <!-- faro sobre el tercio derecho -->
+        <path d="M197 133 L200 60 L208 60 L211 133 Z" fill="none" stroke="var(--text-2)" stroke-width="2"/>
+        <rect x="199" y="52" width="10" height="9" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+        <circle cx="204" cy="57" r="3" fill="var(--accent)"/>
+        <text x="95" y="105" fill="var(--text-3)" text-anchor="middle" font-size="9">aire · cielo</text>
+        <text x="150" y="185" fill="var(--accent)" text-anchor="middle">tensión · recorrido · respira</text>
+      </svg>
+    </div>
+  </div>
+  <figure class="diagram" style="border:none;background:none;padding:0;margin:-.4rem 0 1.6rem">
+    <figcaption><b>Figura 7.3.</b> La misma escena, dos encuadres. A la izquierda todo pesa en el
+    mismo punto y el horizonte parte la foto; a la derecha el faro descansa sobre un tercio, el
+    horizonte baja para dar cielo, y la mirada tiene por dónde moverse. Nada cambió salvo dónde
+    pusiste los bordes.</figcaption>
+  </figure>
+
+  <div class="callout error" data-title="Error común: el horizonte siempre a la mitad">
+    <p>Partir la imagen con el horizonte por el centro es el reflejo automático de casi todo el
+    mundo, y casi siempre debilita la foto: te obliga a repartir el mismo peso arriba y abajo y no
+    dejas claro qué te importa. Regla práctica: <b>si el cielo es el protagonista</b> (nubes,
+    color del atardecer), baja el horizonte al tercio inferior y dale las dos terceras partes al
+    cielo. <b>Si el protagonista es el suelo</b> (la plaza, el reflejo, la textura), súbelo al
+    tercio superior. El centro solo cuando busques deliberadamente simetría o un reflejo especular.</p>
+  </div>
+
+  <div class="callout exercise" data-title="Ejercicio 7.1 — La balanza">
+    <p>En una plaza de Oporto, elige un tema pequeño y llamativo (una farola, una persona sentada,
+    una maceta roja). Haz tres fotos: una con el tema en el centro, otra sobre el tercio izquierdo
+    y otra sobre el derecho, sin mover nada más. En casa, míralas y anota en cuál «descansa» mejor
+    el ojo y por qué. No busques la respuesta correcta —no la hay—: busca <b>notar la diferencia</b>.
+    Ese es todo el ejercicio.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="leading-lines">Líneas que conducen (leading lines)</h2>
+
+  <p>El ojo es incapaz de resistirse a seguir una línea. Se lo debemos a esa maquinaria de detectar
+  bordes: una línea es un borde largo y continuo, y la mirada se desliza por ella como el dedo por
+  una barandilla. Una <span class="term" title="Leading line: línea real o implícita dentro de la imagen que guía la mirada del espectador hacia el sujeto o hacia el fondo.">línea que conduce</span>
+  (en inglés <i>leading line</i>) es cualquier línea de la escena —una calle, las vías de un tranvía,
+  un río, una hilera de farolas, la juntura de un pavimento, la sombra de un edificio— que usas para
+  guiar la mirada hacia donde tú quieres que llegue.</p>
+
+  <p><b>Cómo funciona:</b> las líneas dan dirección y crean profundidad. Una calle que se estrecha
+  al alejarse arrastra el ojo hacia el fondo y, de paso, convierte una foto plana en una con
+  sensación de espacio. <b>Cuándo funciona de verdad:</b> cuando la línea <i>lleva a algún sitio</i>
+  —termina en tu sujeto o en un punto de interés—. Una línea que entra en el encuadre y muere en la
+  nada es una promesa incumplida: el ojo la sigue y se queda colgado.</p>
+
+  <p><b>Cuándo NO:</b> cuando hay demasiadas líneas peleándose (una maraña de cables, raíles y bordillos
+  cruzándose) el efecto se anula y solo queda caos. Y ojo con las líneas que <i>sacan</i> al ojo de la
+  foto: una diagonal que apunta a la esquina y se va por el borde expulsa la mirada en lugar de retenerla.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 260" role="img" aria-labelledby="d74-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d74-t">Vías de tranvía y las fachadas de una calle estrecha convergen en un punto de fuga donde hay una figura pequeña.</title>
+      <!-- fachadas que convergen -->
+      <path d="M20 30 L300 120 M20 230 L300 140" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <path d="M620 30 L340 120 M620 230 L340 140" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <!-- ventanas apuntando al fondo -->
+      <g stroke="var(--dg-line-soft)" stroke-width="1">
+        <line x1="80" y1="60" x2="80" y2="205"/><line x1="150" y1="85" x2="150" y2="185"/>
+        <line x1="560" y1="60" x2="560" y2="205"/><line x1="490" y1="85" x2="490" y2="185"/>
+      </g>
+      <!-- vías del tranvía -->
+      <path d="M240 260 L312 135 M400 260 L328 135" fill="none" stroke="var(--dg-accent)" stroke-width="2"/>
+      <g stroke="var(--dg-accent)" stroke-width="1.5" opacity="0.7">
+        <line x1="270" y1="215" x2="370" y2="215"/><line x1="288" y1="185" x2="352" y2="185"/>
+        <line x1="300" y1="162" x2="340" y2="162"/>
+      </g>
+      <!-- punto de fuga con figura -->
+      <circle cx="320" cy="132" r="4" fill="var(--dg-amber)"/>
+      <g fill="var(--dg-amber)"><circle cx="320" cy="122" r="3"/><rect x="317" y="126" width="6" height="12" rx="2"/></g>
+      <text x="320" y="108" fill="var(--dg-amber)" text-anchor="middle">todo apunta aquí</text>
+      <text x="320" y="252" fill="var(--dg-text)" text-anchor="middle" font-size="10">las líneas terminan en el sujeto, no en la nada</text>
+    </svg>
+    <figcaption><b>Figura 7.4.</b> Una calle del Chiado: las fachadas, las ventanas y las vías del
+    tranvía convergen en el mismo punto, y ahí has puesto una figura. Todas las líneas trabajan para
+    tu tema. Si el punto de fuga estuviera vacío, la foto sería un pasillo sin destino.</figcaption>
+  </figure>
+
+  <div class="callout tip" data-title="Baja el punto de vista">
+    <p>Las líneas del suelo (adoquines, vías, la línea de la orilla) ganan muchísima fuerza si te
+    agachas. Al bajar la cámara, esas líneas se hacen más largas y más diagonales dentro del encuadre,
+    y la sensación de profundidad se dispara. La pantalla abatible de la X-S20 está hecha para esto:
+    ábrela hacia arriba y compón a la altura de la cintura o de las rodillas sin tumbarte en el suelo.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="espacio-negativo">El espacio negativo</h2>
+
+  <p>El espacio negativo es todo lo que en tu foto <b>no</b> es el sujeto: el cielo liso, el muro
+  desnudo, el agua en calma, la niebla. Suena a «vacío», pero es una de las herramientas más
+  expresivas que hay, y va exactamente contra el instinto del viajero, que tiende a <i>llenar</i> el
+  cuadro para «que salga todo».</p>
+
+  <p><b>Cómo lo percibe el ojo:</b> el vacío es descanso. Si toda la imagen está llena de detalle,
+  no hay ningún sitio donde la mirada pueda posarse, y el resultado agota. Rodear tu sujeto de
+  espacio limpio hace dos cosas: le da bordes nítidos (recuerda, los bordes definen), y por
+  contraste lo señala como importante —«mira, todo esto está vacío para que <i>eso</i> destaque»—.
+  El vacío también carga la foto de emoción: soledad, calma, escala, silencio.</p>
+
+  <p><b>Cuándo funciona:</b> con un sujeto claro y fuerte que aguante quedarse solo. <b>Cuándo NO:</b>
+  cuando el «vacío» en realidad está sucio (un cielo con una estela de avión, una pared con una
+  mancha, un degradado con basura en la esquina). El espacio negativo tiene que estar de verdad
+  limpio; si no, no descansa: distrae.</p>
+
+  <div class="compare">
+    <div class="bad">
+      <div class="cmp-label">✕ Cuadro lleno hasta los bordes</div>
+      <svg viewBox="0 0 300 200" role="img" aria-labelledby="d75b" font-family="ui-monospace, Menlo, monospace" font-size="10">
+        <title id="d75b">Una figura ahogada entre edificios, farolas y cables que llenan todo el encuadre.</title>
+        <rect x="1" y="1" width="298" height="198" fill="none" stroke="var(--border)" stroke-width="1"/>
+        <g stroke="var(--text-3)" stroke-width="1" fill="none" opacity="0.9">
+          <rect x="14" y="40" width="40" height="150"/><rect x="60" y="20" width="34" height="170"/>
+          <rect x="100" y="55" width="30" height="135"/><rect x="210" y="30" width="38" height="160"/>
+          <rect x="252" y="60" width="34" height="130"/>
+          <line x1="0" y1="35" x2="300" y2="55"/><line x1="0" y1="70" x2="300" y2="48"/>
+          <line x1="150" y1="30" x2="140" y2="120"/>
+        </g>
+        <g fill="var(--rec)"><circle cx="165" cy="150" r="5"/><rect x="161" y="156" width="8" height="20" rx="2"/></g>
+        <text x="150" y="192" fill="var(--rec)" text-anchor="middle">¿dónde miro? todo compite</text>
+      </svg>
+    </div>
+    <div class="good">
+      <div class="cmp-label">✓ Aire alrededor del sujeto</div>
+      <svg viewBox="0 0 300 200" role="img" aria-labelledby="d75g" font-family="ui-monospace, Menlo, monospace" font-size="10">
+        <title id="d75g">La misma figura, ahora sola sobre un gran muro liso con mucho espacio vacío alrededor.</title>
+        <rect x="1" y="1" width="298" height="198" fill="none" stroke="var(--border)" stroke-width="1"/>
+        <rect x="1" y="1" width="298" height="198" fill="var(--part)" opacity="0.05"/>
+        <line x1="0" y1="176" x2="300" y2="176" stroke="var(--text-3)" stroke-width="1"/>
+        <g fill="var(--accent)"><circle cx="215" cy="150" r="6"/><rect x="210" y="157" width="10" height="24" rx="2"/></g>
+        <text x="110" y="90" fill="var(--text-3)" text-anchor="middle" font-size="9">espacio negativo (limpio)</text>
+        <text x="150" y="192" fill="var(--accent)" text-anchor="middle">el vacío señala al sujeto</text>
+      </svg>
+    </div>
+  </div>
+  <figure class="diagram" style="border:none;background:none;padding:0;margin:-.4rem 0 1.6rem">
+    <figcaption><b>Figura 7.5.</b> La misma persona en dos encuadres. A la izquierda pelea con media
+    ciudad; a la derecha un muro liso la deja sola y respirando. A veces «mejorar» una foto es sacar
+    cosas del marco, no meterlas.</figcaption>
+  </figure>
+
+  <div class="callout exercise" data-title="Ejercicio 7.2 — Fotografía el vacío">
+    <p>Sal a la calle con una consigna: cada foto debe tener <b>al menos la mitad del encuadre
+    vacío</b> (cielo, muro, agua, sombra) y un solo sujeto pequeño. Fuérzate a diez fotos así.
+    Vas a sentir una resistencia física a «desperdiciar» encuadre; esa incomodidad es justo el
+    hábito viejo resistiéndose. Al revisarlas verás que las que más te gustan no son las más
+    llenas.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="color-como-composicion">El color como composición</h2>
+
+  <p>El color no es solo «cómo quedó»: es una herramienta compositiva de pleno derecho, porque el
+  ojo responde a él antes que a la forma. Tres usos que conviene tener en la cabeza:</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-eyebrow">Acento de color</div>
+      <h4>Una mancha que manda</h4>
+      <p>Una única nota de color saturado sobre un fondo apagado se convierte en el rey del encuadre.
+      El paraguas rojo en la calle gris, la puerta azul en la fachada de piedra. Es peso visual puro:
+      colócalo donde quieras que caiga la mirada.</p>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">Contraste cromático</div>
+      <h4>Colores que chocan</h4>
+      <p>Los colores opuestos en el círculo cromático (azul-naranja, rojo-verde, amarillo-violeta)
+      vibran juntos y separan planos. El cielo azul del atardecer contra la piedra dorada de Lisboa
+      es un contraste azul-naranja de manual, y por eso «funciona» casi solo.</p>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">Paleta armónica</div>
+      <h4>Colores que conviven</h4>
+      <p>Colores vecinos (los ocres, tierras y verdes apagados de un pueblo del interior) crean
+      calma y unidad. Aquí no buscas que un color destaque, sino que el conjunto respire como una
+      sola cosa. Menos ruido, más atmósfera.</p>
+    </div>
+  </div>
+
+  <p><b>Error frecuente:</b> confundir «colores vivos» con «buena foto». Una escena con seis colores
+  saturados peleándose no tiene composición de color: tiene una verbena. El color compone cuando hay
+  <b>jerarquía</b> —uno manda y los demás acompañan— o cuando hay una relación clara entre pocos
+  colores. Si todo grita, nada se oye.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 200" role="img" aria-labelledby="d76-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d76-t">Una fila de ventanas apagadas y una sola contraventana de color intenso que domina la escena.</title>
+      <rect x="20" y="30" width="600" height="130" fill="none" stroke="var(--dg-line)" stroke-width="1"/>
+      <!-- ventanas apagadas -->
+      <g stroke="var(--dg-line)" stroke-width="1.5" fill="none">
+        <rect x="60" y="55" width="55" height="80"/><rect x="150" y="55" width="55" height="80"/>
+        <rect x="240" y="55" width="55" height="80"/><rect x="420" y="55" width="55" height="80"/>
+        <rect x="510" y="55" width="55" height="80"/>
+      </g>
+      <!-- la ventana con acento -->
+      <rect x="330" y="55" width="55" height="80" fill="var(--dg-red)" opacity="0.75"/>
+      <rect x="330" y="55" width="55" height="80" fill="none" stroke="var(--dg-red)" stroke-width="1.5"/>
+      <text x="357" y="150" fill="var(--dg-red)" text-anchor="middle" font-size="10">acento</text>
+      <text x="320" y="185" fill="var(--dg-text)" text-anchor="middle" font-size="10">cinco ventanas apagadas + una viva = el ojo va a la viva</text>
+    </svg>
+    <figcaption><b>Figura 7.6.</b> No necesitas una escena colorida: necesitas un contraste de color.
+    Una sola contraventana pintada entre cinco descoloridas concentra toda la atención. Cuanto más
+    apagado el resto, más manda el acento.</figcaption>
+  </figure>
+
+  <div class="callout tip" data-title="El color empieza en la cámara, no en Lightroom">
+    <p>Puedes empujar mucho el color al revelar (lo verás en <a href="13-lightroom.html#revelado">Lightroom</a>),
+    pero la <i>relación</i> entre colores la decides al componer: qué entra en el marco. Y para
+    <i>ver</i> el color final directamente en el visor, prueba las <a href="03-configuracion-inicial.html#simulaciones-de-pelicula">simulaciones de película</a>:
+    <b>Velvia</b> exagera la saturación (buena para paletas de choque) y <b>Classic Chrome</b> o
+    <b>Nostalgic Neg.</b> apagan y unifican (buenas para paletas armónicas). La luz que uses cambia
+    todo esto; lo ves en detalle en <a href="08-luz.html#golden-hour">el capítulo de la luz</a>.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="formas-y-patrones">Formas, geometría y patrones</h2>
+
+  <p>Por debajo de los objetos, el ojo lee <b>formas</b>: triángulos, círculos, curvas, rectángulos.
+  Una escena que se organiza en formas claras se percibe como «bien compuesta» aunque el espectador
+  no sepa por qué. Los triángulos son especialmente útiles porque transmiten estabilidad y, a la vez,
+  crean direcciones diagonales que dan energía; muchas composiciones que «funcionan misteriosamente»
+  esconden un triángulo entre tres personas, o entre un tejado y dos calles.</p>
+
+  <p>La <b>geometría</b> —simetrías, curvas repetidas, arcos— aparece regalada en la arquitectura de
+  las ciudades portuguesas: claustros, escalinatas, la curva de una calle, la simetría de una plaza.
+  Aprende a mirarla y encontrarás composiciones hechas. La cuadrícula y el nivel de la X-S20 (los
+  vemos más abajo) son tus aliados aquí: la geometría solo funciona si las líneas están rectas de
+  verdad, y un edificio simétrico ligeramente torcido chirría.</p>
+
+  <h3 id="patrones-y-su-ruptura">Patrones y su ruptura</h3>
+
+  <p>Un <b>patrón</b> es un elemento que se repite: los azulejos de una fachada, las ventanas
+  idénticas de un edificio, las sombrillas de una playa, los adoquines. Un patrón que llena el
+  encuadre es hipnótico y decorativo, pero suele ser <i>solo</i> textura: bonito y un poco vacío,
+  porque el ojo no tiene dónde parar. La magia llega con la <b>ruptura</b>: un solo elemento que
+  rompe la repetición. Una ventana abierta entre cien cerradas, una persona entre las columnas
+  iguales, un azulejo distinto. Esa ruptura es peso visual instantáneo —el ojo la caza al momento,
+  porque detectar «lo que no encaja» es otra de sus obsesiones de fábrica— y convierte un patrón
+  decorativo en una foto con tema.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 220" role="img" aria-labelledby="d77-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d77-t">Una cuadrícula regular de azulejos con un solo azulejo distinto que rompe el patrón.</title>
+      <!-- patrón de azulejos -->
+      <g stroke="var(--dg-line)" stroke-width="1" fill="none">
+        <!-- generado a mano: 8x4 -->
+        <rect x="40" y="20" width="60" height="45"/><rect x="105" y="20" width="60" height="45"/><rect x="170" y="20" width="60" height="45"/><rect x="235" y="20" width="60" height="45"/><rect x="300" y="20" width="60" height="45"/><rect x="365" y="20" width="60" height="45"/><rect x="430" y="20" width="60" height="45"/><rect x="495" y="20" width="60" height="45"/>
+        <rect x="40" y="70" width="60" height="45"/><rect x="105" y="70" width="60" height="45"/><rect x="170" y="70" width="60" height="45"/><rect x="235" y="70" width="60" height="45"/><rect x="365" y="70" width="60" height="45"/><rect x="430" y="70" width="60" height="45"/><rect x="495" y="70" width="60" height="45"/>
+        <rect x="40" y="120" width="60" height="45"/><rect x="105" y="120" width="60" height="45"/><rect x="170" y="120" width="60" height="45"/><rect x="235" y="120" width="60" height="45"/><rect x="300" y="120" width="60" height="45"/><rect x="365" y="120" width="60" height="45"/><rect x="430" y="120" width="60" height="45"/><rect x="495" y="120" width="60" height="45"/>
+      </g>
+      <!-- motivo repetido tenue -->
+      <g stroke="var(--dg-line-soft)" stroke-width="0.8" opacity="0.6" fill="none">
+        <circle cx="70" cy="42" r="10"/><circle cx="135" cy="42" r="10"/><circle cx="200" cy="42" r="10"/><circle cx="265" cy="42" r="10"/><circle cx="330" cy="42" r="10"/><circle cx="395" cy="42" r="10"/><circle cx="460" cy="42" r="10"/><circle cx="525" cy="42" r="10"/>
+        <circle cx="70" cy="92" r="10"/><circle cx="135" cy="92" r="10"/><circle cx="200" cy="92" r="10"/><circle cx="265" cy="92" r="10"/><circle cx="395" cy="92" r="10"/><circle cx="460" cy="92" r="10"/><circle cx="525" cy="92" r="10"/>
+      </g>
+      <!-- la ruptura -->
+      <rect x="300" y="70" width="60" height="45" fill="var(--dg-accent)" opacity="0.8"/>
+      <rect x="300" y="70" width="60" height="45" fill="none" stroke="var(--dg-accent)" stroke-width="1.5"/>
+      <text x="330" y="200" fill="var(--dg-accent)" text-anchor="middle" font-size="10">la ruptura secuestra la mirada</text>
+    </svg>
+    <figcaption><b>Figura 7.7.</b> Un patrón de azulejos es textura agradable hasta que algo lo rompe;
+    entonces se vuelve una foto. Busca patrones y luego busca —o espera— la excepción: la ventana
+    abierta, la persona que entra en cuadro, la baldosa rota.</figcaption>
+  </figure>
+
+  <!-- ============================================================ -->
+  <h2 id="encuadre-dentro-del-encuadre">El encuadre dentro del encuadre</h2>
+
+  <p>Es una de las herramientas más satisfactorias y de las que menos se usan. Consiste en usar un
+  elemento de la escena —un arco, una puerta, una ventana, las ramas de un árbol, el hueco entre dos
+  columnas— como <b>marco interior</b> alrededor de tu sujeto. La cámara ya dibuja un rectángulo
+  (los cuatro bordes); tú añades un segundo marco <i>dentro</i> de la imagen.</p>
+
+  <p><b>Por qué funciona tan bien:</b> el marco interior hace tres cosas a la vez. Concentra la
+  mirada (el ojo entra por el hueco y va directo a lo enmarcado), añade profundidad (hay un
+  «delante» —el arco— y un «detrás» —el sujeto—) y da contexto (el arco te dice que estás mirando
+  desde dentro de algo). Las ciudades portuguesas están llenas de marcos regalados: los arcos de la
+  Ribeira de Oporto, las puertas de las iglesias, los soportales, una <i>rua</i> que se ve por el
+  hueco de un callejón.</p>
+
+  <p><b>Cuándo NO:</b> si el marco está tan oscuro que se come media foto sin aportar, o si es tan
+  llamativo que se convierte él en el tema y el sujeto enmarcado se pierde. El marco es un actor de
+  reparto: tiene que señalar, no robar plano.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 250" role="img" aria-labelledby="d78-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d78-t">Un arco de piedra en primer término enmarca, al fondo, un tranvía y una figura pequeña.</title>
+      <!-- arco en primer término (oscuro) -->
+      <path d="M40 250 L40 90 Q40 40 120 40 L200 40 Q280 40 280 90 L280 250" fill="var(--dg-line)" opacity="0.18"/>
+      <path d="M40 250 L40 90 Q40 40 120 40 L200 40 Q280 40 280 90 L280 250" fill="none" stroke="var(--dg-line)" stroke-width="2"/>
+      <!-- también arco derecho para dar simetría de soportal -->
+      <path d="M600 250 L600 90 Q600 40 520 40 L440 40 Q360 40 360 90 L360 250" fill="var(--dg-line)" opacity="0.18"/>
+      <path d="M600 250 L600 90 Q600 40 520 40 L440 40 Q360 40 360 90 L360 250" fill="none" stroke="var(--dg-line)" stroke-width="2"/>
+      <!-- escena enmarcada al fondo, en el hueco central -->
+      <line x1="290" y1="200" x2="350" y2="200" stroke="var(--dg-line-soft)" stroke-width="1"/>
+      <rect x="300" y="150" width="40" height="45" rx="3" fill="none" stroke="var(--dg-accent)" stroke-width="1.8"/>
+      <circle cx="308" cy="200" r="4" fill="none" stroke="var(--dg-accent)" stroke-width="1.5"/>
+      <circle cx="332" cy="200" r="4" fill="none" stroke="var(--dg-accent)" stroke-width="1.5"/>
+      <g fill="var(--dg-amber)"><circle cx="355" cy="185" r="3"/><rect x="352" y="189" width="6" height="12" rx="2"/></g>
+      <text x="320" y="130" fill="var(--dg-accent)" text-anchor="middle" font-size="10">sujeto enmarcado</text>
+      <text x="150" y="150" fill="var(--dg-text)" text-anchor="middle" font-size="10">marco</text>
+      <text x="480" y="150" fill="var(--dg-text)" text-anchor="middle" font-size="10">marco</text>
+    </svg>
+    <figcaption><b>Figura 7.8.</b> Un soportal de la Ribeira: los arcos en penumbra enmarcan el
+    tranvía y la figura del fondo. El marco oscuro empuja la mirada hacia la luz del centro y añade
+    una capa de «desde dónde» miras. Volveremos sobre esto en un momento, porque es también un caso
+    de capas.</figcaption>
+  </figure>
+
+  <!-- ============================================================ -->
+  <h2 id="capas">Capas: primer término, medio y fondo</h2>
+
+  <p>Si tuviera que quedarme con una sola herramienta para la fotografía de viaje, sería esta. Las
+  <b>capas</b> son la respuesta al problema fundamental que planteamos al principio: la escena es
+  tridimensional y envolvente; la foto es plana. Componer en capas es reconstruir esa profundidad
+  dentro del rectángulo, organizando la imagen en tres planos de distancia:</p>
+
+  <ul>
+    <li><b>Primer término</b> (lo más cercano): unas hojas, un murete, una figura de espaldas, el
+    borde de una mesa. Da la sensación de que el espectador está <i>dentro</i> de la escena, no
+    mirándola desde fuera.</li>
+    <li><b>Plano medio</b>: normalmente donde vive tu sujeto principal.</li>
+    <li><b>Fondo</b>: el contexto, el lugar, el cielo, la ciudad que se aleja.</li>
+  </ul>
+
+  <p>La foto plana típica del viajero tiene <i>solo</i> plano medio y fondo: sujeto y paisaje, como
+  una pegatina sobre un decorado. En cuanto añades algo en primer término, el cerebro del que mira
+  reconstruye el volumen —«hay algo cerca, algo lejos, luego esto tiene profundidad»— y la imagen
+  deja de ser una postal para volverse un espacio en el que se puede entrar.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 260" role="img" aria-labelledby="d79-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d79-t">Un mirador de Oporto en tres capas: un murete y una planta en primer término, una figura en el plano medio y los tejados y el río al fondo.</title>
+      <!-- fondo: tejados y río, tenue -->
+      <g opacity="0.4" stroke="var(--dg-line)" stroke-width="1" fill="none">
+        <path d="M20 120 h600"/>
+        <path d="M60 120 l20 -18 20 18 M120 120 l16 -14 16 14 M200 120 l24 -22 24 22 M300 120 l18 -16 18 16 M420 120 l22 -20 22 20 M520 120 l18 -15 18 15"/>
+      </g>
+      <text x="560" y="112" fill="var(--dg-text)" text-anchor="end" font-size="10">fondo · ciudad / río</text>
+      <!-- plano medio: figura -->
+      <g fill="var(--dg-accent)"><circle cx="400" cy="150" r="8"/><rect x="393" y="160" width="14" height="34" rx="4"/></g>
+      <text x="400" y="210" fill="var(--dg-accent)" text-anchor="middle" font-size="10">plano medio · sujeto</text>
+      <!-- primer término: murete + planta, oscuro y grande -->
+      <path d="M0 260 L0 205 L640 205 L640 260 Z" fill="var(--dg-line)" opacity="0.22"/>
+      <line x1="0" y1="205" x2="640" y2="205" stroke="var(--dg-line)" stroke-width="2"/>
+      <g stroke="var(--dg-line)" stroke-width="2" fill="none">
+        <path d="M90 205 q-14 -34 6 -50 q-6 26 14 24 q-18 12 -20 26"/>
+        <path d="M110 205 q10 -30 -4 -46"/>
+      </g>
+      <text x="120" y="245" fill="var(--dg-text)" font-size="10">primer término · cercano y grande</text>
+    </svg>
+    <figcaption><b>Figura 7.9.</b> El mismo mirador que abría el capítulo, ahora en tres capas: la
+    planta y el murete que tienes al lado (primer término), una figura contemplando (plano medio) y
+    los tejados con el río (fondo). El primer término es lo que faltaba en aquella primera foto muerta.</figcaption>
+  </figure>
+
+  <p>Encontrar primer término es un <b>hábito de pies</b> más que de ojo: casi nunca está donde
+  estás; está un paso a un lado, agachándote un poco, o buscando qué poner entre tú y la escena.
+  Muévete hasta que algo cercano entre por el borde inferior o lateral del cuadro. Aquí es donde el
+  <a href="06-objetivos.html#perspectiva-y-compresion">23 mm</a> brilla: su ángulo amplio te deja
+  meter primer término cercano y fondo lejano en la misma toma, exagerando la distancia entre capas
+  (repasa <a href="06-objetivos.html#perspectiva-y-compresion">perspectiva y compresión</a> para
+  entender por qué el 35 mm aplana esa relación y el 23 mm la estira).</p>
+
+  <div class="callout exercise" data-title="Ejercicio 7.3 — Tres capas obligatorias">
+    <p>Durante una tarde entera, imponte una única norma: <b>ninguna foto sin primer término</b>.
+    Cada vez que veas algo que quieras fotografiar, antes de disparar da un paso, agáchate o gírate
+    hasta encontrar qué poner cerca de la cámara. Ramas, un banco, una farola, un hombro, una
+    barandilla. Al principio ralentiza mucho; en unos días lo harás sin pensar y no volverás a las
+    postales planas.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="escala-y-profundidad">Escala y profundidad</h2>
+
+  <h3 id="escala">Escala: dar tamaño con una referencia</h3>
+
+  <p>Fotografías el gran claustro, la ola enorme, la secuoya, la fachada monumental… y en la foto
+  se ve pequeño y anodino. El problema es que <b>en una foto no hay tamaño absoluto</b>: el cerebro
+  del que mira solo puede juzgar el tamaño de algo comparándolo con otra cosa que ya conoce. Sin
+  referencia, lo gigante y lo mediano se ven igual.</p>
+
+  <p>La solución es meter una <b>referencia de escala conocida</b>, y la más potente es una figura
+  humana. Una persona diminuta al pie de la muralla dice «esto es enorme» mucho mejor que cualquier
+  encuadre. Además —recuerda la Figura 7.2— esa figura atrae la mirada, así que de paso te da tema.
+  Sirve también un coche, una puerta, un árbol: cualquier cosa de tamaño familiar. Este es, por
+  cierto, uno de los pocos momentos en los que quieres que la persona sea <i>pequeña</i> en el
+  cuadro: cuanto más pequeña frente a lo grande, más impresiona la escala.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 240" role="img" aria-labelledby="d710-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d710-t">Una gran fachada monumental; a la izquierda sin nada que dé escala, a la derecha con una figura diminuta a su pie.</title>
+      <!-- fachada izquierda, sin referencia -->
+      <rect x="30" y="20" width="250" height="200" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <g stroke="var(--dg-line)" stroke-width="1" opacity="0.6">
+        <line x1="30" y1="80" x2="280" y2="80"/><line x1="30" y1="140" x2="280" y2="140"/>
+        <line x1="113" y1="20" x2="113" y2="220"/><line x1="197" y1="20" x2="197" y2="220"/>
+      </g>
+      <text x="155" y="236" fill="var(--dg-text)" text-anchor="middle" font-size="10">¿grande? ¿mediano? no se sabe</text>
+      <!-- misma fachada, con figura -->
+      <rect x="360" y="20" width="250" height="200" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <g stroke="var(--dg-line)" stroke-width="1" opacity="0.6">
+        <line x1="360" y1="80" x2="610" y2="80"/><line x1="360" y1="140" x2="610" y2="140"/>
+        <line x1="443" y1="20" x2="443" y2="220"/><line x1="527" y1="20" x2="527" y2="220"/>
+      </g>
+      <g fill="var(--dg-accent)"><circle cx="470" cy="200" r="4"/><rect x="466" y="205" width="8" height="13" rx="2"/></g>
+      <text x="485" y="236" fill="var(--dg-accent)" text-anchor="middle" font-size="10">la figura dice: es ENORME</text>
+    </svg>
+    <figcaption><b>Figura 7.10.</b> La misma fachada. Sin referencia, el tamaño es un misterio; con
+    una persona diminuta a su pie, la monumentalidad aparece de golpe. La escala no está en el objeto:
+    está en la comparación.</figcaption>
+  </figure>
+
+  <h3 id="profundidad">Profundidad: superposición, líneas y atmósfera</h3>
+
+  <p>Las capas son la principal forma de crear profundidad, pero no la única. El cerebro deduce la
+  distancia con varias «pistas» que puedes activar a propósito:</p>
+  <ul>
+    <li><b>Superposición</b>: si un objeto tapa parcialmente a otro, sabemos sin dudar que el que
+    tapa está delante. Colocar elementos que se solapan (tejados que se pisan, colinas que se montan
+    unas sobre otras) crea escalones de profundidad.</li>
+    <li><b>Líneas convergentes</b>: las mismas <a href="#leading-lines">líneas que conducen</a>
+    dan profundidad, porque la perspectiva hace que lo lejano parezca más pequeño y junto.</li>
+    <li><b>Perspectiva atmosférica</b>: cuanto más lejos está algo, más aire hay entre tú y ello, y
+    ese aire (bruma, humedad, contaminación, la calima del verano) lo vuelve más claro, más azulado
+    y menos contrastado. Las colinas del fondo, más pálidas que las de delante, gritan «lejos». Es
+    la pista de profundidad más fácil de aprovechar en un mirador al amanecer, cuando aún hay bruma.</li>
+  </ul>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 200" role="img" aria-labelledby="d711-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d711-t">Cuatro filas de colinas superpuestas que se vuelven más pálidas hacia el fondo por la perspectiva atmosférica.</title>
+      <path d="M0 190 L0 130 Q160 90 320 125 Q480 155 640 120 L640 190 Z" fill="var(--dg-line)" opacity="0.6"/>
+      <path d="M0 190 L0 145 Q160 115 320 145 Q480 170 640 140 L640 190 Z" fill="var(--dg-line)" opacity="0.42"/>
+      <path d="M0 190 L0 160 Q160 138 320 162 Q480 182 640 158 L640 190 Z" fill="var(--dg-line)" opacity="0.26"/>
+      <path d="M0 100 Q160 70 320 100 Q480 128 640 95 L640 190 L0 190 Z" fill="var(--dg-line)" opacity="0.14"/>
+      <text x="90" y="182" fill="var(--dg-text)" font-size="10">cerca · oscuro · contrastado</text>
+      <text x="560" y="115" fill="var(--dg-blue)" text-anchor="end" font-size="10">lejos · pálido · azulado</text>
+    </svg>
+    <figcaption><b>Figura 7.11.</b> Colinas superpuestas al amanecer: cada fila más lejana es más
+    clara y más azulada que la anterior. La superposición ordena los planos y la bruma los aleja.
+    Sin tocar nada, la foto tiene kilómetros de fondo.</figcaption>
+  </figure>
+
+  <!-- ============================================================ -->
+  <h2 id="combinar-las-herramientas">Cómo se combinan (y por qué ninguna es una regla)</h2>
+
+  <p>Hasta aquí las hemos visto de una en una, como quien aprende los ingredientes por separado.
+  Pero ninguna foto lograda usa <i>una</i> herramienta: usa varias trabajando juntas, y a menudo
+  varias son la misma cosa vista de otro modo. Vuelve a la Figura 7.8, el soportal de la Ribeira. Ese
+  arco es a la vez <a href="#encuadre-dentro-del-encuadre">encuadre dentro del encuadre</a> (marca
+  el sujeto), <a href="#capas">primer término</a> (crea la capa cercana), <a href="#peso-visual">peso
+  visual</a> (su masa oscura equilibra el fondo luminoso) y hasta <a href="#espacio-negativo">espacio
+  negativo</a> (su penumbra es una zona limpia y sin detalle). Una sola decisión —dónde colocarte para
+  que el arco entrara en cuadro— disparó cuatro herramientas a la vez.</p>
+
+  <p>De ahí que insista en que no son reglas. Una regla se cumple o se incumple; una herramienta se
+  <i>usa</i> o no según lo que quieras decir. La pregunta nunca es «¿estoy cumpliendo la regla de los
+  tercios?», sino «¿por dónde entra el ojo, por dónde viaja, dónde descansa, y qué está sobrando?».
+  Si tienes clara la respuesta, has compuesto bien aunque hayas plantado el sujeto en el centro y
+  llenado el cuadro hasta los bordes. Las herramientas son el vocabulario; la frase la eliges tú.</p>
+
+  <div class="callout error" data-title="Error común: coleccionar reglas en vez de mirar">
+    <p>El fotógrafo que memoriza «regla de los tercios, líneas diagonales, número impar de
+    elementos, no cortes por las articulaciones…» acaba disparando con una checklist en la cabeza y
+    fotos que cumplen todo y no dicen nada. Las reglas son ruedines: sirven al principio para no
+    caerte, pero si nunca las quitas, nunca aprendes a ir en bici de verdad. El objetivo no es
+    cumplir reglas: es <b>ver</b>, y luego decidir qué quieres que sienta quien mire.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="el-barrido">El método de campo: el barrido de cinco segundos</h2>
+
+  <p>Toda esta teoría no sirve de nada si en el momento de disparar la olvidas —y la olvidarás, porque
+  en la calle hay prisa, luz que cambia, gente que se mueve—. Por eso necesitas un <b>hábito</b>: una
+  rutina tan corta que puedas hacerla siempre, que traduzca «mirar» en un gesto concreto. Yo lo llamo
+  el <b>barrido</b>. Son cinco segundos, cinco preguntas, con la cámara ya en el ojo y antes de pulsar
+  el disparador. No es una checklist que apuntes: es un recorrido que interiorizas hasta que se hace
+  invisible.</p>
+
+  <div class="callout summary" data-title="El barrido: cinco segundos antes de disparar">
+    <ul>
+      <li><b>Los bordes.</b> Recorre los cuatro lados del encuadre con la vista. ¿Qué está entrando
+      o saliendo por cada borde? ¿Hay medio coche, un brazo cortado, una farola clavada en el borde?</li>
+      <li><b>Qué sobra.</b> ¿Qué elemento no aporta nada a lo que quiero contar? ¿Puedo sacarlo
+      moviéndome un paso, cambiando el zoom o esperando a que se vaya?</li>
+      <li><b>Dónde está el peso.</b> ¿A dónde va mi ojo primero? ¿Es donde yo quiero? Si no, ¿qué lo
+      está robando (una mancha clara, un rojo, una cara al fondo)?</li>
+      <li><b>Qué toca el horizonte.</b> ¿Está recto? ¿A qué altura lo pongo, y sale una farola o un
+      árbol «creciendo» de la cabeza de alguien?</li>
+      <li><b>El primer término.</b> ¿Hay una capa cercana, o es una postal plana? ¿Doy un paso, me
+      agacho, meto algo delante?</li>
+    </ul>
+  </div>
+
+  <div class="compare">
+    <div class="bad">
+      <div class="cmp-label">✕ Disparo sin barrido</div>
+      <svg viewBox="0 0 300 200" role="img" aria-labelledby="d712b" font-family="ui-monospace, Menlo, monospace" font-size="10">
+        <title id="d712b">Encuadre descuidado: horizonte torcido, una farola saliendo de la cabeza de una figura y objetos cortados en los bordes.</title>
+        <rect x="1" y="1" width="298" height="198" fill="none" stroke="var(--border)" stroke-width="1"/>
+        <!-- horizonte torcido -->
+        <line x1="0" y1="130" x2="300" y2="112" stroke="var(--rec)" stroke-width="1.5"/>
+        <!-- figura con farola saliendo de la cabeza -->
+        <g fill="var(--text-2)"><circle cx="150" cy="95" r="8"/><rect x="143" y="104" width="14" height="30" rx="3"/></g>
+        <line x1="150" y1="87" x2="150" y2="30" stroke="var(--rec)" stroke-width="2"/>
+        <circle cx="150" cy="30" r="5" fill="none" stroke="var(--rec)" stroke-width="2"/>
+        <!-- objeto cortado en el borde -->
+        <rect x="278" y="60" width="22" height="70" fill="none" stroke="var(--rec)" stroke-width="1.5"/>
+        <text x="150" y="192" fill="var(--rec)" text-anchor="middle">farola en la cabeza · borde sucio · torcido</text>
+      </svg>
+    </div>
+    <div class="good">
+      <div class="cmp-label">✓ Después del barrido</div>
+      <svg viewBox="0 0 300 200" role="img" aria-labelledby="d712g" font-family="ui-monospace, Menlo, monospace" font-size="10">
+        <title id="d712g">El mismo encuadre corregido: horizonte recto y bajo, figura desplazada para separarla de la farola y bordes limpios.</title>
+        <rect x="1" y="1" width="298" height="198" fill="none" stroke="var(--border)" stroke-width="1"/>
+        <line x1="0" y1="150" x2="300" y2="150" stroke="var(--accent)" stroke-width="1.5"/>
+        <!-- figura desplazada al tercio, farola separada -->
+        <g fill="var(--text-2)"><circle cx="105" cy="118" r="8"/><rect x="98" y="127" width="14" height="23" rx="3"/></g>
+        <line x1="210" y1="150" x2="210" y2="55" stroke="var(--text-3)" stroke-width="2"/>
+        <circle cx="210" cy="55" r="5" fill="none" stroke="var(--text-3)" stroke-width="1.5"/>
+        <text x="150" y="192" fill="var(--accent)" text-anchor="middle">recto · separado · bordes limpios</text>
+      </svg>
+    </div>
+  </div>
+  <figure class="diagram" style="border:none;background:none;padding:0;margin:-.4rem 0 1.6rem">
+    <figcaption><b>Figura 7.12.</b> El mismo instante, con y sin barrido. Dos segundos de mirar los
+    bordes y el horizonte convierten un encuadre accidentado en uno limpio. Ninguno de estos arreglos
+    requiere talento: requieren mirar antes de disparar.</figcaption>
+  </figure>
+
+  <div class="callout gear" data-title="En la X-S20: la cuadrícula, el nivel y el hábito de los bordes">
+    <p>La cámara tiene tres ayudas hechas exactamente para el barrido:</p>
+    <p class="menu-path"><b>MENU</b> <span class="sep">→</span> ⚙ CONFIG. PANTALLA <span class="sep">→</span> AJUSTE PANT. VISUALIZAR <span class="sep">→</span> <b>ENCUADRE GUÍA</b></p>
+    <ul>
+      <li><b>Cuadrícula 3×3</b> (framing guideline): activa la rejilla de nueve casillas. No la uses
+      como mandamiento para clavar el sujeto en los cruces, sino como <b>referencia rápida</b> para
+      ver a qué altura va el horizonte y si algo importante cae donde quieres. La X-S20 ofrece
+      también una cuadrícula más densa (24 casillas) y una guía en diagonal.</li>
+      <li><b>Nivel electrónico</b> (electronic level): un horizonte artificial que se pone verde
+      cuando la cámara está recta. Es la cura definitiva del horizonte torcido. Añádelo a la
+      información en pantalla desde <b>AJUSTE PANT. VISUALIZAR</b>; y recuerda que puedes controlar
+      qué se muestra con el botón <kbd>DISP/BACK</kbd>.</li>
+      <li><b>El hábito de revisar los bordes en el EVF.</b> Antes de disparar, con el ojo pegado al
+      <a href="02-ergonomia.html#visor-o-pantalla">visor</a>, mueve conscientemente la mirada a las
+      cuatro esquinas. El EVF te muestra el 100 % del encuadre, así que lo que ves es exactamente lo
+      que grabas: no hay sorpresas fuera de cuadro. Es el gesto que más fotos «salva».</li>
+    </ul>
+  </div>
+
+  <div class="callout exercise" data-title="Ejercicio 7.4 — Barrido en voz alta">
+    <p>Durante una sesión corta, haz el barrido <b>literalmente en voz alta</b> antes de cada disparo:
+    «bordes… limpios; sobra el contenedor de la derecha, doy un paso; el peso va al rojo del toldo,
+    bien; horizonte recto y bajo; primer término, meto la barandilla». Suena ridículo y es
+    incomodísimo, y por eso funciona: verbalizarlo obliga a mirar de verdad cada punto. En pocas
+    sesiones lo harás en silencio y en un segundo.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="composicion-en-video">Composición en vídeo</h2>
+
+  <p>Casi todo lo anterior vale igual para el vídeo, con una diferencia enorme: el vídeo <b>dura</b>.
+  Una foto se mira un instante; un plano de vídeo se sostiene seis, ocho, diez segundos, y en ese
+  tiempo la gente entra y sale del cuadro, las nubes se mueven, el tranvía cruza. Componer para vídeo
+  es componer un encuadre que <b>aguante</b> ese tiempo sin aburrir y sin descuadrarse.</p>
+
+  <p>Dos conceptos nuevos que no existen en foto:</p>
+  <ul>
+    <li><b>Aire para el movimiento</b> (<span class="term" title="Lead room: el espacio que se deja delante de un sujeto en movimiento, en la dirección hacia la que se mueve o mira.">lead room</span>):
+    si alguien camina o mira hacia la derecha, deja espacio <i>delante</i> de él, no detrás. El ojo
+    quiere «ver hacia dónde va». Un sujeto pegado al borde por el que avanza produce una sensación
+    claustrofóbica e incorrecta.</li>
+    <li><b>Espacio sobre la cabeza</b> (<span class="term" title="Headroom: el espacio entre la parte superior de la cabeza del sujeto y el borde superior del encuadre.">headroom</span>):
+    el hueco entre la cabeza y el borde de arriba. Demasiado, y el sujeto se hunde en la parte baja;
+    demasiado poco, y parece que roza el techo. Un headroom equilibrado hace que el plano «se siente»
+    bien de forma inmediata.</li>
+  </ul>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 220" role="img" aria-labelledby="d713-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d713-t">Dos encuadres de vídeo: uno sin aire delante del sujeto que camina, otro con lead room y headroom correctos.</title>
+      <!-- MAL: sin lead room -->
+      <rect x="20" y="20" width="270" height="160" fill="none" stroke="var(--dg-red)" stroke-width="1.5"/>
+      <g fill="var(--dg-line)"><circle cx="240" cy="80" r="12"/><rect x="230" y="94" width="20" height="55" rx="5"/></g>
+      <path d="M258 120 l24 0 m-8 -6 l8 6 -8 6" stroke="var(--dg-red)" stroke-width="1.5" fill="none"/>
+      <text x="140" y="205" fill="var(--dg-red)" text-anchor="middle" font-size="10">✕ camina contra el borde, sin aire</text>
+      <!-- BIEN: con lead room y headroom -->
+      <rect x="350" y="20" width="270" height="160" fill="none" stroke="var(--dg-green)" stroke-width="1.5"/>
+      <g fill="var(--dg-line)"><circle cx="410" cy="80" r="12"/><rect x="400" y="94" width="20" height="55" rx="5"/></g>
+      <path d="M428 120 l60 0 m-8 -6 l8 6 -8 6" stroke="var(--dg-green)" stroke-width="1.5" fill="none"/>
+      <line x1="410" y1="20" x2="410" y2="66" stroke="var(--dg-green)" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="420" y="40" fill="var(--dg-green)" font-size="9">headroom</text>
+      <text x="510" y="140" fill="var(--dg-green)" text-anchor="middle" font-size="9">lead room</text>
+      <text x="485" y="205" fill="var(--dg-green)" text-anchor="middle" font-size="10">✓ aire hacia donde va</text>
+    </svg>
+    <figcaption><b>Figura 7.13.</b> En vídeo, deja aire por delante del sujeto (lead room) y un
+    headroom equilibrado sobre la cabeza. El encuadre tiene que dar espacio para que la acción
+    ocurra <i>dentro</i> del plano durante los segundos que dura.</figcaption>
+  </figure>
+
+  <p>La regla práctica del <b>plano que aguanta seis segundos</b>: antes de grabar, pregúntate «¿qué
+  va a pasar aquí dentro en los próximos segundos, y el encuadre lo aguanta?». Si vas a dejar que un
+  tranvía cruce, encuadra pensando en dónde entra y dónde sale. Todo esto se conecta con el
+  vocabulario de planos —general, medio, detalle— que ves en
+  <a href="11-tipos-de-plano.html#plano-general">Tipos de plano</a>: cada tipo pide un headroom y un
+  lead room distintos, y elegir el plano correcto es la primera decisión de composición en vídeo.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="cierre">Antes de salir a mirar</h2>
+
+  <p>La composición es la única parte de la fotografía que no puedes comprar. Puedes comprar un
+  objetivo más luminoso, un sensor mayor, un trípode; no puedes comprar el ojo que decide dónde poner
+  los bordes. La buena noticia, otra vez, es que no hace falta comprarlo: se entrena mirando, fallando
+  y volviendo a mirar. Las herramientas de este capítulo son el mapa; el terreno lo pisas tú, con la
+  cámara al ojo y el barrido en la cabeza.</p>
+
+  <div class="callout challenge" data-title="Reto del capítulo — Veinte fotos desde el mismo punto">
+    <p>Elige un sitio con potencial y algo de actividad: un mirador de Lisboa, una esquina animada de
+    Oporto, la orilla del Duero. Planta los pies en un punto y <b>no te muevas de ahí</b>. Tu misión:
+    hacer <b>veinte fotos distintas y buenas sin dar un solo paso</b>. Solo puedes girar, agacharte,
+    ponerte de puntillas, cambiar el encuadre, esperar a que la gente entre y salga, cambiar de
+    vertical a horizontal, buscar primer término a tu alrededor, jugar con las líneas que ya están
+    ahí. Las primeras cinco saldrán solas; a partir de la décima empezarás a <b>ver</b> de verdad —a
+    descubrir composiciones que estaban delante de ti todo el tiempo y no veías—. Ese salto, el de la
+    foto 10 a la 20, es exactamente lo que este capítulo quería enseñarte: que componer no es encontrar
+    sitios bonitos, es aprender a mirar el que tienes delante.</p>
+  </div>
+
+  <div class="callout summary" data-title="Lo esencial del capítulo">
+    <ul>
+      <li>La foto no reproduce lo que viste: lo <b>traduce</b> a un rectángulo plano. Componer es
+      elegir qué entra en ese rectángulo y, sobre todo, qué queda fuera.</li>
+      <li>El ojo va al contraste, sigue los bordes y salta a las caras y figuras humanas. Todas las
+      herramientas son formas de aprovechar esas tres fuerzas para guiar la mirada.</li>
+      <li>El <b>peso visual</b> lo engloba todo; la regla de los tercios es solo su caso más común
+      —descentrar para equilibrar y dar aire—, no una ley.</li>
+      <li>Las <b>capas</b> (primer término, medio, fondo) son la herramienta reina del viaje:
+      devuelven a la foto plana la profundidad del mundo real.</li>
+      <li>El resto —líneas, espacio negativo, color, formas, patrones, marcos, escala, profundidad—
+      son maneras de decidir por dónde viaja el ojo y dónde descansa.</li>
+      <li>Interioriza el <b>barrido</b> de cinco segundos (bordes, qué sobra, peso, horizonte, primer
+      término) y apóyate en la cuadrícula y el nivel de la X-S20.</li>
+      <li>En vídeo, compón un encuadre que aguante el tiempo: deja <i>lead room</i> y un
+      <i>headroom</i> equilibrado.</li>
+    </ul>
+  </div>
+
+  <details class="callout faq">
+    <summary>¿Debería activar siempre la cuadrícula de tercios en el visor?</summary>
+    <div class="co-body">
+      <p>Puedes, y a mucha gente le ayuda al principio como referencia para nivelar el horizonte y
+      ubicar el sujeto. Pero cuidado con el efecto secundario: si te acostumbras a «clavar» todo en
+      los cruces, la cuadrícula se convierte en las reglas-mandamiento contra las que va este
+      capítulo. Mi recomendación: úsala unas semanas para calibrar el ojo, y luego prueba a
+      quitarla y componer libre, encendiéndola solo cuando dudes del horizonte. El objetivo es que
+      acabe sobrando.</p>
+    </div>
+  </details>
+
+  <details class="callout faq">
+    <summary>Tengo buen ojo eligiendo la escena, pero mis fotos siguen pareciendo planas. ¿Qué me falta?</summary>
+    <div class="co-body">
+      <p>Casi con total seguridad, primer término. Es el fallo número uno del fotógrafo de viaje: se
+      planta frente a algo bonito y dispara desde donde está, produciendo sujeto + fondo, como una
+      pegatina sobre un decorado. Prueba el <a href="#capas">Ejercicio 7.3</a> —ninguna foto sin
+      primer término— durante una semana entera. Combínalo con el <a href="06-objetivos.html#perspectiva-y-compresion">23 mm</a>,
+      que por su ángulo amplio te deja meter algo cercano y algo lejano en la misma toma, y verás
+      cómo la sensación de profundidad aparece casi sola.</p>
+    </div>
+  </details>
+
+</div>
+
+<script src="../assets/js/manifest.js"></script>
+<script src="../assets/js/search-index.js" defer></script>
+<script src="../assets/js/app.js" defer></script>
+</body>
+</html>

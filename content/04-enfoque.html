@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es" data-root="../">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cómo enfoca de verdad la Fujifilm X-S20: PDAF y CDAF explicados desde cero, AF-S, AF-C, enfoque manual, áreas de enfoque, detección de sujetos por IA y back button focus, con recetas para viajar.">
+<title>El sistema de autofoco — Fuji X-S20 Field Guide</title>
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='8' y='8' width='84' height='84' rx='14' fill='%230c0e11'/><path d='M24 24h16M24 24v16M76 24H60M76 24v16M24 76h16M24 76V60M76 76H60M76 76V60' stroke='%234ade80' stroke-width='7' stroke-linecap='round' fill='none'/></svg>">
+</head>
+<body data-chapter="04-enfoque">
+
+<div class="content">
+
+  <div class="chapter-hero">
+    <span class="fc"></span>
+    <div class="hero-readout">
+      <span class="r-part">Parte II · El enfoque</span>
+      <span>Capítulo 4</span>
+      <span>≈45 min</span>
+    </div>
+    <h1>El sistema de autofoco</h1>
+    <p class="hero-lede">Enfocar parece un botón que aprietas, pero es la decisión técnica que más fotos arruina y la que casi nadie entiende. En este capítulo vas a ver, literalmente, cómo mide tu X-S20 si algo está enfocado, por qué a veces «caza» en la penumbra, y cómo pasar de rezar para que acierte a decirle exactamente dónde y cómo mirar. Al terminar sabrás elegir modo, área y detección para cada escena de viaje sin pensarlo.</p>
+    <div class="hero-meta">
+      <span class="pill pill-part">PDAF y CDAF</span>
+      <span class="pill">AF-S / AF-C / MF</span>
+      <span class="pill">Detección de sujetos</span>
+      <span class="pill">Back button focus</span>
+    </div>
+  </div>
+
+  <h2 id="como-piensa-la-camara">Cómo «piensa» una cámara al enfocar</h2>
+
+  <p>Antes de tocar un solo menú conviene entender qué problema resuelve el autofoco, porque todo lo demás —los modos, las áreas, la detección de ojos— son solo formas distintas de resolver ese mismo problema.</p>
+
+  <p>Enfocar es un acto puramente óptico. La luz que sale de un punto de la escena —la barandilla de un mirador en Lisboa, pongamos— llega a tu objetivo divergiendo, abriéndose como un cono. El trabajo de las lentes es coger ese cono y volver a cerrarlo hasta un punto. Si ese punto cae <em>exactamente</em> sobre el plano del sensor, ese detalle sale nítido. Si el cono se cierra antes del sensor (delante) o todavía no ha terminado de cerrarse cuando lo alcanza (detrás), en el sensor no aparece un punto sino un pequeño disco borroso: el famoso <span class="term" title="Disco de desenfoque: la mancha circular en que se convierte un punto de luz cuando no está enfocado.">círculo de confusión</span>. Cuanto más grande ese disco, más desenfocado se ve.</p>
+
+  <p>¿Cómo se corrige? Moviendo físicamente uno o varios grupos de lentes dentro del objetivo hasta que ese punto de convergencia aterriza justo en el sensor. Eso, y solo eso, es enfocar. El anillo de enfoque de tu <strong>XF 35mm f/1.4 R</strong> lo hace a mano; el motor del <strong>XF 23mm f/2 WR</strong> lo hace solo cuando el autofoco toma el mando.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 260" role="img" aria-labelledby="d41-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d41-t">Un punto de luz diverge, la lente lo vuelve a converger y el punto de foco se desplaza hasta caer sobre el plano del sensor.</title>
+      <style>
+        .d41-lens { animation: d41-move 5s ease-in-out infinite; }
+        .d41-ray  { animation: d41-move 5s ease-in-out infinite; }
+        @keyframes d41-move { 0%,18% { transform: translateX(-38px); } 50%,68% { transform: translateX(0); } 100% { transform: translateX(-38px); } }
+        .d41-ok { opacity: 0; animation: d41-ok 5s ease-in-out infinite; }
+        @keyframes d41-ok { 0%,45% { opacity: 0; } 55%,68% { opacity: 1; } 82%,100% { opacity: 0; } }
+        @media (prefers-reduced-motion: reduce) { .d41-lens,.d41-ray,.d41-ok { animation: none !important; } .d41-lens,.d41-ray { transform: translateX(0); } .d41-ok { opacity: 1; } }
+      </style>
+      <!-- subject point -->
+      <circle cx="40" cy="130" r="4" fill="var(--dg-accent)"/>
+      <text x="40" y="112" fill="var(--dg-text)" text-anchor="middle">punto de la escena</text>
+      <!-- sensor plane -->
+      <line x1="560" y1="60" x2="560" y2="200" stroke="var(--dg-line)" stroke-width="3"/>
+      <text x="560" y="222" fill="var(--dg-text)" text-anchor="middle">sensor</text>
+      <!-- lens group (moves) -->
+      <g class="d41-lens">
+        <ellipse cx="300" cy="130" rx="14" ry="60" fill="none" stroke="var(--dg-line)" stroke-width="2"/>
+      </g>
+      <!-- rays: diverge to lens, converge after -->
+      <g class="d41-ray">
+        <line x1="40" y1="130" x2="300" y2="76"  stroke="var(--dg-line-soft)" stroke-width="1.5"/>
+        <line x1="40" y1="130" x2="300" y2="184" stroke="var(--dg-line-soft)" stroke-width="1.5"/>
+        <line x1="300" y1="76"  x2="522" y2="130" stroke="var(--dg-line-soft)" stroke-width="1.5"/>
+        <line x1="300" y1="184" x2="522" y2="130" stroke="var(--dg-line-soft)" stroke-width="1.5"/>
+        <circle cx="522" cy="130" r="3.5" fill="var(--dg-red)"/>
+      </g>
+      <!-- focus lands on sensor -->
+      <g class="d41-ok">
+        <circle cx="560" cy="130" r="4" fill="var(--dg-green)"/>
+        <text x="560" y="46" fill="var(--dg-green)" text-anchor="middle">¡enfocado!</text>
+      </g>
+    </svg>
+    <figcaption><b>Figura 4.1.</b> Enfocar es desplazar los grupos de lentes hasta que el cono de luz se vuelve a cerrar exactamente sobre el sensor. Un pelo antes o después y el punto se convierte en un disco borroso.</figcaption>
+  </figure>
+
+  <p>Aquí aparece la pregunta clave, la que reparte a las cámaras en dos familias: <strong>¿cómo sabe la cámara si ha acertado?</strong> Tú lo ves en el visor porque tu cerebro reconoce cuándo algo está nítido, pero la cámara no «ve»: mide números. Y hay dos maneras radicalmente distintas de medir el foco. Una es lenta pero infalible para confirmar (contraste); la otra es rápida y sabe hacia dónde corregir (fase). La X-S20 usa las dos. Entender esa pareja es entender por qué a veces el autofoco vuela y por qué otras veces «caza» desesperado en un callejón oscuro.</p>
+
+  <h2 id="pdaf-y-cdaf">PDAF y CDAF: las dos formas de medir el foco</h2>
+
+  <h3 id="pdaf">Detección de fase (PDAF): saber hacia dónde y cuánto</h3>
+
+  <p>La <span class="term" title="Phase Detection Auto Focus: mide el foco comparando la luz que entra por dos mitades del objetivo.">detección de fase</span> (PDAF, <i>phase detection</i>) es el motor rápido. La idea es preciosa: la luz de un mismo punto entra por el objetivo por sitios distintos —imagina que la mitad izquierda de la lente y la mitad derecha ven el mundo desde ángulos ligeramente diferentes, como tus dos ojos—. Si el punto está perfectamente enfocado, las dos «vistas» se superponen exactamente en el sensor. Si está desenfocado, las dos vistas caen separadas, desfasadas.</p>
+
+  <p>Y aquí está la magia: la <em>dirección</em> de ese desfase te dice si el foco está delante o detrás del sujeto, y la <em>magnitud</em> del desfase te dice cuánto hay que corregir. La cámara no adivina: calcula «mueve el grupo de lentes 3,2 unidades hacia infinito» y lo hace de un golpe. Por eso el PDAF es rápido y, sobre todo, por eso puede <strong>predecir</strong>: sabe en qué dirección va el error incluso con un sujeto que se acerca.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 280" role="img" aria-labelledby="d42-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d42-t">Dos haces de luz que entran por lados opuestos del objetivo caen separados cuando hay desenfoque y se superponen cuando el foco es correcto; el desfase indica dirección y distancia.</title>
+      <style>
+        .d42-a { animation: d42-a 5s ease-in-out infinite; }
+        .d42-b { animation: d42-b 5s ease-in-out infinite; }
+        @keyframes d42-a { 0%,15% { transform: translateY(-34px); } 50%,70% { transform: translateY(0); } 100% { transform: translateY(-34px); } }
+        @keyframes d42-b { 0%,15% { transform: translateY(34px); } 50%,70% { transform: translateY(0); } 100% { transform: translateY(34px); } }
+        .d42-gap { animation: d42-fade 5s ease-in-out infinite; }
+        @keyframes d42-fade { 0%,15% { opacity: 1; } 45%,100% { opacity: 0; } }
+        .d42-lock { opacity: 0; animation: d42-lock 5s ease-in-out infinite; }
+        @keyframes d42-lock { 0%,45% { opacity: 0; } 55%,70% { opacity: 1; } 85%,100% { opacity: 0; } }
+        @media (prefers-reduced-motion: reduce){ .d42-a,.d42-b,.d42-gap,.d42-lock{animation:none!important} .d42-a,.d42-b{transform:translateY(0)} .d42-gap{opacity:0} .d42-lock{opacity:1} }
+      </style>
+      <text x="70" y="30" fill="var(--dg-text)" text-anchor="middle">objetivo</text>
+      <!-- two apertures -->
+      <path d="M50 70 A70 70 0 0 1 90 70" fill="none" stroke="var(--dg-line)" stroke-width="2"/>
+      <path d="M50 200 A70 70 0 0 0 90 200" fill="none" stroke="var(--dg-line)" stroke-width="2"/>
+      <circle cx="70" cy="90"  r="5" fill="var(--dg-blue)"/>
+      <circle cx="70" cy="180" r="5" fill="var(--dg-amber)"/>
+      <text x="112" y="94"  fill="var(--dg-blue)">mitad superior</text>
+      <text x="112" y="184" fill="var(--dg-amber)">mitad inferior</text>
+      <!-- beams to sensor rows -->
+      <g class="d42-a"><line x1="70" y1="90"  x2="470" y2="140" stroke="var(--dg-blue)"  stroke-width="1.6"/></g>
+      <g class="d42-b"><line x1="70" y1="180" x2="470" y2="140" stroke="var(--dg-amber)" stroke-width="1.6"/></g>
+      <!-- sensor line of PDAF pixels -->
+      <line x1="470" y1="60" x2="470" y2="220" stroke="var(--dg-line)" stroke-width="3"/>
+      <text x="470" y="245" fill="var(--dg-text)" text-anchor="middle">píxeles de fase</text>
+      <!-- landing dots -->
+      <g class="d42-a"><circle cx="470" cy="140" r="4" fill="var(--dg-blue)"/></g>
+      <g class="d42-b"><circle cx="470" cy="140" r="4" fill="var(--dg-amber)"/></g>
+      <!-- desfase bracket -->
+      <g class="d42-gap">
+        <line x1="505" y1="106" x2="505" y2="174" stroke="var(--dg-red)" stroke-width="1.6"/>
+        <text x="560" y="144" fill="var(--dg-red)" text-anchor="middle">desfase</text>
+      </g>
+      <g class="d42-lock"><text x="560" y="144" fill="var(--dg-green)" text-anchor="middle">superpuestos</text></g>
+    </svg>
+    <figcaption><b>Figura 4.2.</b> El PDAF compara dos «miradas» del mismo punto. Su separación (el desfase) no solo dice que hay desenfoque: dice en qué dirección y cuánto. Por eso la corrección es de un salto, no a tientas.</figcaption>
+  </figure>
+
+  <div class="callout gear" data-title="Los 425 puntos de fase de la X-S20">
+    <p>En las cámaras antiguas la detección de fase vivía en un sensor aparte, dentro del cuerpo, y solo cubría una franja central. En tu X-S20 los píxeles de fase están repartidos <em>sobre el propio sensor</em>, cubriendo prácticamente todo el encuadre: <strong>425 puntos de detección de fase</strong>. Por eso puedes colocar el punto de enfoque casi en cualquier esquina y seguir teniendo PDAF rápido, algo impensable hace una década.</p>
+  </div>
+
+  <h3 id="cdaf">Detección de contraste (CDAF): el barrido a ciegas</h3>
+
+  <p>La <span class="term" title="Contrast Detection Auto Focus: mide el foco buscando el punto de máximo contraste de bordes.">detección de contraste</span> (CDAF, <i>contrast detection</i>) mide de otra forma. Parte de una observación muy intuitiva: una imagen enfocada tiene bordes marcados, transiciones bruscas de claro a oscuro; una desenfocada tiene bordes lavados, degradados suaves. Es decir, <strong>a más foco, más contraste local</strong>. La cámara mide ese contraste como un número y su objetivo es maximizarlo.</p>
+
+  <p>El problema es que el contraste, por sí solo, no dice hacia dónde moverse. La cámara sabe que ahora mismo está desenfocada (contraste bajo), pero no si debe mover las lentes hacia delante o hacia atrás. ¿Qué hace? Prueba. Mueve un poco, mira si el contraste sube o baja, y sigue en la dirección que mejora. Cuando lo pasa de largo el contraste empieza a bajar, así que retrocede, se acerca, y confirma el pico. Ese vaivén es el <span class="term" title="El barrido de ida y vuelta del enfoque cuando busca el máximo de contraste sin saber la dirección.">hunting</span> (barrido), ese «zzzt-zzzt» de la lente cazando el foco.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 280" role="img" aria-labelledby="d43-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d43-t">Curva de contraste con forma de campana; un marcador barre de un lado a otro, sobrepasa el pico y vuelve, ilustrando el hunting del CDAF.</title>
+      <style>
+        .d43-run { animation: d43-run 4.5s ease-in-out infinite; }
+        @keyframes d43-run {
+          0% { transform: translateX(-190px); }
+          32% { transform: translateX(60px); }
+          52% { transform: translateX(-60px); }
+          72%,100% { transform: translateX(0px); }
+        }
+        .d43-lock { opacity: 0; animation: d43-lk 4.5s ease-in-out infinite; }
+        @keyframes d43-lk { 0%,68% { opacity: 0; } 78%,100% { opacity: 1; } }
+        @media (prefers-reduced-motion: reduce){ .d43-run{animation:none!important;transform:translateX(0)} .d43-lock{animation:none!important;opacity:1} }
+      </style>
+      <!-- axes -->
+      <line x1="70" y1="230" x2="590" y2="230" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <line x1="70" y1="40"  x2="70"  y2="230" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <text x="330" y="258" fill="var(--dg-text)" text-anchor="middle">posición del grupo de lentes</text>
+      <text x="34" y="135" fill="var(--dg-text)" text-anchor="middle" transform="rotate(-90 34 135)">contraste</text>
+      <!-- bell curve peak at x=330 -->
+      <path d="M70 226 C 200 224, 280 60, 330 56 C 380 60, 460 224, 590 226" fill="none" stroke="var(--dg-line-soft)" stroke-width="2"/>
+      <!-- peak marker -->
+      <line x1="330" y1="56" x2="330" y2="230" stroke="var(--dg-green)" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="330" y="44" fill="var(--dg-green)" text-anchor="middle">máximo</text>
+      <!-- sweeping marker -->
+      <g class="d43-run">
+        <circle cx="330" cy="56" r="6" fill="var(--dg-amber)"/>
+        <line x1="330" y1="56" x2="330" y2="230" stroke="var(--dg-amber)" stroke-width="1.4"/>
+      </g>
+      <g class="d43-lock"><text x="450" y="90" fill="var(--dg-green)">confirmado</text></g>
+    </svg>
+    <figcaption><b>Figura 4.3.</b> El CDAF sabe <em>que</em> está desenfocado pero no hacia dónde: barre hasta que el contraste deja de subir, se pasa, y vuelve al pico. Ese ir y venir es el «hunting». Es lento, pero cuando confirma, confirma de verdad.</figcaption>
+  </figure>
+
+  <p>El CDAF tiene una virtud enorme que compensa su lentitud: es <strong>exacto</strong>. Como confirma el foco midiendo el pico real de nitidez en el propio sensor, no arrastra los pequeños errores de calibración que a veces afectan a la fase. Y tiene un defecto igual de grande: necesita contraste para funcionar. Una pared lisa, un cielo uniforme, un muro de azulejos idénticos a contraluz o una escena muy oscura le dejan sin bordes que medir, y ahí es donde caza sin parar o directamente se rinde.</p>
+
+  <h3 id="sistema-hibrido">El sistema híbrido y el X-Processor 5</h3>
+
+  <p>La X-S20 no elige entre uno u otro: los combina en un <strong>autofoco híbrido</strong>, y esa es toda la gracia. La secuencia típica es la que harías tú si fueras muy listo y muy rápido:</p>
+
+  <ol>
+    <li>El <strong>PDAF</strong> hace el trabajo pesado: en cuanto medio pulsas, lee el desfase, calcula dirección y distancia, y lanza las lentes al foco casi correcto de un solo movimiento.</li>
+    <li>El <strong>CDAF</strong> da el remate fino: afina el último tramo maximizando el contraste para clavar el pico.</li>
+    <li>Si la luz cae o la escena pierde contraste y el PDAF deja de tener señal fiable, el sistema se apoya más en el CDAF (y verás más «hunting»).</li>
+  </ol>
+
+  <p>El director de orquesta es el <strong>X-Processor 5</strong>. Es quien lee los 425 puntos de fase decenas de veces por segundo, decide a qué punto hacer caso, corre los algoritmos de detección de caras y sujetos por IA (que veremos más abajo) y predice hacia dónde irá un sujeto en movimiento entre una lectura y la siguiente. La diferencia entre esta generación y las anteriores no está tanto en la óptica como en ese cerebro: la misma información de fase, interpretada mucho mejor.</p>
+
+  <div class="callout fact">
+    <p>Que los píxeles de fase vivan sobre el sensor tiene un efecto secundario curioso: sacrifican una fracción minúscula de la luz que les tocaría capturar para «mirar de reojo» y hacer la comparación de fase. Es un peaje tan pequeño que jamás lo notarás en la imagen, pero es el motivo por el que durante años los fabricantes lo consideraron un mal negocio. El procesado moderno lo compensa de sobra.</p>
+  </div>
+
+  <h2 id="af-s">AF-S: enfocar, bloquear, disparar</h2>
+
+  <p>Con el problema físico entendido, pasemos a las herramientas. Lo primero que eliges es el <strong>modo de enfoque</strong>, en el selector <span class="term" title="El interruptor de modo de enfoque de la X-S20, en el frontal junto a la montura.">FOCUS MODE</span>: <kbd>S</kbd> (AF-S), <kbd>C</kbd> (AF-C) o <kbd>M</kbd> (manual).</p>
+
+  <p><strong>AF-S</strong> (<i>Single AF</i>, enfoque único) es el modo de «apunta y clava». Cuando pulsas el disparador hasta la mitad, la cámara enfoca <em>una vez</em> y <strong>bloquea</strong> ese foco: mientras mantengas el medio disparo, las lentes no se vuelven a mover aunque tú o el sujeto os desplacéis un poco. Confirma con un cuadro verde y, en muchas configuraciones, un pitido. A partir de ahí puedes tomarte tu tiempo para componer y apretar del todo.</p>
+
+  <p>Es el modo por defecto para la inmensa mayoría de la fotografía de viaje, porque la inmensa mayoría de lo que fotografías está quieto: una fachada de azulejos, un plato en una tasca, un mirador, tu compañero posando. Es preciso, predecible y gasta menos batería.</p>
+
+  <h3 id="focus-and-recompose">Focus-and-recompose y su trampa</h3>
+
+  <p>El bloqueo de AF-S habilita una técnica clásica, el <span class="term" title="Enfocar un punto con AF-S bloqueado y luego recomponer moviendo la cámara antes de disparar.">focus-and-recompose</span> (enfocar y recomponer): pones el punto de AF sobre el ojo del sujeto —que suele quedar descentrado en un buen encuadre—, medio pulsas para bloquear, y sin soltar giras la cámara para componer como quieras. Es rapidísimo y evita andar moviendo el punto de AF por toda la pantalla.</p>
+
+  <p>Pero tiene una trampa geométrica que debes conocer. Al girar la cámara sobre su eje, el plano de foco —que es plano y perpendicular al objetivo— barre un arco. El sujeto, que estaba a la distancia exacta enfocada, queda ahora ligeramente <em>más lejos</em> del nuevo plano. Con f/8 en una calle no lo notarás jamás. Pero con tu <strong>XF 35mm f/1.4</strong> abierto a f/1.4 en un retrato cercano, la <a href="06-objetivos.html#profundidad-de-campo">profundidad de campo</a> es de milímetros, y ese pequeño arco basta para que el ojo se vaya de foco. Ahí, recomponer moviendo el punto de AF (o usar detección de ojos) es más seguro que recomponer girando la cámara.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 280" role="img" aria-labelledby="d44-t" font-family="ui-monospace, Menlo, monospace" font-size="12">
+      <title id="d44-t">Vista cenital: al bloquear el foco y girar la cámara para recomponer, el plano de foco barre un arco y el sujeto queda ligeramente detrás del nuevo plano.</title>
+      <style>
+        .d44-cam { animation: d44-rot 5s ease-in-out infinite; transform-origin: 120px 140px; }
+        @keyframes d44-rot { 0%,20% { transform: rotate(0deg); } 55%,80% { transform: rotate(-26deg); } 100% { transform: rotate(0deg); } }
+        .d44-warn { opacity: 0; animation: d44-w 5s ease-in-out infinite; }
+        @keyframes d44-w { 0%,45% { opacity: 0; } 60%,80% { opacity: 1; } 92%,100% { opacity: 0; } }
+        @media (prefers-reduced-motion: reduce){ .d44-cam{animation:none!important;transform:rotate(-26deg)} .d44-warn{animation:none!important;opacity:1} }
+      </style>
+      <!-- camera at left -->
+      <g class="d44-cam">
+        <rect x="96" y="122" width="48" height="36" rx="4" fill="none" stroke="var(--dg-line)" stroke-width="2"/>
+        <rect x="144" y="130" width="16" height="20" fill="none" stroke="var(--dg-line)" stroke-width="2"/>
+        <!-- focus plane (perpendicular): an arc showing where "in focus" distance lands as it rotates -->
+        <line x1="120" y1="140" x2="470" y2="140" stroke="var(--dg-accent)" stroke-width="1" stroke-dasharray="2 4"/>
+        <line x1="440" y1="70" x2="440" y2="210" stroke="var(--dg-green)" stroke-width="2"/>
+      </g>
+      <text x="120" y="184" fill="var(--dg-text)" text-anchor="middle">cámara</text>
+      <!-- arc of focus distance -->
+      <path d="M440 70 A320 320 0 0 0 388 232" fill="none" stroke="var(--dg-line-soft)" stroke-width="1.4" stroke-dasharray="4 4"/>
+      <text x="360" y="60" fill="var(--dg-line-soft)">arco del plano de foco</text>
+      <!-- subject -->
+      <circle cx="440" cy="92" r="7" fill="var(--dg-accent)"/>
+      <text x="472" y="96" fill="var(--dg-text)">sujeto (ojo)</text>
+      <!-- warning -->
+      <g class="d44-warn">
+        <text x="470" y="150" fill="var(--dg-red)">el sujeto queda</text>
+        <text x="470" y="166" fill="var(--dg-red)">tras el plano →</text>
+      </g>
+    </svg>
+    <figcaption><b>Figura 4.4.</b> Al recomponer girando, el plano de foco (perpendicular al objetivo) rota con la cámara: el sujeto ya no está sobre él. Inocuo a f/8; letal a f/1.4 de cerca.</figcaption>
+  </figure>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Situación</th><th>¿AF-S?</th><th>Por qué</th></tr></thead>
+    <tbody>
+      <tr><td>Fachadas, paisajes, arquitectura</td><td>Sí</td><td>Todo quieto; precisión máxima y batería.</td></tr>
+      <tr><td>Retrato posado de tu compañero</td><td>Sí</td><td>Enfocas el ojo y bloqueas; solo cuidado al recomponer abierto.</td></tr>
+      <tr><td>Comida, detalles, mercadillos</td><td>Sí</td><td>Sujeto estático, control total del punto.</td></tr>
+      <tr><td>Niños corriendo, gaviotas, ciclistas</td><td>No → AF-C</td><td>El foco bloqueado se queda atrás en cuanto se mueven.</td></tr>
+      <tr><td>Alguien que camina hacia ti</td><td>No → AF-C</td><td>Cambia de distancia continuamente; AF-S se queda obsoleto al instante.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="af-c">AF-C: seguimiento continuo y predicción</h2>
+
+  <p><strong>AF-C</strong> (<i>Continuous AF</i>, enfoque continuo) no bloquea nada. Mientras mantengas el medio disparo (o el botón de AF, ya lo veremos), la cámara <strong>reajusta el foco sin parar</strong>, leyendo la fase muchas veces por segundo y persiguiendo al sujeto según cambia de distancia. Y va más allá de reaccionar: el X-Processor 5 <em>predice</em>. Si detecta que un ciclista se acerca a velocidad constante, anticipa dónde estará en el instante exacto en que se abra el obturador y enfoca ahí, no donde estaba hace una fracción de segundo. Sin esa predicción, cualquier sujeto rápido saldría sistemáticamente desenfocado por detrás.</p>
+
+  <p>El precio: consume más batería, la lente se mueve constantemente (menos discreto) y, si el punto de AF resbala al fondo, enfoca el fondo con el mismo entusiasmo. Por eso AF-C se disfruta de verdad con un área bien elegida y, sobre todo, con la detección de sujetos.</p>
+
+  <h3 id="af-c-custom">Ajustes personalizados de AF-C</h3>
+
+  <p>Aquí viene una función que muchos usuarios de la X-S20 no saben que tienen. Sí existe en esta cámara: <strong>AF-C CUSTOM SETTINGS</strong>. Son perfiles que le dicen al seguidor cómo comportarse ante distintos tipos de movimiento.</p>
+
+  <p class="menu-path"><b>MENU</b> <span class="sep">→</span> AF/MF <span class="sep">→</span> AF-C CUSTOM SETTINGS</p>
+
+  <p>Hay cinco perfiles preconfigurados y uno totalmente personalizable:</p>
+
+  <div class="card-grid">
+    <div class="card"><div class="card-eyebrow">SET 1</div><h4>Multiusos</h4><p>El equilibrado. El que dejas puesto por defecto en viaje si no quieres pensar.</p></div>
+    <div class="card"><div class="card-eyebrow">SET 2</div><h4>Ignora obstáculos</h4><p>Sigue al sujeto aunque algo cruce por delante un instante (una farola, otra persona).</p></div>
+    <div class="card"><div class="card-eyebrow">SET 3</div><h4>Acelera/frena</h4><p>Para sujetos que cambian de velocidad: un coche que arranca, alguien que echa a correr.</p></div>
+    <div class="card"><div class="card-eyebrow">SET 4</div><h4>Aparición súbita</h4><p>Reengancha rápido a un sujeto que entra de golpe en el encuadre.</p></div>
+    <div class="card"><div class="card-eyebrow">SET 5</div><h4>Errático + acel./frena</h4><p>Movimiento impredecible y con cambios de ritmo: un perro jugando, un pájaro.</p></div>
+    <div class="card"><div class="card-eyebrow">SET 6</div><h4>Custom</h4><p>Tú ajustas los tres parámetros de abajo a mano.</p></div>
+  </div>
+
+  <p>Cada perfil se compone de tres mandos que puedes tocar en el SET 6 (o para entender qué hace cada preajuste):</p>
+
+  <ul>
+    <li><strong>Tracking Sensitivity (0–4):</strong> cuánto espera la cámara antes de saltar a un nuevo sujeto si el primero desaparece o algo se cruza. Un valor <em>bajo</em> reengancha rápido (bueno para sujetos que entran y salen); un valor <em>alto</em> es tozudo, ignora distracciones y sigue con el sujeto original (bueno para no perderlo tras un obstáculo).</li>
+    <li><strong>Speed Tracking Sensitivity (1–3):</strong> cómo responde a cambios de velocidad. Más alto para sujetos que aceleran y frenan mucho.</li>
+    <li><strong>Zone Area Switching (FRONT / AUTO / CENTER):</strong> con área Zone, dentro de la zona qué parte prioriza: lo más cercano (FRONT), el centro (CENTER) o que decida la cámara (AUTO).</li>
+  </ul>
+
+  <div class="callout tip" data-title="No te obsesiones con los perfiles">
+    <p>Para viaje, <strong>SET 1 (multiusos)</strong> cubre el 90% de lo que te vas a encontrar: gente, perros, un tranvía, alguien corriendo hacia el ferry. Deja SET 5 aprendido para cuando persigas algo genuinamente errático (gaviotas al vuelo). Cambiar de perfil en cada foto es perder el viaje mirando menús.</p>
+  </div>
+
+  <h2 id="enfoque-manual">Enfoque manual: cuándo tu mano gana al procesador</h2>
+
+  <p>Pon el selector en <kbd>M</kbd> y el motor te cede el mando: enfocas girando el anillo del objetivo. Suena a paso atrás, pero hay escenas en las que el <span class="term" title="Manual Focus: enfocar a mano girando el anillo del objetivo.">enfoque manual</span> (MF) no es una alternativa, es lo <em>correcto</em>:</p>
+
+  <ul>
+    <li><strong>Noche y astro:</strong> con poca luz y poco contraste el AF caza sin fin. A mano, enfocas una farola lejana o una estrella brillante una vez y te olvidas.</li>
+    <li><strong>A través de cristales o rejas:</strong> escaparates, ventanillas de tren, la reja de un mirador. El AF se empeña en enfocar el cristal o la reja; tú decides el plano que quieres.</li>
+    <li><strong>Zone focusing en calle:</strong> preenfocas a una distancia fija (p. ej. 3 m) con una apertura media, y todo lo que caiga en esa franja sale nítido sin esperar al AF. Disparo instantáneo, cero <span class="term" title="El retardo entre pulsar el disparador y que se tome la foto.">shutter lag</span> de enfoque. Oro puro para fotografía de calle discreta.</li>
+    <li><strong>Timelapses:</strong> un <span class="term" title="Secuencia de fotos a intervalos que luego se monta como vídeo acelerado.">timelapse</span> con AF activo re-enfocaría entre tomas y el resultado parpadearía. MF fija el plano para las cientos de tomas.</li>
+    <li><strong>Vídeo planificado:</strong> un <em>focus pull</em> a mano entre dos puntos marcados es intencional y cinematográfico; el AF haría lo que le diera la gana.</li>
+  </ul>
+
+  <h3 id="ayudas-mf">Las ayudas al enfoque manual</h3>
+
+  <p>Enfocar a mano en una pantalla pequeña sería una tortura sin ayudas. La X-S20 trae varias, y las eliges en <b>MF ASSIST</b>:</p>
+
+  <p class="menu-path"><b>MENU</b> <span class="sep">→</span> AF/MF <span class="sep">→</span> MF ASSIST</p>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Ayuda</th><th>Qué hace</th><th>Cuándo brilla</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Focus Peak Highlight</strong> (<span class="term" title="Realce de contornos: resalta en color los bordes que están enfocados.">focus peaking</span>)</td><td>Resalta con color los bordes que caen en foco. Ajustas color e intensidad.</td><td>Uso general, vídeo, zone focusing. El más práctico del día a día.</td></tr>
+      <tr><td><strong>Digital Split Image</strong></td><td>Parte la imagen en franjas que se alinean cuando enfocas, como los telémetros clásicos.</td><td>Precisión quirúrgica con líneas rectas y bordes definidos.</td></tr>
+      <tr><td><strong>Digital Microprism</strong></td><td>Muestra un patrón que «hierve» cuando está desenfocado y se aquieta al enfocar.</td><td>Alternativa al split para quien la prefiera visualmente.</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>A eso se suman dos ayudas que no viven en ese menú pero son igual de útiles: la <strong>lupa</strong> (ampliar la zona de foco pulsando el centro del dial trasero, con FOCUS CHECK activado hace zoom automático al girar el anillo) y la <strong>escala de distancia</strong> que aparece en pantalla, con la barra de profundidad de campo que te dice qué franja de distancias saldrá nítida —imprescindible para el zone focusing—.</p>
+
+  <div class="callout gear" data-title="AF+MF: lo mejor de los dos mundos">
+    <p>Actívalo: <b>MENU <span class="sep">→</span> AF/MF <span class="sep">→</span> AF+MF <span class="sep">→</span> ON</b>. Con esto, tras enfocar con AF (en AF-S, con el foco bloqueado), puedes girar el anillo para <em>corregir a mano</em> sin cambiar de modo. La cámara amplía y te muestra el peaking automáticamente. Ideal cuando el AF enfoca <em>casi</em> el ojo correcto y quieres el remate manual sin salir del flujo.</p>
+  </div>
+
+  <h2 id="areas-de-enfoque">Áreas de enfoque: decirle a la cámara dónde mirar</h2>
+
+  <p>El modo (AF-S/AF-C) decide <em>cómo</em> enfoca; el <strong>área de AF</strong> decide <em>dónde</em> mira. Es, probablemente, el ajuste que más impacto tiene en tu tasa de fotos enfocadas, y el que la gente deja mal por comodidad. Se elige en:</p>
+
+  <p class="menu-path"><b>MENU</b> <span class="sep">→</span> AF/MF <span class="sep">→</span> AF MODE</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 640 300" role="img" aria-labelledby="d45-t" font-family="ui-monospace, Menlo, monospace" font-size="11">
+      <title id="d45-t">Cuatro representaciones del encuadre mostrando Single Point (un cuadro pequeño), Zone (una cuadrícula), Wide (varios puntos por el fotograma) y Tracking (un cuadro que se desplaza siguiendo al sujeto).</title>
+      <style>
+        .d45-track { animation: d45-tr 5s ease-in-out infinite; }
+        @keyframes d45-tr { 0% { transform: translate(0,0);} 25%{transform:translate(38px,14px);} 55%{transform:translate(58px,-6px);} 80%{transform:translate(20px,8px);} 100%{transform:translate(0,0);} }
+        @media (prefers-reduced-motion: reduce){ .d45-track{animation:none!important} }
+      </style>
+      <!-- four mini frames -->
+      <!-- 1 Single -->
+      <rect x="24" y="40" width="130" height="90" rx="4" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <rect x="80" y="76" width="18" height="18" fill="none" stroke="var(--dg-green)" stroke-width="2"/>
+      <text x="89" y="150" fill="var(--dg-text)" text-anchor="middle">SINGLE POINT</text>
+      <text x="89" y="166" fill="var(--dg-line-soft)" text-anchor="middle">un punto, 6 tamaños</text>
+      <!-- 2 Zone -->
+      <rect x="184" y="40" width="130" height="90" rx="4" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <g stroke="var(--dg-green)" stroke-width="1.5" fill="none">
+        <rect x="222" y="62" width="14" height="14"/><rect x="240" y="62" width="14" height="14"/><rect x="258" y="62" width="14" height="14"/>
+        <rect x="222" y="80" width="14" height="14"/><rect x="240" y="80" width="14" height="14"/><rect x="258" y="80" width="14" height="14"/>
+        <rect x="222" y="98" width="14" height="14"/><rect x="240" y="98" width="14" height="14"/><rect x="258" y="98" width="14" height="14"/>
+      </g>
+      <text x="249" y="150" fill="var(--dg-text)" text-anchor="middle">ZONE</text>
+      <text x="249" y="166" fill="var(--dg-line-soft)" text-anchor="middle">3×3 · 5×5 · 7×7</text>
+      <!-- 3 Wide -->
+      <rect x="344" y="40" width="130" height="90" rx="4" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <g fill="var(--dg-green)">
+        <circle cx="372" cy="66" r="3"/><circle cx="409" cy="60" r="3"/><circle cx="446" cy="70" r="3"/>
+        <circle cx="380" cy="96" r="3"/><circle cx="415" cy="104" r="3"/><circle cx="450" cy="98" r="3"/>
+      </g>
+      <text x="409" y="150" fill="var(--dg-text)" text-anchor="middle">WIDE</text>
+      <text x="409" y="166" fill="var(--dg-line-soft)" text-anchor="middle">la cámara elige (AF-S)</text>
+      <!-- 4 Tracking -->
+      <rect x="504" y="40" width="112" height="90" rx="4" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <g class="d45-track"><rect x="524" y="70" width="22" height="22" fill="none" stroke="var(--dg-accent)" stroke-width="2"/></g>
+      <text x="560" y="150" fill="var(--dg-text)" text-anchor="middle">TRACKING</text>
+      <text x="560" y="166" fill="var(--dg-line-soft)" text-anchor="middle">persigue (AF-C)</text>
+      <!-- bottom note -->
+      <line x1="24" y1="196" x2="616" y2="196" stroke="var(--dg-line-soft)" stroke-width="1" stroke-dasharray="3 4"/>
+      <text x="24" y="222" fill="var(--dg-text)">De izquierda a derecha, das cada vez más autonomía a la cámara: en SINGLE POINT mandas tú;</text>
+      <text x="24" y="240" fill="var(--dg-text)">en TRACKING y WIDE decide ella. La regla de oro: usa el área más pequeña que te resulte cómoda.</text>
+    </svg>
+    <figcaption><b>Figura 4.5.</b> Las cuatro áreas de AF de la X-S20. En AF-S tienes Single Point, Zone, Wide y All; en AF-C, Wide se convierte en Tracking (seguimiento activo). ALL te deja recorrerlas con el dial trasero sin entrar al menú.</figcaption>
+  </figure>
+
+  <h3 id="single-point">Single Point</h3>
+  <p>Un único punto que colocas con el <a href="01-conociendo-la-xs20.html#el-joystick">joystick</a> donde quieras. Tiene <strong>6 tamaños</strong>: reduces o agrandas el recuadro girando el dial trasero. <em>Pequeño</em> para precisión quirúrgica (el ojo de alguien, un objeto entre rejas, enfocar entre dos cosas próximas); <em>grande</em> cuando quieres precisión pero el sujeto se mueve un poco y un punto minúsculo resbalaría. Es tu área por defecto para casi todo lo estático.</p>
+
+  <h3 id="zone">Zone</h3>
+  <p>Un bloque de puntos que trabajan juntos: <strong>3×3, 5×5 o 7×7</strong>. La cámara enfoca dentro de ese bloque (por defecto lo más cercano). Es el punto medio perfecto: más tolerante que Single Point si el sujeto no se queda quieto del todo, pero sin ceder el fotograma entero. En AF-C es donde el Zone Area Switching decide qué parte de la zona prioriza. Excelente para alguien que camina hacia ti dentro de una región conocida del encuadre.</p>
+
+  <h3 id="wide-tracking">Wide / Tracking</h3>
+  <p>Aquí el nombre cambia según el modo, y no es un capricho:</p>
+  <ul>
+    <li>En <strong>AF-S</strong> se llama <strong>Wide</strong>: la cámara mira todo el fotograma y enfoca sola lo que cree que es el sujeto (normalmente lo más cercano y contrastado). Cómodo, pero cedes la decisión.</li>
+    <li>En <strong>AF-C</strong> se llama <strong>Tracking</strong>: eliges un sujeto y la cámara lo <em>persigue</em> por todo el encuadre mientras se mueve. Es el modo para acción cuando no sabes por dónde va a tirar el sujeto.</li>
+  </ul>
+
+  <h3 id="all">All</h3>
+  <p>No es un área en sí: es un atajo. Con <strong>ALL</strong> activado, giras el dial trasero y vas rotando entre Single Point, Zone y Wide/Tracking (y sus tamaños) <em>sin entrar al menú</em>. Cómodo si cambias mucho de tipo de escena; algo peligroso si giras el dial sin querer y te encuentras en otra área sin darte cuenta.</p>
+
+  <h3 id="tabla-af">Tabla maestra: modo × área × situación de viaje</h3>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Situación de viaje</th><th>Modo</th><th>Área</th><th>Por qué</th></tr></thead>
+    <tbody>
+      <tr><td>Fachada, mirador, paisaje</td><td>AF-S</td><td>Single Point (medio)</td><td>Estático; tú eliges el plano exacto.</td></tr>
+      <tr><td>Retrato posado abierto</td><td>AF-S</td><td>Single Point pequeño + detección de ojos</td><td>La mínima PdC exige clavar el ojo.</td></tr>
+      <tr><td>Calle discreta, disparo rápido</td><td>AF-S o MF</td><td>Single Point / zone focusing</td><td>Preenfoque y velocidad sobre precisión absoluta.</td></tr>
+      <tr><td>Compañero caminando hacia ti</td><td>AF-C</td><td>Zone (5×5)</td><td>Cambia de distancia dentro de una región previsible.</td></tr>
+      <tr><td>Niños, perros jugando</td><td>AF-C</td><td>Zone o Tracking + detección animal</td><td>Movimiento vivo pero encuadrado.</td></tr>
+      <tr><td>Gaviotas, ciclistas, tranvía cruzando</td><td>AF-C</td><td>Tracking (Wide) + detección</td><td>No sabes la trayectoria; que la persiga la cámara.</td></tr>
+      <tr><td>Noche, astro, a través de cristal</td><td>MF</td><td>—</td><td>El AF no tiene señal fiable; manda tu mano.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 id="focus-release-priority">Prioridad de foco vs. prioridad de disparo</h3>
+
+  <p>Un ajuste discreto que decide una filosofía: cuando pulsas a fondo, ¿qué manda, la nitidez o la inmediatez? Lo encuentras en <b>RELEASE/FOCUS PRIORITY</b>.</p>
+
+  <ul>
+    <li><strong>FOCUS (prioridad de foco):</strong> la cámara <em>no dispara</em> hasta que confirma foco. Ninguna foto desenfocada… al precio de perder algún instante irrepetible mientras confirma.</li>
+    <li><strong>RELEASE (prioridad de disparo):</strong> dispara cuando tú aprietas, esté o no confirmado el foco. No pierdes el momento… al precio de alguna foto blanda.</li>
+  </ul>
+
+  <div class="callout tip" data-title="Recomendación honesta">
+    <p>Para <strong>AF-S</strong>, deja <em>FOCUS</em>: si estás en enfoque único es porque el sujeto está quieto y quieres nitidez garantizada. Para <strong>AF-C</strong>, muchos fotógrafos de acción prefieren <em>RELEASE</em> (o un intermedio): con un sujeto que se mueve, una foto un pelo blanda del momento cumbre vale más que una foto perfecta del instante que ya pasó. Empieza con FOCUS en AF-S y experimenta con RELEASE en AF-C cuando persigas acción.</p>
+  </div>
+
+  <h2 id="deteccion-de-sujetos">Detección: caras, ojos y sujetos por IA</h2>
+
+  <p>Encima de las áreas hay una capa de inteligencia que, cuando encaja, cambia tu forma de fotografiar: la cámara reconoce <em>qué</em> es el sujeto y lo sigue sola, moviendo el punto de AF por ti. Son dos sistemas distintos.</p>
+
+  <h3 id="deteccion-caras-ojos">Detección de caras y ojos</h3>
+
+  <p class="menu-path"><b>MENU</b> <span class="sep">→</span> AF/MF <span class="sep">→</span> FACE/EYE DETECTION SETTING</p>
+
+  <p>Con FACE DETECTION en ON, la X-S20 caza rostros humanos y clava el foco en ellos. Para el ojo tienes cuatro opciones: <strong>EYE OFF</strong> (solo cara), <strong>EYE AUTO</strong> (la cámara elige el ojo), <strong>RIGHT EYE PRIORITY</strong> y <strong>LEFT EYE PRIORITY</strong>. En retrato de viaje, EYE AUTO va de maravilla; si compones muy deliberadamente, forzar un ojo evita que salte entre los dos.</p>
+
+  <p>Es asombrosa cuando funciona y conviene conocer sus <strong>límites</strong>, porque son predecibles:</p>
+  <ul>
+    <li><strong>Perfiles cerrados:</strong> si la cara se gira casi de lado, puede perder el ojo o la cara entera.</li>
+    <li><strong>Contraluz fuerte:</strong> una silueta a contraluz apenas tiene rasgos que leer; la detección duda.</li>
+    <li><strong>Gafas de sol y sombras duras:</strong> tapan los ojos y confunden el detector.</li>
+    <li><strong>Cara muy pequeña en el encuadre:</strong> por debajo de cierto tamaño, no hay detalle suficiente.</li>
+  </ul>
+  <p>En esos casos, vuelve a Single Point y enfoca tú. La detección es una ayuda, no una obligación.</p>
+
+  <h3 id="deteccion-ia">Detección de sujetos por IA</h3>
+
+  <p class="menu-path"><b>MENU</b> <span class="sep">→</span> AF/MF <span class="sep">→</span> SUBJECT DETECTION SETTING</p>
+
+  <p>El X-Processor 5 trae detectores entrenados para categorías concretas. Eliges una y la cámara reconoce ese tipo de sujeto y lo sigue: <strong>ANIMAL</strong>, <strong>BIRD</strong> (pájaro), <strong>AUTOMOBILE</strong> (coche), <strong>MOTORCYCLE &amp; BIKE</strong> (moto/bici), <strong>AIRPLANE</strong> (avión) y <strong>TRAIN</strong> (tren). En animales y pájaros llega a enganchar el ojo, igual que con las personas.</p>
+
+  <div class="callout error" data-title="Error común: creer que caras y sujetos conviven">
+    <p>En la X-S20, <strong>la detección de caras/ojos y la detección de sujetos son excluyentes</strong>: activar una desactiva la otra automáticamente. No puedes tener «personas + pájaros» a la vez. Si te vas de safari urbano fotografiando gente <em>y</em> palomas, tendrás que cambiar de una a otra. El truco: asigna «detección de caras» a un botón Fn y «detección de sujetos» a otro, y alterna con un toque en vez de bucear en el menú.</p>
+  </div>
+
+  <div class="callout tip" data-title="La detección en tu viaje">
+    <p>Para retratos de compañeros y gente de calle: FACE/EYE. Para perros y gatos por Lisboa: SUBJECT → ANIMAL. Para las gaviotas del Tajo al vuelo: SUBJECT → BIRD en AF-C + Tracking. Y una invitación a experimentar: <strong>prueba el modo TRAIN con los tranvías</strong> —el 28 subiendo a Graça—; hay quien reporta que engancha sorprendentemente bien esas formas rodantes. No es un uso oficial ni garantizado, pero es justo la clase de experimento que merece la pena hacer una tarde y ver qué pasa.</p>
+  </div>
+
+  <h2 id="back-button-focus">Back Button Focus: separar enfocar de disparar</h2>
+
+  <p>Por defecto, el disparador hace dos cosas cuando lo medio pulsas: enfoca <em>y</em> prepara el disparo. El <span class="term" title="Back button focus: enfocar con un botón trasero y reservar el disparador solo para disparar.">back button focus</span> (BBF, enfoque con botón trasero) rompe ese matrimonio: enfocar pasa a un botón del pulgar (AF-ON) y el disparador solo dispara.</p>
+
+  <p>¿Por qué querrías eso? Porque separar las dos acciones te da un control precioso:</p>
+  <ul>
+    <li>Enfocas con el pulgar, sueltas, y el foco <strong>queda bloqueado</strong> sin tener que mantener nada a medio pulsar. Recompones y disparas todas las tomas que quieras: el foco no se toca.</li>
+    <li>Con AF-C, es la forma más elegante de <em>elegir</em> cuándo seguir: mantienes AF-ON pulsado para que persiga, lo sueltas para congelar el foco. Un solo botón te da AF-S y AF-C sobre la marcha.</li>
+    <li>Nunca más un reenfoque accidental en el instante decisivo por medio pulsar sin querer.</li>
+  </ul>
+
+  <h3 id="bbf-config">Cómo configurarlo en la X-S20</h3>
+
+  <p>Son dos pasos. Primero, quitarle el enfoque al disparador:</p>
+  <p class="menu-path"><b>MENU</b> <span class="sep">→</span> AF/MF <span class="sep">→</span> SHUTTER AF <span class="sep">→</span> <b>AF-S: OFF</b> y <b>AF-C: OFF</b></p>
+  <p>Segundo, asegurarte de tener un botón haciendo de AF-ON. La X-S20 trae de fábrica el botón <a href="01-conociendo-la-xs20.html#af-on-y-ael"><kbd>AF-ON</kbd></a> en la trasera para el pulgar; si tu configuración no lo tiene, asigna la función AF-ON a un botón Fn en <b>BUTTON/DIAL SETTING</b>. Con eso, el pulgar enfoca y el índice solo dispara.</p>
+
+  <div class="callout tip" data-title="El puente de INSTANT AF">
+    <p>Hay una variante intermedia elegante: deja SHUTTER AF activado pero usa el selector en <strong>MF</strong> y configura <b>INSTANT AF SETTING</b> (AF-S o AF-C). Así enfocas casi siempre a mano, pero un toque en AF-ON dispara un autofoco puntual cuando lo necesitas. Es «MF con red de seguridad», muy cómodo para calle.</p>
+  </div>
+
+  <div class="callout fact" data-title="Un matiz honesto sobre el BBF">
+    <p>Durante años el BBF fue casi obligatorio para cualquiera que se tomara en serio el foco. Hoy es distinto: con la detección de ojos y de sujetos tan buena, la cámara ya reengancha y persigue sola, y buena parte de lo que resolvía el BBF (elegir cuándo seguir y cuándo bloquear) lo resuelve ahora la IA. Sigue siendo una gran herramienta y a mucha gente le encanta, pero no es un peaje de entrada. Si te lía, no pasa nada por vivir sin él: pruébalo un fin de semana y quédatelo solo si te hace la vida más fácil.</p>
+  </div>
+
+  <h3 id="ael">AEL y su combinación con el foco</h3>
+
+  <p>El botón <a href="01-conociendo-la-xs20.html#af-on-y-ael"><kbd>AEL</kbd></a> (<i>Auto Exposure Lock</i>) no bloquea el foco: bloquea la <strong>exposición</strong> (mide la luz y la congela). Es el gemelo del bloqueo de foco pero para el brillo: mides la luz donde te interesa, bloqueas, y recompones sin que la exposición baile. Todo lo de medir la luz se ve en <a href="05-exposicion.html">el capítulo de exposición</a>.</p>
+
+  <p>Puede funcionar en dos comportamientos, según lo configures:</p>
+  <ul>
+    <li><strong>Toggle (conmutador):</strong> un toque bloquea, otro toque libera. Cómodo para dejar la exposición fija un rato sin mantener el dedo.</li>
+    <li><strong>Hold (mantener):</strong> bloquea solo mientras mantienes el botón pulsado. Más momentáneo.</li>
+  </ul>
+
+  <p>La combinación potente para viaje: <strong>AF-ON separado (BBF) + AEL para exposición</strong>. Pulgar al foco, y AEL a mano para fijar la luz cuando el sujeto y el fondo tienen brillos muy distintos (una figura al sol contra un callejón en sombra). Enfocas y expones de forma independiente, cada una con su botón, y el disparador queda limpio para lo único que debería hacer: capturar el momento.</p>
+
+  <h2 id="recetas-de-enfoque">Tres recetas de enfoque para el viaje</h2>
+
+  <p>Toda la teoría se resume en decisiones rápidas. Aquí tienes tres configuraciones completas listas para copiar, las tres situaciones que más vas a repetir.</p>
+
+  <h3 id="receta-calle">Receta 1 — Calle de día</h3>
+  <p class="menu-path">FOCUS MODE <span class="sep">→</span> <b>S (AF-S)</b> <span class="sep">·</span> AF MODE <span class="sep">→</span> <b>SINGLE POINT (medio)</b></p>
+  <div class="setting-card">
+    <span class="s-name">AF-S · Single Point + FACE/EYE</span>
+    <span class="s-value">Priority: FOCUS · punto móvil con joystick</span>
+    <span class="s-why">Por qué: la calle de día es sobre todo gente y escenas quietas con buena luz. Single Point te da el control y la cara/ojo se engancha sola cuando aparece alguien. Rápido y limpio.</span>
+  </div>
+  <p>Variante ninja: selector en <strong>MF</strong> con zone focusing a 3 m y f/8, e INSTANT AF en AF-ON por si algo se sale de la franja. Disparo sin latencia, cero «hunting», máxima discreción.</p>
+
+  <h3 id="receta-retrato">Receta 2 — Retrato de tu compañero de viaje</h3>
+  <p class="menu-path">FOCUS MODE <span class="sep">→</span> <b>S (AF-S)</b> <span class="sep">·</span> FACE/EYE DETECTION <span class="sep">→</span> <b>ON · EYE AUTO</b></p>
+  <div class="setting-card">
+    <span class="s-name">AF-S · Single Point pequeño + EYE AUTO</span>
+    <span class="s-value">AF+MF: ON · Priority: FOCUS</span>
+    <span class="s-why">Por qué: con el 35mm f/1.4 abierto la profundidad es de milímetros. La detección de ojos clava el ojo por ti; AF+MF te deja el remate manual si enfoca la pestaña en vez del iris. Nada de focus-and-recompose girando la cámara aquí.</span>
+  </div>
+
+  <h3 id="receta-movimiento">Receta 3 — Sujeto en movimiento</h3>
+  <p class="menu-path">FOCUS MODE <span class="sep">→</span> <b>C (AF-C)</b> <span class="sep">·</span> AF MODE <span class="sep">→</span> <b>TRACKING</b> (o ZONE 5×5)</p>
+  <div class="setting-card">
+    <span class="s-name">AF-C · Tracking + SUBJECT DETECTION</span>
+    <span class="s-value">AF-C SET 1 (o SET 5 si es errático) · Priority: RELEASE</span>
+    <span class="s-why">Por qué: gaviotas, perros, ciclistas o el ferry acercándose cambian de distancia sin avisar. AF-C predice, Tracking persigue, la detección engancha el sujeto correcto y RELEASE no te hace perder el instante cumbre por esperar la confirmación.</span>
+  </div>
+
+  <div class="callout error" data-title="Error común: dejar Wide/Tracking puesto todo el día">
+    <p>Es la tentación número uno: «que decida la cámara por mí siempre». El problema es que Wide/Tracking enfoca lo que <em>él</em> cree que es el sujeto —a menudo lo más cercano y contrastado—, y en una calle llena de cosas eso casi nunca es lo que tú quieres. Acabas con la farola de delante nítida y tu amigo borroso. Wide/Tracking es para cuando de verdad no sabes por dónde va a moverse el sujeto; para todo lo demás, un área más pequeña acierta más.</p>
+  </div>
+
+  <div class="callout error" data-title="Error común: el punto de AF pegado siempre al centro">
+    <p>El heredero del focus-and-recompose mal entendido: dejar el punto clavado en el centro «porque es lo más fácil» y recomponer siempre girando. Te comes la trampa geométrica de la Figura 4.4 con cada retrato abierto y, peor, compones peor por pereza de mover el punto. Mueve el punto con el joystick: es un gesto de medio segundo y transforma tus encuadres.</p>
+  </div>
+
+  <div class="callout exercise" data-title="Ejercicio 4.1 — Provoca el hunting a propósito">
+    <p>En AF-S con Single Point, apunta a una pared lisa sin textura (o al cielo despejado) y medio pulsa. Escucha y observa: la lente barrerá adelante y atrás sin encontrar foco porque no hay contraste. Ahora apunta al borde entre la pared y una ventana y medio pulsa: engancha al instante. Acabas de <em>ver</em> la diferencia entre tener y no tener contraste que medir. Criterio de éxito: sabes reconocer de oído y de vista cuándo tu cámara está «cazando».</p>
+  </div>
+
+  <div class="callout exercise" data-title="Ejercicio 4.2 — Un punto, cien encuadres">
+    <p>Sal una hora con AF-S y Single Point <em>pequeño</em>, y prohíbete tocar Wide o recomponer girando. Para cada foto, mueve el punto con el joystick hasta el sitio exacto que quieres nítido antes de disparar. Al principio será lento; al cabo de media hora será automático. Criterio de éxito: al revisar en casa, el punto de nitidez cae donde tú decidiste, no donde la cámara supuso.</p>
+  </div>
+
+  <div class="callout exercise" data-title="Ejercicio 4.3 — Detección contra la pared">
+    <p>Pide a alguien que pose y prueba la detección de ojos en cuatro situaciones a propósito: de frente, de perfil cerrado, a contraluz y con gafas de sol. Observa en cuáles el recuadro verde encuentra el ojo y en cuáles duda o desaparece. Anota mentalmente el umbral. Criterio de éxito: sabes de antemano cuándo confiar en la detección y cuándo pasar a Single Point manual.</p>
+  </div>
+
+  <div class="callout challenge" data-title="Reto del capítulo — El tranvía 28">
+    <p>Una tarde entera dedicada al movimiento. Colócate en una parada del tranvía 28 (o cualquier vehículo recurrente: autobuses, ciclistas, el ferry). Objetivo: diez fotos nítidas de vehículos <em>en movimiento</em> acercándose o cruzando. Configura AF-C, prueba primero Zone 5×5 con SET 1 y luego Tracking con detección (experimenta con TRAIN o AUTOMOBILE). Alterna Priority FOCUS y RELEASE y compara cuántas fotos aprovechables te da cada uno. Al terminar, revisa: ¿qué combinación de área + perfil + prioridad te dio más aciertos? Ese hallazgo es tuyo, calibrado con tu forma de disparar, y vale más que cualquier tabla.</p>
+  </div>
+
+  <div class="callout summary" data-title="Lo esencial del capítulo">
+    <ul>
+      <li>Enfocar es óptica: mover lentes hasta que el cono de luz cierra sobre el sensor. La cámara mide si acierta de dos formas.</li>
+      <li><strong>PDAF</strong> (fase) sabe dirección y distancia del error → rápido y predictivo (425 puntos sobre el sensor). <strong>CDAF</strong> (contraste) solo sabe que hay error → lento («hunting») pero exacto, y necesita contraste. La X-S20 los combina con el X-Processor 5.</li>
+      <li><strong>AF-S</strong> enfoca y bloquea: para lo estático. <strong>AF-C</strong> sigue y predice: para lo que se mueve, con perfiles (SET 1–6) y prioridad RELEASE/FOCUS. <strong>MF</strong> gana en noche, cristales, zone focusing, timelapse y vídeo planificado, con peaking, split image, microprismas, lupa y AF+MF.</li>
+      <li>El área decide <em>dónde</em> mira: Single Point (6 tamaños), Zone (3×3/5×5/7×7), Wide (AF-S) / Tracking (AF-C) y ALL. Usa la más pequeña que te resulte cómoda.</li>
+      <li>Detección de caras/ojos y de sujetos por IA (animal, pájaro, coche, moto/bici, avión, tren) son <strong>excluyentes</strong> entre sí en la X-S20.</li>
+      <li><strong>BBF</strong> (AF-ON + SHUTTER AF OFF) separa enfocar de disparar; <strong>AEL</strong> bloquea la exposición. Útiles, pero la detección moderna hace el BBF menos imprescindible que antes.</li>
+    </ul>
+  </div>
+
+  <details class="callout faq">
+    <summary>¿Puedo dejar AF-C con detección puesto para todo y olvidarme?</summary>
+    <div class="co-body">
+      <p>Casi, pero no del todo, y por buenas razones. AF-C con Tracking y detección es un modo maravilloso para acción, pero para lo estático te penaliza: gasta más batería, la lente no para de moverse (menos discreto), y en escenas cargadas puede enganchar el sujeto equivocado. Para una fachada o un plato de comida, AF-S con Single Point es más preciso, más rápido en la práctica y más silencioso. La cámara tiene modos distintos porque las escenas son distintas; el gesto de cambiar es de dos segundos y te ahorra fotos fallidas. Piensa en «estático → AF-S / en movimiento → AF-C» como el interruptor mental por defecto.</p>
+    </div>
+  </details>
+
+  <details class="callout faq">
+    <summary>La detección de ojos engancha, sale el recuadro verde… y la foto está desenfocada. ¿Por qué?</summary>
+    <div class="co-body">
+      <p>Tres sospechosos habituales. Uno: profundidad de campo mínima con el 35mm f/1.4 abierto y un pelín de movimiento tuyo o del sujeto entre el enganche y el disparo; sube la velocidad de obturación y considera AF+MF para el remate. Dos: la detección enganchó la cara pero no el ojo (o el ojo más lejano); fuerza EYE AUTO o un ojo concreto. Tres: no era desenfoque sino <em>trepidación</em> —la imagen movida por velocidad lenta, que no es un problema de foco sino de <a href="05-exposicion.html#la-velocidad">velocidad de obturación</a>—. Amplía la foto al 100%: si los bordes están movidos en una dirección, es trepidación; si están blandos por igual, es foco.</p>
+    </div>
+  </details>
+
+  <div class="callout gear" data-title="En la X-S20: tu punto de partida">
+    <p>Si acabas de sacar la cámara de la caja y no sabes por dónde empezar, deja esto puesto y sal a la calle: <strong>FOCUS MODE en AF-S</strong>, <strong>AF MODE en Single Point (tamaño medio)</strong>, <strong>FACE/EYE DETECTION en ON / EYE AUTO</strong>, <strong>Priority FOCUS</strong>. Aprende a mover el punto con el joystick. Cuando aparezca algo en movimiento, un gesto al selector: <strong>AF-C</strong>. Con eso resuelves el 90% de un viaje; el otro 10% son las recetas 2 y 3 y el enfoque manual para la noche. Todo lo demás de este capítulo es para afinar, no para empezar.</p>
+  </div>
+
+</div>
+
+<script src="../assets/js/manifest.js"></script>
+<script src="../assets/js/search-index.js" defer></script>
+<script src="../assets/js/app.js" defer></script>
+</body>
+</html>

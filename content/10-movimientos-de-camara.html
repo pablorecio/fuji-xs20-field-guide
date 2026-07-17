@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es" data-root="../">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Los movimientos de cámara del vídeo de viaje —estático, pan, tilt, push, pull, reveal, orbit, tracking y cámara en mano— explicados con su motivo, cuándo usarlos, cuándo no, y cómo hacerlos con la X-S20.">
+<title>Movimientos de cámara — Fuji X-S20 Field Guide</title>
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='8' y='8' width='84' height='84' rx='14' fill='%230c0e11'/><path d='M24 24h16M24 24v16M76 24H60M76 24v16M24 76h16M24 76V60M76 76H60M76 76V60' stroke='%234ade80' stroke-width='7' stroke-linecap='round' fill='none'/></svg>">
+</head>
+<body data-chapter="10-movimientos-de-camara">
+
+<div class="content">
+
+  <div class="chapter-hero">
+    <span class="fc"></span>
+    <div class="hero-readout">
+      <span class="r-part">Parte VII · Vídeo</span>
+      <span>Capítulo 10</span>
+      <span>≈25 min</span>
+    </div>
+    <h1>Movimientos de cámara</h1>
+    <p class="hero-lede">En vídeo, mover la cámara es tan expresivo como componer un encuadre
+    en foto —y tan fácil de estropear—. Este capítulo te da el vocabulario completo (pan, tilt,
+    push, pull, reveal, orbit, tracking y cámara en mano) con una única ley que lo gobierna todo:
+    el movimiento debe tener <b>motivo</b>. Si no sabes por qué te mueves, no te muevas.</p>
+    <div class="hero-meta">
+      <span class="pill pill-part">Movimiento con motivo</span>
+      <span class="pill">Estático primero</span>
+      <span class="pill">Pan · tilt · push · pull</span>
+      <span class="pill">Reveal · orbit · tracking</span>
+      <span class="pill">Paso ninja</span>
+    </div>
+  </div>
+
+  <p>Vienes de <a href="09-video.html">Vídeo desde cero</a> sabiendo qué es un fotograma, a
+  cuántos por segundo grabar y cómo exponer una toma; nunca has movido una cámara de vídeo.
+  Grábate una idea a fuego antes de tocar nada: <b>el movimiento no es lo que hace bueno un
+  vídeo</b>; lo que lo hace bueno es que cada movimiento signifique algo. Un paneo puede revelar,
+  un push in acercar la atención a una cara, un tracking meterte dentro de la escena. Pero un
+  paneo <i>porque sí</i>, un zoom nervioso <i>porque sí</i>, la cámara bailando <i>porque tienes
+  las manos</i>, solo producen mareo. La regla que resume el capítulo entero cabe en una frase,
+  grábatela: <b>si no sabes por qué te mueves, no te muevas</b>.</p>
+
+  <p>Un buen movimiento nace siempre de un <b>motivo</b>, y hay cuatro grandes:
+  <b>revelar</b> algo que no se veía, <b>seguir</b> a un sujeto que se mueve, <b>acercar la
+  atención</b> a un detalle, o <b>dar energía</b> a una escena que la pide. Antes de cada plano en
+  movimiento, hazte la pregunta —«¿qué quiero que sienta o descubra quien lo vea?»— y deja que la
+  respuesta elija el movimiento. Cuando la respuesta es «nada, es que quedaba soso quieto», la
+  cámara se queda quieta. Que es, precisamente, donde empezamos.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="estatico">El plano estático: tu primer movimiento</h2>
+
+  <p>Suena a contradicción abrir un capítulo de movimientos con el plano que no se mueve, pero es
+  deliberado: <b>el estático es la base del vídeo de viaje</b>, y el más infravalorado. El
+  principiante cree que un plano quieto es «aburrido» y lo compensa moviéndose; se equivoca de
+  medio a medio. Un estático no es un plano vacío: es una <b>composición fija dentro de la cual
+  algo se mueve</b>. El tranvía amarillo que cruza el encuadre en Lisboa, la gente ante una fachada
+  de azulejos, las olas que rompen, el humo de un puesto callejero. Tú encuadras —usando lo que
+  aprendiste en <a href="07-composicion.html#capas">composición</a>— y dejas que la vida entre y
+  salga del cuadro: sereno, elegante y muchísimo más fácil de editar que cualquier movimiento.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 480 210" role="img" aria-labelledby="d101-t" font-family="ui-monospace, Menlo, monospace" font-size="11">
+      <title id="d101-t">Un encuadre fijo con la composición quieta mientras un tranvía y varias personas cruzan por dentro del cuadro.</title>
+      <style>
+        .d101-tram { animation: d101-tram 6s linear infinite; }
+        @keyframes d101-tram { 0% { transform: translateX(-150px); } 100% { transform: translateX(430px); } }
+        .d101-p1 { animation: d101-p1 6s linear infinite; }
+        @keyframes d101-p1 { 0% { transform: translateX(360px); } 100% { transform: translateX(-60px); } }
+        .d101-p2 { animation: d101-p2 5s linear infinite; }
+        @keyframes d101-p2 { 0% { transform: translateX(-40px); } 100% { transform: translateX(380px); } }
+        @media (prefers-reduced-motion: reduce){ .d101-tram,.d101-p1,.d101-p2{ animation:none !important } }
+      </style>
+      <defs><clipPath id="d101-clip"><rect x="42" y="30" width="396" height="140" rx="4"/></clipPath></defs>
+      <!-- marco fijo -->
+      <rect x="42" y="30" width="396" height="140" rx="4" fill="none" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <!-- guías de tercios -->
+      <g stroke="var(--dg-line-soft)" stroke-width="1" stroke-dasharray="3 6" opacity="0.5">
+        <line x1="174" y1="30" x2="174" y2="170"/><line x1="306" y1="30" x2="306" y2="170"/>
+        <line x1="42" y1="76" x2="438" y2="76"/><line x1="42" y1="123" x2="438" y2="123"/>
+      </g>
+      <g clip-path="url(#d101-clip)">
+        <!-- fachada fija de fondo -->
+        <rect x="60" y="52" width="360" height="72" fill="var(--dg-line-soft)" opacity="0.18"/>
+        <g stroke="var(--dg-line-soft)" stroke-width="1" opacity="0.4">
+          <line x1="120" y1="52" x2="120" y2="124"/><line x1="200" y1="52" x2="200" y2="124"/>
+          <line x1="280" y1="52" x2="280" y2="124"/><line x1="360" y1="52" x2="360" y2="124"/>
+        </g>
+        <!-- suelo -->
+        <line x1="42" y1="150" x2="438" y2="150" stroke="var(--dg-line)" stroke-width="1"/>
+        <!-- tranvía que cruza -->
+        <g class="d101-tram">
+          <rect x="0" y="112" width="96" height="34" rx="5" fill="var(--dg-amber)" opacity="0.85"/>
+          <rect x="10" y="118" width="18" height="14" rx="2" fill="var(--dg-blue)" opacity="0.7"/>
+          <rect x="34" y="118" width="18" height="14" rx="2" fill="var(--dg-blue)" opacity="0.7"/>
+          <rect x="58" y="118" width="18" height="14" rx="2" fill="var(--dg-blue)" opacity="0.7"/>
+        </g>
+        <!-- personas -->
+        <circle class="d101-p1" cx="0" cy="156" r="4" fill="var(--dg-text)"/>
+        <circle class="d101-p2" cx="0" cy="160" r="4" fill="var(--dg-text)"/>
+      </g>
+      <text x="240" y="192" fill="var(--dg-text)" text-anchor="middle" font-size="10">la cámara no se mueve · el mundo entra y sale del cuadro</text>
+    </svg>
+    <figcaption><b>Figura 10.1.</b> El estático bien hecho no está muerto: la composición es fija,
+    pero dentro hay vida cruzando. Encuadras, bloqueas y esperas a que el tranvía entre por un
+    tercio y salga por el otro. Ese solo plano, bien elegido, cuenta más que diez barridos
+    nerviosos.</figcaption>
+  </figure>
+
+  <p>La pregunta práctica es: ¿<b>cuánto aguanto</b> grabando? Al principio todos cortan
+  demasiado pronto —tres segundos y ya— y luego, al montar, no tienen material. La regla de oro:
+  cada plano necesita al menos <b>6 a 10 segundos utilizables</b>, sin el bamboleo del principio
+  (cuando aprietas REC) ni el del final (cuando vas a parar). Eso significa grabar tranquilamente
+  entre <b>12 y 15 segundos reales</b>: cuenta «mil uno, mil dos…» hasta diez, respira, y solo
+  entonces para. Sobra material siempre; falta, nunca. Y <b>apoya la cámara</b> —un muro, una
+  barandilla, una mesa, tu mini-trípode—: un estático de verdad quieto es media batalla del vídeo
+  de viaje ganada.</p>
+
+  <div class="callout tip" data-title="Empieza siempre por preguntarte si el plano pide movimiento">
+    <p>Antes de mover la cámara, prueba el plano quieto en tu cabeza. Si con la composición fija y
+    algo moviéndose dentro ya cuenta lo que quieres, no lo compliques. El movimiento es un
+    condimento: da sabor en su justa medida y arruina el plato si te pasas.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="pan">El paneo (pan)</h2>
+
+  <p>El <span class="term" title="Pan (paneo): giro horizontal de la cámara sobre su eje vertical, sin desplazarla del sitio. Como girar la cabeza para mirar de un lado a otro.">paneo</span> es el
+  giro horizontal de la cámara sobre su propio eje, sin moverla del sitio: como girar la cabeza
+  para pasear la mirada de un lado a otro. Es el movimiento más antiguo y más natural, y por eso
+  mismo el más maltratado. Su motivo legítimo es <b>revelar la anchura</b> de algo —una panorámica
+  de una bahía, la extensión de una plaza, seguir con la mirada a lo largo de una fachada— o
+  <b>acompañar</b> un desplazamiento horizontal.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 480 220" role="img" aria-labelledby="d102-t" font-family="ui-monospace, Menlo, monospace" font-size="11">
+      <title id="d102-t">Vista cenital: la cámara gira sobre su eje y su campo de visión barre lentamente de izquierda a derecha.</title>
+      <style>
+        .d102-fov { animation: d102-rot 6s ease-in-out infinite; transform-origin: 240px 188px; }
+        @keyframes d102-rot { 0%,8% { transform: rotate(-30deg); } 50%,58% { transform: rotate(30deg); } 100% { transform: rotate(-30deg); } }
+        @media (prefers-reduced-motion: reduce){ .d102-fov{ animation:none !important; transform: rotate(0deg) } }
+      </style>
+      <!-- sujetos que barre -->
+      <circle cx="110" cy="60" r="6" fill="var(--dg-line)"/>
+      <circle cx="240" cy="48" r="6" fill="var(--dg-line)"/>
+      <circle cx="370" cy="60" r="6" fill="var(--dg-line)"/>
+      <!-- campo de visión que rota -->
+      <g class="d102-fov">
+        <polygon points="240,188 176,58 304,58" fill="var(--dg-accent)" opacity="0.16"/>
+        <line x1="240" y1="188" x2="176" y2="58" stroke="var(--dg-accent)" stroke-width="1.2"/>
+        <line x1="240" y1="188" x2="304" y2="58" stroke="var(--dg-accent)" stroke-width="1.2"/>
+      </g>
+      <!-- arco de giro -->
+      <path d="M150 150 A 60 60 0 0 1 330 150" fill="none" stroke="var(--dg-line-soft)" stroke-width="1" stroke-dasharray="3 5" opacity="0.7"/>
+      <text x="240" y="128" fill="var(--dg-text)" text-anchor="middle" font-size="10">tarda ~5 s de un borde al otro</text>
+      <!-- cámara -->
+      <rect x="226" y="182" width="28" height="18" rx="3" fill="var(--dg-line)"/>
+      <circle cx="240" cy="188" r="4" fill="var(--dg-accent)"/>
+      <text x="240" y="214" fill="var(--dg-text)" text-anchor="middle" font-size="10">la cámara no se desplaza: solo gira</text>
+    </svg>
+    <figcaption><b>Figura 10.2.</b> En el pan la cámara pivota en el sitio. La clave no es adónde
+    apuntas, sino <b>a qué velocidad</b> giras: el ojo necesita tiempo para leer lo que aparece.
+    Un pan que barre en un segundo no revela nada, marea.</figcaption>
+  </figure>
+
+  <p>La ejecución tiene un solo secreto, la <b>velocidad</b>: casi siempre mucho más lenta de lo
+  que tu instinto pide. La <b>regla de los bordes</b>: un objeto que entra por un borde del cuadro
+  debería tardar <b>al menos 5 segundos</b> en llegar al opuesto. Parece lentísimo mientras
+  grabas; en pantalla es justo y legible. Dos trucos ergonómicos: gira desde la <b>cintura</b>, no
+  desde los brazos (el torso es un cabezal más suave que los hombros), y en un pan largo
+  <b>«enrolla» el cuerpo antes</b> —parte con el torso ya girado hacia el final y desenróllalo
+  durante la toma—, para no forzar la postura justo al final.</p>
+
+  <p>Existe una excepción salvaje, el <b>whip pan</b> (paneo latigazo): un giro tan brusco que la
+  imagen se vuelve un borrón. No sirve para mostrar nada —precisamente lo esconde—, sino como
+  <b>transición</b>: terminas un plano con un latigazo a la derecha y empiezas el siguiente con
+  otro latigazo, y al montarlos parece que la cámara «voló» de un sitio a otro. Es un recurso
+  vistoso; úsalo con cuentagotas o cansa enseguida.</p>
+
+  <div class="callout error" data-title="Error común: el paneo-regadera">
+    <p>El fallo universal del principiante: llegar a un mirador y hacer un paneo continuo de 180°
+    regando el paisaje entero de punta a punta, deprisa, como quien riega un jardín con la
+    manguera. No revela nada porque no da tiempo a leer <b>nada</b>, y en pantalla marea. Si el
+    paisaje es ancho, tienes dos opciones honradas: un <b>estático</b> bien compuesto de la mejor
+    porción, o un pan <b>corto y muy lento</b> que vaya de un punto de interés a otro punto de
+    interés concretos —empezando y terminando en algo, no en el vacío—.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="tilt">La inclinación (tilt)</h2>
+
+  <p>El <span class="term" title="Tilt: giro vertical de la cámara sobre su eje horizontal, sin desplazarla. Como levantar o bajar la mirada.">tilt</span> es el hermano vertical
+  del pan: el mismo giro sobre el eje, pero de abajo arriba o de arriba abajo, como cuando levantas
+  la vista. Su motivo estrella es <b>revelar la altura</b>, y por eso es el rey de la arquitectura
+  de viaje: empiezas encuadrando la puerta de una catedral o la base de una torre y subes despacio
+  hasta la cima, y el espectador siente la escala igual que la sentiste tú al llegar y echar la
+  cabeza atrás. También funciona a la inversa —bajar desde el cielo hasta el sujeto— para
+  presentar un lugar.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 480 230" role="img" aria-labelledby="d103-t" font-family="ui-monospace, Menlo, monospace" font-size="11">
+      <title id="d103-t">Vista lateral: la cámara gira verticalmente y su campo de visión sube desde la base de una torre hasta su cima.</title>
+      <style>
+        .d103-fov { animation: d103-tilt 6s ease-in-out infinite; transform-origin: 120px 190px; }
+        @keyframes d103-tilt { 0%,8% { transform: rotate(0deg); } 50%,58% { transform: rotate(-38deg); } 100% { transform: rotate(0deg); } }
+        @media (prefers-reduced-motion: reduce){ .d103-fov{ animation:none !important; transform: rotate(-19deg) } }
+      </style>
+      <!-- suelo -->
+      <line x1="30" y1="200" x2="450" y2="200" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <!-- torre -->
+      <rect x="330" y="40" width="70" height="160" fill="var(--dg-line-soft)" opacity="0.28" stroke="var(--dg-line)" stroke-width="1"/>
+      <g fill="var(--dg-blue)" opacity="0.6">
+        <rect x="345" y="60" width="12" height="18"/><rect x="373" y="60" width="12" height="18"/>
+        <rect x="345" y="100" width="12" height="18"/><rect x="373" y="100" width="12" height="18"/>
+        <rect x="345" y="140" width="12" height="18"/><rect x="373" y="140" width="12" height="18"/>
+      </g>
+      <polygon points="330,40 365,18 400,40" fill="var(--dg-line-soft)" opacity="0.4"/>
+      <!-- campo de visión que sube -->
+      <g class="d103-fov">
+        <polygon points="120,190 345,164 345,216" fill="var(--dg-accent)" opacity="0.16"/>
+        <line x1="120" y1="190" x2="345" y2="164" stroke="var(--dg-accent)" stroke-width="1.2"/>
+        <line x1="120" y1="190" x2="345" y2="216" stroke="var(--dg-accent)" stroke-width="1.2"/>
+      </g>
+      <!-- cámara (perfil) -->
+      <rect x="98" y="184" width="30" height="16" rx="3" fill="var(--dg-line)"/>
+      <circle cx="128" cy="192" r="6" fill="none" stroke="var(--dg-accent)" stroke-width="2"/>
+      <text x="113" y="216" fill="var(--dg-text)" text-anchor="middle" font-size="10">cámara fija · gira arriba</text>
+      <text x="365" y="232" fill="var(--dg-text)" text-anchor="middle" font-size="10">de la base a la cima</text>
+    </svg>
+    <figcaption><b>Figura 10.3.</b> El tilt regala altura. Empieza y termina en algo concreto —la
+    puerta abajo, la cruz o el reloj arriba— y sube con la misma calma que un pan. Combínalo con la
+    <a href="09-video.html#la-regla-de-los-180-grados">regla de los 180°</a>: a 24 fps, un tilt
+    lento se ve suave; brusco, tirará a saltos.</figcaption>
+  </figure>
+
+  <p>Todo lo dicho del pan sobre la velocidad vale igual: <b>lento</b>. Y una advertencia de
+  óptica: si haces tilt hacia arriba en un edificio con el
+  <a href="06-objetivos.html#23mm">23mm</a>, las verticales convergerán con fuerza (el típico
+  «edificio que se cae hacia atrás»). No es un error —exagera la altura, puede ser el efecto que
+  buscas—, pero si lo quieres «recto», aléjate y encuadra más frontal. <b>Cuándo NO:</b> cuando el
+  sujeto no tiene una historia vertical que contar. Un tilt sobre algo plano es un movimiento sin
+  motivo, y ya sabes qué pasa con esos.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="push-y-pull">Push in y pull out</h2>
+
+  <p>Aquí damos el salto más importante del capítulo: dejar de <b>girar</b> la cámara para
+  empezar a <b>desplazarla</b>. El <b>push in</b> es acercarse físicamente al sujeto; el
+  <b>pull out</b>, alejarse. Ojo con la palabra <i>físicamente</i>, porque es toda la lección:
+  <b>no es un zoom</b>. En un zoom te quedas clavado en el sitio y la lente amplía la imagen; en un
+  push tus pies (o un
+  <span class="term" title="Dolly / travelling: desplazamiento físico de la cámara sobre un eje. En cine se hace con un carro sobre raíles; a mano, andando; con la X-S20, con un gimbal o caminando con técnica.">dolly</span>) caminan hacia el
+  sujeto. La diferencia no es un capricho: al moverte, la <b>perspectiva cambia</b> —el fondo
+  crece o mengua respecto al sujeto, los objetos se reordenan en profundidad—, y eso es lo que el
+  cerebro lee como «estar entrando en la escena». El zoom, en cambio, aplana: acerca sin que nada
+  cambie de perspectiva, y por eso se nota falso. Es exactamente la diferencia entre acercarte a
+  una montaña andando o mirarla con prismáticos, la misma física de la
+  <a href="06-objetivos.html#perspectiva-y-compresion">perspectiva y la compresión</a> que viste
+  con los objetivos.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 480 200" role="img" aria-labelledby="d104-t" font-family="ui-monospace, Menlo, monospace" font-size="11">
+      <title id="d104-t">Vista cenital: la cámara se desplaza físicamente hacia el sujeto (push in) y se aleja de él (pull out) sobre un mismo eje.</title>
+      <style>
+        .d104-cam { animation: d104-move 6s ease-in-out infinite; }
+        @keyframes d104-move { 0%,8% { transform: translateY(0); } 50%,58% { transform: translateY(-88px); } 100% { transform: translateY(0); } }
+        @media (prefers-reduced-motion: reduce){ .d104-cam{ animation:none !important; transform: translateY(-44px) } }
+      </style>
+      <!-- sujeto -->
+      <circle cx="240" cy="42" r="10" fill="var(--dg-green)" opacity="0.85"/>
+      <text x="240" y="24" fill="var(--dg-text)" text-anchor="middle" font-size="10">sujeto</text>
+      <!-- eje / raíl -->
+      <line x1="240" y1="58" x2="240" y2="178" stroke="var(--dg-line-soft)" stroke-width="1.5" stroke-dasharray="4 5"/>
+      <!-- flechas push/pull -->
+      <path d="M300 150 l0 -40 m-5 8 l5 -8 l5 8" fill="none" stroke="var(--dg-accent)" stroke-width="1.4"/>
+      <text x="330" y="130" fill="var(--dg-accent)" font-size="10">push in</text>
+      <text x="330" y="144" fill="var(--dg-text)" font-size="9">atención · intimidad</text>
+      <path d="M180 100 l0 40 m-5 -8 l5 8 l5 -8" fill="none" stroke="var(--dg-blue)" stroke-width="1.4"/>
+      <text x="86" y="120" fill="var(--dg-blue)" font-size="10">pull out</text>
+      <text x="70" y="134" fill="var(--dg-text)" font-size="9">contexto · despedida</text>
+      <!-- cámara que se desplaza -->
+      <g class="d104-cam">
+        <polygon points="240,168 210,120 270,120" fill="var(--dg-accent)" opacity="0.16"/>
+        <rect x="226" y="162" width="28" height="18" rx="3" fill="var(--dg-line)"/>
+        <circle cx="240" cy="168" r="4" fill="var(--dg-accent)"/>
+      </g>
+    </svg>
+    <figcaption><b>Figura 10.4.</b> Push y pull viven sobre el mismo eje, en sentidos opuestos. No
+    los confundas con el zoom: aquí la cámara <b>viaja</b>, y por eso la perspectiva cambia y la
+    imagen «respira».</figcaption>
+  </figure>
+
+  <p>Y cada dirección <b>comunica</b> algo casi opuesto. El <b>push in</b> concentra: avanza hacia
+  el sujeto y dice «mira <b>esto</b>, presta atención»; crea intimidad, tensión, importancia. Es el
+  movimiento con que llegas a una cara, a un detalle, a una revelación. El <b>pull out</b> hace lo
+  contrario: parte de algo concreto y se retira para descubrir el <b>contexto</b> —«mira dónde
+  estaba»—; es el movimiento de las despedidas y los finales. Elige la dirección según lo que
+  quieras que sienta quien mira: acercar o soltar.</p>
+
+  <p><b>Cuándo NO:</b> push y pull cuestan estabilidad —andas mientras grabas—, así que piden buena
+  técnica de mano o un apoyo/gimbal, o el «respira» se vuelve «tiembla». Y no encadenes un push tras
+  otro: es un movimiento de <b>énfasis</b>, y lo que se enfatiza sin parar deja de enfatizar. Uno
+  por escena es un lujo; tres, un tic.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="reveal">El reveal</h2>
+
+  <p>Si tuvieras que aprender un solo movimiento de este capítulo, sería este. El <b>reveal</b>
+  consiste en <b>descubrir el sujeto desde detrás de algo</b>: la cámara arranca con un elemento en
+  primer término tapando la escena —el canto de una pared, el marco de una puerta, unas ramas— y se
+  desplaza (o el sujeto entra) hasta que ese obstáculo «abre» y aparece lo que querías enseñar. Es
+  puro motivo de <b>revelación</b>, y tiene un poder único: crea <b>expectativa</b>. Durante un
+  segundo no sabes qué vas a ver, y ese segundo engancha.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 480 200" role="img" aria-labelledby="d105-t" font-family="ui-monospace, Menlo, monospace" font-size="11">
+      <title id="d105-t">Vista cenital: la cámara se desplaza lateralmente saliendo de detrás de un obstáculo, que deja de tapar la línea de visión hacia el sujeto.</title>
+      <style>
+        .d105-cam { animation: d105-cam 6s ease-in-out infinite; }
+        @keyframes d105-cam { 0%,10% { transform: translateX(0); } 55%,65% { transform: translateX(150px); } 100% { transform: translateX(0); } }
+        .d105-subj { animation: d105-subj 6s ease-in-out infinite; }
+        @keyframes d105-subj { 0%,25% { opacity: 0.15; } 55%,100% { opacity: 1; } }
+        .d105-sight { animation: d105-sight 6s ease-in-out infinite; }
+        @keyframes d105-sight { 0%,25% { opacity: 0; } 55%,100% { opacity: 1; } }
+        .d105-block { animation: d105-block 6s ease-in-out infinite; }
+        @keyframes d105-block { 0%,20% { opacity: 1; } 45%,100% { opacity: 0; } }
+        @media (prefers-reduced-motion: reduce){ .d105-cam,.d105-subj,.d105-sight,.d105-block{ animation:none !important } .d105-cam{transform:translateX(75px)} .d105-subj,.d105-sight{opacity:1} .d105-block{opacity:0} }
+      </style>
+      <!-- obstáculo -->
+      <rect x="232" y="36" width="20" height="120" rx="2" fill="var(--dg-line-soft)" opacity="0.85"/>
+      <text x="242" y="26" fill="var(--dg-text)" text-anchor="middle" font-size="10">obstáculo</text>
+      <!-- sujeto -->
+      <g class="d105-subj">
+        <circle cx="400" cy="96" r="11" fill="var(--dg-green)"/>
+        <text x="400" y="128" fill="var(--dg-text)" text-anchor="middle" font-size="10">sujeto</text>
+      </g>
+      <!-- línea de visión bloqueada -->
+      <line class="d105-block" x1="120" y1="150" x2="232" y2="96" stroke="var(--dg-red)" stroke-width="1.4" stroke-dasharray="4 4"/>
+      <!-- línea de visión libre -->
+      <line class="d105-sight" x1="270" y1="150" x2="392" y2="96" stroke="var(--dg-green)" stroke-width="1.4"/>
+      <!-- riel -->
+      <line x1="110" y1="168" x2="290" y2="168" stroke="var(--dg-line-soft)" stroke-width="1" stroke-dasharray="3 5"/>
+      <!-- cámara que se desplaza -->
+      <g class="d105-cam">
+        <rect x="106" y="150" width="28" height="18" rx="3" fill="var(--dg-line)"/>
+        <circle cx="120" cy="156" r="4" fill="var(--dg-accent)"/>
+      </g>
+      <text x="200" y="190" fill="var(--dg-text)" text-anchor="middle" font-size="10">la cámara sale de detrás del obstáculo → aparece el sujeto</text>
+    </svg>
+    <figcaption><b>Figura 10.5.</b> En el reveal, el primer término no es un estorbo: es el telón.
+    Cuanto más tape al principio, más recompensa da al abrir. Funciona igual moviendo la cámara o
+    dejándola quieta mientras el sujeto entra en cuadro.</figcaption>
+  </figure>
+
+  <p>Lo mejor del reveal es que tiene una versión perezosa —y buenísima— para quien no tiene
+  estabilizador: el <b>reveal estático</b>. Dejas la cámara quieta con algo tapando media escena y
+  esperas a que <b>el mundo</b> haga el movimiento: que pase la persona, que se abra la puerta, que
+  el barco cruce el hueco entre dos columnas. Cero técnica, todo el efecto. La versión con cámara en
+  movimiento —salir andando de detrás de una pared— es más ambiciosa pero pide pulso. En ambos
+  casos, la regla: <b>arranca con el obstáculo dominando el cuadro</b>; si desde el principio ya se
+  intuye el sujeto, no hay revelación que valga.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="orbit">El orbit</h2>
+
+  <p>El <b>orbit</b> (u órbita) es un arco alrededor del sujeto: la cámara describe una curva
+  manteniendo al sujeto en el centro, como si le dieras vueltas. Es el movimiento más
+  «cinematográfico» de la lista y el que más grita <b>producción</b>, así que gástalo con cabeza.
+  Su motivo es doble: <b>dar energía</b> y, sobre todo, <b>separar</b>. Al moverte lateralmente
+  alrededor del sujeto, el fondo se desplaza a una velocidad distinta que él —el famoso
+  <a href="07-composicion.html#capas">paralaje</a>—, y esa separación en movimiento entre sujeto y
+  fondo produce una sensación de tridimensionalidad y de «estar rodeándolo» que ningún plano fijo
+  consigue.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 460 240" role="img" aria-labelledby="d106-t" font-family="ui-monospace, Menlo, monospace" font-size="11">
+      <title id="d106-t">Vista cenital: la cámara recorre un arco alrededor del sujeto, mientras dos referencias de fondo se mantienen fijas para mostrar el paralaje.</title>
+      <style>
+        .d106-arm { animation: d106-orbit 7s ease-in-out infinite; transform-origin: 230px 130px; }
+        @keyframes d106-orbit { 0%,8% { transform: rotate(-58deg); } 55%,63% { transform: rotate(58deg); } 100% { transform: rotate(-58deg); } }
+        @media (prefers-reduced-motion: reduce){ .d106-arm{ animation:none !important; transform: rotate(0deg) } }
+      </style>
+      <!-- referencias de fondo fijas -->
+      <circle cx="130" cy="44" r="5" fill="var(--dg-line-soft)"/>
+      <circle cx="330" cy="44" r="5" fill="var(--dg-line-soft)"/>
+      <text x="230" y="30" fill="var(--dg-text)" text-anchor="middle" font-size="9">fondo (fijo)</text>
+      <!-- círculo de órbita -->
+      <circle cx="230" cy="130" r="88" fill="none" stroke="var(--dg-line-soft)" stroke-width="1" stroke-dasharray="3 6" opacity="0.7"/>
+      <!-- sujeto en el centro -->
+      <circle cx="230" cy="130" r="11" fill="var(--dg-green)"/>
+      <text x="230" y="160" fill="var(--dg-text)" text-anchor="middle" font-size="10">sujeto</text>
+      <!-- brazo cámara que orbita -->
+      <g class="d106-arm">
+        <line x1="230" y1="130" x2="230" y2="42" stroke="var(--dg-accent)" stroke-width="1" stroke-dasharray="2 4" opacity="0.7"/>
+        <polygon points="230,42 214,10 246,10" fill="var(--dg-accent)" opacity="0.16"/>
+        <rect x="216" y="38" width="28" height="16" rx="3" fill="var(--dg-line)"/>
+        <circle cx="230" cy="42" r="4" fill="var(--dg-accent)"/>
+      </g>
+      <path d="M150 78 A 88 88 0 0 1 310 78" fill="none" stroke="var(--dg-accent)" stroke-width="1.2"/>
+      <text x="230" y="228" fill="var(--dg-text)" text-anchor="middle" font-size="10">sujeto centrado · el fondo se desplaza distinto (paralaje)</text>
+    </svg>
+    <figcaption><b>Figura 10.6.</b> Orbitar es caminar en arco manteniendo al sujeto clavado en el
+    centro del cuadro. A pulso es difícil que salga liso; es el movimiento que más agradece un
+    gimbal.</figcaption>
+  </figure>
+
+  <p><b>Cuándo NO:</b> el orbit es exigente y llama mucho la atención. Necesita un sujeto que
+  <b>aguante</b> ser el centro (una persona, una estatua, una fuente) y, a ser posible, un
+  <span class="term" title="Gimbal: estabilizador motorizado de tres ejes que sostiene la cámara y compensa tus movimientos, permitiendo planos deslizantes muy suaves andando.">gimbal</span>, porque a pulso salir liso es
+  muy difícil —y un orbit tembloroso es peor que no hacerlo—. Como todo movimiento vistoso: uno por
+  vídeo impresiona; tres, empalagan. Si no tienes estabilizador ni un sujeto que lo justifique,
+  guárdalo sin remordimiento.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="tracking">El tracking</h2>
+
+  <p>El <b>tracking</b> (o travelling de seguimiento) es acompañar a un sujeto en movimiento
+  manteniéndolo en el cuadro: seguir a tu compañero mientras camina por una calle, avanzar tras
+  alguien que entra en un mercado. Su motivo es el más claro: <b>seguir</b>. Y es el que más «te
+  mete dentro» del viaje, porque el espectador camina literalmente <i>con</i> el sujeto. Hay tres
+  variantes según dónde te pongas:</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 480 180" role="img" aria-labelledby="d107-t" font-family="ui-monospace, Menlo, monospace" font-size="11">
+      <title id="d107-t">Vista cenital: el sujeto avanza por una acera y la cámara se desplaza en paralelo, a la misma velocidad, apuntándolo de lado.</title>
+      <style>
+        .d107-move { animation: d107-move 6s linear infinite; }
+        @keyframes d107-move { 0% { transform: translateX(-30px); } 100% { transform: translateX(360px); } }
+        @media (prefers-reduced-motion: reduce){ .d107-move{ animation:none !important; transform: translateX(150px) } }
+      </style>
+      <!-- acera del sujeto -->
+      <line x1="20" y1="118" x2="460" y2="118" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <!-- carril de la cámara -->
+      <line x1="20" y1="52" x2="460" y2="52" stroke="var(--dg-line-soft)" stroke-width="1" stroke-dasharray="4 5"/>
+      <g class="d107-move">
+        <!-- sujeto -->
+        <circle cx="60" cy="112" r="8" fill="var(--dg-green)"/>
+        <path d="M60 120 l-6 14 m6 -14 l6 14" stroke="var(--dg-green)" stroke-width="1.4" fill="none"/>
+        <!-- cámara en paralelo -->
+        <polygon points="60,58 44,96 76,96" fill="var(--dg-accent)" opacity="0.16"/>
+        <rect x="46" y="44" width="28" height="16" rx="3" fill="var(--dg-line)"/>
+        <circle cx="60" cy="52" r="4" fill="var(--dg-accent)"/>
+      </g>
+      <text x="240" y="18" fill="var(--dg-text)" text-anchor="middle" font-size="10">cámara y sujeto avanzan a la MISMA velocidad</text>
+      <text x="240" y="152" fill="var(--dg-text)" text-anchor="middle" font-size="10">tú también caminas: paso ninja obligatorio</text>
+    </svg>
+    <figcaption><b>Figura 10.7.</b> En el tracking lateral, cámara y sujeto se desplazan en paralelo
+    y a la vez, de modo que él se queda quieto en el cuadro y es el fondo el que corre. Igual de
+    válido es seguir desde atrás o guiar caminando de espaldas.</figcaption>
+  </figure>
+
+  <ul>
+    <li><b>Lateral (en paralelo):</b> caminas al lado del sujeto a su misma velocidad; él se queda
+    fijo en el cuadro y el fondo se desliza. Es elegante y muy legible.</li>
+    <li><b>Desde atrás:</b> lo sigues por la espalda. Es la mirada del «ven conmigo», del
+    descubrir el lugar a la vez que él. Fácil y muy efectivo para calles y mercados.</li>
+    <li><b>Desde delante (hacia atrás):</b> caminas de espaldas guiándolo, viéndole la cara. El más
+    difícil —no ves por dónde vas—: necesitas a alguien que te avise de obstáculos o un tramo
+    despejado y conocido.</li>
+  </ul>
+
+  <p>El tracking es donde la cámara en mano deja de ser opcional, porque andas y grabas a la vez:
+  el paso ninja de la siguiente sección es, en realidad, la manera de hacer un tracking decente sin
+  gimbal. <b>Cuándo NO:</b> si el terreno es irregular (adoquines, escaleras, arena) sin apoyo, el
+  resultado botará; quédate entonces en estático y deja que el sujeto entre y salga del cuadro.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="handheld">La cámara en mano (handheld)</h2>
+
+  <p>Llegamos a la técnica que sostiene la mitad de los movimientos anteriores. Una distinción que
+  lo cambia todo: la
+  <span class="term" title="Handheld: grabar con la cámara sostenida en las manos, sin trípode ni estabilizador externo. Como estética buscada aporta cercanía; como accidente, produce temblor.">cámara en mano (handheld)</span> puede
+  ser <b>una estética consciente o un temblor accidental</b>, y son cosas opuestas. El handheld
+  <i>buscado</i> —un ligero vaivén orgánico, «documental», que respira— transmite inmediatez: estás
+  <i>ahí</i>, no detrás de un trípode. El <i>accidental</i> —la cámara bailando porque no sabes
+  sujetarla— solo transmite amateurismo y marea. La diferencia no es el equipo, es la técnica, y se
+  aprende en una tarde.</p>
+
+  <p>La base ya la conoces del capítulo de <a href="02-ergonomia.html#como-sujetar-la-camara">ergonomía</a>
+  —codos pegados a las costillas, cámara cerca del cuerpo, correa en tensión, respiración
+  controlada—. Sobre esa base se construye la técnica reina del vídeo a pulso, que se conoce como
+  el <b>«paso ninja»</b> (o <i>ninja walk</i>). Contra lo que parece, no es místico; es
+  biomecánica pura, y consiste en convertir tus piernas en la suspensión de un coche para que el
+  torso —donde vive la cámara— <b>flote</b> en lugar de botar:</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 480 210" role="img" aria-labelledby="d108-t" font-family="ui-monospace, Menlo, monospace" font-size="11">
+      <title id="d108-t">Comparación lateral: al caminar normal la cámara bota arriba y abajo; con las rodillas dobladas y pasos rodados la cámara se mantiene a una altura casi constante.</title>
+      <style>
+        .d108-bad { animation: d108-bad 1.4s ease-in-out infinite; }
+        @keyframes d108-bad { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+        .d108-good { animation: d108-good 2.2s ease-in-out infinite; }
+        @keyframes d108-good { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+        @media (prefers-reduced-motion: reduce){ .d108-bad,.d108-good{ animation:none !important } }
+      </style>
+      <line x1="20" y1="176" x2="460" y2="176" stroke="var(--dg-line)" stroke-width="1.5"/>
+      <!-- MAL -->
+      <text x="128" y="24" fill="var(--dg-red)" text-anchor="middle" font-size="11">✕ andar normal</text>
+      <path d="M60 92 q68 -30 136 0" fill="none" stroke="var(--dg-red)" stroke-width="1.3" stroke-dasharray="3 4" opacity="0.7"/>
+      <path d="M60 92 q34 34 68 0 q34 -34 68 0" fill="none" stroke="var(--dg-red)" stroke-width="1.6"/>
+      <g class="d108-bad">
+        <rect x="112" y="86" width="32" height="20" rx="3" fill="var(--dg-line)"/>
+        <line x1="128" y1="106" x2="128" y2="150" stroke="var(--dg-text)" stroke-width="2"/>
+        <path d="M128 150 l-14 24 m14 -24 l14 24" stroke="var(--dg-text)" stroke-width="2" fill="none"/>
+      </g>
+      <text x="128" y="200" fill="var(--dg-text)" text-anchor="middle" font-size="9">piernas rígidas → bota</text>
+      <!-- separador -->
+      <line x1="240" y1="30" x2="240" y2="188" stroke="var(--dg-line-soft)" stroke-width="1" stroke-dasharray="3 5" opacity="0.5"/>
+      <!-- BIEN -->
+      <text x="352" y="24" fill="var(--dg-green)" text-anchor="middle" font-size="11">✓ paso ninja</text>
+      <line x1="288" y1="80" x2="416" y2="80" stroke="var(--dg-green)" stroke-width="1.6"/>
+      <g class="d108-good">
+        <rect x="336" y="72" width="32" height="20" rx="3" fill="var(--dg-line)"/>
+        <line x1="352" y1="92" x2="352" y2="132" stroke="var(--dg-text)" stroke-width="2"/>
+        <path d="M352 132 q-16 8 -18 30 m18 -30 q16 8 18 30" stroke="var(--dg-green)" stroke-width="2.2" fill="none"/>
+      </g>
+      <text x="352" y="200" fill="var(--dg-text)" text-anchor="middle" font-size="9">rodillas dobladas → flota</text>
+    </svg>
+    <figcaption><b>Figura 10.8.</b> La firma del aficionado es el bote vertical de cada pisada. El
+    paso ninja lo aplana: rodillas semiflexionadas que absorben el impacto y una cámara que se
+    desliza casi a la misma altura durante todo el recorrido.</figcaption>
+  </figure>
+
+  <ul>
+    <li><b>Dobla las rodillas</b> y mantenlas dobladas todo el rato, andando «un poco agachado»:
+    ahí está el 80% del secreto, porque absorben el golpe de cada paso.</li>
+    <li><b>Rueda el pie de talón a punta</b> en cada pisada, con suavidad. Nada de plantar el pie
+    de golpe.</li>
+    <li><b>Pasos cortos y lentos.</b> Un paso largo es un paso que bota. Camina a cámara lenta.</li>
+    <li><b>Codos clavados a las costillas</b> y cámara a media distancia del cuerpo: los brazos
+    dejan de ser palancas temblorosas.</li>
+    <li><b>Fluye de la cintura para arriba.</b> Imagina que llevas un vaso lleno en la cabeza; el
+    tren superior navega sereno mientras las piernas hacen todo el trabajo sucio abajo.</li>
+    <li><b>Respira.</b> Como en foto, no aguantes el aire hasta ponerte rígido: respiración lenta y
+    continua para no transmitir tensión a los brazos.</li>
+  </ul>
+
+  <div class="compare">
+    <div class="bad"><div class="cmp-label">✕ Temblor accidental</div>
+      <p>Brazos estirados, cámara lejos del cuerpo mirando la pantalla, piernas rígidas, pasos
+      normales. Cada pisada es un golpe en el fotograma. Marea y grita «vídeo casero».</p>
+    </div>
+    <div class="good"><div class="cmp-label">✓ Handheld con intención</div>
+      <p>Rodillas dobladas, codos dentro, pasos rodados y cortos, respiración suave. Un vaivén
+      mínimo y orgánico que dice «estoy ahí, contigo». La misma cámara, otro mundo.</p>
+    </div>
+  </div>
+
+  <p>Un truco final: si un plano handheld sale con micro-temblor, no lo tires. En el montaje se
+  puede <b>estabilizar en el editor</b> (Premiere tiene una herramienta para ello), que recorta un
+  poco el encuadre a cambio de suavizarlo. No hace milagros con un plano que bota, pero rescata
+  muchos: grábalo dejando algo de margen alrededor.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="la-xs20-en-movimiento">La X-S20 en movimiento</h2>
+
+  <p>Tu cámara trae un aliado potentísimo: la estabilización. Ya viste en
+  <a href="09-video.html#ibis-en-video">el IBIS en vídeo</a> que la X-S20 lleva un
+  <b>IBIS de 5 ejes</b> (estabilización óptica del propio sensor) que la vuelve sorprendentemente
+  capaz a pulso. La clave: hay <b>varias capas</b> de estabilización y cada movimiento pide una
+  combinación distinta.</p>
+
+  <div class="callout gear" data-title="En la X-S20: qué estabilización usar para cada movimiento">
+    <p>Las Fuji de esta generación combinan, en el menú de vídeo, la estabilización óptica del
+    sensor (<b>IS MODE</b>, el IBIS), un modo de <b>refuerzo</b> que fija el encuadre con más fuerza
+    para planos quietos, y una capa de estabilización <b>digital (DIS)</b> que añade suavizado
+    electrónico a cambio de un pequeño <b>recorte</b> del encuadre. La receta práctica:</p>
+    <ul>
+      <li><b>Estático a pulso:</b> IBIS + el modo de refuerzo. Fija el encuadre casi como un
+      trípode y elimina el micro-temblor. Es el modo del plano quieto que no puedes apoyar.</li>
+      <li><b>Caminando (tracking, push, pull):</b> IBIS + DIS. La capa digital domestica el vaivén
+      del paso; asume que <b>recorta</b> un poco la imagen (encuadra algo más ancho para
+      compensar) y que funciona mejor cuanto más suave sea tu paso ninja.</li>
+      <li><b>Pan o tilt sobre trípode:</b> ojo con la estabilización. Si la cámara está fija sobre
+      un cabezal, el IBIS puede <b>pelearse</b> con el giro e introducir pequeños tirones o un
+      «rebote» al arrancar y frenar. Con un buen apoyo, es habitual <b>desactivar la
+      estabilización</b> (o usar un modo de paneo si tu equipo lo ofrece) y dejar que el trípode
+      haga su trabajo.</li>
+    </ul>
+    <p>Confirma los nombres y rutas exactas de estos ajustes en el menú de tu X-S20 antes de
+    grabar en serio; varían con las actualizaciones de firmware. Lo que no cambia es la lógica:
+    <b>más estabilización para caminar, menos (o ninguna) sobre trípode</b>.</p>
+  </div>
+
+  <p>Y recuerda el límite físico de cualquier estabilización: <b>corrige tu temblor, no corrige
+  tus pasos</b>. Sobre un caminar suave, el IBIS hace que el plano parezca de estabilizador; sobre
+  un trote a saltos, no hay milagro. La mano (el paso ninja) y la máquina (el IBIS) se multiplican;
+  no se sustituyen.</p>
+
+  <!-- ============================================================ -->
+  <h2 id="combinar">Combinar movimientos: pensar para el corte</h2>
+
+  <p>Tienes ocho herramientas, y la tentación del principiante es usarlas todas seguidas: un plano
+  que pana, luego hace tilt, luego push, luego orbita… ocho movimientos encadenados que marean.
+  <b>No lo hagas.</b> Un plano = un movimiento (o ninguno). El ritmo no nace de encadenar
+  movimientos dentro de un plano, sino de <b>alternar</b> planos en el montaje: estático,
+  movimiento, estático, estático, movimiento. La quietud da respiro y hace que el siguiente
+  movimiento signifique. Un vídeo que se mueve todo el rato es tan monótono como uno que no se
+  mueve nunca.</p>
+
+  <p>Y aquí va la <b>regla de oro para que tu material se pueda montar</b>: <b>empieza y termina
+  cada movimiento en quietud</b>. Uno o dos segundos de plano fijo antes de arrancar el movimiento,
+  y otro tanto al terminarlo, antes de cortar. Esos rabillos de quietud se llaman <b>«handles»</b>
+  (asas) y son lo que te permite <b>cortar limpio</b> en el montaje, encadenando con el siguiente
+  plano sin que la imagen dé un tirón. Sin handles, un movimiento que arranca de golpe y se corta a
+  medio gesto es casi inservible.</p>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 480 130" role="img" aria-labelledby="d109-t" font-family="ui-monospace, Menlo, monospace" font-size="11">
+      <title id="d109-t">Un clip dividido en tres tramos: uno o dos segundos quieto, el movimiento en medio, y otro tramo quieto al final; un cursor recorre el clip.</title>
+      <style>
+        .d109-play { animation: d109-play 6s linear infinite; }
+        @keyframes d109-play { 0% { transform: translateX(0); } 100% { transform: translateX(400px); } }
+        @media (prefers-reduced-motion: reduce){ .d109-play{ animation:none !important; transform: translateX(200px) } }
+      </style>
+      <!-- clip -->
+      <rect x="40" y="46" width="120" height="34" rx="4" fill="var(--dg-green)" opacity="0.28" stroke="var(--dg-green)" stroke-width="1"/>
+      <rect x="160" y="46" width="160" height="34" rx="0" fill="var(--dg-accent)" opacity="0.22" stroke="var(--dg-accent)" stroke-width="1"/>
+      <rect x="320" y="46" width="120" height="34" rx="4" fill="var(--dg-green)" opacity="0.28" stroke="var(--dg-green)" stroke-width="1"/>
+      <text x="100" y="36" fill="var(--dg-green)" text-anchor="middle" font-size="10">quieto 1–2 s</text>
+      <text x="240" y="36" fill="var(--dg-accent)" text-anchor="middle" font-size="10">MOVIMIENTO</text>
+      <text x="380" y="36" fill="var(--dg-green)" text-anchor="middle" font-size="10">quieto 1–2 s</text>
+      <text x="100" y="100" fill="var(--dg-text)" text-anchor="middle" font-size="9">handle de entrada</text>
+      <text x="380" y="100" fill="var(--dg-text)" text-anchor="middle" font-size="9">handle de salida</text>
+      <!-- cursor -->
+      <g class="d109-play"><line x1="40" y1="40" x2="40" y2="86" stroke="var(--dg-red)" stroke-width="2"/><circle cx="40" cy="40" r="3" fill="var(--dg-red)"/></g>
+      <text x="240" y="122" fill="var(--dg-text)" text-anchor="middle" font-size="10">los tramos quietos (handles) son por donde cortarás en el montaje</text>
+    </svg>
+    <figcaption><b>Figura 10.9.</b> Piensa el movimiento <b>para el corte</b>. Los tramos verdes de
+    quietud son tu margen de maniobra en el <a href="14-premiere.html#el-timeline">timeline de
+    Premiere</a>: sin ellos, no hay dónde pegar el tijeretazo.</figcaption>
+  </figure>
+
+  <p>Esta manera de pensar —cada plano como una pieza que encajará con las de al lado— es el puente
+  hacia los dos capítulos que vienen: los <a href="11-tipos-de-plano.html">tipos de plano</a> (qué
+  <i>tamaño</i> de encuadre eliges, del general al detalle) y el
+  <a href="12-storytelling.html#la-secuencia">storytelling</a> (cómo esas piezas se ordenan para
+  <b>contar</b> algo).</p>
+
+  <!-- ============================================================ -->
+  <h2 id="practica">A practicar</h2>
+
+  <div class="callout exercise" data-title="Ejercicio 10.1 — Diez estáticos que respiran">
+    <p>Sal una hora con un solo objetivo: grabar <b>diez planos estáticos</b>, de <b>12–15 segundos
+    reales cada uno</b>, en los que la cámara no se mueva pero pase algo dentro del cuadro (un
+    tranvía, gente, agua, humo, ropa tendida al viento). Apoya la cámara siempre que puedas.
+    <b>Prohibido</b> mover la cámara ni una vez. En casa, quédate con los 6–10 segundos limpios de
+    cada uno. <b>Criterio de éxito:</b> descubrir que un buen estático no es aburrido, y salir con
+    diez clips montables sin haber movido la cámara.</p>
+  </div>
+
+  <div class="callout exercise" data-title="Ejercicio 10.2 — El mismo sujeto, cinco motivos">
+    <p>Elige <b>un</b> sujeto —una estatua, una puerta bonita, un compañero de viaje— y grábalo con
+    cinco movimientos distintos, <b>diciendo en voz alta el motivo</b> antes de cada uno: un
+    <a href="#pan">pan</a> lento (revelar el entorno), un <a href="#tilt">tilt</a> (revelar la
+    altura), un <a href="#push-y-pull">push in</a> (acercar la atención), un <a href="#reveal">reveal</a>
+    (descubrirlo desde detrás de algo) y un <a href="#tracking">tracking</a> o
+    <a href="#orbit">orbit</a> (seguir / dar energía). Todos con <b>handles</b> de 1–2 s.
+    <b>Criterio de éxito:</b> que cada clip empiece y acabe en quietud y que, al verlos, notes cómo
+    el mismo sujeto «suena» distinto según el movimiento.</p>
+  </div>
+
+  <div class="callout challenge" data-title="Reto del capítulo — La escena en cinco movimientos">
+    <p>Escoge <b>una sola escena</b> de tu ciudad o de un rincón cualquiera —una plaza, un mercado,
+    una esquina con vida— y proponte contarla entera con <b>exactamente cinco planos</b>, cada uno
+    con un motivo declarado de antemano: uno tiene que ser un <b>estático</b>, y los otros cuatro,
+    movimientos distintos de este capítulo. Antes de grabar, escríbelos en una nota del móvil como
+    una mini <a href="12-storytelling.html#shot-list">shot list</a>: «1 · estático de la fuente
+    (algo cruza); 2 · reveal desde detrás de la columna; 3 · tilt de la fachada; 4 · tracking del
+    camarero; 5 · pull out final para despedir la plaza». Grábalos con sus handles, móntalos en ese
+    orden en <a href="14-premiere.html#el-timeline">Premiere</a> y míralo. <b>El objetivo real:</b>
+    comprobar que cinco planos <b>pensados</b> cuentan más —y se ven infinitamente mejor— que cinco
+    minutos de cámara suelta moviéndose sin ton ni son. Si un plano no tenía motivo claro, se
+    notará en el montaje: esa es la lección.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="cierre">Errores, dudas y lo esencial</h2>
+
+  <div class="callout error" data-title="Error común: mover la cámara por moverla">
+    <p>Es <b>el</b> error del capítulo, del que salen casi todos los demás. Grabar en movimiento
+    permanente porque parece «más dinámico», sin que ningún plano tenga un motivo. El resultado es
+    un vídeo que no deja reposar la vista un segundo y que, paradójicamente, se siente <b>plano</b>:
+    cuando todo se mueve, nada destaca. La cura es la pregunta de la primera página, repetida antes
+    de cada plano: «¿por qué me muevo aquí?». Si no hay respuesta, la cámara se queda quieta. La
+    quietud no es lo contrario del dinamismo; es lo que lo hace posible.</p>
+  </div>
+
+  <div class="callout error" data-title="Error común: el paneo-regadera (y su primo, el zoom nervioso)">
+    <p>Ya lo vimos en el pan, pero cierra con él porque es epidémico: barrer el paisaje a toda
+    velocidad de un extremo a otro, o pegar zooms bruscos de acercar-alejar buscando «la toma».
+    Ambos comparten el pecado de la <b>velocidad sin motivo</b>. Las dos reglas que lo curan: los
+    movimientos van <b>lentos</b> (los ~5 s de un borde al otro) y <b>empiezan y terminan en algo
+    concreto</b>, nunca en el vacío. Un movimiento que no sabe dónde va ni a qué velocidad no es un
+    movimiento: es un accidente grabado.</p>
+  </div>
+
+  <details class="callout faq">
+    <summary>Necesito un gimbal para hacer vídeo de viaje decente, ¿verdad?</summary>
+    <div class="co-body">
+      <p>No. Ayuda —y mucho— para orbit, tracking largo y planos deslizantes muy pulidos, pero no
+      es un requisito. Con la X-S20 tienes tres cosas que te llevan lejísimos sin él: un
+      <a href="09-video.html#ibis-en-video">IBIS</a> excelente, la técnica del <a href="#handheld">paso
+      ninja</a> y —la más infravalorada— el <a href="#estatico">plano estático apoyado</a>. De
+      hecho, el mejor consejo para empezar es al revés del que esperas: <b>domina el estático y el
+      handheld sin gimbal primero</b>. Cuando de verdad choques con sus límites (querer un orbit
+      liso, un tracking largo por terreno malo), sabrás exactamente qué gimbal necesitas y por qué.
+      Comprarlo antes suele producir vídeos igual de mareados, solo que con más movimiento inútil y
+      suave.</p>
+    </div>
+  </details>
+
+  <details class="callout faq">
+    <summary>¿Push in de verdad (andando) o zoom lento? ¿Se nota tanto la diferencia?</summary>
+    <div class="co-body">
+      <p>Se nota, y es fácil de ver una vez sabes mirar. Al <b>moverte</b> físicamente cambia la
+      <a href="06-objetivos.html#perspectiva-y-compresion">perspectiva</a>: el fondo se reordena
+      respecto al sujeto, los objetos cercanos se desplazan más que los lejanos (paralaje), y el
+      cerebro lee «me estoy metiendo en la escena». Con el <b>zoom</b> nada de eso ocurre: la imagen
+      solo se agranda, sin cambio de perspectiva, y por eso se percibe algo «falso» o televisivo.
+      Dicho esto, un zoom <b>muy</b> lento es un recurso válido cuando no puedes moverte (un balcón,
+      un acantilado) o para un empujoncito casi imperceptible. La regla: <b>si puedes andar, anda</b>;
+      el zoom es el plan B.</p>
+    </div>
+  </details>
+
+  <div class="callout summary" data-title="Lo esencial del capítulo">
+    <ul>
+      <li><b>Ley única:</b> el movimiento debe tener <b>motivo</b> (revelar, seguir, acercar la
+      atención, dar energía). Si no sabes por qué te mueves, no te muevas.</li>
+      <li>El <b>plano estático</b> es tu primer movimiento y la base del vídeo de viaje: composición
+      fija con vida cruzando dentro. Aguanta <b>12–15 s</b> reales para tener 6–10 s limpios; apoya
+      la cámara.</li>
+      <li><b>Pan</b> (giro horizontal) y <b>tilt</b> (giro vertical): giras en el sitio para revelar
+      anchura o altura. Regla de los bordes: <b>lento</b>, ~5 s de un extremo al otro.</li>
+      <li><b>Push in / pull out:</b> te desplazas <b>físicamente</b> (no zoom: cambia la
+      perspectiva). Push = atención e intimidad; pull = contexto y despedida.</li>
+      <li><b>Reveal:</b> descubrir el sujeto desde detrás de un obstáculo; el movimiento estrella
+      del viaje. Su versión estática (algo entra en cuadro) no necesita ni técnica.</li>
+      <li><b>Orbit</b> (arco alrededor: separa sujeto y fondo por paralaje) y <b>tracking</b>
+      (acompañar en paralelo, atrás o delante): los que más piden pulso o gimbal.</li>
+      <li><b>Handheld:</b> estética buscada, no temblor. El <b>paso ninja</b> —rodillas dobladas,
+      pasos rodados talón-punta, codos al cuerpo, torso que flota, respiración— hace que la cámara
+      deslice sin botar.</li>
+      <li><b>X-S20:</b> IBIS + refuerzo para estático a mano; IBIS + DIS (con recorte) para caminar;
+      estabilización <b>fuera</b> (o modo paneo) sobre trípode. La máquina corrige temblor, no
+      pasos.</li>
+      <li><b>Para el montaje:</b> un plano = un movimiento; alterna estático y movimiento; y deja
+      <b>handles</b> (1–2 s quietos al principio y al final) para poder cortar limpio.</li>
+    </ul>
+  </div>
+
+  <p>Ya tienes los verbos del vídeo. En los <a href="11-tipos-de-plano.html">tipos de plano</a>
+  aprenderás los sustantivos —qué tamaño de encuadre elegir, del general al detalle— y en
+  <a href="12-storytelling.html">Contar un viaje</a> los ordenarás en frases que cuenten algo. Pero
+  sal a la calle antes de seguir: diez estáticos y cinco movimientos con motivo enseñan más que
+  cualquier texto.</p>
+
+</div>
+
+<script src="../assets/js/manifest.js"></script>
+<script src="../assets/js/search-index.js" defer></script>
+<script src="../assets/js/app.js" defer></script>
+</body>
+</html>
